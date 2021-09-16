@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavBar } from "../Components/NavBar/NavBar";
 import { AboutMePage } from "../Components/AboutMePage/AboutMe";
 
-export default function Home({ data }) {
+export default function About() {
   return (
     <Container>
       <Head>

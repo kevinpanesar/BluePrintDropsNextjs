@@ -4,20 +4,21 @@ import { SneakerCard } from "../SneakerCard/SneakerCard";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
-export const SneakerFeed = ({ info }) => {
-  // const term = useSelector((state)=>state.sneaker.searchTerm);
-  // const info = useSelector((state) => {
 
-  //     if (state.sneaker.currentSneakerFeedUpcoming === true){
-  //         return state.sneaker.futureSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
-  //     }
-  //     else{
-  //         return state.sneaker.pastSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
-  //     }
 
-  // });
-  // const dispatch = useDispatch()
-  // const history = useHistory();
+export const SneakerFeed = () => {
+  const term = useSelector((state)=>state.sneaker.searchTerm);
+  const info = useSelector((state) => {
+
+      if (state.sneaker.currentSneakerFeedUpcoming === true){
+          return state.sneaker.futureSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
+      }
+      else{
+          return state.sneaker.pastSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
+      }
+
+  });
+  const dispatch = useDispatch()
 
   return (
     <Container>

@@ -7,10 +7,6 @@ export const SearchBar = () => {
     const dispatch = useDispatch()
     const term = useSelector((state) => state.sneaker.searchTerm);
 
-    const [userInput, setUserInput] = useState('');
-
-    useEffect(() => console.log(userInput));
-
 
     return (
         <form className="searchBar" onChange={(e) => {

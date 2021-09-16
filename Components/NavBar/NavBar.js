@@ -6,33 +6,20 @@ import Recent from "../../public/Media/rotate-ccw.svg";
 import User from "../../public/Media/user.svg";
 // import { useHistory } from "react-router-dom";
 import Image from "next/image";
+import Link from "next/link";
 
 export const NavBar = () => {
-  // const history = useHistory();
-
-  const handleReleaseInfoClick = () => {
-    // history.push("/releaseInfo");
-  };
-
-  const handleToolsClick = () => {
-    // history.push("/tools");
-  };
-
-  const handleAboutClick = () => {
-    // history.push("/about");
-  };
-
-  const handleHomeClick = () => {
-    history.push("/");
-  };
-
   return (
     <NavContainer>
       <IconContainer>
-        <StyledImage src={Home} onClick={handleHomeClick} />
-        <StyledImage src={Recent} onClick={handleToolsClick} />
-        <StyledImage src={Tools} onClick={handleReleaseInfoClick} />
-        <StyledImage src={User} onClick={handleAboutClick} />
+        {/* <Link href={"/"} >
+          <Image src={Home} width={24} height={24} />
+        </Link>
+        <Image src={Recent} width={24} height={24} />
+        <Image src={Tools} width={24} height={24} />
+        <Link href={"/about"}>
+          <Image src={User} width={24} height={24} />
+        </Link> */}
       </IconContainer>
     </NavContainer>
   );
@@ -60,8 +47,4 @@ const IconContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-`;
-
-const StyledImage = styled(Image)`
-  width: 24px;
 `;
