@@ -51,6 +51,9 @@ const sneakerSlice = createSlice({
     toggleSneakerFeed: (state) => {
       state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;
     },
+    setCurrentShoe: (state,action) =>{
+        state.currentSneakerInfo = state.allSneakerInfo[0]
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },

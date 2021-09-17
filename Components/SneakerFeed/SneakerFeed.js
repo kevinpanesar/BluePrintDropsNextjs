@@ -3,22 +3,22 @@ import styled from "styled-components";
 import { SneakerCard } from "../SneakerCard/SneakerCard";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
-
-
+import Link from "next/link";
 
 export const SneakerFeed = () => {
-  const term = useSelector((state)=>state.sneaker.searchTerm);
+  const term = useSelector((state) => state.sneaker.searchTerm);
   const info = useSelector((state) => {
-
-      if (state.sneaker.currentSneakerFeedUpcoming === true){
-          return state.sneaker.futureSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
-      }
-      else{
-          return state.sneaker.pastSneakerInfoAgeOrGender.filter((element) => element.title.toLowerCase().includes(term.toLowerCase()));
-      }
-
+    if (state.sneaker.currentSneakerFeedUpcoming === true) {
+      return state.sneaker.futureSneakerInfoAgeOrGender.filter((element) =>
+        element.title.toLowerCase().includes(term.toLowerCase())
+      );
+    } else {
+      return state.sneaker.pastSneakerInfoAgeOrGender.filter((element) =>
+        element.title.toLowerCase().includes(term.toLowerCase())
+      );
+    }
   });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -26,17 +26,22 @@ export const SneakerFeed = () => {
         {info !== undefined
           ? info.map((element, index) => {
               return (
-                <SneakerCard
-                  cardInfo={element}
-                  switchShoe={() => {
-                    history.push("/releaseInfo");
-                    dispatch({
-                      type: "sneaker/sneakerInfo",
-                      payload: element,
-                    });
-                  }}
-                  key={index}
-                />
+                <Link
+                  passHref
+                  key={element.title + element.colorway}
+                  href={
+                    "/ReleaseInfo/" +
+                    element.title +
+                    "-" +
+                    element.colorway +
+                    "-" +
+                    element.id
+                  }
+                >
+                  <Links>
+                    <SneakerCard cardInfo={element} />
+                  </Links>
+                </Link>
               );
             })
           : null}
@@ -56,6 +61,13 @@ const Container = styled.div`
 
 const CardContainer = styled.div`
   width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const Links = styled.a`
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

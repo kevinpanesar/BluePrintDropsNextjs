@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useSelector } from 'react-redux'
-import GoogleMaps from '../../Media/googlemaps.png'
+import GoogleMaps from '../../public/Media/googlemaps.png'
 
 export const LocationCard = ({ location }) => {
 

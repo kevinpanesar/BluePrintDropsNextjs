@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux'
 import {format} from 'date-fns';
-import CardBackground from '../../Media/cardBackground.jpg';
+import CardBackground from '../../public/Media/cardBackground.jpg';
 
 export const ReleaseCard = ({ sneakerInfo}) =>{
 

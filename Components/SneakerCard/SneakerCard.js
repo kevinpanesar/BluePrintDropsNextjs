@@ -31,7 +31,7 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
 }
 
 const Container = styled.div`
-    width: 45%;
+    width: 90%;
     height: 250px;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
