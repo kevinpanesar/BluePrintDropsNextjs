@@ -19,32 +19,34 @@ export const ReleaseInfoPage = ({ data }) => {
 
   // }
 
-  const handleRaffleClick = (e) => {
-    e.preventDefault();
-    history.push("/raffle-generator");
-  };
+  // const handleRaffleClick = (e) => {
+  //   e.preventDefault();
+  //   history.push("/raffle-generator");
+  // };
 
-  const locationData = useSelector((state) => {
-    if (state.sneaker.currentSneakerInfo == undefined) {
-      return state.sneaker.allSneakerInfo[0].cities;
-    }
-    return state.sneaker.currentSneakerInfo.cities;
-  });
+  // const locationData = useSelector((state) => {
+  //   if (state.sneaker.currentSneakerInfo == undefined) {
+  //     return state.sneaker.allSneakerInfo[0].cities;
+  //   }
+  //   return state.sneaker.currentSneakerInfo.cities;
+  // });
 
   return (
     <Container>
-      <Button onClick={handleClick}>Back</Button> <ImageSlider />
-      <ReleaseCard />
+      <Button >Back</Button>
+       <ImageSlider data={data}/>
+      <ReleaseCard data={data}/>
+      
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
-          {locationData !== undefined
-            ? Object.keys(locationData).map((element, index) => {
+          {data.cities !== undefined
+            ? Object.keys(data.cities).map((element, index) => {
                 return (
                   <Accordion.Item eventKey={index} key={index}>
                     <Accordion.Header>{element}</Accordion.Header>
                     <AccordionBody>
-                      {locationData !== undefined
-                        ? locationData[element].map((element, index) => (
+                      {data !== undefined
+                        ? data.cities[element].map((element, index) => (
                             <LocationCard location={element} key={index} />
                           ))
                         : null}
@@ -55,9 +57,10 @@ export const ReleaseInfoPage = ({ data }) => {
             : null}
         </Accordion>
       </LocationsContainer>
+      {/* 
       <GenerateRafflesButton onClick={handleRaffleClick}>
         Generate Raffles
-      </GenerateRafflesButton>
+      </GenerateRafflesButton> */}
     </Container>
   );
 };

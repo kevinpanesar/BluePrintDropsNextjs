@@ -1,19 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 import GoogleMaps from '../../public/Media/googlemaps.png'
 
 export const LocationCard = ({ location }) => {
 
-    const locationData = useSelector((state) => {
+    // const locationData = useSelector((state) => {
 
-        if (state.sneaker.currentSneakerInfo == undefined) {
-            return state.sneaker.allSneakerInfo[0].locations;
-        }
+    //     if (state.sneaker.currentSneakerInfo == undefined) {
+    //         return state.sneaker.allSneakerInfo[0].locations;
+    //     }
 
-        return state.sneaker.currentSneakerInfo.cities;
+    //     return state.sneaker.currentSneakerInfo.cities;
 
-    })
+    // })
 
     const address = `http://maps.google.com/?q=${location.Address}`
 
@@ -80,7 +81,7 @@ font-weight: 700;
 align-content: center;
 `
 
-const GoogleMapsImg = styled.img`
+const GoogleMapsImg = styled(Image)`
 margin: 10px;
 margin-bottom: 10px;
 `
