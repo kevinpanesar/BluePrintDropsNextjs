@@ -8,7 +8,7 @@ import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
 import { fetchSneakerInfo, setCurrentShoe } from "../../store/releaseInfo";
 import { useRouter } from "next/router";
 
-export default function ReleasePage({postData}) {
+export default function ReleasePage({ postData }) {
   return (
     <Container>
       <Head>
@@ -26,8 +26,6 @@ export default function ReleasePage({postData}) {
 }
 
 export async function getAllPostIds() {
-  // Instead of the file system,
-  // fetch post data from an external API endpoint
   const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
   const posts = await res.json();
   return posts.map((post) => {
@@ -35,7 +33,7 @@ export async function getAllPostIds() {
     const stringPostId = postID.toString();
     return {
       params: {
-        nameColorway: stringPostId,
+        nameColorway: post.title + "_" + stringPostId,
       },
     };
   });
@@ -61,8 +59,8 @@ export async function getPostData(id) {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
-  const postData = await getPostData(params.nameColorway);
+  let id = params.nameColorway.split("_")[1];
+  const postData = await getPostData(id);
   return {
     props: {
       postData,

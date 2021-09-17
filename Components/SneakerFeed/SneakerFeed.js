@@ -29,7 +29,7 @@ export const SneakerFeed = () => {
                 <Link
                   passHref
                   key={element.title + element.colorway}
-                  href={"/ReleaseInfo/" + element._id}
+                  href={"/ReleaseInfo/" + element.title + "_" + element._id}
                 >
                   <Links>
                     <SneakerCard cardInfo={element} />
