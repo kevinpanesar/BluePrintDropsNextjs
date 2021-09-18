@@ -8,7 +8,10 @@ import { fetchSneakerInfo, setCurrentShoe } from "../../store/releaseInfo";
 import { useRouter } from "next/router";
 import {RaffleForm} from '../../Components/RaffleForm/RaffleForm'
 
-export default function ReleasePage({ postData }) {
+export default function ReleasePage({postData}) {
+
+    console.log(postData);
+
   return (
     <Container>
       <Head>
@@ -17,7 +20,7 @@ export default function ReleasePage({ postData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-      <RaffleForm/>
+      <RaffleForm postData={postData[0]}/>
       </Container>
       <footer></footer>
     </Container>
