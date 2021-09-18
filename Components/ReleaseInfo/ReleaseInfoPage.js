@@ -6,7 +6,10 @@ import { useSelector } from "react-redux";
 import Accordion from "react-bootstrap/Accordion";
 import { ReleaseCard } from "./ReleaseCard";
 import { LocationCard } from "./LocationCard";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
+
 const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
   ssr: false,
 });
@@ -33,10 +36,10 @@ export const ReleaseInfoPage = ({ data }) => {
 
   return (
     <Container>
-      <Button >Back</Button>
-       <ImageSlider data={data}/>
-      <ReleaseCard data={data}/>
-      
+      <Button>Back</Button>
+      <ImageSlider data={data} />
+      <ReleaseCard data={data} />
+
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
@@ -57,10 +60,9 @@ export const ReleaseInfoPage = ({ data }) => {
             : null}
         </Accordion>
       </LocationsContainer>
-      {/* 
-      <GenerateRafflesButton onClick={handleRaffleClick}>
-        Generate Raffles
-      </GenerateRafflesButton> */}
+      <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
+        <GenerateRafflesButton>Generate Raffles</GenerateRafflesButton>
+      </Link>
     </Container>
   );
 };
@@ -70,13 +72,7 @@ const Container = styled.div`
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px;
-`;
-
-const LocationsTitle = styled.p`
-  text-align: left;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 35px;
+  padding-bottom: 50px;
 `;
 
 const LocationsContainer = styled.div`

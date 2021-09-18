@@ -64,6 +64,7 @@ const Links = styled.a`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-decoration: none;
 `;
 
 const Month = styled.h2`

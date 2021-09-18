@@ -1,12 +1,9 @@
 import "../styles/globals.css";
 import "../global/stylesheet.css";
 import { Provider } from "react-redux";
-import store  from "../store/store";
-import{useEffect} from 'react';
+import store from "../store/store";
+
 function MyApp({ Component, pageProps }) {
-
-
-  
   return (
     <Provider store={store}>
       <Component {...pageProps} />

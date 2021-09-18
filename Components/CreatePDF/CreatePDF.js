@@ -33,9 +33,6 @@ export const PDF = (props) => {
                 </tr>
             </table>
         </div>
-        {/* <Pdf targetRef={ref} filename="Raffles.pdf" options={options}>
-            {({ toPdf }) => <button onClick={toPdf}>Capture as PDF</button>}
-        </Pdf> */}
         <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
             {({ blob, url, loading, error }) =>
                 loading ? 'Loading document...' : 'Download now!'

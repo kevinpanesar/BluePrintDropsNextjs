@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import { Page, Text, View, Document, StyleSheet, Canvas, Line, Image } from '@react-pdf/renderer';
-import Logo from '../../Media/raffleLogo.jpg'
+import Logo from '../../public/Media/raffleLogo.jpg'
 import { AutoplayDirection } from 'react-alice-carousel';
 
 // Create styles
