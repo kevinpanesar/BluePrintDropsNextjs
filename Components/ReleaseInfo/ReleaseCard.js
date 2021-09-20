@@ -30,7 +30,7 @@ export const ReleaseCard = ({ data }) => {
         </Labels>
         <Values>
           <p>{data.price}</p>
-          <p>{format(new Date(data.date), "PPP")}</p>
+          <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
         </Values>
       </PriceDateContainer>
     </Container>
