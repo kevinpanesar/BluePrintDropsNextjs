@@ -2,7 +2,6 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
-import Image from "next/image";
 import { useSelector } from "react-redux";
 
 const handleDragStart = (e) => e.preventDefault();
@@ -16,11 +15,11 @@ export const ImageSlider = ({ data }) => {
 
   //     return state.sneaker.currentSneakerInfo.images})
 
-  let items;
+  const items;
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
-      <Image
+      <img
         width="100%"
         className="imageCarousel"
         src={element}
