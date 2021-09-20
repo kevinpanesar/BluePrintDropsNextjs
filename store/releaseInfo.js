@@ -33,7 +33,9 @@ const sneakerSlice = createSlice({
       if (state.futureSneakerInfo.length === 0) {
         state.allSneakerInfo.forEach((element) => {
           const today = new Date().getTime();
-          const releaseDate = new Date(element.date).getTime();
+          const releaseDate = new Date(
+            element.date.replace(/, /g, "/")
+          ).getTime();
 
           if (today < releaseDate) {
             state.futureSneakerInfo.push(element);
