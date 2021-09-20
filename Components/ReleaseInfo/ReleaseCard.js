@@ -5,16 +5,7 @@ import { format } from "date-fns";
 import CardBackground from "../../public/Media/cardBackground.jpg";
 
 export const ReleaseCard = ({ data }) => {
-  // const locationData = useSelector((state) => {
-
-  //     if (state.sneaker.currentSneakerInfo == undefined) {
-  //         return state.sneaker.allSneakerInfo[0];
-  //     }
-
-  //     return state.sneaker.currentSneakerInfo
-
-  // })
-
+  console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
     <Container>
       <TitleContainer>
