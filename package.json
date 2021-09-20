@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.5",
+    "react-slick": "^0.28.1",
     "react-to-pdf": "0.0.14",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
@@ -32,5 +33,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2"
   },
-  "plugins": ["@babel/plugin-transform-block-scoping"]
+  "plugins": [
+    "@babel/plugin-transform-block-scoping"
+  ]
 }

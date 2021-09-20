@@ -19,7 +19,7 @@ export const ImageSlider = ({ data }) => {
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
-      <img
+      <iframe
         width="100%"
         className="imageCarousel"
         src={element}
