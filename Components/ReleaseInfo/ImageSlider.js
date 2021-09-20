@@ -15,7 +15,7 @@ export const ImageSlider = ({ data }) => {
 
   //     return state.sneaker.currentSneakerInfo.images})
 
-  const items;
+  let items;
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
