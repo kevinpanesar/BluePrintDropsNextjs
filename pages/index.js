@@ -28,7 +28,6 @@ export default function Home({ data }) {
   const dispatch = useDispatch();
   const info = useSelector((state) => { state.allSneakerInfo});
 
-  console.log(info)
   useEffect(() => {
        dispatch(fetchSneakerInfo()).then(() =>
       dispatch({ type: "sneaker/splitSneakerInfo" })

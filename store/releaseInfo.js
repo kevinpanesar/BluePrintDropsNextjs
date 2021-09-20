@@ -5,6 +5,8 @@ export const fetchSneakerInfo = createAsyncThunk(
   async () => {
     let data = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
     let jsonData = await data.json();
+
+    console.log(jsonData);
     return jsonData;
   }
 );
