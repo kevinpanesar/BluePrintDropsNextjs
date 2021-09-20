@@ -30,20 +30,18 @@ const sneakerSlice = createSlice({
       state.currentSneakerInfo = action.payload;
     },
     splitSneakerInfo: (state) => {
-         if (state.futureSneakerInfo.length === 0) {
-      state.allSneakerInfo.forEach((element) => {
-       
-        const today = new Date().getTime();
-        const releaseDate = new Date(element.date).getTime();
+      if (state.futureSneakerInfo.length === 0) {
+        state.allSneakerInfo.forEach((element) => {
+          const today = new Date().getTime();
+          const releaseDate = new Date(element.date).getTime();
 
-        if (today < releaseDate) {
-          state.futureSneakerInfo.push(element);
-        } else {
-          state.pastSneakerInfo.push(element);
-        }
-    
-      });
-         }
+          if (today < releaseDate) {
+            state.futureSneakerInfo.push(element);
+          } else {
+            state.pastSneakerInfo.push(element);
+          }
+        });
+      }
 
       state.futureSneakerInfoAgeOrGender = state.futureSneakerInfo;
       state.pastSneakerInfoAgeOrGender = state.pastSneakerInfo;
@@ -51,8 +49,8 @@ const sneakerSlice = createSlice({
     toggleSneakerFeed: (state) => {
       state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;
     },
-    setCurrentShoe: (state,action) =>{
-        state.currentSneakerInfo = state.allSneakerInfo[0]
+    setCurrentShoe: (state, action) => {
+      state.currentSneakerInfo = state.allSneakerInfo[0];
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
