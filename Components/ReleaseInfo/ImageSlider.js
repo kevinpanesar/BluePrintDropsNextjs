@@ -24,7 +24,7 @@ export const ImageSlider = ({ data }) => {
         className="imageCarousel"
         src={element}
         onDragStart={handleDragStart}
-      />
+      ></iframe>
     ));
   }
 
