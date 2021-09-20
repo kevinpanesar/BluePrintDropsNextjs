@@ -19,12 +19,12 @@ export const ImageSlider = ({ data }) => {
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
-      <iframe
+      <img
         width="100%"
         className="imageCarousel"
         src={element}
         onDragStart={handleDragStart}
-      ></iframe>
+      />
     ));
   }
 
