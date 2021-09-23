@@ -27,11 +27,13 @@ import { fetchSneakerInfo } from "../store/releaseInfo";
 export default function Home({ data }) {
   const dispatch = useDispatch();
   const info = useSelector((state) => { state.allSneakerInfo});
-
+  
   useEffect(() => {
        dispatch(fetchSneakerInfo()).then(() =>
       dispatch({ type: "sneaker/splitSneakerInfo" })
-    );   
+    ).then(() =>
+    dispatch({ type: "sneaker/filterMonths" })
+  );   
   }, []);
 
   return (

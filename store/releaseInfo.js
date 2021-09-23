@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { format } from "date-fns";
 
 export const fetchSneakerInfo = createAsyncThunk(
   "sneaker/fetchSneaker",
@@ -14,6 +15,20 @@ const sneakerSlice = createSlice({
   name: "sneaker",
   initialState: {
     allSneakerInfo: [],
+    futureMonths: {
+      January: [],
+      Febuary: [],
+      March: [],
+      April: [],
+      May: [],
+      June: [],
+      July: [],
+      August: [],
+      September: [],
+      October: [],
+      November: [],
+      December: [],
+    },
     currentSneakerFeedUpcoming: true,
     currentSneakerInfo: undefined,
     futureSneakerInfo: [],
@@ -47,6 +62,37 @@ const sneakerSlice = createSlice({
 
       state.futureSneakerInfoAgeOrGender = state.futureSneakerInfo;
       state.pastSneakerInfoAgeOrGender = state.pastSneakerInfo;
+    },
+    filterMonths: (state) => {
+      state.futureSneakerInfo.map((element) => {
+        const month = format(new Date(element.date), "LLLL");
+        if (month == "January") {
+          state.futureMonths.January.push(element);
+        } else if (month == "Febuary") {
+          state.futureMonths.Febuary.push(element);
+        } else if (month == "March") {
+          state.futureMonths.March.push(element);
+        } else if (month == "April") {
+          state.futureMonths.April.push(element);
+        } else if (month == "May") {
+          state.futureMonths.May.push(element);
+        } else if (month == "June") {
+          state.futureMonths.June.push(element);
+        } else if (month == "July") {
+          state.futureMonths.July.push(element);
+        } else if (month == "August") {
+          state.futureMonths.August.push(element);
+        } else if (month == "September") {
+          state.futureMonths.September.push(element);
+        } else if (month == "October") {
+          state.futureMonths.October.push(element);
+        } else if (month == "November") {
+          state.futureMonths.November.push(element);
+        } else if (month == "December") {
+          state.futureMonths.December.push(element);
+        }
+      });
+      
     },
     toggleSneakerFeed: (state) => {
       state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;

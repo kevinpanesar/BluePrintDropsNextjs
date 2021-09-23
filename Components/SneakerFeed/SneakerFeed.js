@@ -22,6 +22,7 @@ export const SneakerFeed = () => {
 
   return (
     <Container>
+  
       <CardContainer>
         {info !== undefined
           ? info.map((element, index) => {
