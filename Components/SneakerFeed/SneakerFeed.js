@@ -13,7 +13,7 @@ export const SneakerFeed = () => {
   const info = useSelector((state) => {
     if (state.sneaker.currentSneakerFeedUpcoming === true) {
       const months = Object.keys(state.sneaker.futureMonths);
-      
+
       return months.map(element => {
         return (
           state.sneaker.futureSneakerInfoAgeOrGender[element].filter((element) => {
