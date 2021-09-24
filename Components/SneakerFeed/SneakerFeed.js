@@ -2,43 +2,68 @@ import React from "react";
 import styled from "styled-components";
 import { SneakerCard } from "../SneakerCard/SneakerCard";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
 import Link from "next/link";
+import { format } from "date-fns";
+
 
 export const SneakerFeed = () => {
   const term = useSelector((state) => state.sneaker.searchTerm);
+
+
   const info = useSelector((state) => {
     if (state.sneaker.currentSneakerFeedUpcoming === true) {
-      return state.sneaker.futureSneakerInfoAgeOrGender.filter((element) =>
-        element.title.toLowerCase().includes(term.toLowerCase())
-      );
+      const months = Object.keys(state.sneaker.futureMonths);
+      
+      return months.map(element => {
+        return (
+          state.sneaker.futureSneakerInfoAgeOrGender[element].filter((element) => {
+            return (element.title.toLowerCase().includes(term.toLowerCase()));
+          }
+          ));
+      });
+
     } else {
-      return state.sneaker.pastSneakerInfoAgeOrGender.filter((element) =>
-        element.title.toLowerCase().includes(term.toLowerCase())
-      );
+      const months = Object.keys(state.sneaker.futureMonths);
+      return months.map(element => {
+        return (
+          state.sneaker.pastSneakerInfoAgeOrGender[element].filter((element) => {
+            return (element.title.toLowerCase().includes(term.toLowerCase()));
+          }
+          ));
+      });
     }
   });
-  const dispatch = useDispatch();
+
 
   return (
     <Container>
-      <CardContainer>
-        {info !== undefined
-          ? info.map((element, index) => {
-              return (
-                <Link
-                  passHref
-                  key={element.title + element.colorway}
-                  href={"/ReleaseInfo/" + element.title + "_" + element._id}
-                >
-                  <Links>
-                    <SneakerCard cardInfo={element} />
-                  </Links>
-                </Link>
-              );
-            })
-          : null}
-      </CardContainer>
+      {info.map((element, index) => {
+        if (element.length > 0) {
+          return (<div key={index}>
+            <Month>
+              {format(new Date(element[0].date), "LLLL")}
+            </Month>
+            <CardContainer>
+              {element !== undefined ?
+                element.map((element, index) => {
+                  return (
+                    <Link
+                      passHref
+                      key={element.title + element.colorway}
+                      href={"/ReleaseInfo/" + element.title + "_" + element._id}
+                    >
+                      <Links>
+                        <SneakerCard cardInfo={element} />
+                      </Links>
+                    </Link>
+                  );
+                })
+                : null}
+            </CardContainer>
+          </div>);
+        }
+
+      })}
     </Container>
   );
 };
@@ -47,13 +72,13 @@ const Container = styled.div`
   width: 100%;
   margin-top: 40px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 70px;
   background-color: #f5f5f5;
 `;
 
 const CardContainer = styled.div`
-  width: 90%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -68,8 +93,8 @@ const Links = styled.a`
 `;
 
 const Month = styled.h2`
-  width: 100%;
   text-align: left;
   font-family: "Signika", sans-serif;
   margin-bottom: 20px;
+  margin-left: 10px;
 `;

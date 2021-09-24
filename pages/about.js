@@ -14,7 +14,6 @@ export default function About() {
       </Head>
       <Container>
         <AboutMePage />
-        <NavBar />
       </Container>
       <footer></footer>
     </Container>
