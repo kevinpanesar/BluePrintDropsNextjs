@@ -20,7 +20,6 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
         </SubContainer>
         <SubContainer2>
           <ReleaseText>{cardInfo.title}</ReleaseText>
-          <ReleaseSubText>{cardInfo.colorway}</ReleaseSubText>
         </SubContainer2>
         <SubContainer></SubContainer>
       </ReleasePriceContainer>

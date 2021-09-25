@@ -28,6 +28,7 @@ export const ImageSlider = ({ data }) => {
     ));
   }
 
+  items.shift();
   return (
     <Container>
       <AliceCarousel
