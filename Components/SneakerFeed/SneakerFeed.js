@@ -91,6 +91,8 @@ const Container = styled.div`
   flex-direction: column;
   margin-bottom: 70px;
   background-color: #f5f5f5;
+  overflow: scroll;
+  height: 600px;
 `;
 
 const CardContainer = styled.div`

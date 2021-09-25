@@ -52,7 +52,8 @@ body {
 
 input[type=search] {
   display:block;
-  margin: 15px 15px 0 auto;
+  margin-right: 55px;
+  margin-top: 10px;
   width: 100px;
   height: 40px;
   box-sizing: border-box;
@@ -69,7 +70,7 @@ input[type=search] {
   
 }
 input[type=search]:focus {
-  width: 65%;
+  width: 55%;
 }
 
 .accordion-button{

@@ -8,11 +8,16 @@ import { SearchBar } from "../Components/SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchSneakerInfo } from "../store/releaseInfo";
+import SideNavBar from "../Components/sideMenu/SideNavBar";
+import { useState } from 'react';
+import Menu from "../Components/sideMenu/Menu";
 
 
 export default function Home({ data }) {
+
   const dispatch = useDispatch();
   const info = useSelector((state) => { state.allSneakerInfo });
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchSneakerInfo()).then(() =>
@@ -32,6 +37,10 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <div>
+        <SideNavBar open={open} setOpen={setOpen} />
+        <Menu open={open} setOpen={setOpen} />
+      </div>
       <SearchBar />
       <PastPresent />
       <Options />
