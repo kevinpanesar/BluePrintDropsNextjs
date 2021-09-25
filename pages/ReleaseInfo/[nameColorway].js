@@ -36,7 +36,7 @@ export async function getAllPostIds() {
     const stringPostId = postID.toString();
     return {
       params: {
-        nameColorway: post.title + "_" + stringPostId,
+        nameColorway: post.title + stringPostId,
       },
     };
   });
