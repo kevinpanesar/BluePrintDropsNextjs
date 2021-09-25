@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { format } from "date-fns";
-
 
 export const fetchSneakerInfo = createAsyncThunk(
   "sneaker/fetchSneaker",
@@ -40,6 +39,7 @@ const sneakerSlice = createSlice({
     futureSneakerInfoAgeOrGender: months,
     status: null,
     searchTerm: "",
+    mensWomensKidsFilterValue: null,
     upcomingSelected: true,
     pastSelected: false,
   },
@@ -65,11 +65,12 @@ const sneakerSlice = createSlice({
           }
         });
       }
-
     },
     filterMonths: (state) => {
       let arrayOfMonths = Object.keys(months);
-      const emptyArrayObjects = arrayOfMonths.every(element => state.futureMonths[element].length === 0);
+      const emptyArrayObjects = arrayOfMonths.every(
+        (element) => state.futureMonths[element].length === 0
+      );
 
       if (emptyArrayObjects) {
         state.futureSneakerInfo.map((element) => {
@@ -103,7 +104,6 @@ const sneakerSlice = createSlice({
       }
       if (emptyArrayObjects) {
         state.pastSneakerInfo.map((element) => {
-
           const month = format(new Date(element.date), "LLLL");
           if (month == "January") {
             state.pastMonths.January.push(element);
@@ -161,20 +161,12 @@ const sneakerSlice = createSlice({
       if (action.payload === "reset") {
         state.futureSneakerInfoAgeOrGender = state.futureMonths;
         state.pastSneakerInfoAgeOrGender = state.pastMonths;
-      } else {
-
-        // let filtered = Object.filter((state.futureSneakerInfoAgeOrGender), (months => months.filter(element => element[action.payload] === true)));
-        // const monthNames = Object.keys(state.futureMonths);
-        // let filteredResults = monthNames.map(element => {
-        //   return (
-        //     state.futureSneakerInfoAgeOrGender[element].filter((element) => element[action.payload] === true));
-        // });
-
-        state.futureSneakerInfoAgeOrGender = filteredByValue;
-
-        // state.pastSneakerInfoAgeOrGender = state.pastSneakerInfo.filter(
-        //   (element) => element[action.payload] === true
-        // );
+      } else if (action.payload === "mensFlag") {
+        state.mensWomensKidsFilterValue = "mensFlag";
+      } else if (action.payload === "womensFlag") {
+        state.mensWomensKidsFilterValue = "womensFlag";
+      } else if (action.payload === "kidsFlag") {
+        state.mensWomensKidsFilterValue = "kidsFlag";
       }
     },
   },
