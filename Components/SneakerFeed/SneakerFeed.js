@@ -64,7 +64,7 @@ export const SneakerFeed = () => {
                           passHref
                           key={element.title + element.colorway}
                           href={
-                            "/ReleaseInfo/" + element.title + "_" + element._id
+                            "/ReleaseInfo/" + element.title + "KP" + element._id
                           }
                         >
                           <Links>
