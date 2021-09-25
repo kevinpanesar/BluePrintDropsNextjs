@@ -36,7 +36,7 @@ export async function getAllPostIds() {
     const stringPostId = postID.toString();
     return {
       params: {
-        nameColorway: post.title + stringPostId,
+        nameColorway: post.title + "KP" + stringPostId,
       },
     };
   });
@@ -62,7 +62,7 @@ export async function getPostData(id) {
 }
 
 export async function getStaticProps({ params }) {
-  let id = params.nameColorway.split("_")[1];
+  let id = params.nameColorway.split("KP")[1];
   const postData = await getPostData(id);
   return {
     props: {
