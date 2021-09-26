@@ -65,6 +65,7 @@ const sneakerSlice = createSlice({
             state.pastSneakerInfo.push(element);
           }
         });
+        console.log(current(state.futureSneakerInfo));
       }
     },
     filterMonths: (state) => {
