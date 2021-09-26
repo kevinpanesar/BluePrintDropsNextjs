@@ -39,7 +39,7 @@ const sneakerSlice = createSlice({
     futureSneakerInfoAgeOrGender: months,
     status: null,
     searchTerm: "",
-    mensWomensKidsFilterValue: null,
+    mensWomensKidsFilterValue: "reset",
     upcomingSelected: true,
     pastSelected: false,
   },
@@ -159,8 +159,7 @@ const sneakerSlice = createSlice({
     },
     selectMensWomensKids: (state, action) => {
       if (action.payload === "reset") {
-        state.futureSneakerInfoAgeOrGender = state.futureMonths;
-        state.pastSneakerInfoAgeOrGender = state.pastMonths;
+        state.mensWomensKidsFilterValue = "reset";
       } else if (action.payload === "mensFlag") {
         state.mensWomensKidsFilterValue = "mensFlag";
       } else if (action.payload === "womensFlag") {

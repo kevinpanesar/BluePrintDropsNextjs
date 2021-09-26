@@ -35,13 +35,15 @@ export const SneakerFeed = () => {
     (state) => state.sneaker.mensWomensKidsFilterValue
   );
 
-  const filteredResults = info.map((element) => {
-    if (filter === null) {
-      return element;
-    } else {
+  let filteredResults;
+
+  if (filter === "reset") {
+    filteredResults = info;
+  } else {
+    filteredResults = info.map((element) => {
       return element.filter((element) => element[filter] === true);
-    }
-  });
+    });
+  }
 
   filteredResults.map((element) =>
     element.sort((firstEl, secondEl) => {
