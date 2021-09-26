@@ -12,7 +12,7 @@ export default function ReleasePage({ postData }) {
   return (
     <Container>
       <Head>
-        <title>{postData[0].title + " Release Info"}</title>
+        <title>{"BLUEPRINT X " + postData[0].title}</title>
         <meta
           name="description"
           content="Information about school and clothing releases"
