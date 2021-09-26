@@ -4,62 +4,61 @@ import { useDispatch } from "react-redux";
 import { set } from "date-fns";
 
 export const Options = () => {
-    const dispatch = useDispatch();
-    const [allSelected, setAllSelected] = useState(true);
-    const [mensSelected, setMensSelected] = useState(false);
-    const [womensSelected, setWomensSelected] = useState(false);
-    const [kidsSelected, setKidsSelected] = useState(false);
+  const dispatch = useDispatch();
+  const [allSelected, setAllSelected] = useState(true);
+  const [mensSelected, setMensSelected] = useState(false);
+  const [womensSelected, setWomensSelected] = useState(false);
+  const [kidsSelected, setKidsSelected] = useState(false);
 
-    const handleChange = (e) => {
-        dispatch({
-            type: "sneaker/selectMensWomensKids",
-            payload: e.target.value,
-        });
+  const handleChange = (e) => {
+    dispatch({
+      type: "sneaker/selectMensWomensKids",
+      payload: e.target.value,
+    });
 
-        if (e.target.value === 'reset') {
-            setAllSelected(true);
-            setMensSelected(false);
-            setWomensSelected(false);
-            setKidsSelected(false);
-        }
-        else if (e.target.value === 'mensFlag') {
-            setAllSelected(false);
-            setMensSelected(true);
-            setWomensSelected(false);
-            setKidsSelected(false);
-        } else if (e.target.value === 'womensFlag') {
-            setAllSelected(false);
-            setMensSelected(false);
-            setWomensSelected(true);
-            setKidsSelected(false);
-        } else if (e.target.value === 'kidsFlag') {
-            setAllSelected(false);
-            setMensSelected(false);
-            setWomensSelected(false);
-            setKidsSelected(true);
-        }
-    };
+    if (e.target.value === "reset") {
+      setAllSelected(true);
+      setMensSelected(false);
+      setWomensSelected(false);
+      setKidsSelected(false);
+    } else if (e.target.value === "mensFlag") {
+      setAllSelected(false);
+      setMensSelected(true);
+      setWomensSelected(false);
+      setKidsSelected(false);
+    } else if (e.target.value === "womensFlag") {
+      setAllSelected(false);
+      setMensSelected(false);
+      setWomensSelected(true);
+      setKidsSelected(false);
+    } else if (e.target.value === "kidsFlag") {
+      setAllSelected(false);
+      setMensSelected(false);
+      setWomensSelected(false);
+      setKidsSelected(true);
+    }
+  };
 
-    return (
-        <Container>
-            <Item onClick={handleChange} value="reset" selected={allSelected}>
-                All
-            </Item>
-            <Item value="mensFlag" onClick={handleChange} selected={mensSelected}>
-                Mens
-            </Item>
-            <Item onClick={handleChange} value="womensFlag" selected={womensSelected}>
-                Womens
-            </Item>
-            <Item onClick={handleChange} value="kidsFlag" selected={kidsSelected}>
-                Kids
-            </Item>
-        </Container>
-    );
+  return (
+    <Container>
+      <Item onClick={handleChange} value="reset" selected={allSelected}>
+        All
+      </Item>
+      <Item value="mensFlag" onClick={handleChange} selected={mensSelected}>
+        Mens
+      </Item>
+      <Item onClick={handleChange} value="womensFlag" selected={womensSelected}>
+        Womens
+      </Item>
+      <Item onClick={handleChange} value="kidsFlag" selected={kidsSelected}>
+        Kids
+      </Item>
+    </Container>
+  );
 };
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   height: 40px;
   margin: 20px auto 0 auto;
   display: flex;
@@ -74,9 +73,12 @@ const Container = styled.div`
 
 const Item = styled.button`
   width: 23%;
-  background-color: ${props => props.selected ? '#21587f' : '#F8F8F8'};
-  color: ${props => props.selected ? 'white' : 'black'};
+  background-color: ${(props) => (props.selected ? "#21587f" : "#F8F8F8")};
+  color: ${(props) => (props.selected ? "white" : "black")};
   border-radius: 10px;
   border: none;
-  box-shadow: ${props => props.selected ? 'inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)' : null};
+  box-shadow: ${(props) =>
+    props.selected
+      ? "inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)"
+      : null};
 `;

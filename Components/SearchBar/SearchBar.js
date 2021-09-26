@@ -24,14 +24,13 @@ export const SearchBar = () => {
 const Form = styled.form`
   position: relative;
   left: 140px;
-  bottom: 17px;
+  bottom: 19px;
   transform: translate(-50%, -50%);
-  width: 103%;
+  width: 100%;
   height: 30px;
   box-sizing: border-box;
   border-radius: 25px;
   padding: 5px;
-  overflow: none;
   :hover {
     cursor: pointer;
 
@@ -41,6 +40,8 @@ const Form = styled.form`
       width: 100%;
       padding-right: 10px;
       display: block;
+      transform: translateX(0%);
+      background-color: white;
     }
     .fa {
       color: black;
@@ -53,7 +54,7 @@ const Input = styled.input`
   position: absolute;
   padding-left: 10px;
   top: 40px;
-  left: 60px;
+  left: 13%;
   width: 0%;
   max-height: 0px;
   height: 0px;
@@ -61,4 +62,5 @@ const Input = styled.input`
   border: 0;
   font-size: 1em;
   overflow: none;
+  background-color: #f5f5f5;
 `;
