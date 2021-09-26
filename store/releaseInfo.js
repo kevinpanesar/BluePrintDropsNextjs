@@ -74,7 +74,9 @@ const sneakerSlice = createSlice({
 
       if (emptyArrayObjects) {
         state.futureSneakerInfo.map((element) => {
+          console.log(element.date);
           const month = format(new Date(element.date), "LLLL");
+          console.log(month);
           if (month == "January") {
             state.futureMonths.January.push(element);
           } else if (month == "Febuary") {
