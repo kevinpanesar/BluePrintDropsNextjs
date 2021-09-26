@@ -66,14 +66,15 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   padding: 4px 0px;
-  border: 2px solid #C0C0C0;
+
   border-radius: 10px;
   background-color: white;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const Item = styled.button`
   width: 23%;
-  background-color: ${props => props.selected ? '#21587f' : 'white'};
+  background-color: ${props => props.selected ? '#21587f' : '#F8F8F8'};
   color: ${props => props.selected ? 'white' : 'black'};
   border-radius: 10px;
   border: none;

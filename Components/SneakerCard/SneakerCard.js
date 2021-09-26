@@ -29,7 +29,7 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
 
 const Container = styled.div`
   width: 90%;
-  height: 250px;
+  height: 260px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
@@ -37,7 +37,7 @@ const Container = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 `;
 
 const ReleasePriceContainer = styled.div`
@@ -68,14 +68,14 @@ const ReleaseText = styled.p`
 const DateText = styled.p`
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 700;
-  font-size: 80px;
+  font-size: 90px;
   text-align: right;
   letter-spacing: -5px;
   color: #f5f5f5;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
   left: 8px;
-  bottom: 26px;
+  bottom: 16px;
   line-height: 1;
 `;
 
@@ -87,6 +87,7 @@ const SubContainer = styled.div`
   width: 100%;
   margin-bottom: 5px;
   line-height: 1;
+  margin-top: 15px;
 `;
 const SubContainer2 = styled.div`
   display: flex;

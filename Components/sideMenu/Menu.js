@@ -1,60 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { bool } from 'prop-types';
-import { Link } from 'react-scroll';
+import Link from "next/link";
 
 
 
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open} >
-      <Link
-        onClick={() => setOpen(!open)}
-        activeClass="active"
-        to="Home"
-        spy={true}
-        smooth={true}
-        hashSpy={true}
-        offset={50}
-        duration={1000}
-        data-hover="Home"
-      >
+      <Link href={"/about"}>
+        <a>Home</a>
       </Link>
-      <Link
-        onClick={() => setOpen(!open)}
-        activeClass="active"
-        to="AboutMe"
-        spy={true}
-        smooth={true}
-        hashSpy={true}
-        offset={50}
-        duration={1000}
-        data-hover="About Me"
-      >
-      </Link>
-      <Link
-        onClick={() => setOpen(!open)}
-        activeClass="active"
-        to="Skills"
-        spy={true}
-        smooth={true}
-        hashSpy={true}
-        offset={50}
-        duration={1000}
-        data-hover="Skills"
-      >
-      </Link>
-      <Link
-        onClick={() => setOpen(!open)}
-        activeClass="active"
-        to="Projects"
-        spy={true}
-        smooth={true}
-        hashSpy={true}
-        offset={50}
-        duration={1000}
-        data-hover="Projects"
-      >
+      <Link href={"/about"}>
+        <a>About</a>
       </Link>
     </StyledMenu>
   )
