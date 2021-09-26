@@ -12,7 +12,7 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
       </ReleaseDateContainer>
       <ReleasePriceContainer>
         <ImgContainer>
-          <SneakerImg src={cardInfo.images[0]} height={270} width={375} />
+          <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
         </ImgContainer>
         <SubContainer>
           <ReleaseText>Price</ReleaseText>
@@ -87,7 +87,7 @@ const SubContainer = styled.div`
   width: 100%;
   margin-bottom: 5px;
   line-height: 1;
-  margin-top: 15px;
+  margin-top: 35px;
 `;
 const SubContainer2 = styled.div`
   display: flex;
@@ -100,6 +100,7 @@ const SubContainer2 = styled.div`
 `;
 
 const SneakerImg = styled(Image)`
+  width: 100%;
 `;
 
 const ReleaseSubText = styled.p`

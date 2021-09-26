@@ -38,7 +38,7 @@ const Form = styled.form`
     input {
       max-height: 50px;
       height: 50px;
-      width: 98%;
+      width: 100%;
       padding-right: 10px;
       display: block;
     }
