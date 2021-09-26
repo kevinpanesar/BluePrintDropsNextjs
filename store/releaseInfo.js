@@ -107,7 +107,8 @@ const sneakerSlice = createSlice({
       if (emptyArrayObjects) {
         state.pastSneakerInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
-          const month = format(new Date(date), "LLLL");
+          console.log(date);
+          const month = format(new Date(element.date), "LLLL");
           if (month == "January") {
             state.pastMonths.January.push(element);
           } else if (month == "Febuary") {
