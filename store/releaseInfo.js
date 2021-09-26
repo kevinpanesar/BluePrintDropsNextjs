@@ -67,10 +67,10 @@ const sneakerSlice = createSlice({
       }
     },
     filterMonths: (state) => {
-      // let arrayOfMonths = Object.keys(months);
-      // const emptyArrayObjects = arrayOfMonths.every(
-      //   (element) => state.futureMonths[element].length === 0
-      // );
+      let arrayOfMonths = Object.keys(months);
+      const emptyArrayObjects = arrayOfMonths.every(
+        (element) => state.futureMonths[element].length === 0
+      );
 
       // if (emptyArrayObjects) {
       //   state.futureSneakerInfo.map((element) => {
@@ -137,7 +137,7 @@ const sneakerSlice = createSlice({
       //   });
       // }
 
-      console.log(current(state.futureMonths));
+      // console.log(current(state.futureMonths));
     },
     copyMonthsArray: (state) => {
       state.futureSneakerInfoAgeOrGender = state.futureMonths;
