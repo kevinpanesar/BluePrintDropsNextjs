@@ -9,14 +9,13 @@ export const SearchBar = () => {
 
   const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
   return (
-    // <form className="searchBar" onChange={(e) => {
-    //     dispatch({ type: 'sneaker/setSearchTerm', payload: e.target.value })
-
-    // }}>
-    //     <input type="search" placeholder="Search..." defaultValue={term}/>
-    // </form>
-    <Form id="searchBar" action="">
-      <Input type="search" placeholder="Search here ..." />
+    <Form
+      id="searchBar"
+      onChange={(e) => {
+        dispatch({ type: "sneaker/setSearchTerm", payload: e.target.value });
+      }}
+    >
+      <Input type="search" placeholder="Search..." defaultValue={term} />
       {element}
     </Form>
   );
@@ -27,36 +26,39 @@ const Form = styled.form`
   left: 140px;
   bottom: 17px;
   transform: translate(-50%, -50%);
-  transition: all 1s;
-  width: 50px;
+  width: 103%;
   height: 30px;
   box-sizing: border-box;
   border-radius: 25px;
   padding: 5px;
+  overflow: none;
   :hover {
-    width: 230px;
     cursor: pointer;
+
     input {
+      max-height: 50px;
+      height: 50px;
+      width: 98%;
+      padding-right: 10px;
       display: block;
     }
     .fa {
-      background: white;
       color: black;
     }
   }
 `;
 
 const Input = styled.input`
+  transition: max-height 0.3s ease-out;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 42.5px;
-  line-height: 30px;
+  padding-left: 10px;
+  top: 40px;
+  left: 60px;
+  width: 0%;
+  max-height: 0px;
+  height: 0px;
   outline: 0;
   border: 0;
-  display: none;
   font-size: 1em;
-  border-radius: 20px;
-  padding: 0 20px;
+  overflow: none;
 `;
