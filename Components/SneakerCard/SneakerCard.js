@@ -4,7 +4,7 @@ import Image from "next/image";
 import { getDate } from "date-fns";
 
 export const SneakerCard = ({ cardInfo, switchShoe }) => {
-  const releaseDay = getDate(new Date(cardInfo.date));
+  const releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
   return (
     <Container>
       <ReleaseDateContainer>
