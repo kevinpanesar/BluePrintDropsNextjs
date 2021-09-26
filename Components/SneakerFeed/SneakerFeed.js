@@ -35,21 +35,24 @@ export const SneakerFeed = () => {
     (state) => state.sneaker.mensWomensKidsFilterValue
   );
 
-  // let filteredResults;
+  let filteredResults;
 
-  // if (filter === "reset") {
-  //   filteredResults = info;
-  // } else {
-  //   filteredResults = info.map((element) => {
-  //     return element.filter((element) => element[filter] === true);
-  //   });
-  // }
+  if (filter === "reset") {
+    filteredResults = info;
+  } else {
+    filteredResults = info.map((element) => {
+      return element.filter((element) => element[filter] === true);
+    });
+  }
 
-  // filteredResults.map((element) =>
-  //   element.sort((firstEl, secondEl) => {
-  //     return getDate(new Date(firstEl.date)) - getDate(new Date(secondEl.date));
-  //   })
-  // );
+  filteredResults.map((element) =>
+    element.sort((firstEl, secondEl) => {
+      return (
+        getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
+        getDate(new Date(secondEl.date.replace(/, /g, "/")))
+      );
+    })
+  );
 
   return (
     <Container>
@@ -57,7 +60,9 @@ export const SneakerFeed = () => {
         if (element.length > 0) {
           return (
             <div key={index}>
-              {/* <Month>{format(new Date(element[0].date), "LLLL")}</Month> */}
+              <Month>
+                {format(new Date(element[0].date.replace(/, /g, "/")), "LLLL")}
+              </Month>
               <CardContainer>
                 {element !== undefined
                   ? element.map((element, index) => {
