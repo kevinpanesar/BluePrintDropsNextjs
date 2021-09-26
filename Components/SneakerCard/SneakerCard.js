@@ -12,7 +12,7 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
       </ReleaseDateContainer>
       <ReleasePriceContainer>
         <ImgContainer>
-          <SneakerImg src={cardInfo.images[0]} height={250} width={375} />
+          <SneakerImg src={cardInfo.images[0]} height={270} width={375} />
         </ImgContainer>
         <SubContainer>
           <ReleaseText>Price</ReleaseText>
@@ -48,6 +48,7 @@ const ReleasePriceContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
 `;
 
 const ReleaseDateContainer = styled.div`
@@ -67,7 +68,7 @@ const ReleaseText = styled.p`
 const DateText = styled.p`
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 700;
-  font-size: 90px;
+  font-size: 80px;
   text-align: right;
   letter-spacing: -5px;
   color: #f5f5f5;
@@ -98,8 +99,6 @@ const SubContainer2 = styled.div`
 `;
 
 const SneakerImg = styled(Image)`
-  margin-bottom: 5px;
-  margin-bottom: 5px;
 `;
 
 const ReleaseSubText = styled.p`

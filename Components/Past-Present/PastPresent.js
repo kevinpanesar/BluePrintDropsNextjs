@@ -54,8 +54,9 @@ const Container = styled.div`
     align-items: center;
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
+    border-radius: 10px;
     cursor: pointer;
+    padding: 5px;
 `
 
 const Text = styled.h2` 
@@ -73,7 +74,8 @@ const UpcomingContainer = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
-    border-radius: 40px;
+    border-radius: 10px;
+    box-shadow: ${props => props.selected ? 'inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)' : null};
 `
 
 
@@ -83,6 +85,7 @@ const PastContainer = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
-    border-radius: 40px;
+    border-radius: 10px;
     background-color: ${props => props.selected === true ? '#21587F' : null};
+    box-shadow: ${props => props.selected ? 'inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)' : null};
 `

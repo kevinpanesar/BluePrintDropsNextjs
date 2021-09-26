@@ -61,20 +61,20 @@ export const SneakerFeed = () => {
               <CardContainer>
                 {element !== undefined
                   ? element.map((element, index) => {
-                      return (
-                        <Link
-                          passHref
-                          key={element.title + element.colorway}
-                          href={
-                            "/ReleaseInfo/" + element.title + "KP" + element._id
-                          }
-                        >
-                          <Links>
-                            <SneakerCard cardInfo={element} />
-                          </Links>
-                        </Link>
-                      );
-                    })
+                    return (
+                      <Link
+                        passHref
+                        key={element.title + element.colorway}
+                        href={
+                          "/ReleaseInfo/" + element.title + "KP" + element._id
+                        }
+                      >
+                        <Links>
+                          <SneakerCard cardInfo={element} />
+                        </Links>
+                      </Link>
+                    );
+                  })
                   : null}
               </CardContainer>
             </div>
@@ -100,7 +100,6 @@ const Container = styled.div`
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 `;
 
 const Links = styled.a`
@@ -116,4 +115,5 @@ const Month = styled.h2`
   font-family: "Signika", sans-serif;
   margin-bottom: 20px;
   margin-left: 10px;
+  font-weight: 600;
 `;
