@@ -35,21 +35,21 @@ export const SneakerFeed = () => {
     (state) => state.sneaker.mensWomensKidsFilterValue
   );
 
-  let filteredResults;
+  // let filteredResults;
 
-  if (filter === "reset") {
-    filteredResults = info;
-  } else {
-    filteredResults = info.map((element) => {
-      return element.filter((element) => element[filter] === true);
-    });
-  }
+  // if (filter === "reset") {
+  //   filteredResults = info;
+  // } else {
+  //   filteredResults = info.map((element) => {
+  //     return element.filter((element) => element[filter] === true);
+  //   });
+  // }
 
-  filteredResults.map((element) =>
-    element.sort((firstEl, secondEl) => {
-      return getDate(new Date(firstEl.date)) - getDate(new Date(secondEl.date));
-    })
-  );
+  // filteredResults.map((element) =>
+  //   element.sort((firstEl, secondEl) => {
+  //     return getDate(new Date(firstEl.date)) - getDate(new Date(secondEl.date));
+  //   })
+  // );
 
   return (
     <Container>
