@@ -57,7 +57,7 @@ export const SneakerFeed = () => {
         if (element.length > 0) {
           return (
             <div key={index}>
-              <Month>{format(new Date(element[0].date), "LLLL")}</Month>
+              {/* <Month>{format(new Date(element[0].date), "LLLL")}</Month> */}
               <CardContainer>
                 {element !== undefined
                   ? element.map((element, index) => {
