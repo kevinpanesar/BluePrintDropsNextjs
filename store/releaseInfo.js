@@ -54,17 +54,16 @@ const sneakerSlice = createSlice({
           today.setDate(today.getDate() - 1);
 
           const todayDateToTime = today.getTime();
-          const releaseDate = new Date(element.date.replace(/, /g, "/"));
+          const releaseDate = new Date(
+            element.date.replace(/, /g, "/")
+          ).getTime();
 
-          const releaseDateTime = releaseDate.getTime();
-
-          if (todayDateToTime < releaseDateTime) {
+          if (todayDateToTime < releaseDate) {
             state.futureSneakerInfo.push(element);
           } else {
             state.pastSneakerInfo.push(element);
           }
         });
-        console.log(current(state.futureSneakerInfo));
       }
     },
     filterMonths: (state) => {
@@ -75,8 +74,7 @@ const sneakerSlice = createSlice({
 
       if (emptyArrayObjects) {
         state.futureSneakerInfo.map((element) => {
-          const date = element.date.replace(/, /g, "/");
-          const month = format(new Date(date), "LLLL");
+          const month = format(new Date(element.date), "LLLL");
           if (month == "January") {
             state.futureMonths.January.push(element);
           } else if (month == "Febuary") {
@@ -106,10 +104,7 @@ const sneakerSlice = createSlice({
       }
       if (emptyArrayObjects) {
         state.pastSneakerInfo.map((element) => {
-          const month = format(
-            new Date(element.date.replace(/, /g, "/")),
-            "LLLL"
-          );
+          const month = format(new Date(element.date), "LLLL");
           if (month == "January") {
             state.pastMonths.January.push(element);
           } else if (month == "Febuary") {
