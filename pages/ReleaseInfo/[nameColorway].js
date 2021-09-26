@@ -17,11 +17,10 @@ export default function ReleasePage({ postData }) {
           name="description"
           content="Information about school and clothing releases"
         />
-        <link rel="icon" href={postData[0].images[2]} />
+        <link href={postData[0].images[2]} />
       </Head>
       <Container>
         <ReleaseInfoPage data={postData[0]} />
-        {/* <NavBar /> */}
       </Container>
       <footer></footer>
     </Container>
