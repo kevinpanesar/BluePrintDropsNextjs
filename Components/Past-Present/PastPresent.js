@@ -55,7 +55,6 @@ const Container = styled.div`
     background: #FFFFFF;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 40px;
-    margin-top: 20px;
     cursor: pointer;
 `
 
