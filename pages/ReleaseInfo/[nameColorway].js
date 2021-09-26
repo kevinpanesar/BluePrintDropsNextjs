@@ -17,7 +17,7 @@ export default function ReleasePage({ postData }) {
           name="description"
           content="Information about school and clothing releases"
         />
-        <link href={postData[0].images[2]} />
+        <meta property="og:image" content={postData[0].images[2]} />
       </Head>
       <Container>
         <ReleaseInfoPage data={postData[0]} />
