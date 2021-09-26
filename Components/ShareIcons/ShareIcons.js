@@ -9,9 +9,14 @@ import {
 } from "react-share";
 
 export const ShareIcons = () => {
+  let url;
+  if (process.browser) {
+    // Client-side-only code
+    url = window.location.href;
+  }
   return (
     <Container>
-      <FacebookShareButton url={window.location.href}>
+      <FacebookShareButton url={url}>
         <FacebookIcon size={32} round={true} />
       </FacebookShareButton>
       <TwitterShareButton size={32} round={true} />

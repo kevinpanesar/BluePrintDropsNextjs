@@ -37,7 +37,7 @@ export const ReleaseInfoPage = ({ data }) => {
 
   return (
     <Container>
-      <Button>Back</Button>
+      {/* <Button>Back</Button> */}
       <ImageSlider data={data} />
       <ShareIcons />
       <ReleaseCard data={data} />
