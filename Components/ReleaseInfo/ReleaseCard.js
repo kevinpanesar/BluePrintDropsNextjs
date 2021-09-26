@@ -1,16 +1,18 @@
-import React from "react";
+import { React, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import CardBackground from "../../public/Media/cardBackground.jpg";
+import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
 
 export const ReleaseCard = ({ data }) => {
+ 
   console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
     <Container>
       <TitleContainer>
         <div>
           {data.title}
+          <br />
           <span> '{data.colorway}'</span>
         </div>
       </TitleContainer>
@@ -18,10 +20,17 @@ export const ReleaseCard = ({ data }) => {
         <Labels>
           <p>PRICE:</p>
           <p>RELEASE DATE:</p>
+          <p>STYLE CODE:</p>
+          <p>COLOR:</p>
+          <MensWomensKidsIcons
+            data={data}
+          />
         </Labels>
         <Values>
           <p>{data.price}</p>
           <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
+          <p>{data.styleCode}</p>
+          <p>{data.color}</p>
         </Values>
       </PriceDateContainer>
     </Container>
@@ -46,7 +55,7 @@ const TitleContainer = styled.div`
   height: 50%;
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 17px;
   letter-spacing: -0.02em;
   line-height: 29px;
   display: flex;
@@ -69,8 +78,8 @@ const Labels = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-content: flex-start;
-  font-family: "Inter";
-  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
 
   p {
     margin-bottom: 8px;
@@ -83,8 +92,8 @@ const Values = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-content: flex-start;
-  font-family: "Inter";
-  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
 
   p {
     margin-bottom: 8px;

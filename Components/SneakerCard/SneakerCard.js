@@ -63,6 +63,7 @@ const ReleaseText = styled.p`
   text-transform: uppercase;
   color: #000000;
   margin-bottom: 5px;
+  line-height: 1.3;
 `;
 
 const DateText = styled.p`
@@ -87,7 +88,7 @@ const SubContainer = styled.div`
   width: 100%;
   margin-bottom: 5px;
   line-height: 1;
-  margin-top: 35px;
+  margin-top: 22px;
 `;
 const SubContainer2 = styled.div`
   display: flex;

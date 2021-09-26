@@ -18,6 +18,12 @@ export default function ReleasePage({ postData }) {
           content="Information about school and clothing releases"
         />
         <meta property="og:image" content={postData[0].images[2]} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Container>
         <ReleaseInfoPage data={postData[0]} />
@@ -72,7 +78,6 @@ export async function getStaticProps({ params }) {
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

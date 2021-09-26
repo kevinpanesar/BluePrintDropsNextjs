@@ -16,28 +16,9 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 });
 
 export const ReleaseInfoPage = ({ data }) => {
-  // const history = useHistory();
-  // const handleClick = (e) => {
-  //     e.preventDefault();
-  //     history.push("/");
-
-  // }
-
-  // const handleRaffleClick = (e) => {
-  //   e.preventDefault();
-  //   history.push("/raffle-generator");
-  // };
-
-  // const locationData = useSelector((state) => {
-  //   if (state.sneaker.currentSneakerInfo == undefined) {
-  //     return state.sneaker.allSneakerInfo[0].cities;
-  //   }
-  //   return state.sneaker.currentSneakerInfo.cities;
-  // });
 
   return (
     <Container>
-      {/* <Button>Back</Button> */}
       <ImageSlider data={data} />
       <ShareIcons />
       <ReleaseCard data={data} />
@@ -75,7 +56,7 @@ const Container = styled.div`
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  padding-bottom: 50px;
+  padding: 50px 0px;
 `;
 
 const LocationsContainer = styled.div`
