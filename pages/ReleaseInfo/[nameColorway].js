@@ -12,12 +12,12 @@ export default function ReleasePage({ postData }) {
   return (
     <Container>
       <Head>
-        <title>{postData[0].title + "Release Info"}</title>
+        <title>{postData[0].title + " Release Info"}</title>
         <meta
           name="description"
           content="Information about school and clothing releases"
         />
-        <link rel="icon" href="/Media/logo.png" />
+        <link rel="icon" href={postData[0].images[2]} />
       </Head>
       <Container>
         <ReleaseInfoPage data={postData[0]} />
