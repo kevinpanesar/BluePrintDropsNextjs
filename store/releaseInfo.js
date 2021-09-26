@@ -67,75 +67,75 @@ const sneakerSlice = createSlice({
       }
     },
     filterMonths: (state) => {
-      let arrayOfMonths = Object.keys(months);
-      const emptyArrayObjects = arrayOfMonths.every(
-        (element) => state.futureMonths[element].length === 0
-      );
+      // let arrayOfMonths = Object.keys(months);
+      // const emptyArrayObjects = arrayOfMonths.every(
+      //   (element) => state.futureMonths[element].length === 0
+      // );
 
-      if (emptyArrayObjects) {
-        state.futureSneakerInfo.map((element) => {
-          const date = element.date.replace(/, /g, "/");
-          const month = format(new Date(date), "LLLL");
-          console.log(month);
-          if (month == "January") {
-            state.futureMonths.January.push(element);
-          } else if (month == "Febuary") {
-            state.futureMonths.Febuary.push(element);
-          } else if (month == "March") {
-            state.futureMonths.March.push(element);
-          } else if (month == "April") {
-            state.futureMonths.April.push(element);
-          } else if (month == "May") {
-            state.futureMonths.May.push(element);
-          } else if (month == "June") {
-            state.futureMonths.June.push(element);
-          } else if (month == "July") {
-            state.futureMonths.July.push(element);
-          } else if (month == "August") {
-            state.futureMonths.August.push(element);
-          } else if (month == "September") {
-            state.futureMonths.September.push(element);
-          } else if (month == "October") {
-            state.futureMonths.October.push(element);
-          } else if (month == "November") {
-            state.futureMonths.November.push(element);
-          } else if (month == "December") {
-            state.futureMonths.December.push(element);
-          }
-        });
-      }
-      if (emptyArrayObjects) {
-        state.pastSneakerInfo.map((element) => {
-          const date = element.date.replace(/, /g, "/");
-          console.log(date);
-          const month = format(new Date(element.date), "LLLL");
-          if (month == "January") {
-            state.pastMonths.January.push(element);
-          } else if (month == "Febuary") {
-            state.pastMonths.Febuary.push(element);
-          } else if (month == "March") {
-            state.pastMonths.March.push(element);
-          } else if (month == "April") {
-            state.pastMonths.April.push(element);
-          } else if (month == "May") {
-            state.pastMonths.May.push(element);
-          } else if (month == "June") {
-            state.pastMonths.June.push(element);
-          } else if (month == "July") {
-            state.pastMonths.July.push(element);
-          } else if (month == "August") {
-            state.pastMonths.August.push(element);
-          } else if (month == "September") {
-            state.pastMonths.September.push(element);
-          } else if (month == "October") {
-            state.pastMonths.October.push(element);
-          } else if (month == "November") {
-            state.pastMonths.November.push(element);
-          } else if (month == "December") {
-            state.pastMonths.December.push(element);
-          }
-        });
-      }
+      // if (emptyArrayObjects) {
+      //   state.futureSneakerInfo.map((element) => {
+      //     const date = element.date.replace(/, /g, "/");
+      //     const month = format(new Date(date), "LLLL");
+      //     console.log(month);
+      //     if (month == "January") {
+      //       state.futureMonths.January.push(element);
+      //     } else if (month == "Febuary") {
+      //       state.futureMonths.Febuary.push(element);
+      //     } else if (month == "March") {
+      //       state.futureMonths.March.push(element);
+      //     } else if (month == "April") {
+      //       state.futureMonths.April.push(element);
+      //     } else if (month == "May") {
+      //       state.futureMonths.May.push(element);
+      //     } else if (month == "June") {
+      //       state.futureMonths.June.push(element);
+      //     } else if (month == "July") {
+      //       state.futureMonths.July.push(element);
+      //     } else if (month == "August") {
+      //       state.futureMonths.August.push(element);
+      //     } else if (month == "September") {
+      //       state.futureMonths.September.push(element);
+      //     } else if (month == "October") {
+      //       state.futureMonths.October.push(element);
+      //     } else if (month == "November") {
+      //       state.futureMonths.November.push(element);
+      //     } else if (month == "December") {
+      //       state.futureMonths.December.push(element);
+      //     }
+      //   });
+      // }
+      // if (emptyArrayObjects) {
+      //   state.pastSneakerInfo.map((element) => {
+      //     const date = element.date.replace(/, /g, "/");
+      //     console.log(date);
+      //     const month = format(new Date(element.date), "LLLL");
+      //     if (month == "January") {
+      //       state.pastMonths.January.push(element);
+      //     } else if (month == "Febuary") {
+      //       state.pastMonths.Febuary.push(element);
+      //     } else if (month == "March") {
+      //       state.pastMonths.March.push(element);
+      //     } else if (month == "April") {
+      //       state.pastMonths.April.push(element);
+      //     } else if (month == "May") {
+      //       state.pastMonths.May.push(element);
+      //     } else if (month == "June") {
+      //       state.pastMonths.June.push(element);
+      //     } else if (month == "July") {
+      //       state.pastMonths.July.push(element);
+      //     } else if (month == "August") {
+      //       state.pastMonths.August.push(element);
+      //     } else if (month == "September") {
+      //       state.pastMonths.September.push(element);
+      //     } else if (month == "October") {
+      //       state.pastMonths.October.push(element);
+      //     } else if (month == "November") {
+      //       state.pastMonths.November.push(element);
+      //     } else if (month == "December") {
+      //       state.pastMonths.December.push(element);
+      //     }
+      //   });
+      // }
 
       console.log(current(state.futureMonths));
     },
