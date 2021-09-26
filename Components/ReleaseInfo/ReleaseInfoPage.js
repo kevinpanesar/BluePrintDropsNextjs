@@ -9,6 +9,7 @@ import { LocationCard } from "./LocationCard";
 import dynamic from "next/dynamic";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
+import { ShareIcons } from "../ShareIcons/ShareIcons";
 
 const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
   ssr: false,
@@ -38,6 +39,7 @@ export const ReleaseInfoPage = ({ data }) => {
     <Container>
       <Button>Back</Button>
       <ImageSlider data={data} />
+      <ShareIcons />
       <ReleaseCard data={data} />
 
       <LocationsContainer>
@@ -58,6 +60,7 @@ export const ReleaseInfoPage = ({ data }) => {
                 );
               })
             : null}
+         
         </Accordion>
       </LocationsContainer>
       <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
