@@ -136,6 +136,8 @@ const sneakerSlice = createSlice({
           }
         });
       }
+
+      console.log(current(state.futureMonths));
     },
     copyMonthsArray: (state) => {
       state.futureSneakerInfoAgeOrGender = state.futureMonths;
