@@ -53,7 +53,7 @@ export const SneakerFeed = () => {
 
   return (
     <Container>
-      {filteredResults.map((element, index) => {
+      {info.map((element, index) => {
         if (element.length > 0) {
           return (
             <div key={index}>
@@ -61,20 +61,20 @@ export const SneakerFeed = () => {
               <CardContainer>
                 {element !== undefined
                   ? element.map((element, index) => {
-                    return (
-                      <Link
-                        passHref
-                        key={element.title + element.colorway}
-                        href={
-                          "/ReleaseInfo/" + element.title + "KP" + element._id
-                        }
-                      >
-                        <Links>
-                          <SneakerCard cardInfo={element} />
-                        </Links>
-                      </Link>
-                    );
-                  })
+                      return (
+                        <Link
+                          passHref
+                          key={element.title + element.colorway}
+                          href={
+                            "/ReleaseInfo/" + element.title + "KP" + element._id
+                          }
+                        >
+                          <Links>
+                            <SneakerCard cardInfo={element} />
+                          </Links>
+                        </Link>
+                      );
+                    })
                   : null}
               </CardContainer>
             </div>
