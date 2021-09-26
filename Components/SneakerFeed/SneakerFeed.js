@@ -56,7 +56,7 @@ export const SneakerFeed = () => {
 
   return (
     <Container>
-      {info.map((element, index) => {
+      {filteredResults.map((element, index) => {
         if (element.length > 0) {
           return (
             <div key={index}>
