@@ -76,7 +76,6 @@ const sneakerSlice = createSlice({
         state.futureSneakerInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
-          console.log(month);
           if (month == "January") {
             state.futureMonths.January.push(element);
           } else if (month == "Febuary") {
@@ -107,9 +106,7 @@ const sneakerSlice = createSlice({
       if (emptyArrayObjects) {
         state.pastSneakerInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
-
           const month = format(new Date(date), "LLLL");
-          console.log(month);
           if (month == "January") {
             state.pastMonths.January.push(element);
           } else if (month == "Febuary") {
@@ -138,7 +135,8 @@ const sneakerSlice = createSlice({
         });
       }
 
-      // console.log(current(state.futureMonths));
+      console.log(current(state.futureMonths));
+      console.log(current(state.pastMonths));
     },
     copyMonthsArray: (state) => {
       state.futureSneakerInfoAgeOrGender = state.futureMonths;
