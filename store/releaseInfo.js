@@ -51,15 +51,14 @@ const sneakerSlice = createSlice({
       if (state.futureSneakerInfo.length === 0) {
         state.allSneakerInfo.forEach((element) => {
           const today = new Date();
-          console.log(today);
           today.setDate(today.getDate() - 1);
 
           const todayDateToTime = today.getTime();
-          const releaseDate = new Date(
-            element.date.replace(/, /g, "/")
-          ).getTime();
+          const releaseDate = new Date(element.date.replace(/, /g, "/"));
 
-          if (todayDateToTime < releaseDate) {
+          const releaseDateTime = releaseDate.getTime();
+
+          if (todayDateToTime < releaseDateTime) {
             state.futureSneakerInfo.push(element);
           } else {
             state.pastSneakerInfo.push(element);
@@ -76,10 +75,8 @@ const sneakerSlice = createSlice({
 
       if (emptyArrayObjects) {
         state.futureSneakerInfo.map((element) => {
-          const month = format(
-            new Date(element.date.replace(/, /g, "/")),
-            "LLLL"
-          );
+          const date = element.date.replace(/, /g, "/");
+          const month = format(new Date(date), "LLLL");
           if (month == "January") {
             state.futureMonths.January.push(element);
           } else if (month == "Febuary") {
