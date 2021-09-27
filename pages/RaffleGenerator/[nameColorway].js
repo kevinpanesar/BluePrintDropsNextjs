@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
 import { fetchSneakerInfo, setCurrentShoe } from "../../store/releaseInfo";
 import { useRouter } from "next/router";
-import {RaffleForm} from '../../Components/RaffleForm/RaffleForm'
+import { RaffleForm } from "../../Components/RaffleForm/RaffleForm";
+import Menu from "../../Components/sideMenu/Menu";
+import SideNavBar from "../../Components/sideMenu/SideNavBar";
+import { Header } from "../../Components/Header/Header";
 
-export default function ReleasePage({postData}) {
-
-    console.log(postData);
+export default function ReleasePage({ postData }) {
+  const [open, setOpen] = useState(false);
 
   return (
     <Container>
@@ -20,7 +22,13 @@ export default function ReleasePage({postData}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-      <RaffleForm postData={postData[0]}/>
+        <div>
+          <Menu open={open} setOpen={setOpen} />
+          <SideNavBar open={open} setOpen={setOpen} />
+        </div>
+         <Header />
+         
+        <RaffleForm postData={postData[0]} />
       </Container>
       <footer></footer>
     </Container>
@@ -28,54 +36,53 @@ export default function ReleasePage({postData}) {
 }
 
 export async function getAllPostIds() {
-    const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
-    const posts = await res.json();
-    return posts.map((post) => {
-      const postID = post._id;
-      const stringPostId = postID.toString();
-      return {
-        params: {
-          nameColorway: post.title + "_" + stringPostId,
-        },
-      };
-    });
-  }
-  
-  export async function getStaticPaths() {
-    const paths = await getAllPostIds();
+  const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
+  const posts = await res.json();
+  return posts.map((post) => {
+    const postID = post._id;
+    const stringPostId = postID.toString();
     return {
-      paths,
-      fallback: false,
-    };
-  }
-  
-  export async function getPostData(id) {
-    const res = await fetch(`https://sneaker-mern-app.herokuapp.com/posts/${id}`);
-    const post = await res.json();
-  
-    // Combine the data with the id
-    return {
-      id,
-      ...post,
-    };
-  }
-  
-  export async function getStaticProps({ params }) {
-    let id = params.nameColorway.split("_")[1];
-    const postData = await getPostData(id);
-    return {
-      props: {
-        postData,
+      params: {
+        nameColorway: post.title + "_" + stringPostId,
       },
     };
-  }
+  });
+}
 
-  const Container = styled.div`
+export async function getStaticPaths() {
+  const paths = await getAllPostIds();
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getPostData(id) {
+  const res = await fetch(`https://sneaker-mern-app.herokuapp.com/posts/${id}`);
+  const post = await res.json();
+
+  // Combine the data with the id
+  return {
+    id,
+    ...post,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  let id = params.nameColorway.split("_")[1];
+  const postData = await getPostData(id);
+  return {
+    props: {
+      postData,
+    },
+  };
+}
+
+const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
 `;
