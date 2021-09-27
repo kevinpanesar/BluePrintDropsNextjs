@@ -20,14 +20,14 @@ export const NavBar = ({ data }) => {
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 90px;
-
-  background-image: linear-gradient(
+  height: 70px;
+  background-color: #f5f5f5;
+  /* background-image: linear-gradient(
     rgba(245, 245, 245, 0),
     rgba(245, 245, 245, 0.3),
     rgba(245, 245, 245, 1),
     #f5f5f5
-  );
+  ); */
   position: fixed;
   bottom: 0;
   display: flex;
