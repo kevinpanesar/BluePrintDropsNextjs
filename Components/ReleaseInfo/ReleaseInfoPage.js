@@ -28,8 +28,14 @@ export const ReleaseInfoPage = ({ data }) => {
           {data.cities !== undefined
             ? Object.keys(data.cities).map((element, index) => {
                 return (
-                  <Accordion.Item id="accordion-item" eventKey={index} key={index}>
-                    <Accordion.Header>{element}</Accordion.Header>
+                  <Accordion.Item
+                    id="accordion-item"
+                    eventKey={index}
+                    key={index}
+                  >
+                    <Accordion.Header id="accordion-header">
+                      {element}
+                    </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
                         ? data.cities[element].map((element, index) => (
