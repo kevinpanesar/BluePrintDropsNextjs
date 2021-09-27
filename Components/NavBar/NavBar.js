@@ -20,8 +20,9 @@ export const NavBar = ({ data }) => {
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 70px;
+  height: 60px;
   background-color: #f5f5f5;
+  box-shadow: 7px 7px 7px 4px rgba(0, 0, 0, 0.25);
   /* background-image: linear-gradient(
     rgba(245, 245, 245, 0),
     rgba(245, 245, 245, 0.3),
@@ -51,7 +52,6 @@ const GenerateRafflesButton = styled.button`
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
-  margin-bottom: 10px;
   color: white;
   border: 2px solid #21587f;
 
