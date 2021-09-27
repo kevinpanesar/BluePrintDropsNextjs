@@ -65,7 +65,6 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   padding: 4px 0px;
-
   border-radius: 10px;
   background-color: white;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
