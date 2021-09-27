@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
+import { MensWomensKidsIcons } from "../mensWomensKidsSelector/mensWomensKidsIcons";
 
 export const ReleaseCard = ({ data }) => {
 
@@ -22,9 +22,7 @@ export const ReleaseCard = ({ data }) => {
           <p>RELEASE DATE:</p>
           <p>STYLE CODE:</p>
           <p>COLOR:</p>
-          <MensWomensKidsIcons
-            data={data}
-          />
+          <MensWomensKidsIcons data={data} />
         </Labels>
         <Values>
           <p>{data.price}</p>
