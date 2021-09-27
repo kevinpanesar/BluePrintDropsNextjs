@@ -8,43 +8,48 @@ import User from "../../public/Media/user.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-export const NavBar = () => {
+export const NavBar = ({ data }) => {
   return (
     <NavContainer>
-      <IconContainer>
-        {/* <Link href={"/"} >
-          <Image src={Home} width={24} height={24} />
-        </Link>
-        <Image src={Recent} width={24} height={24} />
-        <Image src={Tools} width={24} height={24} />
-        <Link href={"/about"}>
-          <Image src={User} width={24} height={24} />
-        </Link> */}
-      </IconContainer>
+      <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
+        <GenerateRafflesButton>Generate Raffles</GenerateRafflesButton>
+      </Link>
     </NavContainer>
   );
 };
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 65px;
-  background-color: #f5f5f5;
+  height: 72px;
+  background-image: linear-gradient(rgba(245, 245, 245,0),rgba(245, 245, 245,0.8),rgba(245, 245, 245,0.8),rgba(245, 245, 245, 1), #F5F5F5);
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   z-index: 100;
   overflow: hidden;
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled.button`
   background: #ffffff;
   border-radius: 30px;
   width: 90%;
   height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+`;
+
+const GenerateRafflesButton = styled.button`
+  background-color: #21587f;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: white;
+  border: 2px solid #21587f;
+
+  :hover {
+    background-color: #305773;
+  }
 `;

@@ -16,5 +16,6 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding-top: 20px;
+  padding-left: 10px;
   overflow: hidden;
 `;

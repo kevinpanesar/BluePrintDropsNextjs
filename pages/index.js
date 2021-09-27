@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchSneakerInfo } from "../store/releaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
-import { useState } from "react";
 import Menu from "../Components/sideMenu/Menu";
+import { useState } from "react";
 
 export default function Home({ data }) {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import Link from "next/link";
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open} >
-      <Link href={"/about"}>
+      <Link href={"/"}>
         <a>Home</a>
       </Link>
       <Link href={"/about"}>

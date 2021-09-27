@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import { ShareIcons } from "../ShareIcons/ShareIcons";
+import { NavBar } from "../NavBar/NavBar";
 
 const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
   ssr: false,
@@ -27,26 +28,24 @@ export const ReleaseInfoPage = ({ data }) => {
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
             ? Object.keys(data.cities).map((element, index) => {
-                return (
-                  <Accordion.Item eventKey={index} key={index}>
-                    <Accordion.Header>{element}</Accordion.Header>
-                    <AccordionBody>
-                      {data !== undefined
-                        ? data.cities[element].map((element, index) => (
-                            <LocationCard location={element} key={index} />
-                          ))
-                        : null}
-                    </AccordionBody>
-                  </Accordion.Item>
-                );
-              })
+              return (
+                <Accordion.Item eventKey={index} key={index}>
+                  <Accordion.Header>{element}</Accordion.Header>
+                  <AccordionBody>
+                    {data !== undefined
+                      ? data.cities[element].map((element, index) => (
+                        <LocationCard location={element} key={index} />
+                      ))
+                      : null}
+                  </AccordionBody>
+                </Accordion.Item>
+              );
+            })
             : null}
-         
+
         </Accordion>
       </LocationsContainer>
-      <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
-        <GenerateRafflesButton>Generate Raffles</GenerateRafflesButton>
-      </Link>
+      <NavBar data={data} />
     </Container>
   );
 };
@@ -56,7 +55,8 @@ const Container = styled.div`
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  padding: 50px 0px;
+  padding-top: 20px;
+  padding-bottom: 60px;
 `;
 
 const LocationsContainer = styled.div`

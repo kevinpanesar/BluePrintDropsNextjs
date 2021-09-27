@@ -2,9 +2,15 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
-
+import Menu from '../../Components/sideMenu/Menu';
+import SideNavBar from '../../Components/sideMenu/SideNavBar'
+import { Header } from '../../Components/Header/Header'
+import { useState } from "react";
 
 export default function ReleasePage({ postData }) {
+
+  const [open, setOpen] = useState(false);
+
   return (
     <Container>
       <Head>
@@ -22,6 +28,11 @@ export default function ReleasePage({ postData }) {
         />
       </Head>
       <Container>
+        <Header />
+        <NavContainer>
+          <SideNavBar open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </NavContainer>
         <ReleaseInfoPage data={postData[0]} />
       </Container>
       <footer></footer>
@@ -80,3 +91,7 @@ const Container = styled.div`
   align-items: center;
   background-color: #f5f5f5;
 `;
+
+const NavContainer = styled.div`
+padding-top: 10px;
+`
