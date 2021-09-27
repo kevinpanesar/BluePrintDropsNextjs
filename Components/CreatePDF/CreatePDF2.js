@@ -10,7 +10,6 @@ import {
   Line,
   Image,
 } from "@react-pdf/renderer";
-import Logo from "../../public/Media/raffleLogo.png";
 
 // Create styles
 const styles = StyleSheet.create({

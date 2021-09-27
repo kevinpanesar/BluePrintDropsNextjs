@@ -73,7 +73,7 @@ const Container = styled.div`
 
 const Item = styled.button`
   width: 23%;
-  background-color: ${(props) => (props.selected ? "#21587f" : "#F8F8F8")};
+  background-color: ${(props) => (props.selected ? "#21587f" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
   border-radius: 10px;
   border: none;
