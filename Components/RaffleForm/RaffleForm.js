@@ -90,7 +90,7 @@ export const RaffleForm = ({ postData }) => {
 
 const Container = styled.div`
   width: 90%;
-  height: 75vh;
+  height: 650px;
   background-color: white;
   border-radius: 15px;
   display: flex;
@@ -105,7 +105,7 @@ const Container = styled.div`
 `;
 
 const Description = styled.div`
-  margin: 10px 0;
+  margin: 0 0;
   padding: 10px;
   width: 85%;
   font-size: 17px;
