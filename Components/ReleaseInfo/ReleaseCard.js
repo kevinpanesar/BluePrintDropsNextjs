@@ -2,10 +2,10 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
+import { MensWomensKidsIcons } from "../../mensWomensKidsSelector/MensWomensKidsIcons";
 
 export const ReleaseCard = ({ data }) => {
- 
+
   console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
     <Container>

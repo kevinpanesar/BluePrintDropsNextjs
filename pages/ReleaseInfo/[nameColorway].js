@@ -1,12 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
 import styled from "styled-components";
-// import { NavBar } from "../Components/NavBar/NavBar";
-import { useDispatch, useSelector } from "react-redux";
 import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
-import { fetchSneakerInfo, setCurrentShoe } from "../../store/releaseInfo";
-import { useRouter } from "next/router";
+
 
 export default function ReleasePage({ postData }) {
   return (
