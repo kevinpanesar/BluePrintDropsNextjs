@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 export const Header = () => {
   return (
     <HeaderContainer>
-      <h1>BluePrint</h1>
+      <Link href={"/"}>
+        <h1>BluePrint</h1>
+      </Link>
     </HeaderContainer>
   );
 };
