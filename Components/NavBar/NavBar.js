@@ -32,7 +32,7 @@ const NavContainer = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   z-index: 100;
   overflow: hidden;
 `;
