@@ -49,7 +49,7 @@ export const RaffleForm = ({ postData }) => {
         raffles.
       </Description>
       <TextFormContainer>
-        <h6>{postData.title + " " + postData.colorway}</h6>
+        <h5>{postData.title + " " + postData.colorway}</h5>
         <Form onSubmit={handleSubmit}>
           {/* <h5>{postData.title + " " + postData.colorway}</h5> */}
           <Input
@@ -99,31 +99,32 @@ const Container = styled.div`
   align-items: center;
   margin-top: 60px;
 
-  h1{
+  h1 {
     margin-top: 15px;
   }
 `;
 
 const Description = styled.div`
   margin: 0 0;
-  padding: 10px;
+  padding: 10px 0;
   width: 85%;
   font-size: 17px;
 `;
 
 const TextFormContainer = styled.div`
-  width: 80%;
+  width: 90%;
   height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  h5 {
+    padding: 10px;
+  }
 `;
+
 const Form = styled.form`
   width: 90%;
-`;
-const Label = styled.label`
-  margin: 10px;
 `;
 
 const Input = styled.input`
