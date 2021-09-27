@@ -10,7 +10,7 @@ import {
   Line,
   Image,
 } from "@react-pdf/renderer";
-import Logo from "../../public/Media/logo.png";
+import Logo from "../../public/Media/raffleLogo.png";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -95,7 +95,7 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
             <View style={styles.tableCol}>
@@ -109,7 +109,7 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
             <View style={styles.tableCol}>
@@ -123,51 +123,7 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
-              <Text style={styles.url}>Made with blueprintdrops.com</Text>
-            </View>
-          </View>
-          <View style={styles.tableRow}>
-            <View style={styles.tableCol}>
-              <Text style={styles.title}>
-                {sneakerInfo.title + " " + sneakerInfo.colorway}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Name: " + firstname + " " + lastname}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Phone Number: " + phoneNumber}
-              </Text>
-              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
-              <Text style={styles.url}>Made with blueprintdrops.com</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.title}>
-                {sneakerInfo.title + " " + sneakerInfo.colorway}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Name: " + firstname + " " + lastname}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Phone Number: " + phoneNumber}
-              </Text>
-              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
-              <Text style={styles.url}>Made with blueprintdrops.com</Text>
-            </View>
-            <View style={styles.tableCol}>
-              <Text style={styles.title}>
-                {sneakerInfo.title + " " + sneakerInfo.colorway}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Name: " + firstname + " " + lastname}
-              </Text>
-              <Text style={styles.tableCell}>
-                {"Phone Number: " + phoneNumber}
-              </Text>
-              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
           </View>
@@ -183,7 +139,7 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
             <View style={styles.tableCol}>
@@ -197,7 +153,7 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
             <View style={styles.tableCol}>
@@ -211,7 +167,51 @@ export const MyDocument = ({
                 {"Phone Number: " + phoneNumber}
               </Text>
               <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
-              <Image src="/Media/logo.png" style={styles.logo} />
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
+              <Text style={styles.url}>Made with blueprintdrops.com</Text>
+            </View>
+          </View>
+          <View style={styles.tableRow}>
+            <View style={styles.tableCol}>
+              <Text style={styles.title}>
+                {sneakerInfo.title + " " + sneakerInfo.colorway}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Name: " + firstname + " " + lastname}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Phone Number: " + phoneNumber}
+              </Text>
+              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
+              <Text style={styles.url}>Made with blueprintdrops.com</Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.title}>
+                {sneakerInfo.title + " " + sneakerInfo.colorway}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Name: " + firstname + " " + lastname}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Phone Number: " + phoneNumber}
+              </Text>
+              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
+              <Text style={styles.url}>Made with blueprintdrops.com</Text>
+            </View>
+            <View style={styles.tableCol}>
+              <Text style={styles.title}>
+                {sneakerInfo.title + " " + sneakerInfo.colorway}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Name: " + firstname + " " + lastname}
+              </Text>
+              <Text style={styles.tableCell}>
+                {"Phone Number: " + phoneNumber}
+              </Text>
+              <Text style={styles.tableCell}>{"Shoe Size: " + shoeSize}</Text>
+              <Image src="/Media/raffleLogo.png" style={styles.logo} />
               <Text style={styles.url}>Made with blueprintdrops.com</Text>
             </View>
           </View>
