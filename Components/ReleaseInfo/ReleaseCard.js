@@ -5,7 +5,6 @@ import { format } from "date-fns";
 import { MensWomensKidsIcons } from "../mensWomensKidsSelector/mensWomensKidsIcons";
 
 export const ReleaseCard = ({ data }) => {
-
   console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
     <Container>
@@ -53,7 +52,7 @@ const TitleContainer = styled.div`
   height: 50%;
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 20px;
   letter-spacing: -0.02em;
   line-height: 29px;
   display: flex;

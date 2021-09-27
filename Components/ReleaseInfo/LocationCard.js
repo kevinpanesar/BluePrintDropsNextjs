@@ -20,7 +20,7 @@ export const LocationCard = ({ location }) => {
     <Container>
       <ImageTitleContainer>
         <ImageContainer>
-          <img src={location.img} width="60px" />
+          <img src={location.img} width="90px" />
         </ImageContainer>
         <TitleSubtitleContainer>
           <h5>{location.location}</h5>
@@ -41,12 +41,23 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  background-color: white;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
   p {
     padding: 10px;
   }
-  border: 1px solid #b8b8b8;
-  border-radius: 10px;
+
+  &:first-child {
+    border-bottom: 2px solid #c0c0c0;
+  }
+
+  &:last-child {
+    border-top: 2px solid #c0c0c0;
+    padding-bottom: 0px;
+    padding-top: 10px;
+  }
 `;
 
 const ImageTitleContainer = styled.div`
@@ -62,7 +73,7 @@ const ImageContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin: 10px;
-  width: 60px;
+  width: 80px;
   height: 60px;
   background-color: black;
   display: flex;

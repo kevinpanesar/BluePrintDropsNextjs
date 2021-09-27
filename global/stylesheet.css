@@ -161,18 +161,23 @@ input[type="search"]::-webkit-search-cancel-button {
   background-size: 20px;
 }
 
-input[type="search"] input:focus + .fa{
-
+input[type="search"] input:focus + .fa {
   pointer-events: none;
+}
+
+#accordion-body {
+  padding: 0rem 0.5rem;
 }
 
 .accordion-button {
   font-weight: 700;
 }
 
-.accordion-item {
+#accordion-item {
   margin-bottom: 10px;
-  border-radius: 50px;
+  border-radius: 10px;
+  width: 100%;
+  overflow: hidden;
 }
 
 table,

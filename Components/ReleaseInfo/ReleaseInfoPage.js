@@ -17,7 +17,6 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 });
 
 export const ReleaseInfoPage = ({ data }) => {
-
   return (
     <Container>
       <ImageSlider data={data} />
@@ -28,21 +27,20 @@ export const ReleaseInfoPage = ({ data }) => {
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
             ? Object.keys(data.cities).map((element, index) => {
-              return (
-                <Accordion.Item eventKey={index} key={index}>
-                  <Accordion.Header>{element}</Accordion.Header>
-                  <AccordionBody>
-                    {data !== undefined
-                      ? data.cities[element].map((element, index) => (
-                        <LocationCard location={element} key={index} />
-                      ))
-                      : null}
-                  </AccordionBody>
-                </Accordion.Item>
-              );
-            })
+                return (
+                  <Accordion.Item id="accordion-item" eventKey={index} key={index}>
+                    <Accordion.Header>{element}</Accordion.Header>
+                    <AccordionBody id="accordion-body">
+                      {data !== undefined
+                        ? data.cities[element].map((element, index) => (
+                            <LocationCard location={element} key={index} />
+                          ))
+                        : null}
+                    </AccordionBody>
+                  </Accordion.Item>
+                );
+              })
             : null}
-
         </Accordion>
       </LocationsContainer>
       <NavBar data={data} />
@@ -63,31 +61,4 @@ const LocationsContainer = styled.div`
   width: 90%;
   margin-top: 30px;
   margin: 20px auto;
-`;
-const Button = styled.button`
-  background-color: #21587f;
-  width: 120px;
-  margin: 20px;
-  border-radius: 8px;
-  color: white;
-  border: 2px solid #21587f;
-  padding: 5px 0px;
-
-  :hover {
-    background-color: #305773;
-  }
-`;
-const GenerateRafflesButton = styled.button`
-  background-color: #21587f;
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-radius: 8px;
-  color: white;
-  border: 2px solid #21587f;
-
-  :hover {
-    background-color: #305773;
-  }
 `;
