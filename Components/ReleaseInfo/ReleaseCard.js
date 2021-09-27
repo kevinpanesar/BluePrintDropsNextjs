@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import { MensWomensKidsIcons } from "../../mensWomensKidsSelector/MensWomensKidsIcons";
+import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
 
 export const ReleaseCard = ({ data }) => {
 
