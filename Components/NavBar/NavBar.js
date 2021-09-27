@@ -20,7 +20,7 @@ export const NavBar = ({ data }) => {
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 80px;
+  height: 90px;
 
   background-image: linear-gradient(
     rgba(245, 245, 245, 0),
