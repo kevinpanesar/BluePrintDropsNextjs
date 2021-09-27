@@ -90,14 +90,14 @@ export const RaffleForm = ({ postData }) => {
 
 const Container = styled.div`
   width: 90%;
-  height: 650px;
   background-color: white;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 50px;
+  padding-bottom: 20px;
 
   h1 {
     margin-top: 15px;
@@ -143,12 +143,12 @@ const Input = styled.input`
 const GenerateRafflesButton = styled.input`
   background-color: #21587f;
   width: 100%;
-  margin-bottom: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
   color: white;
   border: 2px solid #21587f;
+  margin-bottom: 5px;
 
   :hover {
     background-color: #305773;
