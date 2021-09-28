@@ -26,8 +26,8 @@ export const AboutMePage = () => {
         <ImageDiv>
           <SneakerImg
             src="/Media/aboutUsImage.jpg"
-            width="836px"
-            height="972px"
+            width="711px"
+            height="763px"
           />
           <ImageHighlight />
         </ImageDiv>
