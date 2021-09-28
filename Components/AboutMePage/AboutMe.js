@@ -26,8 +26,8 @@ export const AboutMePage = () => {
         <ImageDiv>
           <SneakerImg
             src="/Media/aboutUsImage.jpg"
-            width="763px"
-            height="711px"
+            width="836px"
+            height="972px"
           />
           <ImageHighlight />
         </ImageDiv>
@@ -42,6 +42,18 @@ export const AboutMePage = () => {
           that are interested in staying alert on when and where they can cop
           the latest hyped sneaker, clothes or merch drops.
         </AboutUsDescription>
+        <SocialMediaContainer>
+          <AboutImageDiv>
+            <SneakerImg src="/Media/kevin.jfif" width="398px" height="398px" />
+          </AboutImageDiv>
+          <IGContainer>
+            <InstagramLogo
+              src="/Media/instagram-logo.png"
+              width="512px"
+              height="512px"
+            ></InstagramLogo>
+          </IGContainer>
+        </SocialMediaContainer>
       </Content>
     </Container>
   );
@@ -67,6 +79,14 @@ const Container = styled.div`
   }
 `;
 
+const IGContainer = styled.div`
+  width: 30px;
+`;
+
+const InstagramLogo = styled(Image)`
+  width: 30px;
+`;
+
 const SneakerImg = styled(Image)`
   z-index: 100;
 `;
@@ -89,6 +109,14 @@ const ImageHighlight = styled.div`
   z-index: 50;
 `;
 
+const SocialMediaContainer = styled.div`
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+`;
+
 const Content = styled.div`
   background-color: black;
   margin-top: 15px;
@@ -96,6 +124,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 `;
 
 const PurposeContainer = styled.div`
@@ -114,6 +143,17 @@ const ImageDiv = styled.div`
   left: 25px;
   padding-left: 10px;
   z-index: 100px;
+`;
+
+const AboutImageDiv = styled.div`
+  margin-right: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+  padding-left: 10px;
+  z-index: 100px;
+  width: 35%;
+  padding-bottom: 20px;
 `;
 const AboutUs = styled.p`
   width: 80%;
