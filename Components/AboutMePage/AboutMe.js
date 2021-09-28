@@ -27,32 +27,50 @@ export const AboutMePage = () => {
           <SneakerImg
             src="/Media/aboutUsImage.jpg"
             width="711px"
-            height="720px"
+            height="715px"
           />
           <ImageHighlight />
         </ImageDiv>
 
         <LargeText>ABOUT US</LargeText>
         <AboutUsDescription>
-          We are two guys that have a passion for collecting sneakers and
-          collecting grailed items. We have many times struck out on sneaker
-          drops, wether it be from raffle draws or missing out on entering
-          raffles due to the lack of information about releases in our area.
-          Thats when we decided on creating a platform for all people like us
-          that are interested in staying alert on when and where they can cop
-          the latest hyped sneaker, clothes or merch drops.
+          We are a team of dedicated and focused individuals that love fashion,
+          sneakers and everything "HYPE". We started off with a passion for
+          collecting sneakers. Through years of trying to get our hands on
+          limited sneakers, we discovered that it was a very tedious and
+          grueling process about getting information on drops let alone actually
+          purchasing the item. Theres been countless times we have struck out on
+          sneaker drops, wether it be from our names not beeing drawn from
+          raffles or missing out on entering raffles due to the lack of
+          information about releases in our area. So, thats when we decided to
+          create this platform called Blueprint.
         </AboutUsDescription>
         <SocialMediaContainer>
           <AboutImageDiv>
             <SneakerImg src="/Media/kevin.jfif" width="398px" height="398px" />
           </AboutImageDiv>
-          <IGContainer>
+          {/* <IGContainer>
             <InstagramLogo
               src="/Media/instagram-logo.png"
               width="512px"
               height="512px"
-            ></InstagramLogo>
-          </IGContainer>
+            ></InstagramLogo>    
+          </IGContainer> */}
+          <NameSocialMediaContainer>
+            <Name>Kevin Panesar</Name>
+            <Occupation>Developer</Occupation>
+            <FavoriteShoe>Favorite Sneaker: Jordan 6 Infrared</FavoriteShoe>
+            <FollowContainer>
+              <p>Follow On IG</p>
+              <IGContainer>
+                <InstagramLogo
+                  src="/Media/instagram-logo.png"
+                  width="512px"
+                  height="512px"
+                ></InstagramLogo>
+              </IGContainer>
+            </FollowContainer>
+          </NameSocialMediaContainer>
         </SocialMediaContainer>
       </Content>
     </Container>
@@ -79,12 +97,37 @@ const Container = styled.div`
   }
 `;
 
+const FollowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+`;
+
+const Name = styled.p`
+  font-size: 20px;
+`;
+
+const Occupation = styled.p`
+  font-size: 16px;
+`;
+
+const FavoriteShoe = styled.p`
+  font-size: 14px;
+`;
+
 const IGContainer = styled.div`
   width: 30px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
 `;
 
 const InstagramLogo = styled(Image)`
   width: 30px;
+  margin-left: 20px;
 `;
 
 const SneakerImg = styled(Image)`
@@ -115,6 +158,19 @@ const SocialMediaContainer = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  height: 150px;
+`;
+
+const NameSocialMediaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+  padding-left: 20px;
+  width: 70%;
+  height: 90%;
+  margin: 10px;
 `;
 
 const Content = styled.div`
