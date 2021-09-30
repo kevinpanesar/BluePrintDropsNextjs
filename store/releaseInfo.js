@@ -4,7 +4,16 @@ import { format } from "date-fns";
 export const fetchSneakerInfo = createAsyncThunk(
   "sneaker/fetchSneaker",
   async () => {
-    let data = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
+    let data = await fetch("https://sneaker-mern-app.herokuapp.com/sneaker/");
+    let jsonData = await data.json();
+    return jsonData;
+  }
+);
+
+export const fetchClothingInfo = createAsyncThunk(
+  "sneaker/fetchClothing",
+  async () => {
+    let data = await fetch("https://sneaker-mern-app.herokuapp.com/clothing/");
     let jsonData = await data.json();
     return jsonData;
   }
@@ -183,7 +192,18 @@ const sneakerSlice = createSlice({
         state.allSneakerInfo = action.payload;
       }
     },
-    [fetchSneakerInfo.rejected]: (state, action) => {
+    [fetchSneakernfo.rejected]: (state, action) => {
+      console.log(action);
+    },
+    [fetchClothingInfo.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchClothingInfo.fulfilled]: (state, action) => {
+      if (state.allSneakerInfo.length === 0) {
+        state.allSneakerInfo = action.payload;
+      }
+    },
+    [fetchClothingInfo.rejected]: (state, action) => {
       console.log(action);
     },
   },

@@ -47,33 +47,67 @@ export const AboutMePage = () => {
           create this platform called Blueprint.
         </AboutUsDescription>
         <SocialMediaContainer>
-          <AboutImageDiv>
-            <SneakerImg src="/Media/kevin.jfif" width="398px" height="398px" />
-          </AboutImageDiv>
-          {/* <IGContainer>
-            <InstagramLogo
-              src="/Media/instagram-logo.png"
-              width="512px"
-              height="512px"
-            ></InstagramLogo>    
-          </IGContainer> */}
-          <NameSocialMediaContainer>
-            <Name>Kevin Panesar</Name>
-            <Occupation>Developer</Occupation>
+          <IGCardFlex>
+            <AboutImageDiv>
+              <SneakerImg
+                src="/Media/kevin.jfif"
+                width="398px"
+                height="398px"
+              />
+            </AboutImageDiv>
+
+            <NameSocialMediaContainer>
+              <Name>Kevin Panesar</Name>
+              <Occupation>Developer</Occupation>
+              <FollowContainer>
+                <p>@k.panesar_</p>
+                <IGContainer>
+                  <Link href="https://www.instagram.com/k.panesar_/">
+                    <InstagramLogo
+                      src="/Media/instagram-logo.png"
+                      width="512px"
+                      height="512px"
+                    />
+                  </Link>
+                </IGContainer>
+              </FollowContainer>
+            </NameSocialMediaContainer>
+          </IGCardFlex>
+          <FavShoeContainer>
             <FavoriteShoe>Favorite Sneaker: Jordan 6 Infrared</FavoriteShoe>
-            <FollowContainer>
-              <p>Follow On IG</p>
-              <IGContainer>
-                <Link href="https://www.instagram.com/k.panesar_/">
-                  <InstagramLogo
-                    src="/Media/instagram-logo.png"
-                    width="512px"
-                    height="512px"
-                  />
-                </Link>
-              </IGContainer>
-            </FollowContainer>
-          </NameSocialMediaContainer>
+          </FavShoeContainer>
+        </SocialMediaContainer>
+        <SocialMediaContainer>
+          <IGCardFlex>
+            <AboutImageDiv>
+              <SneakerImg
+                src="/Media/param.jpg"
+                width="259px"
+                height="232px"
+              />
+            </AboutImageDiv>
+            <NameSocialMediaContainer>
+              <Name>Paramvir Poonia</Name>
+              <Occupation>Designer</Occupation>
+              <FollowContainer>
+                <p>@paramvirpoonia</p>
+                <IGContainer>
+                  <Link href="https://www.instagram.com/paramvirpoonia/">
+                    <InstagramLogo
+                      src="/Media/instagram-logo.png"
+                      width="512px"
+                      height="512px"
+                    />
+                  </Link>
+                </IGContainer>
+              </FollowContainer>
+            </NameSocialMediaContainer>
+          </IGCardFlex>
+          <FavShoeContainer>
+            <FavoriteShoe>
+              Favorite Sneaker: Nike AirMax 1 Parra Patta{" "}
+            </FavoriteShoe>
+          </FavShoeContainer>
         </SocialMediaContainer>
       </Content>
     </Container>
@@ -100,6 +134,15 @@ const Container = styled.div`
   }
 `;
 
+const IGCardFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+const FavShoeContainer = styled.div`
+  width: 100%;
+`;
+
 const FollowContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -114,10 +157,14 @@ const Name = styled.p`
 
 const Occupation = styled.p`
   font-size: 19px;
+  color: #a9a9a9;
 `;
 
 const FavoriteShoe = styled.p`
-  font-size: 16px;
+  font-size: 18px;
+  font-family: "Share";
+  margin-left: 20px;
+  padding-bottom: 10px;
 `;
 
 const IGContainer = styled.div`
@@ -131,7 +178,7 @@ const IGContainer = styled.div`
 
 const InstagramLogo = styled(Image)`
   width: 30px;
-  margin-left: 20px;
+  margin-left: 25px;
 `;
 
 const SneakerImg = styled(Image)`
@@ -161,8 +208,9 @@ const SocialMediaContainer = styled.div`
   background-color: white;
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 const NameSocialMediaContainer = styled.div`
