@@ -7,6 +7,7 @@ import { Options } from "../Components/mensWomensKidsSelector/mensWomensKidsSele
 import { SearchBar } from "../Components/SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { fetchClothingInfo } from "../store/releaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
 import Menu from "../Components/sideMenu/Menu";
 import { useState } from "react";
