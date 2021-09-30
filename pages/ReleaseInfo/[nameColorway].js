@@ -2,13 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
-import Menu from '../../Components/sideMenu/Menu';
-import SideNavBar from '../../Components/sideMenu/SideNavBar'
-import { Header } from '../../Components/Header/Header'
+import Menu from "../../Components/sideMenu/Menu";
+import SideNavBar from "../../Components/sideMenu/SideNavBar";
+import { Header } from "../../Components/Header/Header";
 import { useState } from "react";
 
 export default function ReleasePage({ postData }) {
-
   const [open, setOpen] = useState(false);
 
   return (
@@ -41,7 +40,7 @@ export default function ReleasePage({ postData }) {
 }
 
 export async function getAllPostIds() {
-  const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
+  const res = await fetch("https://sneaker-mern-app.herokuapp.com/shoes/");
   const posts = await res.json();
   return posts.map((post) => {
     const postID = post._id;
@@ -93,5 +92,5 @@ const Container = styled.div`
 `;
 
 const NavContainer = styled.div`
-padding-top: 10px;
-`
+  padding-top: 10px;
+`;
