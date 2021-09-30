@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Header } from "../Header/Header";
 import Menu from "../sideMenu/Menu";
 import SideNavBar from "../sideMenu/SideNavBar";
+import Link from "next/link";
 
 export const AboutMePage = () => {
   const [open, setOpen] = useState(false);
@@ -26,8 +27,8 @@ export const AboutMePage = () => {
         <ImageDiv>
           <SneakerImg
             src="/Media/aboutUsImage.jpg"
-            width="711px"
-            height="715px"
+            width="763px"
+            height="711px"
           />
           <ImageHighlight />
         </ImageDiv>
@@ -63,11 +64,13 @@ export const AboutMePage = () => {
             <FollowContainer>
               <p>Follow On IG</p>
               <IGContainer>
-                <InstagramLogo
-                  src="/Media/instagram-logo.png"
-                  width="512px"
-                  height="512px"
-                ></InstagramLogo>
+                <Link href="https://www.instagram.com/k.panesar_/">
+                  <InstagramLogo
+                    src="/Media/instagram-logo.png"
+                    width="512px"
+                    height="512px"
+                  />
+                </Link>
               </IGContainer>
             </FollowContainer>
           </NameSocialMediaContainer>
@@ -101,19 +104,20 @@ const FollowContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 14px;
+  font-size: 18px;
+  padding-bottom: 10px;
 `;
 
 const Name = styled.p`
-  font-size: 20px;
+  font-size: 22px;
 `;
 
 const Occupation = styled.p`
-  font-size: 16px;
+  font-size: 19px;
 `;
 
 const FavoriteShoe = styled.p`
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 const IGContainer = styled.div`
@@ -137,7 +141,7 @@ const SneakerImg = styled(Image)`
 const LargeText = styled.p`
   color: white;
   font-size: 60px;
-  font-family: "Zen Tokyo Zoo", cursive;
+  font-family: "Zen Tokyo Zoo";
   margin-top: 35px;
   margin-bottom: 10px;
 `;
@@ -159,7 +163,6 @@ const SocialMediaContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 150px;
 `;
 
 const NameSocialMediaContainer = styled.div`
@@ -169,8 +172,11 @@ const NameSocialMediaContainer = styled.div`
   text-align: left;
   padding-left: 20px;
   width: 70%;
-  height: 90%;
   margin: 10px;
+  p {
+    font-family: "Share";
+    margin-bottom: 0;
+  }
 `;
 
 const Content = styled.div`
@@ -213,14 +219,14 @@ const AboutImageDiv = styled.div`
 `;
 const AboutUs = styled.p`
   width: 80%;
-  font-family: "Share", "cursive";
+  font-family: "Share";
   font-size: 30px;
   line-height: 1.3125;
 `;
 
 const AboutUsDescription = styled.p`
   color: white;
-  font-family: "Share", "cursive";
+  font-family: "Share";
   width: 85%;
   font-size: 24px;
   line-height: 1.1;
