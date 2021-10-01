@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { set } from "date-fns";
 
-export const Options = () => {
+export const Options = ({ sneaker, clothing }) => {
   const dispatch = useDispatch();
   const [allSelected, setAllSelected] = useState(true);
   const [mensSelected, setMensSelected] = useState(false);
@@ -11,10 +11,17 @@ export const Options = () => {
   const [kidsSelected, setKidsSelected] = useState(false);
 
   const handleChange = (e) => {
-    dispatch({
-      type: "sneaker/selectMensWomensKids",
-      payload: e.target.value,
-    });
+    if (sneaker) {
+      dispatch({
+        type: "sneaker/selectMensWomensKids",
+        payload: e.target.value,
+      });
+    } else if (clothing) {
+      dispatch({
+        type: "clothing/selectMensWomensKids",
+        payload: e.target.value,
+      });
+    }
 
     if (e.target.value === "reset") {
       setAllSelected(true);

@@ -2,29 +2,62 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
-export const PastPresent = () => {
+export const PastPresent = ({sneaker, clothing}) => {
   const dispatch = useDispatch();
 
-  const upcoming = useSelector((state) => state.sneaker.upcomingSelected);
-  const past = useSelector((state) => state.sneaker.pastSelected);
+  const upcoming = useSelector((state) => {
+    if (sneaker) {
+      return state.sneaker.upcomingSelected;
+    } else if (clothing) {
+      return state.clothing.upcomingSelected;
+    }
+  });
+
+  const past = useSelector((state) => {
+    if (sneaker) {
+      return state.sneaker.pastSelected;
+    } else if (clothing) {
+      return state.clothing.pastSelected;
+    }
+  });
 
   const changeUpcomingColor = () => {
-    if (upcoming === true) {
-      return null;
-    } else {
-      dispatch({ type: "sneaker/toggleUpcomingSelected" });
-      dispatch({ type: "sneaker/togglePastSelected" });
-      dispatch({ type: "sneaker/toggleSneakerFeed" });
+    if (clothing) {
+      if (upcoming === true) {
+        return null;
+      } else {
+        dispatch({ type: "clothing/toggleUpcomingSelected" });
+        dispatch({ type: "clothing/togglePastSelected" });
+        dispatch({ type: "clothing/toggleSneakerFeed" });
+      }
+    } else if (sneaker) {
+      if (upcoming === true) {
+        return null;
+      } else {
+        dispatch({ type: "sneaker/toggleUpcomingSelected" });
+        dispatch({ type: "sneaker/togglePastSelected" });
+        dispatch({ type: "sneaker/toggleSneakerFeed" });
+      }
     }
   };
 
   const changePastColor = () => {
-    if (past === true) {
-      return null;
-    } else {
-      dispatch({ type: "sneaker/toggleUpcomingSelected" });
-      dispatch({ type: "sneaker/togglePastSelected" });
-      dispatch({ type: "sneaker/toggleSneakerFeed" });
+    if (sneaker) {
+      if (past === true) {
+        return null;
+      } else {
+        dispatch({ type: "sneaker/toggleUpcomingSelected" });
+        dispatch({ type: "sneaker/togglePastSelected" });
+        dispatch({ type: "sneaker/toggleSneakerFeed" });
+      }
+    } else if (clothing) {
+      if (past === true) {
+        return null;
+      } else {
+        dispatch({ type: "clothing/toggleUpcomingSelected" });
+        dispatch({ type: "clothing/togglePastSelected" });
+        dispatch({ type: "clothing/toggleSneakerFeed" });
+      }
     }
   };
 

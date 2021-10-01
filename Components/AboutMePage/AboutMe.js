@@ -80,11 +80,7 @@ export const AboutMePage = () => {
         <SocialMediaContainer>
           <IGCardFlex>
             <AboutImageDiv>
-              <SneakerImg
-                src="/Media/param.jpg"
-                width="259px"
-                height="232px"
-              />
+              <SneakerImg src="/Media/param.jpg" width="259px" height="232px" />
             </AboutImageDiv>
             <NameSocialMediaContainer>
               <Name>Paramvir Poonia</Name>
@@ -188,7 +184,7 @@ const SneakerImg = styled(Image)`
 const LargeText = styled.p`
   color: white;
   font-size: 60px;
-  font-family: "Zen Tokyo Zoo";
+  font-family: "Inter";
   margin-top: 35px;
   margin-bottom: 10px;
 `;
@@ -197,10 +193,12 @@ const ImageHighlight = styled.div`
   position: absolute;
   top: 20px;
   right: 13px;
-  border: 3px solid #fdd017;
+  border: 1px solid #468ea9;
   width: 100%;
   height: 100%;
   z-index: 50;
+  background-image: url("/Media/grid.png");
+  background-position: bottom;
 `;
 
 const SocialMediaContainer = styled.div`

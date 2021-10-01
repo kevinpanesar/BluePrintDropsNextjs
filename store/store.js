@@ -1,11 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { combineReducers } from 'redux'
-import sneaker from './releaseInfo'
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import sneaker from "./releaseInfo";
+import clothing from './ClothingReleaseInfo'
 
 const reducer = combineReducers({
-    sneaker,
-})
+  sneaker,
+  clothing,
+});
 const store = configureStore({
-    reducer,
-})
+  reducer,
+});
 export default store;

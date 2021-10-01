@@ -3,44 +3,46 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-export const SearchBar = () => {
+import Image from "next/image";
+
+export const SearchBar = ({ clothing, sneaker }) => {
   const dispatch = useDispatch();
   const term = useSelector((state) => state.sneaker.searchTerm);
+  // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
-  const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
+  const handleChange = (e) => {
+    if (clothing == true) {
+      dispatch({ type: "clothing/setSearchTerm", payload: e.target.value });
+    } else if (sneaker == true) {
+      dispatch({ type: "sneaker/setSearchTerm", payload: e.target.value });
+    }
+  };
+
   return (
-    <Form
-      id="searchBar"
-      onChange={(e) => {
-        dispatch({ type: "sneaker/setSearchTerm", payload: e.target.value });
-      }}
-    >
+    <Form id="searchBar" onChange={handleChange}>
       <Input type="search" placeholder="Search..." defaultValue={term} />
-      {element}
+      <ImageDiv>
+        {" "}
+        <Image className="fa" src="/Media/search.svg" width={25} height={25} />
+      </ImageDiv>
     </Form>
   );
 };
 
 const Form = styled.form`
-  position: relative;
-  left: 140px;
-  bottom: 19px;
-  transform: translate(-50%, -50%);
-  width: 100%;
   height: 30px;
   box-sizing: border-box;
   border-radius: 25px;
-  padding: 5px;
+  margin: 10px;
   :hover {
     cursor: pointer;
 
     input {
       max-height: 50px;
       height: 50px;
-      width: 100%;
+      width: 100vw;
       padding-right: 10px;
       display: block;
-      transform: translateX(0%);
       background-color: white;
     }
     .fa {
@@ -54,7 +56,7 @@ const Input = styled.input`
   position: absolute;
   padding-left: 10px;
   top: 40px;
-  left: 13%;
+  right: 0px;
   width: 0%;
   max-height: 0px;
   height: 0px;
@@ -64,3 +66,6 @@ const Input = styled.input`
   overflow: none;
   background-color: #f5f5f5;
 `;
+
+const ImageDiv = styled.div`
+`

@@ -40,7 +40,7 @@ export default function ReleasePage({ postData }) {
 }
 
 export async function getAllPostIds() {
-  const res = await fetch("https://sneaker-mern-app.herokuapp.com/shoes/");
+  const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
   const posts = await res.json();
   return posts.map((post) => {
     const postID = post._id;

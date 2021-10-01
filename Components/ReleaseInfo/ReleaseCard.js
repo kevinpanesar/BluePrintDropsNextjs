@@ -11,8 +11,6 @@ export const ReleaseCard = ({ data }) => {
       <TitleContainer>
         <div>
           {data.title}
-          <br />
-          <span> '{data.colorway}'</span>
         </div>
       </TitleContainer>
       <PriceDateContainer>
@@ -27,7 +25,7 @@ export const ReleaseCard = ({ data }) => {
           <p>{data.price}</p>
           <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
           <p>{data.styleCode}</p>
-          <p>{data.color}</p>
+          <p>{data.colorway}</p>
         </Values>
       </PriceDateContainer>
     </Container>

@@ -29,7 +29,7 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
 
 const Container = styled.div`
   width: 90%;
-  height: 260px;
+  height: 240px;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;

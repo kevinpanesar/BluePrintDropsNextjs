@@ -10,13 +10,11 @@ import { useEffect } from "react";
 import { fetchSneakerInfo } from "../store/releaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
 import Menu from "../Components/sideMenu/Menu";
+import { format, getDate } from "date-fns";
 import { useState } from "react";
 
 export default function Home({ data }) {
   const dispatch = useDispatch();
-  const info = useSelector((state) => {
-    state.allSneakerInfo;
-  });
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -25,6 +23,54 @@ export default function Home({ data }) {
       .then(() => dispatch({ type: "sneaker/filterMonths" }))
       .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
   }, []);
+
+  const term = useSelector((state) => state.sneaker.searchTerm);
+
+  let info = useSelector((state) => {
+    if (state.sneaker.currentSneakerFeedUpcoming === true) {
+      const months = Object.keys(state.sneaker.futureMonths);
+
+      return months.map((element) => {
+        return state.sneaker.futureSneakerInfoAgeOrGender[element].filter(
+          (element) => {
+            return element.title.toLowerCase().includes(term.toLowerCase());
+          }
+        );
+      });
+    } else {
+      const months = Object.keys(state.sneaker.futureMonths);
+      return months.map((element) => {
+        return state.sneaker.pastSneakerInfoAgeOrGender[element].filter(
+          (element) => {
+            return element.title.toLowerCase().includes(term.toLowerCase());
+          }
+        );
+      });
+    }
+  });
+
+  const filter = useSelector(
+    (state) => state.sneaker.mensWomensKidsFilterValue
+  );
+
+  let filteredResults;
+
+  if (filter === "reset") {
+    filteredResults = info;
+  } else {
+    filteredResults = info.map((element) => {
+      return element.filter((element) => element[filter] === true);
+    });
+  }
+
+  filteredResults.map((element) =>
+    element.sort((firstEl, secondEl) => {
+      return (
+        getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
+        getDate(new Date(secondEl.date.replace(/, /g, "/")))
+      );
+    })
+  );
 
   return (
     <Container>
@@ -38,10 +84,10 @@ export default function Home({ data }) {
         <SideNavBar open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
       </div>
-      <SearchBar />
-      <PastPresent />
-      <Options />
-      <SneakerFeed />
+      <SearchBar sneaker={true} />
+      <PastPresent sneaker={true} clothing={false} />
+      <Options sneaker={true} clothing={false}/>
+      <SneakerFeed filteredResults={filteredResults} />
       <footer></footer>
     </Container>
   );

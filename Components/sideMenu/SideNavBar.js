@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 function SideNavBar({ open, setOpen }) {
   return (
@@ -8,36 +8,29 @@ function SideNavBar({ open, setOpen }) {
       <div />
       <div />
     </StyledBurger>
-  )
+  );
 }
 
-
 export const StyledBurger = styled.button`
-  position: absolute;
-  top: 5%;
   right: 2rem;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 2rem;
-  height: 2.3rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 550;
+  z-index: 50;
 
-
-
-   @media (max-width: 1255px) {
-        height: 1.5rem;
+  @media (max-width: 1255px) {
+    height: 1.5rem;
   }
 
-     @media (max-width: 750px) {
-          top: 2%;
-          right: 2%;
+  @media (max-width: 750px) {
+    top: 2%;
+    right: 2%;
   }
-
 
   &:focus {
     outline: none;
@@ -50,27 +43,27 @@ export const StyledBurger = styled.button`
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
-    background-color: #21587F;
+    background-color: black;
+    z-index: 50;
 
     :first-child {
-      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
-
+      transform: ${({ open }) => (open ? "rotate(44deg)" : "rotate(0)")};
     }
 
     :nth-child(2) {
-      opacity: ${({ open }) => open ? '0' : '1'};
-      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+      opacity: ${({ open }) => (open ? "0" : "1")};
+      transform: ${({ open }) => (open ? "translateX(20px)" : "translateX(0)")};
     }
 
     :nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => (open ? "rotate(-44deg)" : "rotate(0)")};
     }
 
-      @media (max-width: 1255px) {
-        width: 1.5rem;
-        height: 0.15rem;
-  }
+    @media (max-width: 1255px) {
+      width: 1.5rem;
+      height: 0.15rem;
+    }
   }
 `;
 
-export default SideNavBar
+export default SideNavBar;

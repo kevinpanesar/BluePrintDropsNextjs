@@ -5,55 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { format, getDate } from "date-fns";
 
-export const SneakerFeed = () => {
-  const term = useSelector((state) => state.sneaker.searchTerm);
-
-  let info = useSelector((state) => {
-    if (state.sneaker.currentSneakerFeedUpcoming === true) {
-      const months = Object.keys(state.sneaker.futureMonths);
-
-      return months.map((element) => {
-        return state.sneaker.futureSneakerInfoAgeOrGender[element].filter(
-          (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
-      });
-    } else {
-      const months = Object.keys(state.sneaker.futureMonths);
-      return months.map((element) => {
-        return state.sneaker.pastSneakerInfoAgeOrGender[element].filter(
-          (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
-      });
-    }
-  });
-
-  const filter = useSelector(
-    (state) => state.sneaker.mensWomensKidsFilterValue
-  );
-
-  let filteredResults;
-
-  if (filter === "reset") {
-    filteredResults = info;
-  } else {
-    filteredResults = info.map((element) => {
-      return element.filter((element) => element[filter] === true);
-    });
-  }
-
-  filteredResults.map((element) =>
-    element.sort((firstEl, secondEl) => {
-      return (
-        getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
-        getDate(new Date(secondEl.date.replace(/, /g, "/")))
-      );
-    })
-  );
-
+export const SneakerFeed = ({ filteredResults }) => {
   return (
     <Container>
       {filteredResults.map((element, index) => {

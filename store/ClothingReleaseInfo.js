@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { format } from "date-fns";
 
-export const fetchSneakerInfo = createAsyncThunk(
-  "sneaker/fetchSneaker",
+export const fetchClothingInfo = createAsyncThunk(
+  "clothing/fetchClothing",
   async () => {
-    let data = await fetch("https://sneaker-mern-app.herokuapp.com/shoes/");
+    let data = await fetch("https://sneaker-mern-app.herokuapp.com/clothing/");
     let jsonData = await data.json();
     return jsonData;
   }
@@ -25,17 +25,17 @@ const months = {
   December: [],
 };
 // Slice
-const sneakerSlice = createSlice({
-  name: "sneaker",
+const clothingSlice = createSlice({
+  name: "clothing",
   initialState: {
-    allSneakerInfo: [],
+    allClothingInfo: [],
     futureMonths: months,
     pastMonths: months,
-    currentSneakerFeedUpcoming: true,
-    futureSneakerInfo: [],
-    pastSneakerInfo: [],
-    pastSneakerInfoAgeOrGender: months,
-    futureSneakerInfoAgeOrGender: months,
+    currentClothingFeedUpcoming: true,
+    futureClothingInfo: [],
+    pastClothingInfo: [],
+    pastClothingInfoAgeOrGender: months,
+    futureClothingInfoAgeOrGender: months,
     status: null,
     searchTerm: "",
     mensWomensKidsFilterValue: "reset",
@@ -43,12 +43,12 @@ const sneakerSlice = createSlice({
     pastSelected: false,
   },
   reducers: {
-    sneakerInfo: (state, action) => {
-      state.currentSneakerInfo = action.payload;
+    ClothingInfo: (state, action) => {
+      state.currentClothingInfo = action.payload;
     },
-    splitSneakerInfo: (state) => {
-      if (state.futureSneakerInfo.length === 0) {
-        state.allSneakerInfo.forEach((element) => {
+    splitClothingInfo: (state) => {
+      if (state.futureClothingInfo.length === 0) {
+        state.allClothingInfo.forEach((element) => {
           const today = new Date();
           today.setDate(today.getDate() - 1);
 
@@ -58,9 +58,9 @@ const sneakerSlice = createSlice({
           ).getTime();
 
           if (todayDateToTime < releaseDate) {
-            state.futureSneakerInfo.push(element);
+            state.futureClothingInfo.push(element);
           } else {
-            state.pastSneakerInfo.push(element);
+            state.pastClothingInfo.push(element);
           }
         });
       }
@@ -72,7 +72,7 @@ const sneakerSlice = createSlice({
       );
 
       if (emptyArrayObjects) {
-        state.futureSneakerInfo.map((element) => {
+        state.futureClothingInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -103,7 +103,7 @@ const sneakerSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastSneakerInfo.map((element) => {
+        state.pastClothingInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -133,25 +133,22 @@ const sneakerSlice = createSlice({
           }
         });
       }
-
-      console.log(current(state.futureMonths));
-      console.log(current(state.pastMonths));
     },
     copyMonthsArray: (state) => {
-      state.futureSneakerInfoAgeOrGender = state.futureMonths;
-      state.pastSneakerInfoAgeOrGender = state.pastMonths;
+      state.futureClothingInfoAgeOrGender = state.futureMonths;
+      state.pastClothingInfoAgeOrGender = state.pastMonths;
     },
     toggleSneakerFeed: (state) => {
-      state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;
+      state.currentClothingFeedUpcoming = !state.currentClothingFeedUpcoming;
     },
     setCurrentShoe: (state, action) => {
-      state.currentSneakerInfo = state.allSneakerInfo[0];
+      state.currentClothingInfo = state.allClothingInfo[0];
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
     searchFeed: (state, action) => {
-      state.futureSneakerInfo.filter((element) =>
+      state.futureClothingInfo.filter((element) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -174,28 +171,28 @@ const sneakerSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchSneakerInfo.pending]: (state, action) => {
+    [fetchClothingInfo.pending]: (state, action) => {
       state.status = "loading";
     },
-    [fetchSneakerInfo.fulfilled]: (state, action) => {
-      if (state.allSneakerInfo.length === 0) {
-        state.allSneakerInfo = action.payload;
+    [fetchClothingInfo.fulfilled]: (state, action) => {
+      if (state.allClothingInfo.length === 0) {
+        state.allClothingInfo = action.payload;
       }
     },
-    [fetchSneakerInfo.rejected]: (state, action) => {
+    [fetchClothingInfo.rejected]: (state, action) => {
       console.log(action);
     },
   },
 });
-export default sneakerSlice.reducer;
+export default clothingSlice.reducer;
 
 export const {
-  sneakerInfo,
-  splitSneakerInfo,
-  toggleSneakerFeed,
+  clothingInfo,
+  splitClothingInfo,
+  toggleClothingFeed,
   setSearchTerm,
   searchFeed,
   toggleUpcomingSelected,
   togglePastSelected,
   selectMensWomensKids,
-} = sneakerSlice.actions;
+} = clothingSlice.actions;
