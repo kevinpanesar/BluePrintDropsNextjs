@@ -24,7 +24,7 @@ export const StyledBurger = styled.button`
   z-index: 50;
 
   @media (max-width: 1255px) {
-    height: 1.5rem;
+    height: 1.9rem;
   }
 
   @media (max-width: 750px) {
@@ -59,7 +59,7 @@ export const StyledBurger = styled.button`
     }
 
     @media (max-width: 1255px) {
-      width: 1.5rem;
+      width: 1.7rem;
       height: 0.10rem;
     }
   }

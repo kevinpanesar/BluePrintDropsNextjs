@@ -55,6 +55,7 @@ const ReleaseDateContainer = styled.div`
   width: 100%;
   height: 25%;
   background: #ffffff;
+  z-index: 10;
 `;
 const ReleaseText = styled.p`
   font-family: "Roboto Condensed", sans-serif;

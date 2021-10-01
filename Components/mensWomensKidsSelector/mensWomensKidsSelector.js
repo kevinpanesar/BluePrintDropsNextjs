@@ -65,7 +65,7 @@ export const Options = ({ sneaker, clothing }) => {
 };
 
 const Container = styled.div`
-  width: 90%;
+  width: 80%;
   height: 40px;
   margin: 20px auto 0 auto;
   display: flex;
