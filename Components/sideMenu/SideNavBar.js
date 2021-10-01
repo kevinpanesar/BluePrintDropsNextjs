@@ -38,8 +38,7 @@ export const StyledBurger = styled.button`
 
   div {
     width: 2rem;
-    height: 0.25rem;
-    border-radius: 10px;
+    height: 30;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
@@ -61,7 +60,7 @@ export const StyledBurger = styled.button`
 
     @media (max-width: 1255px) {
       width: 1.5rem;
-      height: 0.15rem;
+      height: 0.10rem;
     }
   }
 `;

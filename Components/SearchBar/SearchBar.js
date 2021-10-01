@@ -23,7 +23,7 @@ export const SearchBar = ({ clothing, sneaker }) => {
       <Input type="search" placeholder="Search..." defaultValue={term} />
       <ImageDiv>
         {" "}
-        <Image className="fa" src="/Media/search.svg" width={25} height={25} />
+        <Image className="fa" src="/Media/search.svg" width={30} height={30} />
       </ImageDiv>
     </Form>
   );
@@ -34,6 +34,7 @@ const Form = styled.form`
   box-sizing: border-box;
   border-radius: 25px;
   margin: 10px;
+  margin-right:0px;
   :hover {
     cursor: pointer;
 

@@ -101,16 +101,7 @@ const SubContainer2 = styled.div`
 `;
 
 const SneakerImg = styled(Image)`
-  width: 100%;
-`;
-
-const ReleaseSubText = styled.p`
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 8px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #000000;
-  margin-bottom: 5px;
+  width: 50%;
 `;
 
 const ImgContainer = styled.div`

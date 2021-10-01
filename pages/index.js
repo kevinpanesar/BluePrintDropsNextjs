@@ -83,10 +83,10 @@ export default function Home({ data }) {
         <Header />
         <SearchNavContainer>
           <SearchBar clothing={true} />
-          <div>
+          <NavContainer>
             <SideNavBar open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
-          </div>
+          </NavContainer>
         </SearchNavContainer>
       </HeaderContainer>
       <PastPresent sneaker={true} clothing={false} />
@@ -118,4 +118,10 @@ const Container = styled.div`
 
 const SearchNavContainer = styled.div`
   display: flex;
+`;
+
+const NavContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
