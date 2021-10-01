@@ -82,7 +82,7 @@ export default function Home({ data }) {
       <HeaderContainer>
         <Header />
         <SearchNavContainer>
-          <SearchBar clothing={true} />
+          <SearchBar sneaker={true} />
           <NavContainer>
             <SideNavBar open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />

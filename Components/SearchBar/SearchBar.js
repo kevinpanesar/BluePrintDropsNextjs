@@ -34,7 +34,7 @@ const Form = styled.form`
   box-sizing: border-box;
   border-radius: 25px;
   margin: 10px;
-  margin-right:0px;
+  margin-right: 0px;
   :hover {
     cursor: pointer;
 
@@ -68,5 +68,4 @@ const Input = styled.input`
   background-color: #f5f5f5;
 `;
 
-const ImageDiv = styled.div`
-`
+const ImageDiv = styled.div``;
