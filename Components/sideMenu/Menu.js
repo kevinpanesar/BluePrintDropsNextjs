@@ -9,7 +9,7 @@ const Menu = ({ open, setOpen }) => {
       <Link href={"/"}>
         <a>Home</a>
       </Link>
-      <Link href={"/clothing"}>
+      <Link href={"/clothing-releases"}>
         <a>Clothing</a>
       </Link>
       <Link href={"/about"}>
