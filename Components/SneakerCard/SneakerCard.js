@@ -92,9 +92,9 @@ const DateText = styled.p`
   }
 
   @media (min-width: 375px) and (max-width: 426px) {
-    left: 3px;
-    bottom: 14px;
-    font-size: 85px;
+    left: 0px;
+    bottom: 12px;
+    font-size: 80px;
   }
 
   @media (min-width: 450px) and (max-width: 768px) {
