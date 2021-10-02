@@ -59,7 +59,7 @@ const Input = styled.input`
   transition: max-height 0.3s ease-out;
   position: absolute;
   padding-left: 10px;
-  top: 40px;
+  top: 60px;
   right: 0px;
   width: 0%;
   max-height: 0px;
