@@ -42,4 +42,9 @@ const Container = styled.div`
   height: 50px;
   margin: 0px auto;
   width: 40%;
+
+  @media (max-width: 375px) {
+    width: 55%;
+  }
+  
 `

@@ -27,11 +27,15 @@ export default function ReleasePage({ postData }) {
         />
       </Head>
       <Container>
+      <HeaderContainer>
         <Header />
-        <NavContainer>
-          <SideNavBar open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-        </NavContainer>
+        <SearchNavContainer>
+          <NavContainer>
+            <SideNavBar open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </NavContainer>
+        </SearchNavContainer>
+      </HeaderContainer>
         <ReleaseInfoPage data={postData[0]} />
       </Container>
       <footer></footer>
@@ -91,6 +95,21 @@ const Container = styled.div`
   background-color: #f5f5f5;
 `;
 
-const NavContainer = styled.div`
-  padding-top: 10px;
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
+
+const SearchNavContainer = styled.div`
+  display: flex;
+`;
+
+const NavContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+

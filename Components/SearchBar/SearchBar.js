@@ -22,8 +22,7 @@ export const SearchBar = ({ clothing, sneaker }) => {
     <Form id="searchBar" onChange={handleChange}>
       <Input type="search" placeholder="Search..." defaultValue={term} />
       <ImageDiv>
-        {" "}
-        <Image className="fa" src="/Media/search.svg" width={30} height={30} />
+        <Image src="/Media/search.svg" width={30} height={30} />
       </ImageDiv>
     </Form>
   );
@@ -35,6 +34,10 @@ const Form = styled.form`
   border-radius: 25px;
   margin: 10px;
   margin-right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   :hover {
     cursor: pointer;
 
@@ -68,4 +71,9 @@ const Input = styled.input`
   background-color: #f5f5f5;
 `;
 
-const ImageDiv = styled.div``;
+const ImageDiv = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;

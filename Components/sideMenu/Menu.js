@@ -39,7 +39,7 @@ const StyledMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
   width: 16%;
-  z-index: 10;
+  z-index: 15;
   a {
     font-family: "Roboto", sans-serif;
     font-size: 35px;

@@ -84,6 +84,11 @@ const Container = styled.div`
   border-radius: 10px;
   cursor: pointer;
   padding: 5px;
+ 
+  @media only screen and (max-width: 375px) {
+    height: 40px;
+    margin-top: 10px;
+  }
 `;
 
 const Text = styled.h2`
@@ -92,6 +97,11 @@ const Text = styled.h2`
   font-family: "Signika", sans-serif;
   font-size: 18px;
   margin-bottom: 0rem;
+
+  @media only screen and (max-width: 375px) {
+    font-size: 14px;
+
+  }
 `;
 
 const UpcomingContainer = styled.div`

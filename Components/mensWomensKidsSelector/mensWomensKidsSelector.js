@@ -75,6 +75,12 @@ const Container = styled.div`
   border-radius: 10px;
   background-color: white;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media only screen and (max-width: 375px) {
+    height: 35px;
+    font-size: 14px;
+    margin: 15px auto 0 auto;
+  }
 `;
 
 const Item = styled.button`

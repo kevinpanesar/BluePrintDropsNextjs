@@ -11,11 +11,15 @@ export const AboutMePage = () => {
 
   return (
     <Container>
-      <Header />
-      <div>
-        <SideNavBar open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-      </div>
+      <HeaderContainer>
+        <Header />
+        <SearchNavContainer>
+          <NavContainer>
+            <SideNavBar open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </NavContainer>
+        </SearchNavContainer>
+      </HeaderContainer>
       <Content>
         <LargeText>PURPOSE</LargeText>
         <PurposeContainer>
@@ -49,11 +53,7 @@ export const AboutMePage = () => {
         <SocialMediaContainer>
           <IGCardFlex>
             <AboutImageDiv>
-              <SneakerImg
-                src="/Media/kevin.jfif"
-                width="398px"
-                height="398px"
-              />
+              <AboutImg src="/Media/kevin.jfif" width="398px" height="398px" />
             </AboutImageDiv>
 
             <NameSocialMediaContainer>
@@ -80,7 +80,7 @@ export const AboutMePage = () => {
         <SocialMediaContainer>
           <IGCardFlex>
             <AboutImageDiv>
-              <SneakerImg src="/Media/param.jpg" width="259px" height="232px" />
+              <AboutImg src="/Media/param.jpg" width="259px" height="232px" />
             </AboutImageDiv>
             <NameSocialMediaContainer>
               <Name>Paramvir Poonia</Name>
@@ -178,8 +178,11 @@ const InstagramLogo = styled(Image)`
 `;
 
 const SneakerImg = styled(Image)`
-  z-index: 100;
+  z-index: 8;
+  -webkit-filter: invert(100%);
 `;
+
+const AboutImg = styled(Image)``;
 
 const LargeText = styled.p`
   color: white;
@@ -196,8 +199,8 @@ const ImageHighlight = styled.div`
   border: 1px solid #468ea9;
   width: 100%;
   height: 100%;
-  z-index: 50;
-  background-image: url("/Media/grid.png");
+  z-index: 5;
+  background-image: url("/Media/grid2.png");
   background-position: bottom;
 `;
 
@@ -227,7 +230,6 @@ const NameSocialMediaContainer = styled.div`
 
 const Content = styled.div`
   background-color: black;
-  margin-top: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,4 +279,22 @@ const AboutUsDescription = styled.p`
   font-size: 24px;
   line-height: 1.1;
   padding-bottom: 20px;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const SearchNavContainer = styled.div`
+  display: flex;
+`;
+
+const NavContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

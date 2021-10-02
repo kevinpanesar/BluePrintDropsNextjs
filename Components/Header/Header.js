@@ -14,6 +14,7 @@ export const Header = () => {
 
 const HeaderContainer = styled.div`
   height: 40px;
+  width: 70%;
   display: flex;
   justify-content: flex-start;
   align-items: center;

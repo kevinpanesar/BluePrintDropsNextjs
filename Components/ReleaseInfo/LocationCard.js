@@ -3,24 +3,17 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 
-export const LocationCard = ({ location }) => {
-  // const locationData = useSelector((state) => {
+export const LocationCard = ({ location, length }) => {
 
-  //     if (state.sneaker.currentSneakerInfo == undefined) {
-  //         return state.sneaker.allSneakerInfo[0].locations;
-  //     }
-
-  //     return state.sneaker.currentSneakerInfo.cities;
-
-  // })
+  console.log(length)
 
   const address = `http://maps.google.com/?q=${location.Address}`;
 
   return (
-    <Container>
+    <Container length={length}>
       <ImageTitleContainer>
         <ImageContainer>
-          <img src={location.img} width="90px" />
+          <BrandImage src={location.img} height="100%" />
         </ImageContainer>
         <TitleSubtitleContainer>
           <h5>{location.location}</h5>
@@ -47,6 +40,9 @@ const Container = styled.div`
 
   p {
     padding: 10px;
+    @media (max-width: 375px) {
+      padding: 3px;
+    }
   }
 
   &:first-child {
@@ -54,7 +50,13 @@ const Container = styled.div`
   }
 
   &:last-child {
-    border-top: 2px solid #c0c0c0;
+    border-top: ${(props) => {
+      if (props.length > 2) {
+        return "2px solid #c0c0c0";
+      } else {
+        return "null";
+      }
+    }};
     padding-bottom: 0px;
     padding-top: 10px;
   }
@@ -74,7 +76,7 @@ const ImageContainer = styled.div`
   overflow: hidden;
   margin: 10px;
   width: 80px;
-  height: 60px;
+  height: 50px;
   background-color: black;
   display: flex;
   align-items: center;
@@ -88,13 +90,11 @@ const TitleSubtitleContainer = styled.div`
   align-content: center;
 `;
 
-const GoogleMapsImg = styled(Image)``;
+const BrandImage = styled.img``;
 
 const GoogleWrapper = styled.div`
   margin: 10px;
-`;
-const TitleImgContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @media (max-width: 375px) {
+    margin: 0px;
+  }
 `;

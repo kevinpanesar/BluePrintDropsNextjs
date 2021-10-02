@@ -17,6 +17,21 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 });
 
 export const ReleaseInfoPage = ({ data }) => {
+  let cities = Object.keys(data.cities);
+
+  let raffleOnOff = cities.map((element) => {
+    return data.cities[element].some((element) => {
+      if (element.type === "Raffle") {
+        return true;
+      }
+    });
+  });
+
+  console.log(raffleOnOff);
+  // const raffleButtonOnOff = data.cities.filter((element) => {
+  //   element.some((element) => element.type.includes("Raffle"));
+  // });
+
   return (
     <Container>
       <ImageSlider data={data} />
@@ -26,7 +41,7 @@ export const ReleaseInfoPage = ({ data }) => {
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((element, index) => {
+            ? Object.keys(data.cities).map((city, index) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
@@ -34,12 +49,16 @@ export const ReleaseInfoPage = ({ data }) => {
                     key={index}
                   >
                     <Accordion.Header id="accordion-header">
-                      {element}
+                      {city}
                     </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
-                        ? data.cities[element].map((element, index) => (
-                            <LocationCard location={element} key={index} />
+                        ? data.cities[city].map((element, index) => (
+                            <LocationCard
+                              location={element}
+                              key={index}
+                              length={data.cities[city].length}
+                            />
                           ))
                         : null}
                     </AccordionBody>
@@ -49,7 +68,7 @@ export const ReleaseInfoPage = ({ data }) => {
             : null}
         </Accordion>
       </LocationsContainer>
-      <NavBar data={data} />
+      {raffleOnOff.includes(true) && <NavBar data={data} />}
     </Container>
   );
 };

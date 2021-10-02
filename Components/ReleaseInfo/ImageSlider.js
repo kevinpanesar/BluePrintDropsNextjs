@@ -7,24 +7,11 @@ import { useSelector } from "react-redux";
 const handleDragStart = (e) => e.preventDefault();
 
 export const ImageSlider = ({ data }) => {
-  // const Images = useSelector((state) =>{
-
-  //     if (state.sneaker.currentSneakerInfo == undefined) {
-  //         return state.sneaker.allSneakerInfo[0].images;
-  //     }
-
-  //     return state.sneaker.currentSneakerInfo.images})
-
   let items;
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
-      <img
-        width="100%"
-        className="imageCarousel"
-        src={element}
-        onDragStart={handleDragStart}
-      />
+      <SlideImage src={element} onDragStart={handleDragStart} />
     ));
   }
 
@@ -42,7 +29,12 @@ export const ImageSlider = ({ data }) => {
 
 const Container = styled.div`
   width: 90%;
-  border-radius: 22px;
   overflow: hidden;
   margin: 0 auto;
+`;
+
+const SlideImage = styled.img`
+  width: 100%;
+  padding: 10px;
+  border-radius: 22px;
 `;

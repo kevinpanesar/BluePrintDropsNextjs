@@ -96,7 +96,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 30px;
   padding-bottom: 20px;
 
   h1 {

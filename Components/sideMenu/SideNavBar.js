@@ -32,6 +32,10 @@ export const StyledBurger = styled.button`
     right: 2%;
   }
 
+  @media (max-width: 375px) {
+      padding: 3px;
+  }
+
   &:focus {
     outline: none;
   }
@@ -62,6 +66,10 @@ export const StyledBurger = styled.button`
       width: 1.7rem;
       height: 0.10rem;
     }
+
+    @media (max-width: 375px) {
+      width: 1.6rem;
+  }
   }
 `;
 

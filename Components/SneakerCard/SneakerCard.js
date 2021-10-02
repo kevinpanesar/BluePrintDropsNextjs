@@ -79,6 +79,12 @@ const DateText = styled.p`
   left: 8px;
   bottom: 16px;
   line-height: 1;
+
+  @media (max-width: 375px) {
+    left: 3px;
+    bottom: 14px;
+    font-size: 80px;
+  }
 `;
 
 const SubContainer = styled.div`
