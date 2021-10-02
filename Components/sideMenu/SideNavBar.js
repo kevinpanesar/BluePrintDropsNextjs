@@ -23,6 +23,10 @@ export const StyledBurger = styled.button`
   cursor: pointer;
   z-index: 50;
 
+  @media (min-width: 768px) {
+      display: none;
+  }
+
   @media (max-width: 1255px) {
     height: 1.9rem;
   }

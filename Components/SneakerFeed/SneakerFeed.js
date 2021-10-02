@@ -65,6 +65,10 @@ const Links = styled.a`
   flex-wrap: wrap;
   justify-content: space-around;
   text-decoration: none;
+
+    @media (min-width: 450px) and (max-width: 768px) {
+    width: 33%;
+  }
 `;
 
 const Month = styled.h2`

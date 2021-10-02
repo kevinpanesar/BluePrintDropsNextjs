@@ -102,6 +102,10 @@ const Container = styled.div`
   h1 {
     margin-top: 15px;
   }
+
+    @media (min-width: 450px) and (max-width: 768px) {
+      width: 70%;
+  }
 `;
 
 const Description = styled.div`

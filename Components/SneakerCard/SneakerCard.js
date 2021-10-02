@@ -37,6 +37,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+    @media (min-width: 450px) and (max-width: 768px) {
+    height: 250px;
+  }
 `;
 
 const ReleasePriceContainer = styled.div`
@@ -91,7 +94,12 @@ const DateText = styled.p`
   @media (min-width: 375px) and (max-width: 426px) {
     left: 3px;
     bottom: 14px;
-    font-size: 97px;
+    font-size: 85px;
+  }
+
+  @media (min-width: 450px) and (max-width: 768px) {
+    font-size: 75px;
+    left: 1px;
   }
 `;
 
@@ -122,4 +130,7 @@ const SneakerImg = styled(Image)`
 const ImgContainer = styled.div`
   width: 90%;
   height: 92px;
+  @media (min-width: 580px) and (max-width: 768px) {
+    width: 75%;
+  }
 `;

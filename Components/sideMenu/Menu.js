@@ -38,7 +38,7 @@ const StyledMenu = styled.nav`
   right: 0;
   transition: transform 0.3s ease-in-out;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 16%;
+  width: 25%;
   z-index: 15;
   a {
     font-family: "Roboto", sans-serif;
@@ -79,7 +79,11 @@ const StyledMenu = styled.nav`
     }
   }
 
-  @media (max-width: 610px) {
+    @media (min-width: 768px) {
+      display: none;
+  }
+
+  @media (max-width: 768px) {
     width: 100%;
     padding: 0rem;
 
