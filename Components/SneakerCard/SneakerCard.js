@@ -64,7 +64,7 @@ const ReleaseText = styled.p`
   color: #000000;
   margin-bottom: 5px;
   line-height: 1.3;
-  @media (min-width: 375px) and (max-width: 425px) {
+  @media (min-width: 375px) and (max-width: 426px) {
     font-size: 11px;
   }
 `;
@@ -88,7 +88,7 @@ const DateText = styled.p`
     font-size: 80px;
   }
 
-  @media (min-width: 375px) and (max-width: 425px) {
+  @media (min-width: 375px) and (max-width: 426px) {
     left: 3px;
     bottom: 14px;
     font-size: 97px;
