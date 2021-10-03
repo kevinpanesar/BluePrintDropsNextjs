@@ -3,6 +3,9 @@
    License: none (public domain)
 */
 
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 html,
 body,
 div,
@@ -201,3 +204,6 @@ td {
   border-collapse: collapse;
 }
 
+.react-share__ShareButton svg{
+  border-radius: 5px;
+}

@@ -34,10 +34,11 @@ export const ReleaseInfoPage = ({ data }) => {
 
   return (
     <Container>
+      <div>
       <ImageSlider data={data} />
-      <ShareIcons />
+      <ShareIcons mobile={true}/>
       <ReleaseCard data={data} />
-
+      </div>
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
@@ -87,3 +88,9 @@ const LocationsContainer = styled.div`
   margin-top: 30px;
   margin: 20px auto;
 `;
+
+const DesktopContainer = styled.div`
+display: flex;
+flex-direction: row;
+
+`

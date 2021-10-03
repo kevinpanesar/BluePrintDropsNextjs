@@ -11,25 +11,27 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-export const ShareIcons = () => {
+export const ShareIcons = (mobile) => {
   let url;
   if (process.browser) {
     // Client-side-only code
     url = window.location.href;
   }
+
+
   return (
     <Container>
       <FacebookShareButton url={url}>
-        <FacebookIcon size={32} round={true} />
+        <FacebookIcon size={32} round={mobile} />
       </FacebookShareButton>
       <TwitterShareButton url={url}>
-        <TwitterIcon size={32} round={true} />
+        <TwitterIcon size={32} round={mobile} />
       </TwitterShareButton>
       <RedditShareButton url={url}>
-        <RedditIcon size={32} round={true} />
+        <RedditIcon size={32} round={mobile} />
       </RedditShareButton>
       <WhatsappShareButton url={url}>
-        <WhatsappIcon size={32} round={true} />
+        <WhatsappIcon size={32} round={mobile} />
       </WhatsappShareButton>
     </Container>
   );
@@ -44,6 +46,10 @@ const Container = styled.div`
   width: 40%;
 
   @media (max-width: 375px) {
+    width: 55%;
+  }
+
+    @media (min-width: 768px) {
     width: 55%;
   }
   

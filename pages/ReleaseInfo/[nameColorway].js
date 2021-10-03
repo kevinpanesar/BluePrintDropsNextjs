@@ -6,6 +6,8 @@ import Menu from "../../Components/sideMenu/Menu";
 import SideNavBar from "../../Components/sideMenu/SideNavBar";
 import { Header } from "../../Components/Header/Header";
 import { useState } from "react";
+import { DesktopMenu } from "../../Components/desktopMenu/DesktopMenu";
+import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopReleasePage";
 
 export default function ReleasePage({ postData }) {
   const [open, setOpen] = useState(false);
@@ -27,16 +29,18 @@ export default function ReleasePage({ postData }) {
         />
       </Head>
       <Container>
-      <HeaderContainer>
-        <Header />
-        <SearchNavContainer>
-          <NavContainer>
-            <SideNavBar open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
-          </NavContainer>
-        </SearchNavContainer>
-      </HeaderContainer>
-        <ReleaseInfoPage data={postData[0]} />
+        <HeaderContainer>
+          <Header />
+          <DesktopMenu />
+          <SearchNavContainer>
+            <NavContainer>
+              <SideNavBar open={open} setOpen={setOpen} />
+              <Menu open={open} setOpen={setOpen} />
+            </NavContainer>
+          </SearchNavContainer>
+        </HeaderContainer>
+        {/* <ReleaseInfoPage data={postData[0]} /> */}
+        <DesktopReleasePage data={postData[0]} />
       </Container>
       <footer></footer>
     </Container>
@@ -101,6 +105,13 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+    @media (min-width: 768px) {
+      border-top: 1px solid #C0C0C0;
+      border-bottom: 1px solid #C0C0C0;
+      padding: 10px;
+      background-color: white;
+  }
 `;
 
 const SearchNavContainer = styled.div`
@@ -112,4 +123,3 @@ const NavContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
