@@ -4,26 +4,27 @@ import { useSelector } from "react-redux";
 import { format } from "date-fns";
 import { MensWomensKidsIcons } from "../mensWomensKidsSelector/mensWomensKidsIcons";
 
-export const ReleaseCard = ({ data }) => {
+export const ReleaseCard = ({ data, desktop }) => {
   console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
-    <Container>
+    <Container desktop={desktop}>
       <TitleContainer>
-        <div>
-          {data.title + " " + data.colorway}
-        </div>
+        <div>{data.title}</div>
       </TitleContainer>
       <PriceDateContainer>
         <Labels>
           <p>PRICE:</p>
           <p>RELEASE DATE:</p>
           <p>STYLE CODE:</p>
+          <p>COLOR:</p>
           <MensWomensKidsIcons data={data} />
         </Labels>
         <Values>
           <p>{data.price}</p>
           <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
-          <p>{data.styleCode}</p>
+          {/* <p>{data.styleCode}</p> */}
+          <p>#12341234</p>
+          <p>{data.colorway}</p>
         </Values>
       </PriceDateContainer>
     </Container>
@@ -33,8 +34,14 @@ export const ReleaseCard = ({ data }) => {
 const Container = styled.div`
   width: 90%;
   margin: 0 auto;
-  background-image: url("https://c4.wallpaperflare.com/wallpaper/355/376/62/blueprints-textures-2560x1600-abstract-textures-hd-art-wallpaper-preview.jpg");
-  border-radius: 22px;
+  background: #21587f;
+  border-radius: ${(props) => {
+    if (props.desktop) {
+      return "5px";
+    } else {
+      return "22px";
+    }
+  }};
   color: white;
   margin-top: 15px;
   display: flex;
@@ -55,6 +62,8 @@ const TitleContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
   padding-top: 9px;
+  border-bottom: 1px solid #c0c0c0;
+  padding-bottom: 5px;
 `;
 
 const PriceDateContainer = styled.div`

@@ -36,7 +36,7 @@ export const ReleaseInfoPage = ({ data }) => {
     <Container>
       <div>
       <ImageSlider data={data} />
-      <ShareIcons mobile={true}/>
+      <ShareIcons mobile={true} desktop={false}/>
       <ReleaseCard data={data} />
       </div>
       <LocationsContainer>

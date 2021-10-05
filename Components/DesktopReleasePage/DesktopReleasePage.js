@@ -9,65 +9,56 @@ import { ShareIcons } from "../ShareIcons/ShareIcons";
 import { NavBar } from "../NavBar/NavBar";
 import { DesktopSlider } from "./DesktopSlider";
 
-const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
-    ssr: false,
-});
-
 export const DesktopReleasePage = ({ data }) => {
-    let cities = Object.keys(data.cities);
+  let cities = Object.keys(data.cities);
 
-    let raffleOnOff = cities.map((element) => {
-        return data.cities[element].some((element) => {
-            if (element.type === "Raffle") {
-                return true;
-            }
-        });
+  let raffleOnOff = cities.map((element) => {
+    return data.cities[element].some((element) => {
+      if (element.type === "Raffle") {
+        return true;
+      }
     });
+  });
 
-    return (
-        <Container>
-            <SliderShareIconsReleaseCardCont>
-                <DesktopSlider data={data} />
-                <ShareIcons />
-                <ReleaseCard data={data} />
-            </SliderShareIconsReleaseCardCont>
-            <LocationsContainer>
-                <Accordion defaultActiveKey="0" flush>
-                    {data.cities !== undefined
-                        ? Object.keys(data.cities).map((city, index) => {
-                            return (
-                                <Accordion.Item
-                                    id="accordion-item"
-                                    eventKey={index}
-                                    key={index}
-                                >
-                                    <Accordion.Header id="accordion-header">
-                                        {city}
-                                    </Accordion.Header>
-                                    <AccordionBody id="accordion-body">
-                                        {data !== undefined
-                                            ? data.cities[city].map((element, index) => (
-                                                <LocationCard
-                                                    location={element}
-                                                    key={index}
-                                                    length={data.cities[city].length}
-                                                />
-                                            ))
-                                            : null}
-                                    </AccordionBody>
-                                </Accordion.Item>
-                            );
-                        })
-                        : null}
-                </Accordion>
-            </LocationsContainer>
-            {raffleOnOff.includes(true) && <NavBar data={data} />}
-        </Container>
-    );
+  return (
+    <Container desktop={true}>
+      <SliderShareIconsReleaseCardCont>
+        <DesktopSlider data={data} />
+        <ShareIcons desktop={true} mobile={false} />
+        <ReleaseCard data={data} desktop={true} />
+      </SliderShareIconsReleaseCardCont>
+      <LocationsContainer>
+        <LocalTitle>Local Retailers</LocalTitle>
+        {data.cities !== undefined
+          ? Object.keys(data.cities).map((city, index) => {
+              return (
+                <Body>
+                  {data !== undefined
+                    ? data.cities[city].map((element, index) => (
+                        <LocationCard
+                          location={element}
+                          data={data}
+                          key={index}
+                          length={data.cities[city].length}
+                          desktop={true}
+                        />
+                      ))
+                    : null}
+                </Body>
+              );
+            })
+          : null}
+        <LocalTitle>USA Links</LocalTitle>
+        <LocalTitle>International Links</LocalTitle>
+      </LocationsContainer>
+
+      {/* {raffleOnOff.includes(true) && <NavBar data={data} />} */}
+    </Container>
+  );
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 75%;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -76,16 +67,34 @@ const Container = styled.div`
 `;
 
 const LocationsContainer = styled.div`
-  width: 90%;
-  margin-top: 30px;
-  margin: 20px auto;
+  margin: 0px auto;
+  overflow: auto;
+  height: 85vh;
+  width: 40%;
+  font-family: "Inter";
 `;
 
 const DesktopContainer = styled.div`
-display: flex;
-flex-direction: row;
-
-`
+  display: flex;
+  flex-direction: row;
+`;
 const SliderShareIconsReleaseCardCont = styled.div`
-width: 55%;
-`
+  width: 55%;
+`;
+
+const LocalTitle = styled.p`
+  font-weight: 600;
+  font-size: 26.9032px;
+  font-family: "Inter";
+`;
+
+const Body = styled.div`
+  width: 100%;
+  border-bottom: 2px solid #c0c0c0;
+
+  &:last-child {
+    border-bottom: 2px solid white;
+    padding-bottom: 0px;
+    padding-top: 10px;
+  }
+`;

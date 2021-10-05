@@ -106,11 +106,12 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
 
-    @media (min-width: 768px) {
-      border-top: 1px solid #C0C0C0;
-      border-bottom: 1px solid #C0C0C0;
-      padding: 10px;
-      background-color: white;
+  @media (min-width: 768px) {
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
+    padding: 10px;
+    background-color: white;
+    width: 75%;
   }
 `;
 

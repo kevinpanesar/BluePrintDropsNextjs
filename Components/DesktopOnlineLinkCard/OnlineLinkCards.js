@@ -1,32 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 
-export const LocationCard = ({ location, length, desktop, data }) => {
-  console.log(length);
-
-  const address = `http://maps.google.com/?q=${location.Address}`;
-
-  let button;
-
-  if (desktop) {
-    if (location.type.toLowerCase().includes("raffle")) {
-      button = (
-        <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
-          <RaffleButton>Generate Raffles</RaffleButton>
-        </Link>
-      );
-    } else {
-      button = (
-        <RaffleButton disabled={true} disabled>
-          FCFS
-        </RaffleButton>
-      );
-    }
-  }
-
+export const OnlineLinkCards = ({ location, length, desktop, data }) => {
   return (
     <Container length={length}>
       <LeftContainer>
@@ -36,28 +13,21 @@ export const LocationCard = ({ location, length, desktop, data }) => {
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>
-              <a href={address}>{location.location}</a>
+             {location.location}
             </StoreName>
-            <h6>
-              <strong>{location.date}</strong>
-            </h6>
+            <h6>{location.type}</h6>
+            <h6>{location.date}</h6>
           </TitleSubtitleContainer>
         </ImageTitleContainer>
         <DropDescription>
-          <h6>
-            <strong>{location.type}</strong>
-          </h6>
           <p>{location.Description}</p>
         </DropDescription>
-        {!desktop && (
-          <a href={address}>
-            <GoogleWrapper>
-              <Image src="/Media/googlemaps.svg" width="30" height="30" />
-            </GoogleWrapper>
-          </a>
-        )}
       </LeftContainer>
-      <RightContainer>{button}</RightContainer>
+      <RightContainer>
+        <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
+          <RaffleButton>Link</RaffleButton>
+        </Link>
+      </RightContainer>
     </Container>
   );
 };
@@ -111,11 +81,6 @@ const ImageTitleContainer = styled.div`
   align-items: center;
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  margin-bottom: 10px;
-
-  h6 {
-    margin-bottom: 2px;
-  }
 `;
 
 const ImageContainer = styled.div`
