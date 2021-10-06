@@ -5,6 +5,7 @@ import { getDate } from "date-fns";
 
 export const SneakerCard = ({ cardInfo, switchShoe }) => {
   const releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
+  const date = cardInfo.date.replace(/, /g, "/");
   return (
     <Container>
       <ReleaseDateContainer>
@@ -19,7 +20,8 @@ export const SneakerCard = ({ cardInfo, switchShoe }) => {
           <ReleaseText>{cardInfo.price}</ReleaseText>
         </SubContainer>
         <SubContainer2>
-          <ReleaseText>{cardInfo.title + " " + cardInfo.colorway}</ReleaseText>
+          <ReleaseText>{cardInfo.title}</ReleaseText>
+          <SneakerCardDate>{date}</SneakerCardDate>
         </SubContainer2>
       </ReleasePriceContainer>
     </Container>
@@ -40,6 +42,10 @@ const Container = styled.div`
     @media (min-width: 450px) and (max-width: 768px) {
     height: 250px;
   }
+
+  @media (min-width: 768px){
+    height: 400px;
+  }
 `;
 
 const ReleasePriceContainer = styled.div`
@@ -51,6 +57,11 @@ const ReleasePriceContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+   @media (min-width: 768px){
+    height: 400px;
+    justify-content: space-between;
+    text-align: center;
+  }
 `;
 
 const ReleaseDateContainer = styled.div`
@@ -69,6 +80,14 @@ const ReleaseText = styled.p`
   line-height: 1.3;
   @media (min-width: 375px) and (max-width: 426px) {
     font-size: 11px;
+  }
+
+  @media (min-width: 768px){
+  font-family: "Poppins";
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 27px;
   }
 `;
 
@@ -101,6 +120,10 @@ const DateText = styled.p`
     font-size: 75px;
     left: 1px;
   }
+
+    @media (min-width: 769px){
+      font-size: 110px;
+  }
 `;
 
 const SubContainer = styled.div`
@@ -112,6 +135,9 @@ const SubContainer = styled.div`
   margin-bottom: 5px;
   line-height: 1;
   margin-top: 22px;
+    @media (min-width: 768px){
+    display: none;
+  }
 `;
 const SubContainer2 = styled.div`
   display: flex;
@@ -134,3 +160,18 @@ const ImgContainer = styled.div`
     width: 75%;
   }
 `;
+
+const SneakerCardDate = styled.p`
+  @media (min-width: 768px){
+font-family: 'Poppins';
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 21px;
+display: flex;
+letter-spacing: -0.02em;
+width: 100%;
+justify-content: center;
+color: black;
+  }
+`

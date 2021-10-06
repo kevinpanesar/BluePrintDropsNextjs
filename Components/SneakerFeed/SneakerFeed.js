@@ -18,20 +18,20 @@ export const SneakerFeed = ({ filteredResults }) => {
               <CardContainer>
                 {element !== undefined
                   ? element.map((element, index) => {
-                      return (
-                        <Link
-                          passHref
-                          key={element.title + element.colorway}
-                          href={
-                            "/ReleaseInfo/" + element.title + "KP" + element._id
-                          }
-                        >
-                          <Links>
-                            <SneakerCard cardInfo={element} />
-                          </Links>
-                        </Link>
-                      );
-                    })
+                    return (
+                      <Link
+                        passHref
+                        key={element.title + element.colorway}
+                        href={
+                          "/ReleaseInfo/" + element.title + "KP" + element._id
+                        }
+                      >
+                        <Links>
+                          <SneakerCard cardInfo={element} />
+                        </Links>
+                      </Link>
+                    );
+                  })
                   : null}
               </CardContainer>
             </div>
@@ -52,11 +52,21 @@ const Container = styled.div`
   background-color: #f5f5f5;
   overflow: scroll;
   height: 600px;
+  
+      @media (min-width: 769px) {
+    width: 75%;
+    margin: 0 auto;
+    height: 100%;
+    overflow: visible;
+    background-color: white;
+  }
+  
 `;
 
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
 `;
 
 const Links = styled.a`
@@ -65,16 +75,31 @@ const Links = styled.a`
   flex-wrap: wrap;
   justify-content: space-around;
   text-decoration: none;
+  
 
     @media (min-width: 450px) and (max-width: 768px) {
     width: 33%;
   }
+
+      @media (min-width: 769px) {
+    width: 25%;
+  }
 `;
 
-const Month = styled.h2`
+const Month = styled.p`
   text-align: left;
   font-family: "Signika", sans-serif;
   margin-bottom: 20px;
   margin-left: 10px;
   font-weight: 600;
+  font-size: 24px;
+  
+  @media (min-width: 769px) {
+    font-size: 20px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+  }
+  
 `;

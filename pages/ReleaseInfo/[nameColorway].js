@@ -111,7 +111,7 @@ const HeaderContainer = styled.div`
     border-bottom: 1px solid #c0c0c0;
     padding: 10px;
     background-color: white;
-    width: 75%;
+    width: 70%;
   }
 `;
 

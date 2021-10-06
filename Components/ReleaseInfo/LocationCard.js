@@ -5,10 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const LocationCard = ({ location, length, desktop, data }) => {
-  console.log(length);
-
   const address = `http://maps.google.com/?q=${location.Address}`;
-
   let button;
 
   if (desktop) {
@@ -63,6 +60,7 @@ export const LocationCard = ({ location, length, desktop, data }) => {
 };
 
 const Container = styled.div`
+height: 200px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -83,12 +81,12 @@ const Container = styled.div`
 
   &:last-child {
     border-top: ${(props) => {
-      if (props.length > 2) {
-        return "2px solid #c0c0c0";
-      } else {
-        return "null";
-      }
-    }};
+    if (props.length > 2) {
+      return "2px solid #c0c0c0";
+    } else {
+      return "null";
+    }
+  }};
     padding-bottom: 0px;
     padding-top: 10px;
   }
@@ -147,7 +145,7 @@ const GoogleWrapper = styled.div`
 `;
 
 const DropDescription = styled.div`
-  width: 70%;
+  width: 90%;
   margin-bottom: 5px;
 `;
 const LeftContainer = styled.div`

@@ -6,16 +6,16 @@ export const DesktopMenu = () => {
   return (
     <StyledMenu>
       <Link id="navText" href={"/"}>
-        <NavPages>Home</NavPages>
+        <NavPages>Sneaker Releases</NavPages>
       </Link>
       <Link href={"/clothing-releases"}>
-        <NavPages>Clothing</NavPages>
+        <NavPages>Clothing Releases</NavPages>
       </Link>
       <Link href={"/clothing-releases"}>
         <NavPages>Tools</NavPages>
       </Link>
       <Link href={"/about"}>
-        <NavPages>About</NavPages>
+        <NavPages>About Us</NavPages>
       </Link>
     </StyledMenu>
   );

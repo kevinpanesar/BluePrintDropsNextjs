@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
-export const PastPresent = ({sneaker, clothing}) => {
+export const PastPresent = ({ sneaker, clothing }) => {
   const dispatch = useDispatch();
 
   const upcoming = useSelector((state) => {
@@ -84,10 +84,17 @@ const Container = styled.div`
   border-radius: 10px;
   cursor: pointer;
   padding: 5px;
+  margin: 20px auto;
  
   @media only screen and (max-width: 375px) {
     height: 40px;
     margin-top: 10px;
+  }
+
+      @media (min-width: 769px) {
+    width: 60%;
+    margin: 20px auto;
+    background-color: white;
   }
 `;
 

@@ -81,6 +81,11 @@ const Container = styled.div`
     font-size: 14px;
     margin: 15px auto 0 auto;
   }
+
+  @media (min-width: 769px) {
+    width: 55%;
+    margin: 20px auto;
+  }
 `;
 
 const Item = styled.button`

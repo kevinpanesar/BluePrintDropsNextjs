@@ -1,57 +1,75 @@
-import {React, useState } from "react";
-import Slider from "react-slick";
+import { React, useEffect, useRef } from 'react'
+import dynamic from 'next/dynamic'
 import styled from "styled-components";
-import { LeftSliderArrow } from "./SliderArrows/LeftSliderArrow copy";
-import { RightSliderArrow } from "./SliderArrows/RightSliderArrow";
 
+import { Splide, SplideSlide } from 'splide-nextjs/react-splide';
 
-export const DesktopSlider = ({ data }) => {
-    const [currentSlide, setCurrentSlide] = useState();
-    console.log(currentSlide);
+export const ThumbnailSlider = ({ data }) => {
+
+    const primaryRef = useRef();
+    const secondaryRef = useRef();
     let items;
+
+    useEffect(() => {
+        primaryRef.current.sync(secondaryRef.current.splide);
+    })
 
     if (data.images !== undefined) {
         items = data.images.map((element, index) => (
-            <div key={index}>
-                <SlideImage src={element} />
-            </div>
-
+            <SplideSlide>
+                <SlideImage src={element} height="100%" />
+            </SplideSlide>
         ));
     }
 
     items.shift();
 
-    const settings = {
-        dots: true,
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        beforeChange: (current, next) => setCurrentSlide(next),
-        nextArrow: <RightSliderArrow length={data.images.length - 2} currentSlide={currentSlide}/>,
-        prevArrow: <LeftSliderArrow currentSlide={currentSlide}/>,
-        
+    const primaryOptions = {
+        type: 'loop',
+        perPage: 1,
+        perMove: 1,
+        gap: '1rem',
+        pagination: false,
+    };
+
+    const secondaryOptions = {
+        type: 'slide',
+        rewind: true,
+        gap: '1rem',
+        pagination: false,
+        fixedWidth: 110,
+        fixedHeight: 70,
+        cover: true,
+        isNavigation: true,
+        updateOnMove: true,
+        focus: 'center'
     };
 
     return (
         <Container>
-            <Slider {...settings}>
+            <Splide options={primaryOptions} ref={primaryRef} className="testing">
                 {items}
-            </Slider>
+            </Splide>
+
+            <Splide options={secondaryOptions} ref={secondaryRef} className="navSlider">
+                {items}
+            </Splide>
         </Container>
-
     );
-};
-
-const Container = styled.div`
-  width: 90%;
-  overflow: hidden;
-  margin: 0 auto;
-  border: 2px solid #C0C0C0;
-  border-radius: 10px;
-  position: relative;
-`;
+}
 
 const SlideImage = styled.img`
-  width: 100%;
-  padding: 10px;
+object-fit: contain;
+ height: 100%;
+ width: 100%;
+ max-height: 55vh;
+ max-width: 100vh;
+ padding: 20px;
 `;
+
+const Container = styled.div`
+width: 90%;
+margin: auto;
+overflow: hidden;
+margin-bottom: 20px;
+`

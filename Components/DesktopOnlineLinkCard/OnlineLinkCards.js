@@ -3,28 +3,27 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-export const OnlineLinkCards = ({ location, length, desktop, data }) => {
+export const OnlineLinkCards = ({ link, length, desktop }) => {
   return (
     <Container length={length}>
       <LeftContainer>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
-            <BrandImage src={location.img} width="110%" />
+            <BrandImage src={link.img} width="110%" />
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>
-             {location.location}
+              {link.title}
             </StoreName>
-            <h6>{location.type}</h6>
-            <h6>{location.date}</h6>
+            <h6>{link.type}</h6>
           </TitleSubtitleContainer>
         </ImageTitleContainer>
         <DropDescription>
-          <p>{location.Description}</p>
+          {link.Description && <p>{link.Description}</p>} 
         </DropDescription>
       </LeftContainer>
       <RightContainer>
-        <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>
+        <Link href={link.link}>
           <RaffleButton>Link</RaffleButton>
         </Link>
       </RightContainer>
@@ -53,12 +52,12 @@ const Container = styled.div`
 
   &:last-child {
     border-top: ${(props) => {
-      if (props.length > 2) {
-        return "2px solid #c0c0c0";
-      } else {
-        return "null";
-      }
-    }};
+    if (props.length > 2) {
+      return "2px solid #c0c0c0";
+    } else {
+      return "null";
+    }
+  }};
     padding-bottom: 0px;
     padding-top: 10px;
   }
@@ -76,7 +75,6 @@ const StoreName = styled.p`
 
 const ImageTitleContainer = styled.div`
   width: 100%;
-  height: 50%;
   display: flex;
   align-items: center;
   font-family: "Inter", sans-serif;

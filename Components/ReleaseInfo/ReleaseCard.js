@@ -5,7 +5,6 @@ import { format } from "date-fns";
 import { MensWomensKidsIcons } from "../mensWomensKidsSelector/mensWomensKidsIcons";
 
 export const ReleaseCard = ({ data, desktop }) => {
-  console.log(format(new Date(data.date.replace(/, /g, "/")), "PPP"));
   return (
     <Container desktop={desktop}>
       <TitleContainer>

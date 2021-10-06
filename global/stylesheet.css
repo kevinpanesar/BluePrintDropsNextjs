@@ -5,6 +5,7 @@
 
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import 'splide-nextjs/splide/dist/css/themes/splide-skyblue.min.css';
 
 html,
 body,
@@ -206,4 +207,23 @@ td {
 
 .react-share__ShareButton svg{
   border-radius: 5px;
+}
+
+.splide__arrow svg{
+  fill: gray;
+}
+
+.splide__arrow svg:hover{
+  fill: rgb(182, 179, 179);
+}
+.navSlider button{
+  display: none;
+}
+
+.navSlider{
+  margin-top: 10px;
+}
+
+.splide__arrow svg {
+  height: 20px;
 }

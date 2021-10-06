@@ -38,6 +38,16 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
+   @media (min-width: 769px) {
+
+          :hover{
+            input{
+              background-color: red;
+            }
+          }
+  }
+
   :hover {
     cursor: pointer;
 
@@ -48,6 +58,7 @@ const Form = styled.form`
       padding-right: 10px;
       display: block;
       background-color: white;
+
     }
     .fa {
       color: black;
@@ -69,6 +80,13 @@ const Input = styled.input`
   font-size: 1em;
   overflow: none;
   background-color: #f5f5f5;
+
+   @media (min-width: 769px) {
+
+          :hover{
+              background-color: red;
+          }
+  }
 `;
 
 const ImageDiv = styled.div`
