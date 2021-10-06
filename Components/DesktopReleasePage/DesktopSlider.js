@@ -1,4 +1,5 @@
 import { React, useEffect, useRef } from 'react'
+
 import styled from "styled-components";
 import Image from 'next/image';
 
@@ -17,7 +18,7 @@ export const ThumbnailSlider = ({ data }) => {
     if (data.images !== undefined) {
         items = data.images.map((element, index) => (
             <SplideSlide>
-                <SlideImage src={element} height="600px" width="800px" />
+                <SlideImage src={element} layout="fill" />
             </SplideSlide>
         ));
     }
@@ -58,7 +59,7 @@ export const ThumbnailSlider = ({ data }) => {
     );
 }
 
-const SlideImage = styled(Image)`
+const SlideImage = styled.img`
 object-fit: contain;
  height: 100%;
  width: 100%;
