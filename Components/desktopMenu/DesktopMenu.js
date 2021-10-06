@@ -30,6 +30,7 @@ const StyledMenu = styled.nav`
 
   @media (max-width: 768px) {
     display: none;
+    
   }
 `;
 
@@ -39,7 +40,12 @@ const NavPages = styled.a`
   font-size: 16px;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 19px;
   letter-spacing: -0.02em;
+  cursor: pointer;
+  :hover{
+    color: #4c4b4b;
+    border-bottom: solid 2px #4c4b4b;
+  }
 `;

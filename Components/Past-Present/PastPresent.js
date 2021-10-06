@@ -92,8 +92,8 @@ const Container = styled.div`
   }
 
       @media (min-width: 769px) {
-    width: 60%;
-    margin: 20px auto;
+    width: 30%;
+    margin: 150px auto 0 auto;
     background-color: white;
   }
 `;

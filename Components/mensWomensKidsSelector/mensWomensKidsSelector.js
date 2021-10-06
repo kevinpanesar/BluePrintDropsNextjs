@@ -83,7 +83,7 @@ const Container = styled.div`
   }
 
   @media (min-width: 769px) {
-    width: 55%;
+    width: 20%;
     margin: 20px auto;
   }
 `;

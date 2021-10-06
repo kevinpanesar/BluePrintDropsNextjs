@@ -120,8 +120,16 @@ const HeaderContainer = styled.div`
   @media (min-width: 768px) {
     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
-    padding: 10px;
+    padding: 20px;
     font-size: 27px;
+    position:sticky;
+    background-color: white;
+    z-index: 30;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 70%;
   }
 
 `;

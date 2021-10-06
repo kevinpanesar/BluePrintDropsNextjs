@@ -44,7 +44,7 @@ export const SneakerFeed = ({ filteredResults }) => {
 
 const Container = styled.div`
   width: 100%;
-  margin-top: 40px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -100,6 +100,7 @@ const Month = styled.p`
 font-style: normal;
 font-weight: 600;
 font-size: 36px;
+margin: 50px 0;
   }
   
 `;

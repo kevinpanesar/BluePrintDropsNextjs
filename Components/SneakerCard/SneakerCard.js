@@ -45,6 +45,7 @@ const Container = styled.div`
 
   @media (min-width: 768px){
     height: 400px;
+    margin-bottom: 50px;
   }
 `;
 
@@ -85,7 +86,7 @@ const ReleaseText = styled.p`
   @media (min-width: 768px){
   font-family: "Poppins";
 font-style: normal;
-font-weight: 500;
+font-weight: 600;
 font-size: 18px;
 line-height: 27px;
   }
@@ -122,7 +123,9 @@ const DateText = styled.p`
   }
 
     @media (min-width: 769px){
-      font-size: 110px;
+      font-size: 115px;
+      left: 5px;
+      color: C0C0C0;
   }
 `;
 

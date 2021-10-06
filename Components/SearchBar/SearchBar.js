@@ -38,15 +38,7 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-   @media (min-width: 769px) {
 
-          :hover{
-            input{
-              background-color: red;
-            }
-          }
-  }
 
   :hover {
     cursor: pointer;
@@ -55,9 +47,21 @@ const Form = styled.form`
       max-height: 50px;
       height: 50px;
       width: 100vw;
+      margin-top: 10px;
       padding-right: 10px;
       display: block;
       background-color: white;
+
+   @media (min-width: 769px) {
+     width: 100%;
+     height: 90px;
+     left: 0;
+     right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px solid #f5f5f5;
+
+  }
 
     }
     .fa {
@@ -80,13 +84,6 @@ const Input = styled.input`
   font-size: 1em;
   overflow: none;
   background-color: #f5f5f5;
-
-   @media (min-width: 769px) {
-
-          :hover{
-              background-color: red;
-          }
-  }
 `;
 
 const ImageDiv = styled.div`
