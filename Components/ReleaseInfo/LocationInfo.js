@@ -22,23 +22,19 @@ const Container = styled.div`
 
 const Location = styled.p`
   text-align: left;
-  font-family: "Roboto Condensed";
   font-size: 30px;
 `;
 
 const Address = styled.p`
   text-align: left;
-  font-family: "Roboto Condensed";
   font-size: 22px;
 `;
 
 const Type = styled.p`
   text-align: left;
-  font-family: "Roboto Condensed";
   font-size: 20px;
 `;
 const TimeDate = styled.p`
   text-align: left;
-  font-family: "Roboto Condensed";
   font-size: 20px;
 `;

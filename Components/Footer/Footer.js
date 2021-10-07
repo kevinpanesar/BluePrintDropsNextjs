@@ -57,7 +57,6 @@ const Container = styled.div`
   `
 
 const Logo = styled.p`
-font-family: 'Inter';
 font-style: normal;
 font-weight: bold;
 font-size: 36px;
@@ -89,12 +88,11 @@ const StyledMenu = styled.nav`
 const NavPages = styled.a`
   color: #606368;
   text-decoration: none;
-font-family: "Inter";
 font-style: normal;
 font-weight: 500;
 font-size: 14.136px;
 line-height: 17px;
-letter-spacing: -0.02em;
+
 border-right: 2px solid #606368;
 text-align: center;
 padding: 0 20px; 
@@ -153,7 +151,6 @@ align-items: center;
 const LowerContainerText = styled.a`
   color: #606368;
   text-decoration: none;
-font-family: "Inter";
 font-style: normal;
 font-weight: 500;
 font-size: 10px;

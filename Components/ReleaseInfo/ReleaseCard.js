@@ -52,10 +52,8 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   width: 90%;
   height: 50%;
-  font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  letter-spacing: -0.02em;
   line-height: 29px;
   display: flex;
   align-items: center;
@@ -80,7 +78,6 @@ const Labels = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-content: flex-start;
-  font-family: "Inter", sans-serif;
   font-size: 14px;
 
   p {
@@ -95,7 +92,6 @@ const Values = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-content: flex-start;
-  font-family: "Inter", sans-serif;
   font-size: 14px;
 
   p {

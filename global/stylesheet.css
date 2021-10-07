@@ -230,7 +230,7 @@ td {
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-  width: 22px;
+  width: 18px;
 }
 
 ::-webkit-scrollbar-track {

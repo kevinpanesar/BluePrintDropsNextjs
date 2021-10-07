@@ -25,7 +25,6 @@ align-items: center;
 const Title = styled.p`
 font-size: 30px;
 text-align: center;
-font-family: 'Roboto Condensed', sans-serif;
 margin-top: 10px;
 `
 

@@ -116,7 +116,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: left;
-  font-family: "Inter", sans-serif;
   justify-content: space-evenly;
   padding-bottom: 20px;
   overflow: hidden;
@@ -158,7 +157,6 @@ const Occupation = styled.p`
 
 const FavoriteShoe = styled.p`
   font-size: 18px;
-  font-family: "Share";
   margin-left: 20px;
   padding-bottom: 10px;
 `;
@@ -187,7 +185,6 @@ const AboutImg = styled(Image)``;
 const LargeText = styled.p`
   color: white;
   font-size: 60px;
-  font-family: "Inter";
   margin-top: 35px;
   margin-bottom: 10px;
 `;
@@ -223,7 +220,6 @@ const NameSocialMediaContainer = styled.div`
   width: 70%;
   margin: 10px;
   p {
-    font-family: "Share";
     margin-bottom: 0;
   }
 `;
@@ -267,14 +263,12 @@ const AboutImageDiv = styled.div`
 `;
 const AboutUs = styled.p`
   width: 80%;
-  font-family: "Share";
   font-size: 30px;
   line-height: 1.3125;
 `;
 
 const AboutUsDescription = styled.p`
   color: white;
-  font-family: "Share";
   width: 85%;
   font-size: 24px;
   line-height: 1.1;

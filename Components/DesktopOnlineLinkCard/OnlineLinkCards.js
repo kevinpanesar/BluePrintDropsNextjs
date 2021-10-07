@@ -77,7 +77,6 @@ const ImageTitleContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  font-family: "Inter", sans-serif;
   font-weight: 700;
 `;
 
@@ -130,7 +129,6 @@ const RaffleButton = styled.button`
   margin: 10px;
   padding: ${(props) =>
     props.disabled ? "6.72581px 17.9355px" : "0px 7.9355px"};
-  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 14.6935px;

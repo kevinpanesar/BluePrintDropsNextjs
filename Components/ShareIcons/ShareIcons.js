@@ -99,7 +99,6 @@ const Container = styled.div`
 `;
 
 const ShareText = styled.p`
-  font-family: "Inter";
   font-weight: 600;
   margin-bottom: 0;
   margin: 10px;
@@ -114,7 +113,6 @@ const IconTextContainer = styled.div`
 
 const ShareTitle = styled.p`
   font-weight: 700;
-  font-family: "Inter";
   font-size: 18px;
   margin-bottom: 0;
 `;

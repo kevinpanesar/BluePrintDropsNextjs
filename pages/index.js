@@ -12,7 +12,7 @@ import SideNavBar from "../Components/sideMenu/SideNavBar";
 import Menu from "../Components/sideMenu/Menu";
 import { format, getDate } from "date-fns";
 import { useState } from "react";
-import { Footer } from '../Components/Footer/Footer';
+import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 
 export default function Home({ data }) {
@@ -83,10 +83,13 @@ export default function Home({ data }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
           rel="stylesheet"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?Akronim&family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <DesktopContentContainer>
         <HeaderContainer>
@@ -118,8 +121,8 @@ const HeaderContainer = styled.div`
   width: 100%;
   z-index: 30;
 
-   @media (min-width: 768px){
-     border-top: 1px solid #c0c0c0;
+  @media (min-width: 768px) {
+    border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 20px;
     background-color: white;
@@ -127,34 +130,33 @@ const HeaderContainer = styled.div`
     right: 0;
     left: 0;
     margin: 0 auto;
-   }
+  }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 24px;
     width: 80%;
     padding: 10px 20px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     font-size: 29px;
     width: 80%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1441px){
+  @media (min-width: 1441px) {
     font-size: 29px;
     width: 70%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-   @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-
 `;
 
 const Container = styled.div`
@@ -179,27 +181,27 @@ const NavContainer = styled.div`
 `;
 
 const DesktopContentContainer = styled.div`
- @media (min-width: 768px){
+  @media (min-width: 768px) {
     background-color: white;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     width: 80%;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     width: 80%;
   }
 
-   @media (min-width: 1441px) and (max-width: 1900px){
+  @media (min-width: 1441px) and (max-width: 1900px) {
     width: 70%;
   }
 
-     @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-      @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-`
+`;

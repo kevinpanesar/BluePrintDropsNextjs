@@ -37,17 +37,19 @@ const StyledMenu = styled.nav`
     width: 67%;
     }
 
+    @media (min-width: 1024px){
+    width: 70%;
+    }
+
 `;
 
 const NavPages = styled.a`
   color: black;
   text-decoration: none;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 19px;
-  letter-spacing: -0.02em;
   cursor: pointer;
   :hover{
     color: #4c4b4b;

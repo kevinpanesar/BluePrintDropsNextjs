@@ -60,13 +60,11 @@ export const LocationCard = ({ location, length, desktop, data }) => {
 };
 
 const Container = styled.div`
-height: 200px;
   width: 100%;
   display: flex;
   flex-direction: row;
   background-color: white;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 15px 0px;
 
   p {
     margin-bottom: 0px;
@@ -81,14 +79,12 @@ height: 200px;
 
   &:last-child {
     border-top: ${(props) => {
-    if (props.length > 2) {
-      return "2px solid #c0c0c0";
-    } else {
-      return "null";
-    }
-  }};
-    padding-bottom: 0px;
-    padding-top: 10px;
+      if (props.length > 2) {
+        return "2px solid #c0c0c0";
+      } else {
+        return "null";
+      }
+    }};
   }
 `;
 
@@ -99,15 +95,15 @@ const StoreName = styled.p`
     text-decoration: none;
     color: black;
     width: 100%;
+    font-weight: 600;
+
   }
 `;
 
 const ImageTitleContainer = styled.div`
   width: 100%;
-  height: 50%;
   display: flex;
-  align-items: center;
-  font-family: "Inter", sans-serif;
+  align-items: flex-start;
   font-weight: 700;
   margin-bottom: 10px;
 
@@ -119,7 +115,7 @@ const ImageTitleContainer = styled.div`
 const ImageContainer = styled.div`
   border-radius: ${(props) => (props.desktop ? "2.24194px" : "10px")};
   overflow: hidden;
-  margin: 10px 10px 15px 0px;
+  margin: 0px 10px 15px 0px;
   width: 80px;
   height: 50px;
   background-color: black;
@@ -148,9 +144,9 @@ const DropDescription = styled.div`
   width: 90%;
   margin-bottom: 5px;
 
-   @media (min-width: 768px) and (max-width: 1024px)  {
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 14.5px;
-    }
+  }
 `;
 const LeftContainer = styled.div`
   width: ${(props) => (props.desktop ? "70%" : "80%")};
@@ -160,18 +156,15 @@ const RightContainer = styled.div`
   width: ${(props) => (props.desktop ? "30%" : null)};
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
 const RaffleButton = styled.button`
   background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#21587f")};
-  margin: 10px;
-  padding: ${(props) =>
-    props.disabled ? "6.72581px 17.9355px" : "0px 7.9355px"};
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
+  padding: ${(props) => (props.disabled ? "6.72581px 17.9355px" : "0px 0px")};
+  font-weight: 400;
+  letter-spacing: 0.5px;
   font-size: 14.6935px;
   border-radius: 4.4px;
   color: white;
@@ -182,10 +175,7 @@ const RaffleButton = styled.button`
     background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#253f51")};
   }
 
-   @media (min-width: 768px) and (max-width: 1024px)  {
-    font-size: 12.6935px;
-    }
-`
-  
-
-  
+  @media (min-width: 768px) and (max-width: 1600px) {
+    font-size: 12px;
+  }
+`;

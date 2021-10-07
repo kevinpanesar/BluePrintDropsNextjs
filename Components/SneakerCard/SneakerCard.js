@@ -39,35 +39,35 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-    @media (min-width: 450px) and (max-width: 768px) {
+  @media (min-width: 450px) and (max-width: 768px) {
     height: 250px;
   }
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     margin-bottom: 35px;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
-      height: 230px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    height: 230px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1205px){
+  @media (min-width: 1024px) and (max-width: 1205px) {
     height: 240px;
   }
 
-  @media (min-width: 1205px) and (max-width: 1440px){
+  @media (min-width: 1205px) and (max-width: 1440px) {
     height: 260px;
   }
 
-    @media (min-width: 1441px) and (max-width: 1900px){
+  @media (min-width: 1441px) and (max-width: 1900px) {
     height: 300px;
   }
 
-  @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     height: 340px;
   }
 
-  @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     height: 370px;
   }
 `;
@@ -81,32 +81,31 @@ const ReleasePriceContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-    
-  @media (min-width: 768px) and (max-width: 1024px){
+
+  @media (min-width: 768px) and (max-width: 1024px) {
     height: 230px;
     text-align: center;
   }
 
-   @media (min-width: 1024px) and (max-width: 1205px){
+  @media (min-width: 1024px) and (max-width: 1205px) {
     height: 240px;
   }
 
-  @media (min-width: 1205px) and (max-width: 1440px){
+  @media (min-width: 1205px) and (max-width: 1440px) {
     height: 260px;
   }
 
-   @media (min-width: 1441px) and (max-width: 1900px){
+  @media (min-width: 1441px) and (max-width: 1900px) {
     height: 300px;
   }
 
-  @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     height: 340px;
   }
 
-   @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     height: 370px;
   }
-
 `;
 
 const ReleaseDateContainer = styled.div`
@@ -116,62 +115,53 @@ const ReleaseDateContainer = styled.div`
   z-index: 10;
 `;
 const ReleaseText = styled.p`
-  font-family: "Roboto Condensed", sans-serif;
   font-size: 10px;
-  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: #000000;
   margin-bottom: 5px;
   line-height: 1.3;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   z-index: 5;
-
 
   @media (min-width: 375px) and (max-width: 426px) {
     font-size: 11px;
   }
 
-  @media (min-width: 768px){
-     text-align: center;
+  @media (min-width: 768px) {
+    text-align: center;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 13px;
     line-height: 12px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
-     font-size: 12px;
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 12px;
     line-height: 13px;
-  
   }
 
-    @media (min-width: 1441px) and (max-width: 1800px){
+  @media (min-width: 1441px) and (max-width: 1800px) {
     font-size: 14px;
     line-height: 15px;
   }
 
-
-    @media (min-width: 1800px) and (max-width: 1900px){
+  @media (min-width: 1800px) and (max-width: 1900px) {
     font-size: 15px;
     line-height: 16px;
   }
 
-  @media (min-width: 1900px){
+  @media (min-width: 1900px) {
     font-size: 17px;
     line-height: 18px;
   }
-
 `;
 
 const DateText = styled.p`
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 700;
+  font-family: "Helvetica Now Bold";
   font-size: 90px;
   text-align: right;
-  letter-spacing: -5px;
   color: #f5f5f5;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -196,16 +186,28 @@ const DateText = styled.p`
     left: 1px;
   }
 
-    @media (min-width: 768px) and (max-width: 1024px){
-      font-size: 70px;
-      left: 0px;
-      top: 2px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 70px;
+    left: 0px;
+    top: 2px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
-     font-size: 70px;
-      left: -4px;
-      bottom: 4px;
+  @media (min-width: 1024px) and (max-width: 1600px) {
+    font-size: 85px;
+    left: 2px;
+    bottom: 4px;
+  }
+
+  @media (min-width: 1600px) and (max-width: 1900px) {
+    font-size: 95px;
+    left: 0px;
+    bottom: 4px;
+  }
+
+  @media (min-width: 1900px){
+    font-size: 105px;
+    left: 0px;
+    bottom: 4px;
   }
 `;
 
@@ -218,12 +220,10 @@ const SubContainer = styled.div`
   margin-bottom: 5px;
   line-height: 1;
   margin-top: 22px;
-    @media (min-width: 768px){
+  @media (min-width: 768px) {
     display: none;
     margin-top: 10px;
   }
-
-
 `;
 const SubContainer2 = styled.div`
   display: flex;
@@ -234,34 +234,33 @@ const SubContainer2 = styled.div`
   width: 100%;
   line-height: 1;
 
-   @media (min-width: 768px){
-   align-items: center;
+  @media (min-width: 768px) {
+    align-items: center;
   }
 
-  @media (min-width: 1024px) and (max-width: 1205px){
+  @media (min-width: 1024px) and (max-width: 1205px) {
     margin-top: 15px;
   }
 
-  @media (min-width: 1205px) and (max-width: 1440px){
+  @media (min-width: 1205px) and (max-width: 1440px) {
     margin-top: 30px;
   }
 
-  @media (min-width: 1441px) and (max-width: 1800px){
+  @media (min-width: 1441px) and (max-width: 1800px) {
     margin-top: 50px;
   }
 
-     @media (min-width: 1800px) and (max-width: 1900px){
-      margin-top: 70px;
+  @media (min-width: 1800px) and (max-width: 1900px) {
+    margin-top: 70px;
   }
 
-   @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     margin-top: 75px;
   }
 
-   @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     margin-top: 105px;
   }
-
 `;
 
 const SneakerImg = styled(Image)`
@@ -277,31 +276,29 @@ const ImgContainer = styled.div`
 `;
 
 const SneakerCardDate = styled.p`
-display: none;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: normal;
-letter-spacing: -0.02em;
-width: 100%;
-justify-content: center;
-color: black;
-margin: 0 auto;
-text-align: center;
+  display: none;
+  font-style: normal;
+  font-weight: 400;
+  width: 100%;
+  justify-content: center;
+  color: black;
+  margin: 0 auto;
+  text-align: center;
 
-@media (min-width: 769px) {
-  display: block;
-}
-
-  @media (min-width: 768px) and (max-width: 1024px){
-font-size: 15px;
-line-height: 21px;
-}
-
- @media (min-width: 1024px) and (max-width: 1440px){
-     font-size: 16px;
+  @media (min-width: 769px) {
+    display: block;
   }
 
-    @media (min-width: 1900px){
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1900px) {
     font-size: 17px;
   }
-`
+`;

@@ -8,13 +8,11 @@ import dynamic from "next/dynamic";
 import { ShareIcons } from "../ShareIcons/ShareIcons";
 import { NavBar } from "../NavBar/NavBar";
 import { ThumbnailSlider } from "./DesktopSlider";
-import { OnlineLinkCards } from '../DesktopOnlineLinkCard/OnlineLinkCards'
+import { OnlineLinkCards } from "../DesktopOnlineLinkCard/OnlineLinkCards";
 import { Footer } from "../Footer/Footer";
-``
+``;
 
 export const DesktopReleasePage = ({ data }) => {
-
-
   let cities = Object.keys(data.cities);
 
   let raffleOnOff = cities.map((element) => {
@@ -37,63 +35,84 @@ export const DesktopReleasePage = ({ data }) => {
           <LocalTitle>Local Retailers</LocalTitle>
           {data.cities !== undefined
             ? Object.keys(data.cities).map((city, index) => {
-              return (
-                <Body>
-                  {data !== undefined
-                    ? data.cities[city].map((element, index) => (
-                      <LocationCard
-                        location={element}
-                        data={data}
-                        key={index}
-                        length={data.cities[city].length}
-                        desktop={true}
-                      />
-                    ))
-                    : null}
-                </Body>
-              );
-            })
+                return (
+                  <Body>
+                    {data !== undefined
+                      ? data.cities[city].map((element, index) => (
+                          <LocationCard
+                            location={element}
+                            data={data}
+                            key={index}
+                            length={data.cities[city].length}
+                            desktop={true}
+                          />
+                        ))
+                      : null}
+                  </Body>
+                );
+              })
             : null}
-          <LocalTitle><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg" height="22px" />Canadian Links</LocalTitle>
-          <Body >
+          <LocalTitle>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg"
+              height="22px"
+            />
+            Canadian Links
+          </LocalTitle>
+          <Body>
             {data.OnlineLinks !== undefined
               ? data.OnlineLinks.CanadianLinks.map((links, index) => {
-                return (
-                  <OnlineLinkCards
-                    link={links}
-                    key={index}
-                    length={data.OnlineLinks.CanadianLinks.length}
-                    desktop={true} />
-                );
-              })
+                  return (
+                    <OnlineLinkCards
+                      link={links}
+                      key={index}
+                      length={data.OnlineLinks.CanadianLinks.length}
+                      desktop={true}
+                    />
+                  );
+                })
               : null}
           </Body>
-          <LocalTitle><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png" height="22px" />USA Links</LocalTitle>
-          <Body >
+          <LocalTitle>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png"
+              height="22px"
+            />
+            USA Links
+          </LocalTitle>
+          <Body>
             {data.OnlineLinks !== undefined
               ? data.OnlineLinks.USALinks.map((links, index) => {
-                return (
-                  <OnlineLinkCards
-                    link={links}
-                    key={index}
-                    length={data.OnlineLinks.USALinks.length}
-                    desktop={true} />
-                );
-              })
+                  return (
+                    <OnlineLinkCards
+                      link={links}
+                      key={index}
+                      length={data.OnlineLinks.USALinks.length}
+                      desktop={true}
+                    />
+                  );
+                })
               : null}
           </Body>
-          <LocalTitle><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png" height="22px" />International Links</LocalTitle>
-          <Body >
+          <LocalTitle>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
+              height="22px"
+            />
+            International Links
+          </LocalTitle>
+          <Body>
             {data.OnlineLinks !== undefined
               ? data.OnlineLinks.InternationalLinks.map((links, index) => {
-                return (
-                  <OnlineLinkCards
-                    link={links}
-                    key={index}
-                    length={data.OnlineLinks.InternationalLinks.length}
-                    desktop={true} />
-                );
-              })
+                  return (
+                    <OnlineLinkCards
+                      link={links}
+                      key={index}
+                      length={data.OnlineLinks.InternationalLinks.length}
+                      desktop={true}
+                    />
+                  );
+                })
               : null}
           </Body>
         </LocationsContainer>
@@ -106,21 +125,20 @@ export const DesktopReleasePage = ({ data }) => {
 };
 
 const Container = styled.div`
-  
   background-color: white;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
   width: 70%;
 
-    @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
-    }
+  }
 
-  @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     padding-top: 20px;
     width: 70%;
-    }
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -128,69 +146,73 @@ const ContentContainer = styled.div`
   flex-direction: row;
   width: 100%;
 
-    @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 100%;
-    }
-`
+  }
+`;
 
 const LocationsContainer = styled.div`
   margin: 0px auto;
   overflow: auto;
   height: 80vh;
   width: 40%;
-  font-family: "Inter";
+  padding-right: 15px;
 
-    @media (min-width: 768px) and (max-width: 1024px){
-       width: 50%;
-    }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 50%;
+  }
 
-  @media (min-width: 1024px){
-  height: 80vh;
-  width: 35%;
-    }
-  
+  @media (min-width: 1024px) and (max-width: 1500px) {
+    width: 45%;
+  }
+
+  @media (min-width: 1500px) and (max-width: 2000px) {
+    width: 40%;
+  }
+
+  @media (min-width: 2000px) {
+    width: 35%;
+  }
 `;
 
 const SliderShareIconsReleaseCardCont = styled.div`
   width: 55%;
   height: 100%;
 
-  @media (min-width: 2500px){
-  width: 55%;
-    }
+  @media (min-width: 2500px) {
+    width: 55%;
+  }
 `;
 
 const LocalTitle = styled.p`
   font-weight: 600;
   margin-top: 10px;
   font-size: 26.9032px;
-  font-family: "Inter";
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  img{
+  img {
     margin-right: 10px;
   }
 
-    @media (min-width: 2500px){
-  margin-top: 10px;
-  font-size: 26.9032px;
+  @media (min-width: 2500px) {
+    margin-top: 10px;
+    font-size: 26.9032px;
 
-    img{
-    margin-right: 10px;
-  }
+    img {
+      margin-right: 10px;
     }
+  }
 `;
 
 const Body = styled.div`
   width: 100%;
   border-bottom: 2px solid #c0c0c0;
 
+
   &:last-child {
     border-bottom: 2px solid white;
-    padding-bottom: 0px;
-    padding-top: 10px;
   }
 
   /* @media (min-width: 2500px){

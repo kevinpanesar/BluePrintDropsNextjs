@@ -85,7 +85,7 @@ const Container = styled.div`
   cursor: pointer;
   padding: 5px;
   margin: 20px auto;
- 
+
   @media only screen and (max-width: 375px) {
     height: 40px;
     margin-top: 10px;
@@ -96,29 +96,28 @@ const Container = styled.div`
     background-color: white;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     margin: 100px auto 0 auto;
     height: 40px;
     padding: 4px;
   }
 
-   @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     margin: 100px auto 0 auto;
     height: 40px;
     padding: 3px;
-   }
+  }
 
-     @media (min-width: 1440px){
+  @media (min-width: 1440px) {
     margin: 100px auto 0 auto;
     height: 40px;
     padding: 3px;
-   }
+  }
 `;
 
 const Text = styled.h2`
   color: ${(props) => (props.selected === true ? "white" : "black")};
   padding: 10px;
-  font-family: "Signika", sans-serif;
   font-size: 18px;
   margin-bottom: 0rem;
 
@@ -126,7 +125,7 @@ const Text = styled.h2`
     font-size: 14px;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 13px;
   }
 `;
@@ -137,7 +136,7 @@ const UpcomingContainer = styled.div`
   background-color: ${(props) => (props.selected === true ? "#21587F" : null)};
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   border-radius: 10px;
   box-shadow: ${(props) =>
     props.selected
@@ -150,7 +149,7 @@ const PastContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   border-radius: 10px;
   background-color: ${(props) => (props.selected === true ? "#21587F" : null)};
   box-shadow: ${(props) =>

@@ -41,12 +41,10 @@ const StyledMenu = styled.nav`
   width: 25%;
   z-index: 15;
   a {
-    font-family: "Roboto", sans-serif;
     font-size: 35px;
     font-weight: bold;
     text-transform: uppercase;
     padding: 2rem 0;
-    letter-spacing: 0.5rem;
     text-decoration: none;
     transition: color 0.3s linear;
     color: black;
