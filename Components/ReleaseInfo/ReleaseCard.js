@@ -75,6 +75,7 @@ const PriceDateContainer = styled.div`
 const Labels = styled.div`
   width: 50%;
   height: 100%;
+   font-weight: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -89,6 +90,7 @@ const Labels = styled.div`
 const Values = styled.div`
   width: 50%;
   height: 100%;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

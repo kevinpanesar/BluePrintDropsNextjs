@@ -43,7 +43,9 @@ export const SneakerFeed = ({ filteredResults }) => {
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -52,13 +54,19 @@ const Container = styled.div`
   background-color: #f5f5f5;
   overflow: scroll;
   height: 600px;
+   height: 100%;
   
-      @media (min-width: 769px) {
-    width: 75%;
+  @media (min-width: 768px){
     margin: 0 auto;
-    height: 100%;
-    overflow: visible;
     background-color: white;
+  }
+  
+   @media (min-width: 768px) and (max-width: 1024px){
+    width: 90%;
+  }
+
+    @media (min-width: 1024px) and (max-width: 1440px){
+    width: 80%;
   }
   
 `;
@@ -97,10 +105,18 @@ const Month = styled.p`
   @media (min-width: 769px) {
     font-size: 20px;
     font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 36px;
-margin: 50px 0;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+   font-size: 30px;
+    margin: 25px 0;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px){
+     font-size: 28px;
+    margin: 25px 0;
   }
   
 `;

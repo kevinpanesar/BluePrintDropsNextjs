@@ -20,4 +20,5 @@ const HeaderContainer = styled.div`
   align-items: center;
   overflow: hidden;
   margin: 10px;
+  cursor: pointer;
 `;

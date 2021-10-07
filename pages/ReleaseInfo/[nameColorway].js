@@ -24,7 +24,7 @@ export default function ReleasePage({ postData }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -106,13 +106,13 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (max-width: 1024px){
     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 10px;
     background-color: white;
-    width: 70%;
-  }
+    width: 100%;
+    }
 `;
 
 const SearchNavContainer = styled.div`

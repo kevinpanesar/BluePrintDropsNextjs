@@ -116,20 +116,43 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  z-index: 30;
 
-  @media (min-width: 768px) {
-    border-top: 1px solid #c0c0c0;
+   @media (min-width: 768px){
+     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 20px;
-    font-size: 27px;
-    position:sticky;
     background-color: white;
-    z-index: 30;
     position: fixed;
     right: 0;
     left: 0;
     margin: 0 auto;
+   }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+    font-size: 24px;
+    width: 80%;
+    padding: 10px 20px;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px){
+    font-size: 29px;
+    width: 80%;
+    padding: 10px 20px;
+  }
+
+    @media (min-width: 1441px){
+    font-size: 29px;
     width: 70%;
+    padding: 10px 20px;
+  }
+
+    @media (min-width: 1900px) and (max-width: 2500px){
+    width: 60%;
+  }
+
+   @media (min-width: 2500px){
+    width: 55%;
   }
 
 `;
@@ -156,8 +179,27 @@ const NavContainer = styled.div`
 `;
 
 const DesktopContentContainer = styled.div`
-  @media (min-width: 768px) {
-    width: 70%;
+ @media (min-width: 768px){
     background-color: white;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+    width: 80%;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px){
+    width: 80%;
+  }
+
+   @media (min-width: 1441px) and (max-width: 1900px){
+    width: 70%;
+  }
+
+     @media (min-width: 1900px) and (max-width: 2500px){
+    width: 60%;
+  }
+
+      @media (min-width: 2500px){
+    width: 55%;
   }
 `

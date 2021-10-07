@@ -97,11 +97,18 @@ line-height: 17px;
 letter-spacing: -0.02em;
 border-right: 2px solid #606368;
 text-align: center;
-padding: 0 20px;
+padding: 0 20px; 
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    font-size: 12px;
+    padding: 0 10px;
+    }
 
 
   &:last-child {
     border-right: none;
+
+
 };
 `
 const SocialMediaContainer = styled.div`

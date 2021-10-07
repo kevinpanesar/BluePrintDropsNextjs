@@ -82,9 +82,19 @@ const Container = styled.div`
     margin: 15px auto 0 auto;
   }
 
-  @media (min-width: 769px) {
-    width: 20%;
-    margin: 20px auto;
+   @media (min-width: 769px) {
+    margin: 20px auto 10px auto;
+    height: 40px;
+    padding: 4px;
+    width: 40%;
+   }
+
+   @media (min-width: 768px) and (max-width: 1024px){
+
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px){
+
   }
 `;
 

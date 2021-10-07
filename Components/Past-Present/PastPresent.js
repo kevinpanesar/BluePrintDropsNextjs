@@ -91,11 +91,28 @@ const Container = styled.div`
     margin-top: 10px;
   }
 
-      @media (min-width: 769px) {
+  @media (min-width: 769px) {
     width: 30%;
-    margin: 150px auto 0 auto;
     background-color: white;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+    margin: 100px auto 0 auto;
+    height: 40px;
+    padding: 4px;
+  }
+
+   @media (min-width: 1024px) and (max-width: 1440px){
+    margin: 100px auto 0 auto;
+    height: 40px;
+    padding: 3px;
+   }
+
+     @media (min-width: 1440px){
+    margin: 100px auto 0 auto;
+    height: 40px;
+    padding: 3px;
+   }
 `;
 
 const Text = styled.h2`
@@ -107,7 +124,10 @@ const Text = styled.h2`
 
   @media only screen and (max-width: 375px) {
     font-size: 14px;
+  }
 
+  @media (min-width: 768px) and (max-width: 1024px){
+    font-size: 13px;
   }
 `;
 

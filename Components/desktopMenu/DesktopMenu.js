@@ -25,13 +25,18 @@ const StyledMenu = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 30%;
+  width: 80%;
   margin-right: 20px;
 
   @media (max-width: 768px) {
     display: none;
     
   }
+   
+     @media (min-width: 768px) and (max-width: 1024px)  {
+    width: 67%;
+    }
+
 `;
 
 const NavPages = styled.a`
@@ -48,4 +53,12 @@ const NavPages = styled.a`
     color: #4c4b4b;
     border-bottom: solid 2px #4c4b4b;
   }
+
+   @media (min-width: 768px) and (max-width: 1024px){
+    font-size: 13px;
+   }
+
+      @media (min-width: 1024px) and (max-width: 1440px){
+    font-size: 14px;
+   }
 `;

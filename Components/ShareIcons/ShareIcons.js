@@ -78,7 +78,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  height: 50px;
   margin: ${(props) => (props.desktop ? "20px auto" : "0 auto")};
   width: 40%;
 
@@ -93,6 +92,10 @@ const Container = styled.div`
     margin-top: 10px;
     margin-bottom: 30px;
   }
+
+    @media (min-width: 768px) and (max-width: 1024px){
+    margin: 25px auto;
+    }
 `;
 
 const ShareText = styled.p`
@@ -110,7 +113,7 @@ const IconTextContainer = styled.div`
 `;
 
 const ShareTitle = styled.p`
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Inter";
   font-size: 18px;
   margin-bottom: 0;

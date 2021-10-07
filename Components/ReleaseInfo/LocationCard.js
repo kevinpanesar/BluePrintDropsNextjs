@@ -147,13 +147,17 @@ const GoogleWrapper = styled.div`
 const DropDescription = styled.div`
   width: 90%;
   margin-bottom: 5px;
+
+   @media (min-width: 768px) and (max-width: 1024px)  {
+    font-size: 14.5px;
+    }
 `;
 const LeftContainer = styled.div`
   width: ${(props) => (props.desktop ? "70%" : "80%")};
 `;
 
 const RightContainer = styled.div`
-  width: ${(props) => (props.desktop ? "30%" : "0%")};
+  width: ${(props) => (props.desktop ? "30%" : null)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -177,4 +181,11 @@ const RaffleButton = styled.button`
   :hover {
     background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#253f51")};
   }
-`;
+
+   @media (min-width: 768px) and (max-width: 1024px)  {
+    font-size: 12.6935px;
+    }
+`
+  
+
+  

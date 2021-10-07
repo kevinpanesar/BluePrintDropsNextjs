@@ -106,33 +106,58 @@ export const DesktopReleasePage = ({ data }) => {
 };
 
 const Container = styled.div`
-  width: 70%;
+  
   background-color: white;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
+  width: 70%;
+
+    @media (min-width: 768px) and (max-width: 1024px){
+    width: 100%;
+    }
+
+  @media (min-width: 2500px){
+    padding-top: 20px;
+    width: 70%;
+    }
 `;
 
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+
+    @media (min-width: 2500px){
+    width: 100%;
+    }
 `
 
 const LocationsContainer = styled.div`
   margin: 0px auto;
   overflow: auto;
-  height: 85vh;
+  height: 80vh;
   width: 40%;
   font-family: "Inter";
+
+    @media (min-width: 768px) and (max-width: 1024px){
+       width: 50%;
+    }
+
+  @media (min-width: 1024px){
+  height: 80vh;
+  width: 35%;
+    }
+  
 `;
 
-const DesktopContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 const SliderShareIconsReleaseCardCont = styled.div`
   width: 55%;
+  height: 100%;
+
+  @media (min-width: 2500px){
+  width: 55%;
+    }
 `;
 
 const LocalTitle = styled.p`
@@ -147,6 +172,15 @@ const LocalTitle = styled.p`
   img{
     margin-right: 10px;
   }
+
+    @media (min-width: 2500px){
+  margin-top: 10px;
+  font-size: 26.9032px;
+
+    img{
+    margin-right: 10px;
+  }
+    }
 `;
 
 const Body = styled.div`
@@ -158,4 +192,15 @@ const Body = styled.div`
     padding-bottom: 0px;
     padding-top: 10px;
   }
+
+  /* @media (min-width: 2500px){
+  width: 100%;
+    border-bottom: 2px solid #c0c0c0;
+
+  &:last-child {
+    border-bottom: 2px solid white;
+    padding-bottom: 0px;
+    padding-top: 10px;
+  }
+    } */
 `;
