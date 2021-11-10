@@ -39,7 +39,7 @@ export default function ReleasePage({ postData }) {
             </NavContainer>
           </SearchNavContainer>
         </HeaderContainer>
-        {/* <ReleaseInfoPage data={postData[0]} /> */}
+        <ReleaseInfoPage data={postData[0]} />
         <DesktopReleasePage data={postData[0]} />
       </Container>
       <footer></footer>

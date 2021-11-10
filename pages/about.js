@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { NavBar } from "../Components/NavBar/NavBar";
-import { AboutMePage } from "../Components/AboutMePage/AboutMe";
+// import { AboutMePage } from "../Components/AboutMePage/AboutMe";
+import { AboutMePage } from "../Components/AboutMePage/AboutUsPageDesktop";
 
 export default function About() {
   return (
@@ -22,7 +23,7 @@ export default function About() {
         />
       </Head>
       <Container>
-        <AboutMePage />
+        <AboutMePage  />
       </Container>
       <footer></footer>
     </Container>
@@ -36,5 +37,4 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
 `;

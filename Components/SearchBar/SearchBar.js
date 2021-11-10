@@ -11,6 +11,7 @@ export const SearchBar = ({ clothing, sneaker }) => {
   // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
   const handleChange = (e) => {
+    (e) => e.preventDefault();
     if (clothing == true) {
       dispatch({ type: "clothing/setSearchTerm", payload: e.target.value });
     } else if (sneaker == true) {
@@ -39,7 +40,6 @@ const Form = styled.form`
   align-items: center;
   justify-content: center;
 
-
   :hover {
     cursor: pointer;
 
@@ -52,17 +52,15 @@ const Form = styled.form`
       display: block;
       background-color: white;
 
-   @media (min-width: 769px) {
-     width: 100%;
-     height: 90px;
-     left: 0;
-     right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      border: 2px solid #f5f5f5;
-
-  }
-
+      @media (min-width: 769px) {
+        width: 100%;
+        height: 90px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #f5f5f5;
+      }
     }
     .fa {
       color: black;
@@ -87,16 +85,16 @@ const Input = styled.input`
 `;
 
 const ImageDiv = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-@media (min-width: 768px) and (max-width: 1024px){
-  width: 130%;
-}
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 130%;
+  }
 
-@media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     width: 150%;
-   }
+  }
 `;

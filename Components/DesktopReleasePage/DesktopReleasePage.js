@@ -130,6 +130,11 @@ const Container = styled.div`
   flex-direction: column;
   padding-top: 20px;
   width: 70%;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
@@ -154,7 +159,7 @@ const ContentContainer = styled.div`
 const LocationsContainer = styled.div`
   margin: 0px auto;
   overflow: auto;
-  height: 80vh;
+  height: 90vh;
   width: 40%;
   padding-right: 15px;
 
@@ -209,7 +214,6 @@ const LocalTitle = styled.p`
 const Body = styled.div`
   width: 100%;
   border-bottom: 2px solid #c0c0c0;
-
 
   &:last-child {
     border-bottom: 2px solid white;

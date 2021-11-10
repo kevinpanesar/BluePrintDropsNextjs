@@ -35,9 +35,9 @@ export const ReleaseInfoPage = ({ data }) => {
   return (
     <Container>
       <div>
-      <ImageSlider data={data} />
-      <ShareIcons mobile={true} desktop={false}/>
-      <ReleaseCard data={data} />
+        <ImageSlider data={data} />
+        <ShareIcons mobile={true} desktop={false} />
+        <ReleaseCard data={data} />
       </div>
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
@@ -81,6 +81,10 @@ const Container = styled.div`
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 60px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const LocationsContainer = styled.div`
@@ -90,7 +94,6 @@ const LocationsContainer = styled.div`
 `;
 
 const DesktopContainer = styled.div`
-display: flex;
-flex-direction: row;
-
-`
+  display: flex;
+  flex-direction: row;
+`;

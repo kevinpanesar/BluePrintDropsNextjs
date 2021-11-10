@@ -96,7 +96,6 @@ const StoreName = styled.p`
     color: black;
     width: 100%;
     font-weight: 600;
-
   }
 `;
 
@@ -149,7 +148,7 @@ const DropDescription = styled.div`
   }
 `;
 const LeftContainer = styled.div`
-  width: ${(props) => (props.desktop ? "70%" : "80%")};
+  width: ${(props) => (props.desktop ? "70%" : "100%")};
 `;
 
 const RightContainer = styled.div`

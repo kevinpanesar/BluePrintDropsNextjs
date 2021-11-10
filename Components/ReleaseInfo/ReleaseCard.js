@@ -69,17 +69,23 @@ const PriceDateContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+
+  @media (min-width: 768px){
+    width: 50%;
+    margin-right: auto;
+    margin-left: 20px;
+  }
 `;
 const Labels = styled.div`
   width: 50%;
   height: 100%;
-   font-weight: 500;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-content: flex-start;
   font-size: 14px;
-
+  letter-spacing: 1px;
   p {
     margin-bottom: 8px;
   }
