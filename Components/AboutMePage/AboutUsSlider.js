@@ -17,8 +17,9 @@ export const AboutUsSlider = () => {
         autoPlay="true"
         disableButtonsControls="true"
         items={ArrayOfComponents}
-        autoPlayInterval="10000"
+        autoPlayInterval="4000"
         disableDotsControls="true"
+        infinite="true"
       />
     </Container>
   );

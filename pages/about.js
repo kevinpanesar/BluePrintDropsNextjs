@@ -18,7 +18,7 @@ export default function About() {
           rel="stylesheet"
         ></link>
         <link
-          href="https://fonts.googleapis.com/css2?family=Share&family=Zen+Tokyo+Zoo&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Share&family=Zen+Tokyo+Zoo&family=Montserrat&display=swap"
           rel="stylesheet"
         />
       </Head>

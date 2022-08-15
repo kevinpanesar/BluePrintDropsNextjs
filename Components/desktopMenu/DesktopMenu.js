@@ -2,20 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export const DesktopMenu = ({aboutUsPage}) => {
+export const DesktopMenu = ({aboutUsPage, type}) => {
   return (
     <StyledMenu aboutUsPage={aboutUsPage}>
       <Link id="navText" href={"/"}>
-        <NavPages>Sneaker Releases</NavPages>
+        <NavPages type={type}>Sneaker Releases</NavPages>
       </Link>
       <Link href={"/clothing-releases"}>
-        <NavPages>Clothing Releases</NavPages>
+        <NavPages type={type}>Clothing Releases</NavPages>
       </Link>
       <Link href={"/clothing-releases"}>
-        <NavPages>Tools</NavPages>
+        <NavPages type={type}>Tools</NavPages>
       </Link>
       <Link href={"/about"}>
-        <NavPages>About Us</NavPages>
+        <NavPages type={type}>About Us</NavPages>
       </Link>
     </StyledMenu>
   );
@@ -44,11 +44,10 @@ const StyledMenu = styled.nav`
 `;
 
 const NavPages = styled.a`
-  color: black;
+  color: ${props => props.type === 'desktop' ? 'white' : 'black'};
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 600;
   line-height: 19px;
   cursor: pointer;
   :hover{

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export const Header = () => {
+export const Header = ({type}) => {
   return (
-    <HeaderContainer>
+    <HeaderContainer type={type}>
       <Link href={"/"}>
         <h1>BluePrint</h1>
       </Link>
@@ -21,4 +21,5 @@ const HeaderContainer = styled.div`
   overflow: hidden;
   margin: 10px;
   cursor: pointer;
+  color: ${props=>props.type === 'desktop' ? 'white' : 'black'}
 `;

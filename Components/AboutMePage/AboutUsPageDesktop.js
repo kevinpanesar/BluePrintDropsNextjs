@@ -14,18 +14,29 @@ export const AboutMePage = () => {
   return (
     <Container>
       <HeaderContainer>
-        <Header />
-        <DesktopMenu aboutUsPage={true} />
+        <Header type="desktop"/>
+        <DesktopMenu aboutUsPage={true} type="desktop"/>
       </HeaderContainer>
       <SliderContainer>
         <AboutUsSlider />
       </SliderContainer>
+      <SliderTextContainer>
+        <SliderTitle>Your One Stop For Drop</SliderTitle>
+        <SliderText>We are the leading destination for locals in the metro vancouver area on getting their daily scoop on the latest sneaker drops and contemporary fashion.</SliderText>
+        </SliderTextContainer>
+        <PurposeContainer>hello</PurposeContainer>
     </Container>
   );
 };
 
+const PurposeContainer = styled.div`
+background-color: #2B2929;
+height: 300px;
+position: relative;
+`
+
 const Container = styled.div`
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,13 +61,86 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
   background: rgba(0, 0, 0, 0);
+  border-bottom: 1px solid white;
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    font-size: 29px;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  @media (min-width: 1441px) {
+    font-size: 29px;
+    width: 85%;
+    padding: 10px 20px;
+  }
+
+  @media (min-width: 1900px) and (max-width: 2500px) {
+    width: 75%;
+  }
+
+  @media (min-width: 2500px) {
+    width: 70%;
+  }
 `;
 
 const SliderContainer = styled.div`
-  height: 550px;
-  width: 100%;
+  height: 650px;
+  box-shadow: inset 1000px 4px 4px rgba(0, 0, 0, 0.9);
   overflow: hidden;
   position: absolute;
   z-index: -1;
   top: 0;
+    @media (min-width: 768px) and (max-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1441px) and (max-width: 1900px) {
+    width: 70%;
+  }
+
+  @media (min-width: 1900px) and (max-width: 2500px) {
+    width: 60%;
+  }
+
+  @media (min-width: 2500px) {
+    width: 55%;
+  }
 `;
+
+const SliderTextContainer = styled.div`
+position: absolute;
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  width: 30%;
+  z-index: 100;
+  margin-top: 550px;
+  color: white;
+  text-align: center;
+`
+const SliderTitle = styled.p`
+font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 48px;
+line-height: 59px;
+`
+const SliderText = styled.p`
+font-family: 'Montserrat', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+margin-top: 20px;
+`
