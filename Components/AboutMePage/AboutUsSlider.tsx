@@ -14,12 +14,12 @@ export const AboutUsSlider = () => {
   return (
     <Container>
       <AliceCarousel
-        autoPlay="true"
-        disableButtonsControls="true"
+        autoPlay={true}
+        disableButtonsControls={true}
         items={ArrayOfComponents}
-        autoPlayInterval="4000"
-        disableDotsControls="true"
-        infinite="true"
+        autoPlayInterval={4000}
+        disableDotsControls={true}
+        infinite={true}
       />
     </Container>
   );

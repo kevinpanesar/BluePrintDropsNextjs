@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Header } from "../Header/Header";
@@ -9,8 +9,7 @@ import Link from "next/link";
 export const AboutMePage = () => {
   const [open, setOpen] = useState(false);
 
-  return (
-    <Container>
+  return (<Container>
       <HeaderContainer>
         <Header />
         <SearchNavContainer>

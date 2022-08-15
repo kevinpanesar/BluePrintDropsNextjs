@@ -1,21 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import {
   Page,
   Text,
   View,
   Document,
   StyleSheet,
-  Canvas,
-  Line,
   Image,
 } from "@react-pdf/renderer";
 
 // Create styles
 const styles = StyleSheet.create({
-  table: {
-    display: "table",
-    width: "auto",
+  table : {
+    // display: "table",
     borderStyle: "dashed",
     marginTop: "25px",
     borderTopWidth: 1,
@@ -47,10 +43,10 @@ const styles = StyleSheet.create({
     width: "30%",
     marginRight: "auto",
     marginLeft: "auto",
-    opacity: "0.3",
+    opacity: 0.3,
   },
   url: {
-    opacity: "0.3",
+    opacity: 0.3,
     fontSize: 10,
     marginRight: "auto",
     marginLeft: "auto",
@@ -69,6 +65,20 @@ const styles = StyleSheet.create({
   },
 });
 
+export interface MyDocumentProps {
+  sneakerInfo: SneakerInfo,
+  firstname: string,
+  lastname: string,
+  phoneNumber: string,
+  shoeSize: string
+}
+
+interface SneakerInfo {
+  title: string,
+  colorway: string,
+
+}
+
 // Create Document Component
 export const MyDocument = ({
   sneakerInfo,
@@ -76,10 +86,10 @@ export const MyDocument = ({
   lastname,
   phoneNumber,
   shoeSize,
-}) => {
+}: MyDocumentProps ) => {
   return (
     <Document>
-      <Page style={styles.body}>
+      <Page>
         <Text style={styles.pageTitle}>Thank You For Using Blueprint!</Text>
         <View style={styles.table}>
           <View style={styles.tableRow}>
