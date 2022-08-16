@@ -32,14 +32,14 @@ export const PDF = () => {
           </tr>
         </table>
       </div>
-      <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
+      <PDFDownloadLink document={<MyDocument sneakerInfo={{title: '', colorway: ''}} firstname={""} lastname={""} phoneNumber={""} shoeSize={""} />} fileName="somename.pdf">
         {({ blob, url, loading, error }) =>
           loading ? "Loading document..." : "Download now!"
         }
       </PDFDownloadLink>
-      <MyDocument />
+      <MyDocument sneakerInfo={{title: '', colorway: ''}} firstname={""} lastname={""} phoneNumber={""} shoeSize={""} />
       ReactPDF.render(
-      <MyDocument />, `example.pdf`)
+      <MyDocument sneakerInfo={{title: '', colorway: ''}} firstname={""} lastname={""} phoneNumber={""} shoeSize={""} />, `example.pdf`)
     </div>
   );
 };

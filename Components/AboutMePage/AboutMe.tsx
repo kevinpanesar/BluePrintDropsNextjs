@@ -11,7 +11,7 @@ export const AboutMePage = () => {
 
   return (<Container>
       <HeaderContainer>
-        <Header />
+        {/* <Header /> */}
         <SearchNavContainer>
           <NavContainer>
             <SideNavBar open={open} setOpen={setOpen} />
