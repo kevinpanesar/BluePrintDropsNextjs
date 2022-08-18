@@ -6,10 +6,21 @@ import Link from "next/link";
 import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
-export const SneakerFeed = ({ filteredResults }) => {
+interface SneakerFeed{
+  filteredResults: [],
+}
+
+interface ElementProps{
+  title: string,
+   colorway: string,
+  _id: string
+}
+
+
+export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
   return (
     <Container>
-      {filteredResults.map((element, index) => {
+      {filteredResults.map((element : {date: string}[], index) => {
         if (element.length > 0) {
           return (
             <div key={index}>
@@ -18,7 +29,7 @@ export const SneakerFeed = ({ filteredResults }) => {
               </Month>
               <CardContainer>
                 {element !== undefined ? (
-                  element.map((element, index) => {
+                  element.map((element : any) => {
                     return (
                       <Link
                         passHref

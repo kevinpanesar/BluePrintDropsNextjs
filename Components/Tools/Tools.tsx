@@ -28,7 +28,7 @@ text-align: center;
 margin-top: 10px;
 `
 
-const ChartImg = styled.img`
+const ChartImg = styled.img<{ src: any }>`
 width: 60%;
 `
 

@@ -3,7 +3,16 @@ import styled from "styled-components";
 import Image from "next/image";
 import { getDate } from "date-fns";
 
-export const SneakerCard = ({ cardInfo, switchShoe }) => {
+interface SneakerCardProps{
+cardInfo: {
+  date: string,
+  images: string[],
+  price: string,
+  title: string
+}
+}
+
+export const SneakerCard = ({ cardInfo}: SneakerCardProps) => {
   const releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
   const date = cardInfo.date.replace(/, /g, "/");
   return (
