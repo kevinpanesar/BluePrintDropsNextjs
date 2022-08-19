@@ -17,7 +17,7 @@ export const LocationCard = ({ location, length, desktop, data }) => {
       );
     } else {
       button = (
-        <RaffleButton disabled={true} disabled>
+        <RaffleButton disabled={true}>
           FCFS
         </RaffleButton>
       );

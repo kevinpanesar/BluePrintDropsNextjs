@@ -10,7 +10,7 @@ export const Footer = () => {
             <TopContainer>
                 <Logo>BluePrint</Logo>
                 <StyledMenu>
-                    <Link id="navText" href={"/"}>
+                    <Link href={"/"}>
                         <NavPages>Sneaker Releases</NavPages>
                     </Link>
                     <Link href={"/clothing-releases"}>

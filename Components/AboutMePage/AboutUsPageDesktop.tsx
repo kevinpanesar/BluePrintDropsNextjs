@@ -14,7 +14,7 @@ export const AboutMePage = () => {
   return (
     <Container>
       <HeaderContainer>
-        <Header type="desktop"/>
+        <Header type="desktop" />
         <DesktopMenu aboutUsPage={true} type="desktop"/>
       </HeaderContainer>
       <SliderContainer>

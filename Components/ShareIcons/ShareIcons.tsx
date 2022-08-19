@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 import {
   FacebookShareButton,
@@ -11,9 +11,17 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-export const ShareIcons = ({ mobile, desktop }) => {
-  let url;
-  let jsx;
+interface ShareIcon {
+  mobile: boolean;
+  desktop: boolean;
+}
+
+export const ShareIcons = ({
+  mobile,
+  desktop,
+}: ShareIcon): ReactElement<any, any> => {
+  let url = "";
+  let jsx = <></>;
 
   if (process.browser) {
     // Client-side-only code
@@ -74,7 +82,7 @@ export const ShareIcons = ({ mobile, desktop }) => {
   return jsx;
 };
 
-const Container = styled.div`
+const Container = styled.div<{ desktop?: boolean }>`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -93,9 +101,9 @@ const Container = styled.div`
     margin-bottom: 30px;
   }
 
-    @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     margin: 25px auto;
-    }
+  }
 `;
 
 const ShareText = styled.p`

@@ -3,26 +3,40 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-export const OnlineLinkCards = ({ link, length, desktop }) => {
+export interface OnlineLinkCardsProps {
+  link: {
+    img: string;
+    title: string;
+    type: string;
+    Description: string;
+    link: string;
+  };
+  length: number;
+  desktop: boolean;
+}
+
+export const OnlineLinkCards = ({
+  link,
+  length,
+  desktop,
+}: OnlineLinkCardsProps) => {
   return (
     <Container length={length}>
-      <LeftContainer>
+      <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
             <BrandImage src={link.img} width="110%" />
           </ImageContainer>
           <TitleSubtitleContainer>
-            <StoreName desktop={desktop}>
-              {link.title}
-            </StoreName>
+            <StoreName desktop={desktop}>{link.title}</StoreName>
             <h6>{link.type}</h6>
           </TitleSubtitleContainer>
         </ImageTitleContainer>
         <DropDescription>
-          {link.Description && <p>{link.Description}</p>} 
+          {link.Description && <p>{link.Description}</p>}
         </DropDescription>
       </LeftContainer>
-      <RightContainer>
+      <RightContainer desktop={desktop}>
         <Link href={link.link}>
           <RaffleButton>Link</RaffleButton>
         </Link>
@@ -31,7 +45,7 @@ export const OnlineLinkCards = ({ link, length, desktop }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ length: number }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -52,18 +66,18 @@ const Container = styled.div`
 
   &:last-child {
     border-top: ${(props) => {
-    if (props.length > 2) {
-      return "2px solid #c0c0c0";
-    } else {
-      return "null";
-    }
-  }};
+      if (props.length > 2) {
+        return "2px solid #c0c0c0";
+      } else {
+        return "null";
+      }
+    }};
     padding-bottom: 0px;
     padding-top: 10px;
   }
 `;
 
-const StoreName = styled.p`
+const StoreName = styled.p<{ desktop: boolean }>`
   font-size: ${(props) => (props.desktop ? "15.5px" : "20px")};
   padding: 0px;
   a {
@@ -80,7 +94,7 @@ const ImageTitleContainer = styled.div`
   font-weight: 700;
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ desktop: boolean }>`
   border-radius: ${(props) => (props.desktop ? "2.24194px" : "10px")};
   overflow: hidden;
   margin: 10px 10px 15px 0px;
@@ -112,11 +126,11 @@ const DropDescription = styled.div`
   width: 70%;
   margin-bottom: 5px;
 `;
-const LeftContainer = styled.div`
+const LeftContainer = styled.div<{ desktop: boolean }>`
   width: ${(props) => (props.desktop ? "70%" : "80%")};
 `;
 
-const RightContainer = styled.div`
+const RightContainer = styled.div<{ desktop: boolean }>`
   width: ${(props) => (props.desktop ? "30%" : "0%")};
   display: flex;
   flex-direction: column;
