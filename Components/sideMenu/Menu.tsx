@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { bool } from "prop-types";
 import Link from "next/link";
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ open }: boolean) => {
   return (
     <StyledMenu open={open}>
       <Link href={"/"}>
@@ -77,8 +77,8 @@ const StyledMenu = styled.nav`
     }
   }
 
-    @media (min-width: 768px) {
-      display: none;
+  @media (min-width: 768px) {
+    display: none;
   }
 
   @media (max-width: 768px) {

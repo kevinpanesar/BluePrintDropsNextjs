@@ -1,21 +1,25 @@
-import { React, useState, useEffect } from "react";
+import React, { FormEventHandler } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import {RootState} from '../../store/store'
 
-export const SearchBar = ({ clothing, sneaker }) => {
+interface SearchBarProps{
+  clothing: boolean,
+  sneaker: boolean
+}
+
+export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   const dispatch = useDispatch();
-  const term = useSelector((state) => state.sneaker.searchTerm);
+  const term = useSelector((state : RootState) => state.sneaker.searchTerm);
   // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
-  const handleChange = (e) => {
-    (e) => e.preventDefault();
+  const handleChange = (event : FormEventHandler<HTMLFormElement>) => {
+    (event : any) => event.preventDefault();
     if (clothing == true) {
-      dispatch({ type: "clothing/setSearchTerm", payload: e.target.value });
+      dispatch({ type: "clothing/setSearchTerm", payload: event.currentTarget.value });
     } else if (sneaker == true) {
-      dispatch({ type: "sneaker/setSearchTerm", payload: e.target.value });
+      dispatch({ type: "sneaker/setSearchTerm", payload: event.currentTarget.value });
     }
   };
 

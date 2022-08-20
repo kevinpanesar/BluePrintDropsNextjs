@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 
-export const LocationInfo = ({ data }) => {
+interface LocationInfoProps {
+  data: {
+    location: string;
+    address: string;
+    releaseType: string;
+    raffleDate: string;
+  };
+}
+
+export const LocationInfo = ({ data }: LocationInfoProps) => {
   return (
     <Container>
       <Location>{data.location} </Location>

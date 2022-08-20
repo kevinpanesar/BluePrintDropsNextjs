@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export const Header = ({ type }: string) => {
+export const Header = ({ type } : {type: string}) => {
   return (
     <HeaderContainer type={type}>
       <Link href={"/"}>

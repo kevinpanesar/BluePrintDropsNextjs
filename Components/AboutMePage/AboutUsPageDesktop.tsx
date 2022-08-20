@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Header } from "../Header/Header";
-import Menu from "../sideMenu/Menu";
 import SideNavBar from "../sideMenu/SideNavBar";
 import Link from "next/link";
 import { DesktopMenu } from "../desktopMenu/DesktopMenu";

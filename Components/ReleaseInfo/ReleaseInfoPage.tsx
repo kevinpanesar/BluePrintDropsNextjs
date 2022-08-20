@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ImageSlider } from "./ImageSlider";
 import { LocationInfo } from "./LocationInfo";
@@ -16,18 +16,31 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
   ssr: false,
 });
 
-export const ReleaseInfoPage = ({ data }) => {
+interface ReleaseInfoPageProps {
+  data: {
+    cities: [[]];
+    images: [];
+    _id: string;
+    title: string;
+    date: string;
+    colorway: string;
+    price: string;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+  };
+}
+
+export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
   let cities = Object.keys(data.cities);
 
-  let raffleOnOff = cities.map((element) => {
-    return data.cities[element].some((element) => {
+  let raffleOnOff = cities.map((element: any) => {
+    return data.cities[element].some((element: any) => {
       if (element.type === "Raffle") {
         return true;
       }
     });
   });
-
-  console.log(raffleOnOff);
   // const raffleButtonOnOff = data.cities.filter((element) => {
   //   element.some((element) => element.type.includes("Raffle"));
   // });
@@ -37,12 +50,12 @@ export const ReleaseInfoPage = ({ data }) => {
       <div>
         <ImageSlider data={data} />
         <ShareIcons mobile={true} desktop={false} />
-        <ReleaseCard data={data} />
+        <ReleaseCard data={data} desktop={false} />
       </div>
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((city, index) => {
+            ? Object.keys(data.cities).map((city : any, index : any) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
@@ -56,10 +69,12 @@ export const ReleaseInfoPage = ({ data }) => {
                       {data !== undefined
                         ? data.cities[city].map((element, index) => (
                             <LocationCard
-                              location={element}
-                              key={index}
-                              length={data.cities[city].length}
-                            />
+                            location={element}
+                            key={index}
+                            length={data.cities[city].length} desktop={false} data={{
+                              title: "",
+                              _id: ""
+                            }}                            />
                           ))
                         : null}
                     </AccordionBody>
