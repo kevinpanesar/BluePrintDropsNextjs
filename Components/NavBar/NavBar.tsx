@@ -8,7 +8,14 @@ import User from "../../public/Media/user.svg";
 import Image from "next/image";
 import Link from "next/link";
 
-export const NavBar = ({ data }) => {
+interface NavBarProps {
+  data: {
+    title: string;
+    _id: string;
+  };
+}
+
+export const NavBar = ({ data }: NavBarProps) => {
   return (
     <NavContainer>
       <Link href={"/RaffleGenerator/" + data.title + "_" + data._id}>

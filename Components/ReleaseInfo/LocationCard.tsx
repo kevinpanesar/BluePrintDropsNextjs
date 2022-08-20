@@ -4,7 +4,29 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 
-export const LocationCard = ({ location, length, desktop, data }) => {
+interface LocationCardProps {
+  location: {
+    img: string;
+    location: string;
+    type: string;
+    Description: string;
+    date: string;
+    Address: string
+  };
+  length: number;
+  desktop: boolean;
+  data: {
+    title: string;
+    _id: string;
+  };
+}
+
+export const LocationCard = ({
+  location,
+  length,
+  desktop,
+  data,
+}: LocationCardProps) => {
   const address = `http://maps.google.com/?q=${location.Address}`;
   let button;
 
@@ -16,17 +38,13 @@ export const LocationCard = ({ location, length, desktop, data }) => {
         </Link>
       );
     } else {
-      button = (
-        <RaffleButton disabled={true} disabled>
-          FCFS
-        </RaffleButton>
-      );
+      button = <RaffleButton disabled={true}>FCFS</RaffleButton>;
     }
   }
 
   return (
     <Container length={length}>
-      <LeftContainer>
+      <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
             <BrandImage src={location.img} width="110%" />
@@ -54,12 +72,12 @@ export const LocationCard = ({ location, length, desktop, data }) => {
           </a>
         )}
       </LeftContainer>
-      <RightContainer>{button}</RightContainer>
+      <RightContainer desktop={desktop}>{button}</RightContainer>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ length: number }>`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -88,7 +106,7 @@ const Container = styled.div`
   }
 `;
 
-const StoreName = styled.p`
+const StoreName = styled.p<{ desktop: boolean }>`
   font-size: ${(props) => (props.desktop ? "15.5px" : "20px")};
   padding: 0px;
   a {
@@ -111,7 +129,7 @@ const ImageTitleContainer = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ desktop: boolean }>`
   border-radius: ${(props) => (props.desktop ? "2.24194px" : "10px")};
   overflow: hidden;
   margin: 0px 10px 15px 0px;
@@ -147,11 +165,11 @@ const DropDescription = styled.div`
     font-size: 14.5px;
   }
 `;
-const LeftContainer = styled.div`
+const LeftContainer = styled.div<{ desktop: boolean }>`
   width: ${(props) => (props.desktop ? "70%" : "100%")};
 `;
 
-const RightContainer = styled.div`
+const RightContainer = styled.div<{ desktop: boolean }>`
   width: ${(props) => (props.desktop ? "30%" : null)};
   display: flex;
   flex-direction: column;

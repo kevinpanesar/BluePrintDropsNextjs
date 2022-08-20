@@ -1,11 +1,18 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { PDF } from "../CreatePDF/CreatePDF";
 import { MyDocument } from "../CreatePDF/CreatePDF2";
 import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
-import { useSelector } from "react-redux";
+import { NoInfer } from "@reduxjs/toolkit/dist/tsHelpers";
 
-export const RaffleForm = ({ postData }) => {
+interface RaffleFormProps {
+  postData: {
+    title: string;
+    colorway: string;
+  };
+}
+
+export const RaffleForm = ({ postData }: RaffleFormProps) => {
   const [firstName, setFirstName] = useState("");
   const [lastname, setLastname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,25 +25,25 @@ export const RaffleForm = ({ postData }) => {
 
   // })
 
-  const capitalizeFirstLetter = (string) => {
+  const capitalizeFirstLetter = (string: string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const formatPhoneNumber = (phoneNumberString) => {
+  const formatPhoneNumber = (phoneNumberString: string): string => {
     var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
     var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     if (match) {
       return "(" + match[1] + ") " + match[2] + "-" + match[3];
     }
-    return null;
+    return "";
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFirstName(capitalizeFirstLetter(e.target[0].value));
-    setLastname(capitalizeFirstLetter(e.target[1].value));
-    setPhoneNumber(formatPhoneNumber(e.target[2].value));
-    setShoeSize(e.target[3].value);
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    setFirstName(capitalizeFirstLetter(event.target[0].value));
+    setLastname(capitalizeFirstLetter(event.target[1].value));
+    setPhoneNumber(formatPhoneNumber(event.target[2].value));
+    setShoeSize(event.target[3].value);
     setRenderLink(true);
   };
 
@@ -103,8 +110,8 @@ const Container = styled.div`
     margin-top: 15px;
   }
 
-    @media (min-width: 450px) and (max-width: 768px) {
-      width: 70%;
+  @media (min-width: 450px) and (max-width: 768px) {
+    width: 70%;
   }
 `;
 

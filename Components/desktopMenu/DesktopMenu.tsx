@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-export const DesktopMenu = ({type} : string) => {
+export const DesktopMenu = ({type} : any) => {
   return (
     <StyledMenu >
-      <Link id="navText" href={"/"}>
+      <Link href={"/"}>
         <NavPages type={type}>Sneaker Releases</NavPages>
       </Link>
       <Link href={"/clothing-releases"}>

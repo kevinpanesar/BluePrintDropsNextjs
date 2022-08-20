@@ -1,44 +1,49 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { set } from "date-fns";
 
-export const Options = ({ sneaker, clothing }) => {
+interface OptionsProps {
+  sneaker: boolean;
+  clothing: boolean;
+}
+
+export const Options = ({ sneaker, clothing }: OptionsProps) => {
   const dispatch = useDispatch();
   const [allSelected, setAllSelected] = useState(true);
   const [mensSelected, setMensSelected] = useState(false);
   const [womensSelected, setWomensSelected] = useState(false);
   const [kidsSelected, setKidsSelected] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (sneaker) {
       dispatch({
         type: "sneaker/selectMensWomensKids",
-        payload: e.target.value,
+        payload: event.target.value,
       });
     } else if (clothing) {
       dispatch({
         type: "clothing/selectMensWomensKids",
-        payload: e.target.value,
+        payload: event.target.value,
       });
     }
 
-    if (e.target.value === "reset") {
+    if (event.target.value === "reset") {
       setAllSelected(true);
       setMensSelected(false);
       setWomensSelected(false);
       setKidsSelected(false);
-    } else if (e.target.value === "mensFlag") {
+    } else if (event.target.value === "mensFlag") {
       setAllSelected(false);
       setMensSelected(true);
       setWomensSelected(false);
       setKidsSelected(false);
-    } else if (e.target.value === "womensFlag") {
+    } else if (event.target.value === "womensFlag") {
       setAllSelected(false);
       setMensSelected(false);
       setWomensSelected(true);
       setKidsSelected(false);
-    } else if (e.target.value === "kidsFlag") {
+    } else if (event.target.value === "kidsFlag") {
       setAllSelected(false);
       setMensSelected(false);
       setWomensSelected(false);
@@ -82,23 +87,21 @@ const Container = styled.div`
     margin: 15px auto 0 auto;
   }
 
-   @media (min-width: 769px) {
+  @media (min-width: 769px) {
     margin: 20px auto 10px auto;
     height: 40px;
     padding: 4px;
     width: 40%;
-   }
-
-   @media (min-width: 768px) and (max-width: 1024px){
-
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 768px) and (max-width: 1024px) {
+  }
 
+  @media (min-width: 1024px) and (max-width: 1440px) {
   }
 `;
 
-const Item = styled.button`
+const Item = styled.button<{ onClick: any, selected: boolean}>`
   width: 23%;
   background-color: ${(props) => (props.selected ? "#21587f" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};

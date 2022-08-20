@@ -1,12 +1,18 @@
-import { React, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-export const MensWomensKidsIcons = ({ data }) => {
+interface MensWomensKidsIconsProps {
+  data: {
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+  };
+}
+
+export const MensWomensKidsIcons = ({ data }: MensWomensKidsIconsProps) => {
   const mensColor = "#4169E1";
   const womensColor = "#FF69B4";
   const kidsColor = "#32CD32";
-
-  console.log(data);
 
   return (
     <Container>
@@ -29,7 +35,7 @@ const Container = styled.div`
   width: 50%;
 `;
 
-const Icon = styled.div`
+const Icon = styled.div<{ flag: boolean }>`
   width: 20px;
   height: 20px;
   border-radius: 25px;

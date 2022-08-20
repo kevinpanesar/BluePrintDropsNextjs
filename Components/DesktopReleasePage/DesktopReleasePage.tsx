@@ -1,4 +1,4 @@
-import { React } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ImageSlider } from "../ReleaseInfo/ImageSlider";
 import Accordion from "react-bootstrap/Accordion";
@@ -10,18 +10,40 @@ import { NavBar } from "../NavBar/NavBar";
 import { ThumbnailSlider } from "./DesktopSlider";
 import { OnlineLinkCards } from "../DesktopOnlineLinkCard/OnlineLinkCards";
 import { Footer } from "../Footer/Footer";
-``;
+import {OnlineLinkCardsProps} from '../DesktopOnlineLinkCard/OnlineLinkCards'
 
-export const DesktopReleasePage = ({ data }) => {
+export interface DesktopReleasePageProps{
+  data:{
+    cities: any,
+    images: [],
+    OnlineLinks: {
+      CanadianLinks: any,
+      USALinks: any,
+      InternationalLinks: any
+    }
+  }
+}
+
+interface LocationProps{
+  location:{
+    img: string,
+    type: string,
+    location: string,
+    date: string,
+    Description: string
+  }
+}
+
+export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
   let cities = Object.keys(data.cities);
 
-  let raffleOnOff = cities.map((element) => {
-    return data.cities[element].some((element) => {
-      if (element.type === "Raffle") {
-        return true;
-      }
-    });
-  });
+  // let raffleOnOff = cities.map((element) => {
+  //   return data.cities[element].some((element) => {
+  //     if (element.type === "Raffle") {
+  //       return true;
+  //     }
+  //   });
+  // });
 
   return (
     <Container desktop={true}>
@@ -34,11 +56,11 @@ export const DesktopReleasePage = ({ data }) => {
         <LocationsContainer>
           <LocalTitle>Local Retailers</LocalTitle>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((city, index) => {
+            ? Object.keys(data.cities).map((city: any) => {
                 return (
                   <Body>
                     {data !== undefined
-                      ? data.cities[city].map((element, index) => (
+                      ? data.cities[city].map((element : LocationProps, index : number) => (
                           <LocationCard
                             location={element}
                             data={data}
@@ -61,7 +83,7 @@ export const DesktopReleasePage = ({ data }) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.CanadianLinks.map((links, index) => {
+              ? data.OnlineLinks.CanadianLinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
                   return (
                     <OnlineLinkCards
                       link={links}
@@ -82,7 +104,7 @@ export const DesktopReleasePage = ({ data }) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.USALinks.map((links, index) => {
+              ? data.OnlineLinks.USALinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
                   return (
                     <OnlineLinkCards
                       link={links}
@@ -103,7 +125,7 @@ export const DesktopReleasePage = ({ data }) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.InternationalLinks.map((links, index) => {
+              ? data.OnlineLinks.InternationalLinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
                   return (
                     <OnlineLinkCards
                       link={links}
@@ -124,7 +146,7 @@ export const DesktopReleasePage = ({ data }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ desktop: boolean }>`
   background-color: white;
   display: flex;
   flex-direction: column;

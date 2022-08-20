@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { RootState } from "../../store/store";
 
-export const PastPresent = ({ sneaker, clothing }) => {
+interface PastPresentProps {
+  sneaker: boolean;
+  clothing: boolean;
+}
+
+export const PastPresent = ({ sneaker, clothing }: PastPresentProps) => {
   const dispatch = useDispatch();
 
-  const upcoming = useSelector((state) => {
+  const upcoming = useSelector((state: RootState) => {
     if (sneaker) {
       return state.sneaker.upcomingSelected;
     } else if (clothing) {
@@ -13,7 +19,7 @@ export const PastPresent = ({ sneaker, clothing }) => {
     }
   });
 
-  const past = useSelector((state) => {
+  const past = useSelector((state: RootState) => {
     if (sneaker) {
       return state.sneaker.pastSelected;
     } else if (clothing) {
@@ -115,7 +121,7 @@ const Container = styled.div`
   }
 `;
 
-const Text = styled.h2`
+const Text = styled.h2<{ selected: boolean | undefined }>`
   color: ${(props) => (props.selected === true ? "white" : "black")};
   padding: 10px;
   font-size: 18px;
@@ -130,7 +136,7 @@ const Text = styled.h2`
   }
 `;
 
-const UpcomingContainer = styled.div`
+const UpcomingContainer = styled.div<{ selected: boolean | undefined }>`
   height: 100%;
   width: 50%;
   background-color: ${(props) => (props.selected === true ? "#21587F" : null)};
@@ -144,7 +150,7 @@ const UpcomingContainer = styled.div`
       : null};
 `;
 
-const PastContainer = styled.div`
+const PastContainer = styled.div<{ selected: boolean | undefined }>`
   height: 100%;
   width: 50%;
   display: flex;

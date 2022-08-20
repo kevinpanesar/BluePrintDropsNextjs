@@ -1,10 +1,23 @@
-import { React, useState } from "react";
+import React,{useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
-import { MensWomensKidsIcons } from "../mensWomensKidsSelector/mensWomensKidsIcons";
+import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
 
-export const ReleaseCard = ({ data, desktop }) => {
+interface ReleaseCardProps{
+  data:{
+    title : string,
+    date: string,
+    colorway: string,
+    price: string,
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+  },
+  desktop: boolean
+}
+
+export const ReleaseCard = ({ data, desktop } : ReleaseCardProps) => {
   return (
     <Container desktop={desktop}>
       <TitleContainer>
@@ -30,7 +43,7 @@ export const ReleaseCard = ({ data, desktop }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ desktop: boolean }>`
   width: 90%;
   margin: 0 auto;
   background: #21587f;

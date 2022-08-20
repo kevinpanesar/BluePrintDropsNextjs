@@ -15,7 +15,7 @@ export const AboutMePage = () => {
         <SearchNavContainer>
           <NavContainer>
             <SideNavBar open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
+            <Menu open={open} />
           </NavContainer>
         </SearchNavContainer>
       </HeaderContainer>

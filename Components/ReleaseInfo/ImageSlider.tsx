@@ -4,10 +4,17 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
-const handleDragStart = (e) => e.preventDefault();
+interface ImageSliderProps {
+  data: {
+    images: [];
+  };
+}
 
-export const ImageSlider = ({ data }) => {
-  let items;
+export const ImageSlider = ({ data }: ImageSliderProps) => {
+  let items = [{}];
+
+  const handleDragStart = (e: React.DragEvent<HTMLImageElement>) =>
+    e.preventDefault();
 
   if (data.images !== undefined) {
     items = data.images.map((element) => (
@@ -19,7 +26,7 @@ export const ImageSlider = ({ data }) => {
   return (
     <Container>
       <AliceCarousel
-        disableButtonsControls="true"
+        disableButtonsControls={true}
         mouseTracking
         items={items}
       />
@@ -28,7 +35,7 @@ export const ImageSlider = ({ data }) => {
 };
 
 const Container = styled.div`
-  width: 90%;
+  width: 40%;
   overflow: hidden;
   margin: 0 auto;
 `;
