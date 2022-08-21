@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function SideNavBar({ open, setOpen }) {
+interface SideNavBarProps{
+  open: boolean,
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function SideNavBar({ open, setOpen }: SideNavBarProps) {
   return (
     <StyledBurger open={open} onClick={() => setOpen(!open)}>
       <div />
@@ -11,7 +16,7 @@ function SideNavBar({ open, setOpen }) {
   );
 }
 
-export const StyledBurger = styled.button`
+export const StyledBurger = styled.button<{open: boolean}>`
   right: 2rem;
   margin: 10px;
   display: flex;

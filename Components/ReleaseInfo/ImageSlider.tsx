@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 interface ImageSliderProps {
   data: {
-    images: [];
+    images: string[];
   };
 }
 

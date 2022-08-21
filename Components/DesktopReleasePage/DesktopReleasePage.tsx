@@ -14,13 +14,20 @@ import {OnlineLinkCardsProps} from '../DesktopOnlineLinkCard/OnlineLinkCards'
 
 export interface DesktopReleasePageProps{
   data:{
-    cities: any,
-    images: [],
+    title: string;
+    date: string;
+    colorway: string;
+    price: string;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+    cities: any;
+    images: string[];
     OnlineLinks: {
-      CanadianLinks: any,
-      USALinks: any,
-      InternationalLinks: any
-    }
+        CanadianLinks: any;
+        USALinks: any;
+        InternationalLinks: any;
+    };
   }
 }
 
@@ -30,7 +37,8 @@ interface LocationProps{
     type: string,
     location: string,
     date: string,
-    Description: string
+    Description: string,
+    Address: string
   }
 }
 

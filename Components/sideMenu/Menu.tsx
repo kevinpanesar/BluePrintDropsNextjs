@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { bool } from "prop-types";
 import Link from "next/link";
 
-const Menu = ({ open } : boolean) => {
+interface MenuProps{
+  open: boolean,
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Menu = ({ open, setOpen } : MenuProps) => {
   return (
     <StyledMenu open={open}>
       <Link href={"/"}>

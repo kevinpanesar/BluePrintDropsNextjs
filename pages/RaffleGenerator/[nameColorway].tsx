@@ -2,16 +2,16 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { ReleaseInfoPage } from "../../Components/ReleaseInfo/ReleaseInfoPage";
-import { fetchSneakerInfo, setCurrentShoe } from "../../store/releaseInfo";
-import { useRouter } from "next/router";
 import { RaffleForm } from "../../Components/RaffleForm/RaffleForm";
 import Menu from "../../Components/sideMenu/Menu";
 import SideNavBar from "../../Components/sideMenu/SideNavBar";
 import { Header } from "../../Components/Header/Header";
 
-export default function ReleasePage({ postData }) {
+interface ReleasePageProps{
+  postData: {title: string; colorway: string;}[]
+}
+
+export default function ReleasePage({ postData }: ReleasePageProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ export default function ReleasePage({ postData }) {
 
       <Container>
         <HeaderContainer>
-          <Header />
+          <Header type={""} />
           <SearchNavContainer>
             <NavContainer>
               <SideNavBar open={open} setOpen={setOpen} />
@@ -42,7 +42,7 @@ export default function ReleasePage({ postData }) {
 export async function getAllPostIds() {
   const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
   const posts = await res.json();
-  return posts.map((post) => {
+  return posts.map((post : {_id: string, title: string}) => {
     const postID = post._id;
     const stringPostId = postID.toString();
     return {
@@ -61,7 +61,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getPostData(id) {
+export async function getPostData(id : string) {
   const res = await fetch(`https://sneaker-mern-app.herokuapp.com/posts/${id}`);
   const post = await res.json();
 
@@ -72,7 +72,13 @@ export async function getPostData(id) {
   };
 }
 
-export async function getStaticProps({ params }) {
+export interface getStaticPropsTypes{
+  params: {
+    nameColorway: string
+  }
+}
+
+export async function getStaticProps({ params }: getStaticPropsTypes) {
   let id = params.nameColorway.split("_")[1];
   const postData = await getPostData(id);
   return {

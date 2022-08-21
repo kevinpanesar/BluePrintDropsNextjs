@@ -18,6 +18,14 @@ interface LocationCardProps {
   data: {
     title: string;
     _id: string;
+    cities: any,
+    images: string[],
+    OnlineLinks: {
+      CanadianLinks: any,
+      USALinks: any,
+      InternationalLinks: any
+    }
+  
   };
 }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { Header } from "../Header/Header";
 import Menu from "../sideMenu/Menu";
+import React from "react";
 import SideNavBar from "../sideMenu/SideNavBar";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ export const AboutMePage = () => {
         <SearchNavContainer>
           <NavContainer>
             <SideNavBar open={open} setOpen={setOpen} />
-            <Menu open={open} />
+            <Menu open={open} setOpen={setOpen} />
           </NavContainer>
         </SearchNavContainer>
       </HeaderContainer>

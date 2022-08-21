@@ -8,13 +8,31 @@ import { Header } from "../../Components/Header/Header";
 import { useState } from "react";
 import { DesktopMenu } from "../../Components/desktopMenu/DesktopMenu";
 import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopReleasePage";
+import {getStaticPropsTypes} from '../RaffleGenerator/[nameColorway]'
+interface ReleasePageProps{
+  postData: {
+    cities: [[]];
+    OnlineLinks: {
+      CanadianLinks: string;
+      USALinks: string;
+      InternationalLinks: string;
+  };
+    _id: string;
+    date: string;
+    colorway: string;
+    price: string;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;title: string, images: string[]}[],
+  
+}
 
-export default function ReleasePage({ postData }) {
+export default function ReleasePage({ postData }: ReleasePageProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <Container>
-      <Head>
+      <Head> n 
         <title>{"BLUEPRINT X " + postData[0].title}</title>
         <meta
           name="description"
@@ -30,7 +48,7 @@ export default function ReleasePage({ postData }) {
       </Head>
       <Container>
         <HeaderContainer>
-          <Header />
+          <Header type={""} />
           <DesktopMenu />
           <SearchNavContainer>
             <NavContainer>
@@ -50,7 +68,7 @@ export default function ReleasePage({ postData }) {
 export async function getAllPostIds() {
   const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
   const posts = await res.json();
-  return posts.map((post) => {
+  return posts.map((post : {title : string, _id : string}) => {
     const postID = post._id;
     const stringPostId = postID.toString();
     return {
@@ -69,7 +87,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   const res = await fetch(`https://sneaker-mern-app.herokuapp.com/posts/${id}`);
   const post = await res.json();
 
@@ -80,7 +98,7 @@ export async function getPostData(id) {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: getStaticPropsTypes) {
   let id = params.nameColorway.split("KP")[1];
   const postData = await getPostData(id);
   return {

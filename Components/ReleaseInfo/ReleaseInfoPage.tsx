@@ -18,9 +18,6 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 
 interface ReleaseInfoPageProps {
   data: {
-    cities: [[]];
-    images: [];
-    _id: string;
     title: string;
     date: string;
     colorway: string;
@@ -28,6 +25,13 @@ interface ReleaseInfoPageProps {
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
+    cities: any;
+    images: string[];
+    OnlineLinks: {
+        CanadianLinks: any;
+        USALinks: any;
+        InternationalLinks: any;
+    };
   };
 }
 
@@ -67,13 +71,14 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
                     </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
-                        ? data.cities[city].map((element, index) => (
+                        ? data.cities[city].map((element : any, index: number) => (
                             <LocationCard
                             location={element}
                             key={index}
                             length={data.cities[city].length} desktop={false} data={{
                               title: "",
-                              _id: ""
+                              _id: "",
+                
                             }}                            />
                           ))
                         : null}
