@@ -18,6 +18,7 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 
 interface ReleaseInfoPageProps {
   data: {
+    _id: string,
     title: string;
     date: string;
     colorway: string;
@@ -78,8 +79,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
                             length={data.cities[city].length} desktop={false} data={{
                               title: "",
                               _id: "",
-                
-                            }}                            />
+                            }}/>
                           ))
                         : null}
                     </AccordionBody>

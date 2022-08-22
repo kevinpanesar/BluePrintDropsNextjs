@@ -2,29 +2,35 @@ import React, { FormEventHandler } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Image from "next/image";
-import {RootState} from '../../store/store'
+import { RootState } from "../../store/store";
 
-interface SearchBarProps{
-  clothing: boolean,
-  sneaker: boolean
+interface SearchBarProps {
+  clothing: boolean;
+  sneaker: boolean;
 }
 
 export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   const dispatch = useDispatch();
-  const term = useSelector((state : RootState) => state.sneaker.searchTerm);
+  const term = useSelector((state: RootState) => state.sneaker.searchTerm);
   // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
-  const handleChange = (event : FormEventHandler<HTMLFormElement>) => {
-    (event : any) => event.preventDefault();
+  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
+    (event: any) => event.preventDefault();
     if (clothing == true) {
-      dispatch({ type: "clothing/setSearchTerm", payload: event.currentTarget.value });
+      dispatch({
+        type: "clothing/setSearchTerm",
+        payload: event.currentTarget.value,
+      });
     } else if (sneaker == true) {
-      dispatch({ type: "sneaker/setSearchTerm", payload: event.currentTarget.value });
+      dispatch({
+        type: "sneaker/setSearchTerm",
+        payload: event.currentTarget.value,
+      });
     }
   };
 
   return (
-    <Form id="searchBar" onChange={handleChange}>
+    <Form id="searchBar" onChange={(event) => handleChange(event)}>
       <Input type="search" placeholder="Search..." defaultValue={term} />
       <ImageDiv>
         <Image src="/Media/search.svg" width={30} height={30} />

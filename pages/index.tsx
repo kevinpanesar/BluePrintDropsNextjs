@@ -7,52 +7,55 @@ import { Options } from "../Components/mensWomensKidsSelector/mensWomensKidsSele
 import { SearchBar } from "../Components/SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchClothingInfo } from "../store/ClothingReleaseInfo";
+import { fetchSneakerInfo } from "../store/releaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
+import { useAppDispatch } from "../store/store";
 import Menu from "../Components/sideMenu/Menu";
+import { RootState } from "../store/store";
 import { getDate } from "date-fns";
 import { useState } from "react";
 import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
+import { monthsObj } from "../util/monthSeperator";
 
-export default function Clothing({ data }) {
+export default function Home() {
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchClothingInfo())
-      .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-      .then(() => dispatch({ type: "clothing/filterMonths" }))
-      .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    dispatch(fetchSneakerInfo())
+      .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
+      .then(() => dispatch({ type: "sneaker/filterMonths" }))
+      .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
   }, []);
 
-  const term = useSelector((state) => state.clothing.searchTerm);
+  const term = useSelector((state: RootState) => state.sneaker.searchTerm);
 
-  let info = useSelector((state) => {
-    if (state.clothing.currentClothingFeedUpcoming === true) {
-      const months = Object.keys(state.clothing.futureMonths);
+  let info = useSelector((state: RootState) => {
+    if (state.sneaker.currentSneakerFeedUpcoming === true) {
+      const months = Object.keys(state.sneaker.futureMonths);
 
       return months.map((element) => {
-        return state.clothing.futureClothingInfoAgeOrGender[element].filter(
-          (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
+        return state.sneaker.futureSneakerInfoAgeOrGender[
+          element as keyof typeof monthsObj
+        ].filter((element: any) => {
+          return element.title.toLowerCase().includes(term.toLowerCase());
+        });
       });
     } else {
-      const months = Object.keys(state.clothing.futureMonths);
+      const months = Object.keys(state.sneaker.futureMonths);
       return months.map((element) => {
-        return state.clothing.pastClothingInfoAgeOrGender[element].filter(
-          (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
+        return state.sneaker.pastSneakerInfoAgeOrGender[
+          element as keyof typeof monthsObj
+        ].filter((element: { title: string }) => {
+          return element.title.toLowerCase().includes(term.toLowerCase());
+        });
       });
     }
   });
 
   const filter = useSelector(
-    (state) => state.clothing.mensWomensKidsFilterValue
+    (state: RootState) => state.sneaker.mensWomensKidsFilterValue
   );
 
   let filteredResults;
@@ -60,13 +63,13 @@ export default function Clothing({ data }) {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.map((element) => {
-      return element.filter((element) => element[filter] === true);
+    filteredResults = info.map((element : any) => {
+      return element.filter((element : any) => element[filter] === true);
     });
   }
 
   filteredResults.map((element) =>
-    element.sort((firstEl, secondEl) => {
+    element.sort((firstEl: { date: string }, secondEl: { date: string }) => {
       return (
         getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
         getDate(new Date(secondEl.date.replace(/, /g, "/")))
@@ -83,26 +86,29 @@ export default function Clothing({ data }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
           rel="stylesheet"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?Akronim&family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <DesktopContentContainer>
         <HeaderContainer>
-          <Header />
+          <Header type={""} />
           <DesktopMenu />
           <SearchNavContainer>
-            <SearchBar clothing={true} />
-            <div>
+            <SearchBar sneaker={true} clothing={false} />
+            <NavContainer>
               <SideNavBar open={open} setOpen={setOpen} />
               <Menu open={open} setOpen={setOpen} />
-            </div>
+            </NavContainer>
           </SearchNavContainer>
         </HeaderContainer>
 
-        <PastPresent sneaker={false} clothing={true} />
-        <Options sneaker={false} clothing={true} />
+        <PastPresent sneaker={true} clothing={false} />
+        <Options sneaker={true} clothing={false} />
         <SneakerFeed filteredResults={filteredResults} />
         <Footer />
       </DesktopContentContainer>
@@ -118,8 +124,8 @@ const HeaderContainer = styled.div`
   width: 100%;
   z-index: 30;
 
-   @media (min-width: 768px){
-     border-top: 1px solid #c0c0c0;
+  @media (min-width: 768px) {
+    border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 20px;
     background-color: white;
@@ -127,34 +133,33 @@ const HeaderContainer = styled.div`
     right: 0;
     left: 0;
     margin: 0 auto;
-   }
+  }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 24px;
     width: 80%;
     padding: 10px 20px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     font-size: 29px;
     width: 80%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1441px){
+  @media (min-width: 1441px) {
     font-size: 29px;
     width: 70%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-   @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-
 `;
 
 const Container = styled.div`
@@ -179,27 +184,27 @@ const NavContainer = styled.div`
 `;
 
 const DesktopContentContainer = styled.div`
- @media (min-width: 768px){
+  @media (min-width: 768px) {
     background-color: white;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     width: 80%;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     width: 80%;
   }
 
-   @media (min-width: 1441px) and (max-width: 1900px){
+  @media (min-width: 1441px) and (max-width: 1900px) {
     width: 70%;
   }
 
-     @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-      @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-`
+`;

@@ -10,12 +10,13 @@ import { NavBar } from "../NavBar/NavBar";
 import { ThumbnailSlider } from "./DesktopSlider";
 import { OnlineLinkCards } from "../DesktopOnlineLinkCard/OnlineLinkCards";
 import { Footer } from "../Footer/Footer";
-import {OnlineLinkCardsProps} from '../DesktopOnlineLinkCard/OnlineLinkCards'
+import { OnlineLinkCardsProps } from "../DesktopOnlineLinkCard/OnlineLinkCards";
 
-export interface DesktopReleasePageProps{
-  data:{
+export interface DesktopReleasePageProps {
+  data: {
     title: string;
     date: string;
+    _id: string
     colorway: string;
     price: string;
     mensFlag: boolean;
@@ -24,25 +25,23 @@ export interface DesktopReleasePageProps{
     cities: any;
     images: string[];
     OnlineLinks: {
-        CanadianLinks: any;
-        USALinks: any;
-        InternationalLinks: any;
+      CanadianLinks: any;
+      USALinks: any;
+      InternationalLinks: any;
     };
-  }
+  };
 }
 
-interface LocationProps{
-  location:{
-    img: string,
-    type: string,
-    location: string,
-    date: string,
-    Description: string,
-    Address: string
-  }
+interface LocationProps {
+  img: string;
+  type: string;
+  location: string;
+  date: string;
+  Description: string;
+  Address: string;
 }
 
-export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
+export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
   let cities = Object.keys(data.cities);
 
   // let raffleOnOff = cities.map((element) => {
@@ -68,15 +67,17 @@ export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
                 return (
                   <Body>
                     {data !== undefined
-                      ? data.cities[city].map((element : LocationProps, index : number) => (
-                          <LocationCard
-                            location={element}
-                            data={data}
-                            key={index}
-                            length={data.cities[city].length}
-                            desktop={true}
-                          />
-                        ))
+                      ? data.cities[city].map(
+                          (element: LocationProps, index: number) => (
+                            <LocationCard
+                              location={element}
+                              data={data}
+                              key={index}
+                              length={data.cities[city].length}
+                              desktop={true}
+                            />
+                          )
+                        )
                       : null}
                   </Body>
                 );
@@ -91,16 +92,18 @@ export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.CanadianLinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
-                  return (
-                    <OnlineLinkCards
-                      link={links}
-                      key={index}
-                      length={data.OnlineLinks.CanadianLinks.length}
-                      desktop={true}
-                    />
-                  );
-                })
+              ? data.OnlineLinks.CanadianLinks.map(
+                  (links: OnlineLinkCardsProps["link"], index: number) => {
+                    return (
+                      <OnlineLinkCards
+                        link={links}
+                        key={index}
+                        length={data.OnlineLinks.CanadianLinks.length}
+                        desktop={true}
+                      />
+                    );
+                  }
+                )
               : null}
           </Body>
           <LocalTitle>
@@ -112,16 +115,18 @@ export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.USALinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
-                  return (
-                    <OnlineLinkCards
-                      link={links}
-                      key={index}
-                      length={data.OnlineLinks.USALinks.length}
-                      desktop={true}
-                    />
-                  );
-                })
+              ? data.OnlineLinks.USALinks.map(
+                  (links: OnlineLinkCardsProps["link"], index: number) => {
+                    return (
+                      <OnlineLinkCards
+                        link={links}
+                        key={index}
+                        length={data.OnlineLinks.USALinks.length}
+                        desktop={true}
+                      />
+                    );
+                  }
+                )
               : null}
           </Body>
           <LocalTitle>
@@ -133,16 +138,18 @@ export const DesktopReleasePage = ({ data  }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.InternationalLinks.map((links: OnlineLinkCardsProps["link"], index: number) => {
-                  return (
-                    <OnlineLinkCards
-                      link={links}
-                      key={index}
-                      length={data.OnlineLinks.InternationalLinks.length}
-                      desktop={true}
-                    />
-                  );
-                })
+              ? data.OnlineLinks.InternationalLinks.map(
+                  (links: OnlineLinkCardsProps["link"], index: number) => {
+                    return (
+                      <OnlineLinkCards
+                        link={links}
+                        key={index}
+                        length={data.OnlineLinks.InternationalLinks.length}
+                        desktop={true}
+                      />
+                    );
+                  }
+                )
               : null}
           </Body>
         </LocationsContainer>

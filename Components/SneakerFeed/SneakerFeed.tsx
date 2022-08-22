@@ -6,21 +6,14 @@ import Link from "next/link";
 import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
-interface SneakerFeed{
-  filteredResults: [],
+interface SneakerFeed {
+  filteredResults: never[][];
 }
-
-interface ElementProps{
-  title: string,
-   colorway: string,
-  _id: string
-}
-
 
 export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
   return (
     <Container>
-      {filteredResults.map((element : {date: string}[], index) => {
+      {filteredResults.map((element: { date: string }[], index: number) => {
         if (element.length > 0) {
           return (
             <div key={index}>
@@ -28,24 +21,23 @@ export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
                 {format(new Date(element[0].date.replace(/, /g, "/")), "LLLL")}
               </Month>
               <CardContainer>
-                {element !== undefined ? (
-                  element.map((element : any) => {
-                    return (
-                      <Link
-                        passHref
-                        key={element.title + element.colorway}
-                        href={
-                          "/ReleaseInfo/" + element.title + "KP" + element._id
-                        }
-                      >
-                        <Links>
-                          <SneakerCard cardInfo={element} />
-                        </Links>
-                      </Link>
-                    );
-                  })
-                ) : (
-                null)}
+                {element !== undefined
+                  ? element.map((element: any) => {
+                      return (
+                        <Link
+                          passHref
+                          key={element.title + element.colorway}
+                          href={
+                            "/ReleaseInfo/" + element.title + "KP" + element._id
+                          }
+                        >
+                          <Links>
+                            <SneakerCard cardInfo={element} />
+                          </Links>
+                        </Link>
+                      );
+                    })
+                  : null}
               </CardContainer>
             </div>
           );
@@ -127,12 +119,11 @@ const Month = styled.p`
     font-size: 28px;
   }
 
-  
   @media (min-width: 1440px) and (max-width: 1900px) {
     font-size: 30px;
   }
 
-  @media (min-width: 1900px){
+  @media (min-width: 1900px) {
     font-size: 32px;
   }
 `;

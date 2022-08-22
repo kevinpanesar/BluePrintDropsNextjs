@@ -12,20 +12,12 @@ interface LocationCardProps {
     Description: string;
     date: string;
     Address: string
-  };
+  }
   length: number;
   desktop: boolean;
   data: {
     title: string;
     _id: string;
-    cities: any,
-    images: string[],
-    OnlineLinks: {
-      CanadianLinks: any,
-      USALinks: any,
-      InternationalLinks: any
-    }
-  
   };
 }
 

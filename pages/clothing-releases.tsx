@@ -5,45 +5,48 @@ import { PastPresent } from "../Components/Past-Present/PastPresent";
 import { SneakerFeed } from "../Components/SneakerFeed/SneakerFeed";
 import { Options } from "../Components/mensWomensKidsSelector/mensWomensKidsSelector";
 import { SearchBar } from "../Components/SearchBar/SearchBar";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../store/store";
 import { useEffect } from "react";
-import { fetchSneakerInfo } from "../store/releaseInfo";
+import { fetchClothingInfo } from "../store/ClothingReleaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
 import Menu from "../Components/sideMenu/Menu";
-import { format, getDate } from "date-fns";
+import { getDate } from "date-fns";
 import { useState } from "react";
 import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
-
-export default function Home({ data }) {
-  const dispatch = useDispatch();
+import { RootState } from "../store/store";
+import {monthsObj} from '../util/monthSeperator'
+export default function Clothing() {
   const [open, setOpen] = useState(false);
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    dispatch(fetchSneakerInfo())
-      .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
-      .then(() => dispatch({ type: "sneaker/filterMonths" }))
-      .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
+    dispatch(fetchClothingInfo())
+      .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
+      .then(() => dispatch({ type: "clothing/filterMonths" }))
+      .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
   }, []);
 
-  const term = useSelector((state) => state.sneaker.searchTerm);
+  const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
-  let info = useSelector((state) => {
-    if (state.sneaker.currentSneakerFeedUpcoming === true) {
-      const months = Object.keys(state.sneaker.futureMonths);
+  let info = useSelector((state: RootState) => {
+    if (state.clothing.currentClothingFeedUpcoming === true) {
+      const months = Object.keys(state.clothing.futureMonths);
 
-      return months.map((element) => {
-        return state.sneaker.futureSneakerInfoAgeOrGender[element].filter(
-          (element) => {
+      return months.map((element: any) => {
+        return state.clothing.futureClothingInfoAgeOrGender[element as keyof typeof monthsObj].filter(
+          (element: any) => {
             return element.title.toLowerCase().includes(term.toLowerCase());
           }
         );
       });
     } else {
-      const months = Object.keys(state.sneaker.futureMonths);
+      const months = Object.keys(state.clothing.futureMonths);
       return months.map((element) => {
-        return state.sneaker.pastSneakerInfoAgeOrGender[element].filter(
-          (element) => {
+        return state.clothing.pastClothingInfoAgeOrGender[element as keyof typeof monthsObj].filter(
+          (element : {title : string}) => {
             return element.title.toLowerCase().includes(term.toLowerCase());
           }
         );
@@ -52,10 +55,10 @@ export default function Home({ data }) {
   });
 
   const filter = useSelector(
-    (state) => state.sneaker.mensWomensKidsFilterValue
+    (state: RootState) => state.clothing.mensWomensKidsFilterValue
   );
 
-  let filteredResults;
+  let filteredResults = null;
 
   if (filter === "reset") {
     filteredResults = info;
@@ -66,7 +69,7 @@ export default function Home({ data }) {
   }
 
   filteredResults.map((element) =>
-    element.sort((firstEl, secondEl) => {
+    element.sort((firstEl : {date: string}, secondEl : {date: string}) => {
       return (
         getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
         getDate(new Date(secondEl.date.replace(/, /g, "/")))
@@ -83,29 +86,29 @@ export default function Home({ data }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?Akronim&family=Open+Sans:ital,wght@0,500;0,600;1,400;1,500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
           rel="stylesheet"
         ></link>
       </Head>
       <DesktopContentContainer>
         <HeaderContainer>
-          <Header />
+          <Header type={""} />
           <DesktopMenu />
           <SearchNavContainer>
-            <SearchBar sneaker={true} />
-            <NavContainer>
+            <SearchBar clothing={true} sneaker={false} />
+            <div>
               <SideNavBar open={open} setOpen={setOpen} />
               <Menu open={open} setOpen={setOpen} />
-            </NavContainer>
+            </div>
           </SearchNavContainer>
         </HeaderContainer>
 
-        <PastPresent sneaker={true} clothing={false} />
-        <Options sneaker={true} clothing={false} />
+        <PastPresent sneaker={false} clothing={true} />
+        <Options sneaker={false} clothing={true} />
         <SneakerFeed filteredResults={filteredResults} />
         <Footer />
       </DesktopContentContainer>
@@ -172,12 +175,6 @@ const Container = styled.div`
 
 const SearchNavContainer = styled.div`
   display: flex;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const DesktopContentContainer = styled.div`
