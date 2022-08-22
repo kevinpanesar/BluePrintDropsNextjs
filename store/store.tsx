@@ -4,7 +4,7 @@ import sneaker from "./releaseInfo";
 import clothing from "./ClothingReleaseInfo";
 import { useDispatch } from "react-redux";
 
-const reducer = combineReducers({
+const reducer : any = combineReducers({
   sneaker,
   clothing,
 });

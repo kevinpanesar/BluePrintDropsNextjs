@@ -1,8 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {getAuth,signOut } from 'firebase/auth'
+import { auth } from "../../firebase/clientApp";
+import LoggedInDropDown from "../LoggedInDropDown/LoggedInDropDown";
 
 export const DesktopMenu = ({type} : any) => {
+  
+ const [user, loading, error] = useAuthState(firebase.auth() as any);
+ 
+
+  const logout = () => {
+    signOut(auth);
+  };
+
+  const loggedInUserId = () => {
+    if(user && user.uid){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+    const loggedIn = loggedInUserId();
+  
   return (
     <StyledMenu >
       <Link href={"/"}>
@@ -11,12 +35,17 @@ export const DesktopMenu = ({type} : any) => {
       <Link href={"/clothing-releases"}>
         <NavPages type={type}>Clothing Releases</NavPages>
       </Link>
+      {!loggedIn && <Link href={"/auth"}>
+        <NavPages type={type}>Login</NavPages>
+      </Link>}
       {/* <Link href={"/clothing-releases"}>
         <NavPages type={type}>Tools</NavPages>
       </Link>
       <Link href={"/about"}>
         <NavPages type={type}>About Us</NavPages>
       </Link> */}
+      {/* <button onClick={logout}>Log out</button> */}
+      <LoggedInDropDown />
     </StyledMenu>
   );
 };
@@ -63,3 +92,4 @@ const NavPages = styled.a`
     font-size: 14px;
    }
 `;
+
