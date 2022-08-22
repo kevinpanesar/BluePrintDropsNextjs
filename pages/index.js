@@ -19,11 +19,21 @@ export default function Home({ data }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
+  const callBackend = useSelector((state) => {
+    if (state.sneaker.allSneakerInfo.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   useEffect(() => {
-    dispatch(fetchSneakerInfo())
-      .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
-      .then(() => dispatch({ type: "sneaker/filterMonths" }))
-      .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
+    if (callBackend) {
+      dispatch(fetchSneakerInfo())
+        .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
+        .then(() => dispatch({ type: "sneaker/filterMonths" }))
+        .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
+    }
   }, []);
 
   const term = useSelector((state) => state.sneaker.searchTerm);
@@ -35,7 +45,7 @@ export default function Home({ data }) {
       return months.map((element) => {
         return state.sneaker.futureSneakerInfoAgeOrGender[element].filter(
           (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
+            return element.title.toLowerCase().includes(term?.toLowerCase());
           }
         );
       });
@@ -44,7 +54,7 @@ export default function Home({ data }) {
       return months.map((element) => {
         return state.sneaker.pastSneakerInfoAgeOrGender[element].filter(
           (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
+            return element.title.toLowerCase().includes(term?.toLowerCase());
           }
         );
       });

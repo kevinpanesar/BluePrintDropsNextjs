@@ -175,7 +175,7 @@ const clothingSlice = createSlice({
       state.status = "loading";
     },
     [fetchClothingInfo.fulfilled]: (state, action) => {
-      if (state.allClothingInfo.length === 0) {
+      if (state.allClothingInfo.length == 0) {
         state.allClothingInfo = action.payload;
       }
     },

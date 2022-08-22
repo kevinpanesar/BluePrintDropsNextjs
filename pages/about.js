@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { NavBar } from "../Components/NavBar/NavBar";
-// import { AboutMePage } from "../Components/AboutMePage/AboutMe";
-import { AboutMePage } from "../Components/AboutMePage/AboutUsPageDesktop";
+import { AboutMePage } from "../Components/AboutMePage/AboutMe";
+// import { AboutMePage } from "../Components/AboutMePage/AboutUsPageDesktop";
 
 export default function About() {
   return (

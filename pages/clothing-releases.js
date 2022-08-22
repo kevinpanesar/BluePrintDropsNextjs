@@ -19,11 +19,21 @@ export default function Clothing({ data }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
+  const callBackend = useSelector((state) => {
+    if (state.sneaker.allSneakerInfo.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   useEffect(() => {
-    dispatch(fetchClothingInfo())
-      .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-      .then(() => dispatch({ type: "clothing/filterMonths" }))
-      .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    if (callBackend) {
+      dispatch(fetchClothingInfo())
+        .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
+        .then(() => dispatch({ type: "clothing/filterMonths" }))
+        .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    }
   }, []);
 
   const term = useSelector((state) => state.clothing.searchTerm);
@@ -35,7 +45,7 @@ export default function Clothing({ data }) {
       return months.map((element) => {
         return state.clothing.futureClothingInfoAgeOrGender[element].filter(
           (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
+            return element.title.toLowerCase().includes(term?.toLowerCase());
           }
         );
       });
@@ -44,7 +54,7 @@ export default function Clothing({ data }) {
       return months.map((element) => {
         return state.clothing.pastClothingInfoAgeOrGender[element].filter(
           (element) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
+            return element.title.toLowerCase().includes(term?.toLowerCase());
           }
         );
       });
@@ -86,7 +96,10 @@ export default function Clothing({ data }) {
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <DesktopContentContainer>
         <HeaderContainer>
@@ -118,8 +131,8 @@ const HeaderContainer = styled.div`
   width: 100%;
   z-index: 30;
 
-   @media (min-width: 768px){
-     border-top: 1px solid #c0c0c0;
+  @media (min-width: 768px) {
+    border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 20px;
     background-color: white;
@@ -127,34 +140,33 @@ const HeaderContainer = styled.div`
     right: 0;
     left: 0;
     margin: 0 auto;
-   }
+  }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 24px;
     width: 80%;
     padding: 10px 20px;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     font-size: 29px;
     width: 80%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1441px){
+  @media (min-width: 1441px) {
     font-size: 29px;
     width: 70%;
     padding: 10px 20px;
   }
 
-    @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-   @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-
 `;
 
 const Container = styled.div`
@@ -179,27 +191,27 @@ const NavContainer = styled.div`
 `;
 
 const DesktopContentContainer = styled.div`
- @media (min-width: 768px){
+  @media (min-width: 768px) {
     background-color: white;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     width: 80%;
   }
 
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     width: 80%;
   }
 
-   @media (min-width: 1441px) and (max-width: 1900px){
+  @media (min-width: 1441px) and (max-width: 1900px) {
     width: 70%;
   }
 
-     @media (min-width: 1900px) and (max-width: 2500px){
+  @media (min-width: 1900px) and (max-width: 2500px) {
     width: 60%;
   }
 
-      @media (min-width: 2500px){
+  @media (min-width: 2500px) {
     width: 55%;
   }
-`
+`;

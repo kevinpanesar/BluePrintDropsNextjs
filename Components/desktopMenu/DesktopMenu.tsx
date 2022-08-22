@@ -11,12 +11,12 @@ export const DesktopMenu = ({type} : any) => {
       <Link href={"/clothing-releases"}>
         <NavPages type={type}>Clothing Releases</NavPages>
       </Link>
-      <Link href={"/clothing-releases"}>
+      {/* <Link href={"/clothing-releases"}>
         <NavPages type={type}>Tools</NavPages>
       </Link>
       <Link href={"/about"}>
         <NavPages type={type}>About Us</NavPages>
-      </Link>
+      </Link> */}
     </StyledMenu>
   );
 };

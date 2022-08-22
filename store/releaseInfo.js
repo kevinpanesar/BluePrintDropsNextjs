@@ -43,11 +43,11 @@ const sneakerSlice = createSlice({
     pastSelected: false,
   },
   reducers: {
-    sneakerInfo: (state, action) => {
-      state.currentSneakerInfo = action.payload;
-    },
+    // sneakerInfo: (state, action) => {
+    //   state.currentSneakerInfo = action.payload;
+    // },
     splitSneakerInfo: (state) => {
-      if (state.futureSneakerInfo.length === 0) {
+      if (state.futureSneakerInfo.length === 0 && state.pastSneakerInfo.length === 0) {
         state.allSneakerInfo.forEach((element) => {
           const today = new Date();
           today.setDate(today.getDate() - 1);

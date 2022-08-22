@@ -17,9 +17,9 @@ const Menu = ({ open, setOpen } : MenuProps) => {
       <Link href={"/clothing-releases"}>
         <a>Clothing</a>
       </Link>
-      <Link href={"/about"}>
+      {/* <Link href={"/about"}>
         <a>About</a>
-      </Link>
+      </Link> */}
     </StyledMenu>
   );
 };
