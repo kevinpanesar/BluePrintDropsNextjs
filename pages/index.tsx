@@ -22,11 +22,21 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
 
+  const callBackend = useSelector((state: RootState) => {
+    if (state.sneaker.allSneakerInfo.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   useEffect(() => {
-    dispatch(fetchSneakerInfo())
-      .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
-      .then(() => dispatch({ type: "sneaker/filterMonths" }))
-      .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
+    if (callBackend) {
+      dispatch(fetchSneakerInfo())
+        .then(() => dispatch({ type: "sneaker/splitSneakerInfo" }))
+        .then(() => dispatch({ type: "sneaker/filterMonths" }))
+        .then(() => dispatch({ type: "sneaker/copyMonthsArray" }));
+    }
   }, []);
 
   const term = useSelector((state: RootState) => state.sneaker.searchTerm);
@@ -39,7 +49,7 @@ export default function Home() {
         return state.sneaker.futureSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
         ].filter((element: any) => {
-          return element.title.toLowerCase().includes(term.toLowerCase());
+          return element.title?.toLowerCase().includes(term.toLowerCase());
         });
       });
     } else {
@@ -47,8 +57,8 @@ export default function Home() {
       return months.map((element) => {
         return state.sneaker.pastSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
-        ].filter((element: { title: string }) => {
-          return element.title.toLowerCase().includes(term.toLowerCase());
+        ].filter((element: any) => {
+          return element?.title?.toLowerCase()?.includes(term?.toLowerCase());
         });
       });
     }
@@ -63,8 +73,8 @@ export default function Home() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.map((element : any) => {
-      return element.filter((element : any) => element[filter] === true);
+    filteredResults = info.map((element: any) => {
+      return element.filter((element: any) => element[filter] === true);
     });
   }
 

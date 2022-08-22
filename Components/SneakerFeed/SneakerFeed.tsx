@@ -7,7 +7,7 @@ import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
 interface SneakerFeed {
-  filteredResults: never[][];
+  filteredResults: {date: string}[][];
 }
 
 export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
@@ -18,7 +18,7 @@ export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
           return (
             <div key={index}>
               <Month>
-                {format(new Date(element[0].date.replace(/, /g, "/")), "LLLL")}
+                {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
               </Month>
               <CardContainer>
                 {element !== undefined

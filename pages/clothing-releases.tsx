@@ -16,17 +16,27 @@ import { useState } from "react";
 import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { RootState } from "../store/store";
-import {monthsObj} from '../util/monthSeperator'
+import { monthsObj } from "../util/monthSeperator";
 export default function Clothing() {
   const [open, setOpen] = useState(false);
 
   const dispatch = useAppDispatch();
 
+  const callBackend = useSelector((state: RootState) => {
+    if (state.sneaker.allSneakerInfo.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   useEffect(() => {
-    dispatch(fetchClothingInfo())
-      .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-      .then(() => dispatch({ type: "clothing/filterMonths" }))
-      .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    if (callBackend) {
+      dispatch(fetchClothingInfo())
+        .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
+        .then(() => dispatch({ type: "clothing/filterMonths" }))
+        .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    }
   }, []);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
@@ -36,20 +46,20 @@ export default function Clothing() {
       const months = Object.keys(state.clothing.futureMonths);
 
       return months.map((element: any) => {
-        return state.clothing.futureClothingInfoAgeOrGender[element as keyof typeof monthsObj].filter(
-          (element: any) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
+        return state.clothing.futureClothingInfoAgeOrGender[
+          element as keyof typeof monthsObj
+        ].filter((element: any) => {
+          return element.title?.toLowerCase().includes(term.toLowerCase());
+        });
       });
     } else {
       const months = Object.keys(state.clothing.futureMonths);
       return months.map((element) => {
-        return state.clothing.pastClothingInfoAgeOrGender[element as keyof typeof monthsObj].filter(
-          (element : {title : string}) => {
-            return element.title.toLowerCase().includes(term.toLowerCase());
-          }
-        );
+        return state.clothing.pastClothingInfoAgeOrGender[
+          element as keyof typeof monthsObj
+        ].filter((element: any) => {
+          return element.title?.toLowerCase().includes(term.toLowerCase());
+        });
       });
     }
   });
@@ -58,18 +68,18 @@ export default function Clothing() {
     (state: RootState) => state.clothing.mensWomensKidsFilterValue
   );
 
-  let filteredResults = null;
+  let filteredResults: any;
 
   if (filter === "reset") {
     filteredResults = info;
   } else {
     filteredResults = info.map((element) => {
-      return element.filter((element) => element[filter] === true);
+      return element.filter((element: any) => element[filter] === true);
     });
   }
 
-  filteredResults.map((element) =>
-    element.sort((firstEl : {date: string}, secondEl : {date: string}) => {
+  filteredResults.map((element: string[]) =>
+    element.sort((firstEl: any, secondEl: any) => {
       return (
         getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
         getDate(new Date(secondEl.date.replace(/, /g, "/")))

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { format } from "date-fns";
-import {monthsObj} from '../util/monthSeperator'
-import { RootState } from "../store/store";
+
 export const fetchClothingInfo = createAsyncThunk(
   "clothing/fetchClothing",
   async () => {
@@ -12,18 +11,18 @@ export const fetchClothingInfo = createAsyncThunk(
 );
 
 const months = {
-  January: [{}],
-  Febuary: [{}],
-  March: [{}],
-  April: [{}],
-  May: [{}],
-  June: [{}],
-  July: [{}],
-  August: [{}],
-  September: [{}],
-  October: [{}],
-  November: [{}],
-  December: [{}],
+  January: [],
+  Febuary: [],
+  March: [],
+  April: [],
+  May: [],
+  June: [],
+  July: [],
+  August: [],
+  September: [],
+  October: [],
+  November: [],
+  December: [],
 };
 // Slice
 const clothingSlice = createSlice({
@@ -33,8 +32,8 @@ const clothingSlice = createSlice({
     futureMonths: months,
     pastMonths: months,
     currentClothingFeedUpcoming: true,
-    futureClothingInfo: [{}],
-    pastClothingInfo: [{}],
+    futureClothingInfo: [],
+    pastClothingInfo: [],
     pastClothingInfoAgeOrGender: months,
     futureClothingInfoAgeOrGender: months,
     status: null,
@@ -44,9 +43,12 @@ const clothingSlice = createSlice({
     pastSelected: false,
   },
   reducers: {
+    ClothingInfo: (state, action) => {
+      state.currentClothingInfo = action.payload;
+    },
     splitClothingInfo: (state) => {
       if (state.futureClothingInfo.length === 0) {
-        state.allClothingInfo.forEach((element : {date: string}) => {
+        state.allClothingInfo.forEach((element) => {
           const today = new Date();
           today.setDate(today.getDate() - 1);
 
@@ -66,11 +68,11 @@ const clothingSlice = createSlice({
     filterMonths: (state) => {
       let arrayOfMonths = Object.keys(months);
       const emptyArrayObjects = arrayOfMonths.every(
-        (element) => state.futureMonths[element as keyof typeof monthsObj].length === 0
+        (element) => state.futureMonths[element].length === 0
       );
 
       if (emptyArrayObjects) {
-        state.futureClothingInfo.map((element : any) => {
+        state.futureClothingInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -101,7 +103,7 @@ const clothingSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastClothingInfo.map((element : any) => {
+        state.pastClothingInfo.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -139,11 +141,14 @@ const clothingSlice = createSlice({
     toggleSneakerFeed: (state) => {
       state.currentClothingFeedUpcoming = !state.currentClothingFeedUpcoming;
     },
+    setCurrentShoe: (state, action) => {
+      state.currentClothingInfo = state.allClothingInfo[0];
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
     searchFeed: (state, action) => {
-      state.futureClothingInfo.filter((element : any) =>
+      state.futureClothingInfo.filter((element) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -182,7 +187,9 @@ const clothingSlice = createSlice({
 export default clothingSlice.reducer;
 
 export const {
+  clothingInfo,
   splitClothingInfo,
+  toggleClothingFeed,
   setSearchTerm,
   searchFeed,
   toggleUpcomingSelected,
