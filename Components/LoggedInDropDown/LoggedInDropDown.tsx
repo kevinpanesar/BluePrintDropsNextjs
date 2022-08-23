@@ -1,52 +1,66 @@
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
-import {useState} from 'react'
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
-import {getAuth,signOut } from 'firebase/auth'
+import { useState } from "react";
+import React from "react";
+import { Dropdown } from "semantic-ui-react";
+import { getAuth, signOut } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
 
-    const LoggedInDropDown = () => {
+const LoggedInDropDown = () => {
+  const [user, loading, error] = useAuthState(firebase.auth() as any);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const username =
+    user && typeof user.displayName === "string"
+      ? user?.displayName.substring(0, user?.displayName.indexOf(" "))
+      : "";
 
-        const [user, loading, error] = useAuthState(firebase.auth() as any);
-        const [showDropdown, setShowDropdown] = useState(false);
-        const username = (user && typeof user.displayName === 'string') ? user?.displayName.substring(0, user?.displayName.indexOf(' ')) : '';
+  const logout = () => {
+    signOut(auth);
+  };
 
-        const logout = () => {
-            signOut(auth);
-          };
-
-      return(
-      
+  return (
+    <Container>
+      {" "}
+      {user && <ProfileImg referrerPolicy="no-referrer" src={user ? user.photoURL : null} />}
       <Dropdown text={username}>
         <Dropdown.Menu>
-          <Dropdown.Item text='Log Out' onClick={logout} />
+          <Dropdown.Item text="Log Out" onClick={logout} />
         </Dropdown.Menu>
-      </Dropdown>)
-    }
+      </Dropdown>
+    </Container>
+  );
+};
 
-    const ProfileImage = styled.img`
-    height: 35px;
-    border-radius: 50%
+const Container = styled.div`
+  display: flex ;
+  flex-direction: row ;
+  align-items: center ;
+
 `
+
+const ProfileImg = styled.img`
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px ;
+`;
 
 const ProfileImageNameContainer = styled.div`
-    display: flex ;
-    flex-direction: row ;
-    align-items: center ;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 const ProfileName = styled.p`
-margin: 0;
-font-size: 18px;
-margin-right: 5px;
-@media (min-width: 768px) and (max-width: 1024px){
+  margin: 0;
+  font-size: 18px;
+  margin-right: 5px;
+  @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 13px;
-   }
+  }
 
-      @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1440px) {
     font-size: 14px;
-   }
-`
+  }
+`;
 
-export default LoggedInDropDown
+export default LoggedInDropDown;
