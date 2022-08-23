@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchSneakerInfo } from "../store/releaseInfo";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
-import {useAppDispatch} from "../store/store"
+import { useAppDispatch } from "../store/store";
 import Menu from "../Components/sideMenu/Menu";
 import { RootState } from "../store/store";
 import { getDate } from "date-fns";
@@ -19,7 +19,6 @@ import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { monthsObj } from "../util/monthSeperator";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "../firebase/clientApp";
-
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -33,7 +32,6 @@ export default function Home() {
       return false;
     }
   });
-
 
   useEffect(() => {
     if (callBackend) {
@@ -177,7 +175,7 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
