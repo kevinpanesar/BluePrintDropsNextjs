@@ -19,10 +19,12 @@ const LoggedInDropDown = () => {
     signOut(auth);
   };
 
+  const userImage : any = user ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
+
   return (
     <Container>
       {" "}
-      {user && <ProfileImg referrerPolicy="no-referrer" src={user ? user.photoURL : null} />}
+      {user && <ProfileImg referrerPolicy="no-referrer" src={userImage} />}
       <Dropdown text={username}>
         <Dropdown.Menu>
           <Dropdown.Item text="Log Out" onClick={logout} />
