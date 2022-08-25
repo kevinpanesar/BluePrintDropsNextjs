@@ -29,15 +29,15 @@ export const DesktopMenu = ({ type }: any) => {
       <Link href={"/"}>
         <NavPages type={type}>Sneaker Releases</NavPages>
       </Link>
-      <Link href={"/clothing-releases"}>
-        <NavPages type={type}>Clothing Releases</NavPages>
+      <Link href={"/for-sale"}>
+        <NavPages type={type}>For Sale</NavPages>
       </Link>
       {!loggedIn && (
         <Link href={"/auth"}>
           <NavPages type={type}>Login</NavPages>
         </Link>
       )}
-      {/* <Link href={"/clothing-releases"}>
+      {/* <Link href={"/for-sale"}>
         <NavPages type={type}>Tools</NavPages>
       </Link>
       <Link href={"/about"}>

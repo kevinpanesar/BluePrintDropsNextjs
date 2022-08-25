@@ -7,19 +7,20 @@ import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
 interface SneakerFeed {
-  filteredResults: {date: string}[][];
+  filteredResults: {date: string}[][],
+  type: string;
 }
 
-export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
+export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
   return (
     <Container>
       {filteredResults.map((element: { date: string }[], index: number) => {
-        if (element.length > 0) {
+        // if (element.length > 0) {
           return (
             <div key={index}>
-              <Month>
+              {type !== 'for-sale' && <Month>
                 {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
-              </Month>
+              </Month>}
               <CardContainer>
                 {element !== undefined
                   ? element.map((element: any) => {
@@ -41,7 +42,7 @@ export const SneakerFeed = ({ filteredResults }: SneakerFeed) => {
               </CardContainer>
             </div>
           );
-        }
+        // }
       })}
     </Container>
   );

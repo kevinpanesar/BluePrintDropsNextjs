@@ -13,10 +13,10 @@ export const Footer = () => {
                     <Link href={"/"}>
                         <NavPages>Sneaker Releases</NavPages>
                     </Link>
-                    <Link href={"/clothing-releases"}>
-                        <NavPages>Clothing Releases</NavPages>
+                    <Link href={"/for-sale"}>
+                        <NavPages>For Sale</NavPages>
                     </Link>
-                    <Link href={"/clothing-releases"}>
+                    <Link href={"/for-sale"}>
                         <NavPages>Tools</NavPages>
                     </Link>
                     <Link href={"/about"}>
@@ -34,13 +34,13 @@ export const Footer = () => {
             </TopContainer>
             <LowerContainer>
                 <LowerTextContainer>
-                    <Link href={"/clothing-releases"}>
+                    <Link href={"/for-sale"}>
                         <LowerContainerText>© Copyright 2021 blueprintdrops.com</LowerContainerText>
                     </Link>
-                    <Link href={"/clothing-releases"}>
+                    <Link href={"/for-sale"}>
                         <LowerContainerText>Terms & Conditions</LowerContainerText>
                     </Link>
-                    <Link href={"/clothing-releases"}>
+                    <Link href={"/for-sale"}>
                         <LowerContainerText>Privacy Policy</LowerContainerText>
                     </Link>
                 </LowerTextContainer>

@@ -23,7 +23,7 @@ export default function Clothing() {
   const dispatch = useAppDispatch();
 
   const callBackend = useSelector((state: RootState) => {
-    if (state.sneaker.allSneakerInfo.length == 0) {
+    if (state.clothing.allClothingInfo.length == 0) {
       return true;
     } else {
       return false;
@@ -33,35 +33,19 @@ export default function Clothing() {
   useEffect(() => {
     if (callBackend) {
       dispatch(fetchClothingInfo())
-        .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-        .then(() => dispatch({ type: "clothing/filterMonths" }))
-        .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+        // .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
+        // .then(() => dispatch({ type: "clothing/filterMonths" }))
+        // .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
     }
   }, []);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
   let info = useSelector((state: RootState) => {
-    if (state.clothing.currentClothingFeedUpcoming === true) {
-      const months = Object.keys(state.clothing.futureMonths);
-
-      return months.map((element: any) => {
-        return state.clothing.futureClothingInfoAgeOrGender[
-          element as keyof typeof monthsObj
-        ].filter((element: any) => {
+      return state.clothing.allClothingInfo.filter((element: any) => {
           return element.title?.toLowerCase().includes(term.toLowerCase());
         });
-      });
-    } else {
-      const months = Object.keys(state.clothing.futureMonths);
-      return months.map((element) => {
-        return state.clothing.pastClothingInfoAgeOrGender[
-          element as keyof typeof monthsObj
-        ].filter((element: any) => {
-          return element.title?.toLowerCase().includes(term.toLowerCase());
-        });
-      });
-    }
+    
   });
 
   const filter = useSelector(
@@ -73,19 +57,22 @@ export default function Clothing() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.map((element) => {
+    filteredResults = info.map((element : any) => {
       return element.filter((element: any) => element[filter] === true);
     });
   }
 
-  filteredResults.map((element: string[]) =>
-    element.sort((firstEl: any, secondEl: any) => {
-      return (
-        getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
-        getDate(new Date(secondEl.date.replace(/, /g, "/")))
-      );
-    })
-  );
+  console.log(filteredResults)
+
+  // filteredResults.map((element: any) =>{
+  //   element.sort((firstEl: any, secondEl: any) => {
+  //     return (
+  //       getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
+  //       getDate(new Date(secondEl.date.replace(/, /g, "/")))
+  //     );
+  //   })
+  // }
+  // );
 
   return (
     <Container>
@@ -119,7 +106,7 @@ export default function Clothing() {
 
         <PastPresent sneaker={false} clothing={true} />
         <Options sneaker={false} clothing={true} />
-        <SneakerFeed filteredResults={filteredResults} />
+        <SneakerFeed filteredResults={filteredResults} type="for-sale" />
         <Footer />
       </DesktopContentContainer>
     </Container>

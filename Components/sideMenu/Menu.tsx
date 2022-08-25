@@ -14,7 +14,7 @@ const Menu = ({ open, setOpen } : MenuProps) => {
       <Link href={"/"}>
         <a>Home</a>
       </Link>
-      <Link href={"/clothing-releases"}>
+      <Link href={"/for-sale"}>
         <a>Clothing</a>
       </Link>
       {/* <Link href={"/about"}>

@@ -247,3 +247,7 @@ td {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
+.ui.dropdown>.dropdown.icon {
+  margin-left: 12px;
+}

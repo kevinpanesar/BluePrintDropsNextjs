@@ -98,7 +98,7 @@ const SearchNavContainer = styled.div`
 
 const SocialMediaLogin = styled.div`
   margin-top: 200px;
-  width: 400px;
+  width: 420px;
   background-color: #f5f5f5;
   padding-bottom: 100px;
   border-radius: 5px;
