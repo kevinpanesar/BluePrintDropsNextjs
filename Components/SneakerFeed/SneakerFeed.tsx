@@ -22,7 +22,7 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
                 {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
               </Month>}
               <CardContainer>
-                {element.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: string}) => {
+                {element.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[]}) => {
                       return (
                         <Link
                           passHref
