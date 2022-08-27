@@ -4,7 +4,9 @@ import { format } from "date-fns";
 export const fetchClothingInfo = createAsyncThunk(
   "clothing/fetchClothing",
   async () => {
-    let data = await fetch("https://sneaker-mern-app.herokuapp.com/clothing/");
+    let data = await fetch(
+      "https://sneaker-mern-app.herokuapp.com/for-sale-listings"
+    );
     let jsonData = await data.json();
     return jsonData;
   }

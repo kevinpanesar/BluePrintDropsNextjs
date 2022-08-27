@@ -122,7 +122,7 @@ export default function Home() {
 
         <PastPresent sneaker={true} clothing={false} />
         <Options sneaker={true} clothing={false} />
-        <SneakerFeed filteredResults={filteredResults} />
+        <SneakerFeed filteredResults={filteredResults} type={""} />
         <Footer />
       </DesktopContentContainer>
     </Container>

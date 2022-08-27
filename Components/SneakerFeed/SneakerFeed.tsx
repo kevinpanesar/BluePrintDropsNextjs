@@ -7,23 +7,22 @@ import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
 interface SneakerFeed {
-  filteredResults: {date: string}[][],
+  filteredResults: string[],
   type: string;
 }
 
 export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
   return (
-    <Container>
-      {filteredResults.map((element: { date: string }[], index: number) => {
-        // if (element.length > 0) {
+    <Container type={type}>
+      {type !== 'for-sale'? filteredResults.map((element: any, index: number) => {
+        if (element.length > 0) {
           return (
             <div key={index}>
               {type !== 'for-sale' && <Month>
                 {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
               </Month>}
               <CardContainer>
-                {element !== undefined
-                  ? element.map((element: any) => {
+                {element.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: string}) => {
                       return (
                         <Link
                           passHref
@@ -33,29 +32,38 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
                           }
                         >
                           <Links>
-                            <SneakerCard cardInfo={element} />
+                            <SneakerCard cardInfo={element} type='home-page' />
                           </Links>
                         </Link>
                       );
                     })
-                  : null}
+                  }
               </CardContainer>
             </div>
           );
-        // }
-      })}
+        }
+      }): filteredResults.map((element: any, index: number) => {
+        if (element) {
+          return (<Link
+      passHref
+      key={element.title + element.colorway}
+      href={"/ReleaseInfo/" + element.title + "KP" + element._id}>
+      <Links>
+        <SneakerCard cardInfo={element} type={type}/>
+      </Links>
+    </Link>)}})}
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ type: string }>`
   width: 90%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content:  ${(props) => (props.type == 'for-sale' ? "flex-start" : "space-between")};
+  flex-direction: ${(props) => (props.type == 'for-sale' ? "row" : "column")};
   margin-bottom: 70px;
   background-color: #f5f5f5;
   overflow: scroll;

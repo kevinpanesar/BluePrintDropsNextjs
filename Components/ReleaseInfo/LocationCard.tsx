@@ -47,7 +47,7 @@ export const LocationCard = ({
       <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
-            <BrandImage src={location.img} width="110%" />
+            <BrandImage referrerPolicy="no-referrer" src={location.img} width="110%" />
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>
