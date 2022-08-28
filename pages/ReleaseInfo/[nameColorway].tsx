@@ -68,7 +68,7 @@ export default function ReleasePage({ postData }: ReleasePageProps) {
 export async function getAllPostIds() {
   const res = await fetch("https://sneaker-mern-app.herokuapp.com/posts/");
   const posts = await res.json();
-  return posts.map((post : {title : string, _id : string}) => {
+  return posts?.map((post : {title : string, _id : string}) => {
     const postID = post._id;
     const stringPostId = postID.toString();
     return {
@@ -104,6 +104,7 @@ export async function getStaticProps({ params }: getStaticPropsTypes) {
   return {
     props: {
       postData,
+      fallback: false,
     },
   };
 }

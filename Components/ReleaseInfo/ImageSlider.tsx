@@ -17,8 +17,8 @@ export const ImageSlider = ({ data }: ImageSliderProps) => {
     e.preventDefault();
 
   if (data.images !== undefined) {
-    items = data.images.map((element) => (
-      <SlideImage src={element} onDragStart={handleDragStart} />
+    items = data.images?.map((element, index) => (
+      <SlideImage src={element} onDragStart={handleDragStart} key={index} />
     ));
   }
 

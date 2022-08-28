@@ -14,8 +14,8 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
   });
 
   if (data.images !== undefined) {
-    items = data.images.map((element) => (
-      <SplideSlide>
+    items = data.images?.map((element, index) => (
+      <SplideSlide key={index}>
         <SlideImage src={element} />
       </SplideSlide>
     ));

@@ -52,7 +52,7 @@ export const Options = ({ sneaker, clothing }: OptionsProps) => {
   };
 
   return (
-    <Container>
+    <Container clothing={clothing}>
       <Item onClick={handleChange} value="reset" selected={allSelected}>
         All
       </Item>
@@ -69,10 +69,10 @@ export const Options = ({ sneaker, clothing }: OptionsProps) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ clothing: boolean }>`
   width: 80%;
   height: 40px;
-  margin: 20px auto 0 auto;
+  margin: ${(props) => (props.clothing ? "100px auto 30px auto" : "20px auto 10px auto")};
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -88,7 +88,7 @@ const Container = styled.div`
   }
 
   @media (min-width: 769px) {
-    margin: 20px auto 10px auto;
+    /* margin: 20px auto 10px auto; */
     height: 40px;
     padding: 4px;
     width: 40%;

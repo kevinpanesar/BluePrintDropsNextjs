@@ -25,7 +25,7 @@ export const OnlineLinkCards = ({
       <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
-            <BrandImage src={link.img} width="110%" />
+            <BrandImage referrerPolicy="no-referrer" src={link.img} width="110%" />
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>{link.title}</StoreName>

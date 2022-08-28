@@ -57,14 +57,12 @@ export default function Clothing() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.map((element : any) => {
-      return element.filter((element: any) => element[filter] === true);
-    });
+    filteredResults = info.filter((element: any) => element[filter] === true);
   }
 
   console.log(filteredResults)
 
-  // filteredResults.map((element: any) =>{
+  // filteredResults?.map((element: any) =>{
   //   element.sort((firstEl: any, secondEl: any) => {
   //     return (
   //       getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
@@ -104,7 +102,7 @@ export default function Clothing() {
           </SearchNavContainer>
         </HeaderContainer>
 
-        <PastPresent sneaker={false} clothing={true} />
+        {/* <PastPresent sneaker={false} clothing={true} /> */}
         <Options sneaker={false} clothing={true} />
         <SneakerFeed filteredResults={filteredResults} type="for-sale" />
         <Footer />

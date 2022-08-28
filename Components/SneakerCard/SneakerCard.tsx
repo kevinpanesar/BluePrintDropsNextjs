@@ -4,25 +4,35 @@ import Image from "next/image";
 import { getDate } from "date-fns";
 
 interface SneakerCardProps{
+  type: string,
 cardInfo: {
   date: string,
+  image: string[],
   images: string[],
-  price: string,
+  price: number,
   title: string
 }
 }
 
-export const SneakerCard = ({ cardInfo}: SneakerCardProps) => {
-  const releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
-  const date = cardInfo.date.replace(/, /g, "/");
+export const SneakerCard = ({ cardInfo, type}: SneakerCardProps) => {
+  let releaseDay;
+  let date;
+
+  if(type !== 'for-sale'){
+    releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/"))); 
+  }
+  if(type !== 'for-sale'){
+  date = cardInfo.date.replace(/, /g, "/");
+  }
   return (
     <Container>
       <ReleaseDateContainer>
-        <DateText>{releaseDay}</DateText>
+        {type === 'home-page' && <DateText>{releaseDay}</DateText>}  
       </ReleaseDateContainer>
       <ReleasePriceContainer>
         <ImgContainer>
-          <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
+        {type === 'for-sale' && <SneakerImg src={cardInfo.image[0]} height={450} width={625} />}
+        {type === 'home-page' && <SneakerImg src={cardInfo.images[0]} height={450} width={625} />}
         </ImgContainer>
         <SubContainer>
           <ReleaseText>Price</ReleaseText>
@@ -30,7 +40,7 @@ export const SneakerCard = ({ cardInfo}: SneakerCardProps) => {
         </SubContainer>
         <SubContainer2>
           <ReleaseText>{cardInfo.title}</ReleaseText>
-          <SneakerCardDate>{date}</SneakerCardDate>
+          {type === 'home-page' ? <SneakerCardDate>{date}</SneakerCardDate> : <SneakerCardDate>{'$' + (Math.round(cardInfo.price * 100) / 100).toFixed(2)}</SneakerCardDate>}
         </SubContainer2>
       </ReleasePriceContainer>
     </Container>

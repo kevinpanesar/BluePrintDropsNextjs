@@ -72,7 +72,7 @@ const sneakerSlice = createSlice({
       );
 
       if (emptyArrayObjects) {
-        state.futureSneakerInfo.map((element) => {
+        state.futureSneakerInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -103,7 +103,7 @@ const sneakerSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastSneakerInfo.map((element) => {
+        state.pastSneakerInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {

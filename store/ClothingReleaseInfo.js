@@ -4,7 +4,9 @@ import { format } from "date-fns";
 export const fetchClothingInfo = createAsyncThunk(
   "clothing/fetchClothing",
   async () => {
-    let data = await fetch("https://sneaker-mern-app.herokuapp.com/clothing/");
+    let data = await fetch(
+      "https://sneaker-mern-app.herokuapp.com/for-sale-listings"
+    );
     let jsonData = await data.json();
     return jsonData;
   }
@@ -72,7 +74,7 @@ const clothingSlice = createSlice({
       );
 
       if (emptyArrayObjects) {
-        state.futureClothingInfo.map((element) => {
+        state.futureClothingInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -103,7 +105,7 @@ const clothingSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastClothingInfo.map((element) => {
+        state.pastClothingInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {

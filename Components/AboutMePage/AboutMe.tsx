@@ -40,7 +40,7 @@ export const AboutMePage = () => {
         <LargeText>ABOUT US</LargeText>
         <AboutUsDescription>
           We are a team of dedicated and focused individuals that love fashion,
-          sneakers and everything "HYPE". We started off with a passion for
+          sneakers and everything &quot;HYPE&quot;. We started off with a passion for
           collecting sneakers. Through years of trying to get our hands on
           limited sneakers, we discovered that it was a very tedious and
           grueling process about getting information on drops let alone actually
