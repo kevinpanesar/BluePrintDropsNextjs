@@ -14,7 +14,7 @@ interface SneakerFeed {
 export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
   return (
     <Container type={type}>
-      {type !== 'for-sale'? filteredResults.map((element: any, index: number) => {
+      {type !== 'for-sale'? filteredResults?.map((element: any, index: number) => {
         if (element.length > 0) {
           return (
             <div key={index}>
@@ -22,7 +22,7 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
                 {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
               </Month>}
               <CardContainer>
-                {element.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[]}) => {
+                {element?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[]}) => {
                       return (
                         <Link
                           passHref
@@ -42,7 +42,7 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
             </div>
           );
         }
-      }): filteredResults.map((element: any, index: number) => {
+      }): filteredResults?.map((element: any, index: number) => {
         if (element) {
           return (<Link
       passHref

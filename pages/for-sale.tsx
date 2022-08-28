@@ -62,7 +62,7 @@ export default function Clothing() {
 
   console.log(filteredResults)
 
-  // filteredResults.map((element: any) =>{
+  // filteredResults?.map((element: any) =>{
   //   element.sort((firstEl: any, secondEl: any) => {
   //     return (
   //       getDate(new Date(firstEl.date.replace(/, /g, "/"))) -

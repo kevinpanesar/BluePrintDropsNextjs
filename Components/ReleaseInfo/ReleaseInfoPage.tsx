@@ -39,7 +39,7 @@ interface ReleaseInfoPageProps {
 export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
   let cities = Object.keys(data.cities);
 
-  let raffleOnOff = cities.map((element: any) => {
+  let raffleOnOff = cities?.map((element: any) => {
     return data.cities[element].some((element: any) => {
       if (element.type === "Raffle") {
         return true;
@@ -60,7 +60,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((city : any, index : any) => {
+            ? Object.keys(data.cities)?.map((city : any, index : any) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
@@ -72,7 +72,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
                     </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
-                        ? data.cities[city].map((element : any, index: number) => (
+                        ? data.cities[city]?.map((element : any, index: number) => (
                             <LocationCard
                             location={element}
                             key={index}

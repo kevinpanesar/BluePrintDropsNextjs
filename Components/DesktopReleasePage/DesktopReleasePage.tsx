@@ -44,7 +44,7 @@ interface LocationProps {
 export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
   let cities = Object.keys(data.cities);
 
-  // let raffleOnOff = cities.map((element) => {
+  // let raffleOnOff = cities?.map((element) => {
   //   return data.cities[element].some((element) => {
   //     if (element.type === "Raffle") {
   //       return true;
@@ -63,11 +63,11 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
         <LocationsContainer>
           <LocalTitle>Local Retailers</LocalTitle>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((city: any, index: number) => {
+            ? Object.keys(data.cities)?.map((city: any, index: number) => {
                 return (
                   <Body key={index}>
                     {data !== undefined
-                      ? data.cities[city].map(
+                      ? data.cities[city]?.map(
                           (element: LocationProps, index: number) => (
                             <LocationCard
                               location={element}
@@ -92,7 +92,7 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data?.OnlineLinks !== undefined
-              ? data?.OnlineLinks?.CanadianLinks.map(
+              ? data?.OnlineLinks?.CanadianLinks?.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards
@@ -115,7 +115,7 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data?.OnlineLinks !== undefined
-              ? data?.OnlineLinks.USALinks.map(
+              ? data?.OnlineLinks.USALinks?.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards
@@ -138,7 +138,7 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
           </LocalTitle>
           <Body>
             {data?.OnlineLinks !== undefined
-              ? data?.OnlineLinks.InternationalLinks.map(
+              ? data?.OnlineLinks.InternationalLinks?.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards

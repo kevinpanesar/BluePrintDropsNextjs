@@ -48,7 +48,7 @@ export default function Home() {
     if (state.sneaker.currentSneakerFeedUpcoming === true) {
       const months = Object.keys(state.sneaker.futureMonths);
 
-      return months.map((element) => {
+      return months?.map((element) => {
         return state.sneaker.futureSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
         ].filter((element: any) => {
@@ -57,7 +57,7 @@ export default function Home() {
       });
     } else {
       const months = Object.keys(state.sneaker.futureMonths);
-      return months.map((element) => {
+      return months?.map((element) => {
         return state.sneaker.pastSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
         ].filter((element: any) => {
@@ -76,12 +76,12 @@ export default function Home() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.map((element: any) => {
+    filteredResults = info?.map((element: any) => {
       return element.filter((element: any) => element[filter] === true);
     });
   }
 
-  filteredResults.map((element) =>
+  filteredResults?.map((element) =>
     element.sort((firstEl: { date: string }, secondEl: { date: string }) => {
       return (
         getDate(new Date(firstEl.date.replace(/, /g, "/"))) -

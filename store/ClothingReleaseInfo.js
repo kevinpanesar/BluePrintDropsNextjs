@@ -74,7 +74,7 @@ const clothingSlice = createSlice({
       );
 
       if (emptyArrayObjects) {
-        state.futureClothingInfo.map((element) => {
+        state.futureClothingInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -105,7 +105,7 @@ const clothingSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastClothingInfo.map((element) => {
+        state.pastClothingInfo?.map((element) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
