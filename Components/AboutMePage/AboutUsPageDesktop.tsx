@@ -5,7 +5,6 @@ import { Header } from "../Header/Header";
 import SideNavBar from "../sideMenu/SideNavBar";
 import Link from "next/link";
 import { DesktopMenu } from "../desktopMenu/DesktopMenu";
-import { AboutUsSlider } from "./AboutUsSlider";
 
 export const AboutMePage = () => {
   const [open, setOpen] = useState(false);
@@ -17,7 +16,7 @@ export const AboutMePage = () => {
         <DesktopMenu aboutUsPage={true} type="desktop"/>
       </HeaderContainer>
       <SliderContainer>
-        <AboutUsSlider />
+        {/* <AboutUsSlider /> */}
       </SliderContainer>
       <SliderTextContainer>
         <SliderTitle>Your One Stop For Drop</SliderTitle>

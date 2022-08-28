@@ -63,9 +63,9 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
         <LocationsContainer>
           <LocalTitle>Local Retailers</LocalTitle>
           {data.cities !== undefined
-            ? Object.keys(data.cities).map((city: any) => {
+            ? Object.keys(data.cities).map((city: any, index: number) => {
                 return (
-                  <Body>
+                  <Body key={index}>
                     {data !== undefined
                       ? data.cities[city].map(
                           (element: LocationProps, index: number) => (
@@ -91,14 +91,14 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
             Canadian Links
           </LocalTitle>
           <Body>
-            {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.CanadianLinks.map(
+            {data?.OnlineLinks !== undefined
+              ? data?.OnlineLinks?.CanadianLinks.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards
                         link={links}
                         key={index}
-                        length={data.OnlineLinks.CanadianLinks.length}
+                        length={data?.OnlineLinks.CanadianLinks.length}
                         desktop={true}
                       />
                     );
@@ -114,14 +114,14 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
             USA Links
           </LocalTitle>
           <Body>
-            {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.USALinks.map(
+            {data?.OnlineLinks !== undefined
+              ? data?.OnlineLinks.USALinks.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards
                         link={links}
                         key={index}
-                        length={data.OnlineLinks.USALinks.length}
+                        length={data?.OnlineLinks.USALinks.length}
                         desktop={true}
                       />
                     );
@@ -137,14 +137,14 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
             International Links
           </LocalTitle>
           <Body>
-            {data.OnlineLinks !== undefined
-              ? data.OnlineLinks.InternationalLinks.map(
+            {data?.OnlineLinks !== undefined
+              ? data?.OnlineLinks.InternationalLinks.map(
                   (links: OnlineLinkCardsProps["link"], index: number) => {
                     return (
                       <OnlineLinkCards
                         link={links}
                         key={index}
-                        length={data.OnlineLinks.InternationalLinks.length}
+                        length={data?.OnlineLinks.InternationalLinks.length}
                         desktop={true}
                       />
                     );

@@ -104,6 +104,7 @@ export async function getStaticProps({ params }: getStaticPropsTypes) {
   return {
     props: {
       postData,
+      fallback: false,
     },
   };
 }
