@@ -21,6 +21,8 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
     ));
   }
 
+  console.log(items)
+
   items.shift();
 
   const primaryOptions = {
@@ -67,7 +69,7 @@ const SlideImage = styled.img`
   width: 100%;
   max-height: 55vh;
   max-width: 100vh;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
 `;
 
 const Container = styled.div`

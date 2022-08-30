@@ -31,8 +31,7 @@ export const SneakerCard = ({ cardInfo, type}: SneakerCardProps) => {
       </ReleaseDateContainer>
       <ReleasePriceContainer>
         <ImgContainer>
-        {type === 'for-sale' && <SneakerImg src={cardInfo.image[0]} height={450} width={625} />}
-        {type === 'home-page' && <SneakerImg src={cardInfo.images[0]} height={450} width={625} />}
+        <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
         </ImgContainer>
         <SubContainer>
           <ReleaseText>Price</ReleaseText>
