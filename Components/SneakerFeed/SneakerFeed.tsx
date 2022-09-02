@@ -67,6 +67,7 @@ const Container = styled.div<{ type: string }>`
   margin-bottom: 70px;
   background-color: #f5f5f5;
   overflow: scroll;
+  flex-wrap: wrap;
   height: 600px;
   height: 100%;
 

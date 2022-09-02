@@ -8,15 +8,16 @@ import { Header } from "../../Components/Header/Header";
 import { useState } from "react";
 import { DesktopMenu } from "../../Components/desktopMenu/DesktopMenu";
 import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopReleasePage";
-import {getStaticPropsTypes} from '../RaffleGenerator/[nameColorway]'
+import { getStaticPropsTypes } from "../RaffleGenerator/[nameColorway]";
 import { DesktopForSaleDetails } from "../../Components/ForSaleDetails/ForSaleDetailsPage";
 
 function ForSaleDetails({ postData }: any) {
   const [open, setOpen] = useState(false);
   return (
     <Container>
-      <Head> n 
-        <title>{"BLUEPRINT X " + postData[0].title}</title>
+      <Head>
+        {" "}
+        n<title>{"BLUEPRINT X " + postData[0].title}</title>
         <meta
           name="description"
           content="Information about school and clothing releases"
@@ -40,7 +41,7 @@ function ForSaleDetails({ postData }: any) {
             </NavContainer>
           </SearchNavContainer>
         </HeaderContainer>
-        <DesktopForSaleDetails data={postData} />
+        <DesktopForSaleDetails data={postData[0]} />
       </Container>
       <footer></footer>
     </Container>
@@ -48,9 +49,11 @@ function ForSaleDetails({ postData }: any) {
 }
 
 export async function getAllPostIds() {
-  const res = await fetch("https://sneaker-mern-app.herokuapp.com/for-sale-listings/");
+  const res = await fetch(
+    "https://sneaker-mern-app.herokuapp.com/for-sale-listings/"
+  );
   const posts = await res.json();
-  return posts?.map((post : {title : string, _id : string}) => {
+  return posts?.map((post: { title: string; _id: string }) => {
     const postID = post._id;
     const stringPostId = postID.toString();
     return {
@@ -70,7 +73,9 @@ export async function getStaticPaths() {
 }
 
 export async function getPostData(id: string) {
-  const res = await fetch(`https://sneaker-mern-app.herokuapp.com/for-sale-listings/${id}`);
+  const res = await fetch(
+    `https://sneaker-mern-app.herokuapp.com/for-sale-listings/${id}`
+  );
   const post = await res.json();
 
   // Combine the data with the id
@@ -107,21 +112,21 @@ const HeaderContainer = styled.div`
   align-items: center;
   width: 100%;
 
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px) {
     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 10px;
     background-color: white;
     width: 100%;
-    }
+  }
 
-    @media (min-width: 1024px){
+  @media (min-width: 1024px) {
     border-top: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     padding: 10px;
     background-color: white;
     width: 70%;
-    }
+  }
 `;
 
 const SearchNavContainer = styled.div`
@@ -134,4 +139,4 @@ const NavContainer = styled.div`
   align-items: center;
 `;
 
-export default ForSaleDetails
+export default ForSaleDetails;

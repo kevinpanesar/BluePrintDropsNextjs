@@ -12,17 +12,17 @@ import { ThumbnailSlider } from "../DesktopReleasePage/DesktopSlider";
 
 export const DesktopForSaleDetails = ({data}: any) => {
 
-  console.log(data)
 
   return (
     <Container desktop={true}>
       <ShoeDetailsWrapper>
       <ImageContainer>
         {/* <ImageSlider data={data[0]} /> */}
-        <ThumbnailSlider data={data[0]}/>
+        <ThumbnailSlider data={data}/>
       </ImageContainer>
-     <ItemDetails />
+     <ItemDetails data={data} />
       </ShoeDetailsWrapper>
+
       <Footer />
     </Container>
   );
@@ -51,7 +51,7 @@ const Container = styled.div<{ desktop: boolean }>`
 `;
 
 const ShoeDetailsWrapper = styled.div`
- height: 800px; 
+ height: 650px; 
 display: flex ;
 flex-direction:row ;
 align-items: center ;

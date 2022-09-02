@@ -102,7 +102,7 @@ const SocialMediaLogin = styled.div`
   background-color: #f5f5f5;
   padding-bottom: 100px;
   border-radius: 5px;
-  filter: drop-shadow(0 0 0.3rem grey);
+  filter: drop-shadow(0 0 0.3rem #E7EAED);
 `;
 
 const DesktopContentContainer = styled.div`

@@ -1,18 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
+import { useRouter } from "next/router";
 import LoggedInDropDown from "../LoggedInDropDown/LoggedInDropDown";
+import { id } from "date-fns/locale";
 
 export const DesktopMenu = ({ type }: any) => {
-  const [user, loading, error] = useAuthState(firebase.auth() as any);
+  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+  const router = useRouter();
 
-  const logout = () => {
-    signOut(auth);
+  const addUser = async (data: any) => {
+    const config = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    let response = await fetch(
+      "https://sneaker-mern-app.herokuapp.com/user",
+      config
+    );
+
+    if (response.ok) {
+      let json = await response.json();
+    }
   };
+
+  const createCart = async (data: any) => {
+    const config = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    let response = await fetch(
+      "https://sneaker-mern-app.herokuapp.com/createCart",
+      config
+    );
+
+    if (response.ok) {
+      let json = await response.json();
+    }
+  };
+
+  useEffect(() => {
+    if (user && user?.metadata.creationTime === user?.metadata.creationTime) {
+      addUser({
+        name: user?.displayName,
+        email: user?.email,
+        uid: user?.uid,
+      });
+
+      createCart({
+        name: user?.displayName,
+        email: user?.email,
+        uid: user?.uid,
+        cart: [],
+      });
+    }
+  }, [user]);
 
   const loggedInUserId = () => {
     if (user && user.uid) {
@@ -82,4 +132,3 @@ const NavPages = styled.a`
     font-size: 14px;
   }
 `;
-
