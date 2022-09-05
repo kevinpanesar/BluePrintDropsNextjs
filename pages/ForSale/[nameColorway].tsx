@@ -10,6 +10,8 @@ import { DesktopMenu } from "../../Components/desktopMenu/DesktopMenu";
 import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopReleasePage";
 import { getStaticPropsTypes } from "../RaffleGenerator/[nameColorway]";
 import { DesktopForSaleDetails } from "../../Components/ForSaleDetails/ForSaleDetailsPage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ForSaleDetails({ postData }: any) {
   const [open, setOpen] = useState(false);
@@ -44,6 +46,12 @@ function ForSaleDetails({ postData }: any) {
         <DesktopForSaleDetails data={postData[0]} />
       </Container>
       <footer></footer>
+      <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick />
     </Container>
   );
 }

@@ -8,6 +8,7 @@ import { auth } from "../../firebase/clientApp";
 import { useRouter } from "next/router";
 import LoggedInDropDown from "../LoggedInDropDown/LoggedInDropDown";
 import { id } from "date-fns/locale";
+import { Cart } from "./Cart";
 
 export const DesktopMenu = ({ type }: any) => {
   const [user, loading, error]: any = useAuthState(firebase.auth() as any);
@@ -48,7 +49,7 @@ export const DesktopMenu = ({ type }: any) => {
   };
 
   useEffect(() => {
-    if (user && user?.metadata.creationTime === user?.metadata.creationTime) {
+    if (user && user?.metadata.creationTime === user?.metadata.lastSignInTime) {
       addUser({
         name: user?.displayName,
         email: user?.email,
@@ -94,6 +95,7 @@ export const DesktopMenu = ({ type }: any) => {
         <NavPages type={type}>About Us</NavPages>
       </Link> */}
       {/* <button onClick={logout}>Log out</button> */}
+      {loggedIn && <Cart />}
 
       {loggedIn && <LoggedInDropDown />}
     </StyledMenu>
@@ -103,6 +105,7 @@ export const DesktopMenu = ({ type }: any) => {
 const StyledMenu = styled.nav`
   display: flex;
   flex-direction: row;
+  height: 100%;
   align-items: center;
   justify-content: space-between;
   margin-right: 20px;
