@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { format } from "date-fns";
+import { RootState } from "./store";
 
 export const fetchClothingInfo = createAsyncThunk(
   "clothing/fetchClothing",
@@ -7,12 +8,12 @@ export const fetchClothingInfo = createAsyncThunk(
     let data = await fetch(
       "https://sneaker-mern-app.herokuapp.com/for-sale-listings"
     );
-    let jsonData = await data.json();
+    let jsonData = await data.json();43
     return jsonData;
   }
 );
 
-export const fetchCart = createAsyncThunk("clothing/fetchCart", async (uid) => {
+export const fetchCart = createAsyncThunk("clothing/fetchCart", async (uid : any) => {
   let data = await fetch(
     `https://sneaker-mern-app.herokuapp.com/cart?uid=${uid}`
   );
@@ -20,16 +21,11 @@ export const fetchCart = createAsyncThunk("clothing/fetchCart", async (uid) => {
   return jsonData;
 });
 
-export const removeItemsFromCart = createAsyncThunk("clothing/fetchCart", async (uid,name, email, cartItem) => {
+export const removeItemsFromCart = createAsyncThunk("clothing/removeItemsFromCart", async (dataObj: any) => {
   const config = {
-    method: "POST",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      uid: uid,
-      name: name,
-      email: email,
-      cartItem: cartItem
-    }),
+    body: JSON.stringify(dataObj),
   };
   let data = await fetch(
     `https://sneaker-mern-app.herokuapp.com/removeFromCart`, config
@@ -49,14 +45,14 @@ const clothingSlice = createSlice({
     mensWomensKidsFilterValue: "reset",
   },
   reducers: {
-    ClothingInfo: (state, action) => {
+    ClothingInfo: (state : RootState, action) => {
       state.currentClothingInfo = action.payload;
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
-    searchFeed: (state, action) => {
-      state.futureClothingInfo.filter((element) =>
+    searchFeed: (state : RootState, action) => {
+      state.futureClothingInfo.filter((element : any) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -73,38 +69,38 @@ const clothingSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchClothingInfo.pending]: (state, action) => {
+    [fetchClothingInfo.pending.toString()]: (state : RootState) => {
       state.status = "loading";
     },
-    [fetchClothingInfo.fulfilled]: (state, action) => {
+    [fetchClothingInfo.fulfilled.toString()]: (state : RootState, action : any) => {
       if (state.allClothingInfo.length === 0) {
         state.allClothingInfo = action.payload;
       }
     },
-    [fetchClothingInfo.rejected]: (state, action) => {
+    [fetchClothingInfo.rejected.toString()]: (state : RootState, action : any) => {
       console.log(action);
     },
-    [fetchCart.pending]: (state, action) => {
+    [fetchCart.pending.toString().toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [fetchCart.fulfilled]: (state, action) => {
+    [fetchCart.fulfilled.toString()]: (state : RootState, action : any) => {
       state.cart = action.payload;
     },
-    [fetchCart.rejected]: (state, action) => {
+    [fetchCart.rejected.toString()]: (action : any) => {
       console.log(action);
     },
-    // [removeItemsFromCart.pending]: (state, action) => {
-    //   state.status = "loading";
-    // },
-    // [removeItemsFromCart.fulfilled]: (state, action) => {
-    //   console.log(action);
-    // },
-    // [removeItemsFromCart.rejected]: (state, action) => {
-    //   console.log(action);
-    // },
+    [removeItemsFromCart.pending.toString()]: (state: RootState) => {
+      state.status = "loading";
+    },
+    [removeItemsFromCart.fulfilled.toString()]: (state : RootState, action : any) => {
+      console.log(action)
+    },
+    [removeItemsFromCart.rejected.toString()]: (action : any) => {
+      console.log(action);
+    },
   },
 });
 export default clothingSlice.reducer;
 
-export const { clothingInfo, setSearchTerm, searchFeed, selectMensWomensKids } =
+export const { ClothingInfo, setSearchTerm, searchFeed, selectMensWomensKids } =
   clothingSlice.actions;

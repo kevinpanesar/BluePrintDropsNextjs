@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import firebase from "../../firebase/clientApp";
 import { fetchCart } from "../../store/ClothingReleaseInfo";
@@ -85,6 +84,7 @@ export const ItemDetails = ({ data }: any) => {
             price: price,
             skuNumber: skuNumber,
             size: selectedSize,
+            uniqueItemID: 'id' + (new Date()).getTime()
           },
         });
         openModal();

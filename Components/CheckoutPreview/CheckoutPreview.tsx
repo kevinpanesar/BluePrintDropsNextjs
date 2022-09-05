@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { CheckoutItems } from "./CheckoutItems";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { OrderSummary } from "./OrderSummary";
+import { PaymentForm } from "./PaymentForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 export const CheckoutPreviewPage = () => {
+const [activatePaymentForm, setActivatePaymentForm] = useState(false)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const [clientSecret, setClientSecret] = React.useState("");
+React.useEffect(() => {
+  // Create PaymentIntent as soon as the page loads
+  fetch("/api/create-payment-intent", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+  })
+    .then((res) => res.json())
+    .then((data) => setClientSecret(data.clientSecret));
+}, []);
+
+const appearance = {
+  theme: 'stripe',
+};
+const options = {
+  clientSecret,
+  appearance,
+};
 
     const cart = useSelector((state: RootState) => {
         return state.clothing.cart;
@@ -25,11 +50,17 @@ export const CheckoutPreviewPage = () => {
     <Container>
         <h1>My Cart</h1>
         <CheckoutPrice>{'$' + totalPrice(cart)}</CheckoutPrice>
+        <SectionWrapper>
         <CheckoutItemsWrapper>
-            {cart.map((data : any, index: number) => {
+            {!activatePaymentForm && cart.map((data : any, index: number) => {
                 return <CheckoutItems key={index} data={data} />
             })}
+        {(activatePaymentForm && clientSecret) && <Elements options={options} stripe={stripePromise}>
+          <PaymentForm />
+        </Elements>}
         </CheckoutItemsWrapper>
+        <OrderSummary cart={cart} totalPrice={totalPrice} setActivatePaymentForm={setActivatePaymentForm}/>
+        </SectionWrapper>
     </Container>
   );
 };
@@ -66,6 +97,7 @@ const CheckoutItemsWrapper = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
+width: 65%;
 `
 const CheckoutPrice = styled.p`
         font-weight: 700;
@@ -73,4 +105,10 @@ const CheckoutPrice = styled.p`
     line-height: 1.2;
     margin: 0.5rem 0 32px 0;
     letter-spacing: 1.1px ;
+`
+
+const SectionWrapper = styled.div`
+display: flex;
+flex-direction: row;
+
 `

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { removeItemsFromCart } from "../../store/ClothingReleaseInfo";
+import { removeItemsFromCart, fetchCart } from "../../store/ClothingReleaseInfo";
 import { useAppDispatch } from "../../store/store";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -17,6 +17,7 @@ export const CheckoutItems = ({ data }: any) => {
         womensFlag,
         price,
         skuNumber,
+        uniqueItemID,
         size,
       } = data;
 
@@ -29,9 +30,10 @@ export const CheckoutItems = ({ data }: any) => {
         mensWomensKids = "Kids";
       }
 
-    //   const handleRemoveItem = () =>{
-    //     dispatch(removeItemsFromCart())
-    //   }
+      const handleRemoveItem = () => {
+        dispatch(removeItemsFromCart({uid:user.uid, name: user.displayName, email:  user.email, cartItem: data})).then(()=>  dispatch(fetchCart(user.uid)));
+       
+      }
 
   return (
     <Container>
@@ -52,7 +54,7 @@ export const CheckoutItems = ({ data }: any) => {
             <ItemTitle>PRICE</ItemTitle>
             <ItemValue>{'$' + price}</ItemValue>
           </ItemWrapper>
-          <RemoveFromCartButton>Remove</RemoveFromCartButton>
+          <RemoveFromCartButton onClick={handleRemoveItem}>Remove</RemoveFromCartButton>
         </ItemDescriptionContainer>
       </ItemInfoContainer>
     </Container>
@@ -60,7 +62,7 @@ export const CheckoutItems = ({ data }: any) => {
 };
 
 const Container = styled.div`
-  width: 60%;
+  width: 97%;
   border: 1px solid #ddd;
   background-color: #f6f6f6f8;
   height: 225px;
