@@ -34,6 +34,17 @@ export const removeItemsFromCart = createAsyncThunk("clothing/removeItemsFromCar
   return jsonData;
 });
 
+export const updateInventory = createAsyncThunk("clothing/updateInventory", async (dataObj: any) => {
+  const options = {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(dataObj),
+  };
+  let data = await fetch('http://localhost:3000/updateInventory', options);
+  let jsonData = await data.json();
+  return jsonData;
+});
+
 // Slice
 const clothingSlice = createSlice({
   name: "clothing",
@@ -98,6 +109,15 @@ const clothingSlice = createSlice({
     [removeItemsFromCart.rejected.toString()]: (action : any) => {
       console.log(action);
     },
+    [updateInventory.pending.toString()]: (state: RootState) => {
+      state.status = "loading";
+    },
+    [updateInventory.fulfilled.toString()]: (state : RootState, action : any) => {
+      console.log(action)
+    },
+    [updateInventory.rejected.toString()]: (action : any) => {
+      console.log(action);
+    }
   },
 });
 export default clothingSlice.reducer;

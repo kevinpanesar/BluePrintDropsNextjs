@@ -17,7 +17,7 @@ import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { RootState } from "../store/store";
 import { monthsObj } from "../util/monthSeperator";
-import { removeItemsFromCart, fetchCart } from "../store/ClothingReleaseInfo";
+import { removeItemsFromCart, fetchCart, updateInventory } from "../store/ClothingReleaseInfo";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -25,7 +25,7 @@ export default function Clothing() {
   const [open, setOpen] = useState(false);
   const [user, loading, error]: any = useAuthState(firebase.auth() as any);
   const dispatch = useAppDispatch();
-  console.log(user);
+  const cart = useSelector((state: RootState) => state.clothing.cart);
   const callBackend = useSelector((state: RootState) => {
     if (state.clothing.allClothingInfo.length == 0) {
       return true;
@@ -34,30 +34,35 @@ export default function Clothing() {
     }
   });
 
+  const myAsyncLoopFunction = async (array : any) => {
+    const promises = array.map((cartItem : any) => dispatch(updateInventory(cartItem)))
+    await Promise.all(promises).then(()=> dispatch(
+      removeItemsFromCart({
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        cartItem: "",
+      })
+    )).then(() => dispatch(fetchCart(user.uid)));
+
+  }
+
   useEffect(() => {
+    if(user !== null && cart.length > 0){
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret"
     );
 
-    console.log(clientSecret);
-
-    if (clientSecret !== null && user !== null) {
-      dispatch(
-        removeItemsFromCart({
-          uid: user.uid,
-          name: user.displayName,
-          email: user.email,
-          cartItem: "",
-        })
-      ).then(() => dispatch(fetchCart(user.uid)));
+    if (clientSecret !== null && user !== null && cart.length > 0) {
+      myAsyncLoopFunction(cart);
     }
-    if (callBackend) {
+   
+  } if (callBackend) {
       dispatch(fetchClothingInfo());
-      // .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-      // .then(() => dispatch({ type: "clothing/filterMonths" }))
-      // .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
     }
-  }, [user]);
+  }, [user,cart]);
+
+  console.log(cart);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
@@ -78,8 +83,6 @@ export default function Clothing() {
   } else {
     filteredResults = info.filter((element: any) => element[filter] === true);
   }
-
-  console.log(filteredResults);
 
   // filteredResults?.map((element: any) =>{
   //   element.sort((firstEl: any, secondEl: any) => {
