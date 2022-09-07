@@ -50,6 +50,14 @@ a {
   align-items: center;
 }
 
+#payment-form{
+  width: inherit;
+}
+
+#payment-form{
+  
+}
+
 :root .Toastify__toast-theme--light {
   background-color: #21587f;
   color: white;

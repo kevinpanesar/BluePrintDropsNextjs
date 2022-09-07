@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const OrderSummary = ({ cart,totalPrice, setActivatePaymentForm }: any) => {
+export const OrderSummary = ({ cart,totalPrice, setActivatePaymentForm, activatePaymentForm }: any) => {
 
     let estimatedTotal = +totalPrice(cart) + +15.00
 
@@ -22,7 +22,7 @@ export const OrderSummary = ({ cart,totalPrice, setActivatePaymentForm }: any) =
             <ItemValue>{'$' + estimatedTotal.toFixed(2)} </ItemValue>
         </ItemWrapper>
         Taxes Calculated in Checkout
-        <ContinueToCheckoutButton onClick={()=> setActivatePaymentForm(true)}>Continue To Checkout</ContinueToCheckoutButton>
+        {!activatePaymentForm && <ContinueToCheckoutButton onClick={()=> setActivatePaymentForm(true)}>Continue To Checkout</ContinueToCheckoutButton>}
     </Container>
   );
 };

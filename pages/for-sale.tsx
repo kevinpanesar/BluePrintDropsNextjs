@@ -17,11 +17,15 @@ import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { RootState } from "../store/store";
 import { monthsObj } from "../util/monthSeperator";
+import { removeItemsFromCart, fetchCart } from "../store/ClothingReleaseInfo";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 export default function Clothing() {
   const [open, setOpen] = useState(false);
-
+  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
   const dispatch = useAppDispatch();
-
+  console.log(user);
   const callBackend = useSelector((state: RootState) => {
     if (state.clothing.allClothingInfo.length == 0) {
       return true;
@@ -31,21 +35,36 @@ export default function Clothing() {
   });
 
   useEffect(() => {
-    if (callBackend) {
-      dispatch(fetchClothingInfo())
-        // .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-        // .then(() => dispatch({ type: "clothing/filterMonths" }))
-        // .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+
+    console.log(clientSecret);
+
+    if (clientSecret !== null && user !== null) {
+      dispatch(
+        removeItemsFromCart({
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          cartItem: "",
+        })
+      ).then(() => dispatch(fetchCart(user.uid)));
     }
-  }, []);
+    if (callBackend) {
+      dispatch(fetchClothingInfo());
+      // .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
+      // .then(() => dispatch({ type: "clothing/filterMonths" }))
+      // .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    }
+  }, [user]);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
   let info = useSelector((state: RootState) => {
-      return state.clothing.allClothingInfo.filter((element: any) => {
-          return element.title?.toLowerCase().includes(term.toLowerCase());
-        });
-    
+    return state.clothing.allClothingInfo.filter((element: any) => {
+      return element.title?.toLowerCase().includes(term.toLowerCase());
+    });
   });
 
   const filter = useSelector(
@@ -60,7 +79,7 @@ export default function Clothing() {
     filteredResults = info.filter((element: any) => element[filter] === true);
   }
 
-  console.log(filteredResults)
+  console.log(filteredResults);
 
   // filteredResults?.map((element: any) =>{
   //   element.sort((firstEl: any, secondEl: any) => {

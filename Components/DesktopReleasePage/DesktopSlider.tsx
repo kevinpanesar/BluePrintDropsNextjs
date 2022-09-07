@@ -21,7 +21,6 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
     ));
   }
 
-  console.log(items)
 
   items.shift();
 

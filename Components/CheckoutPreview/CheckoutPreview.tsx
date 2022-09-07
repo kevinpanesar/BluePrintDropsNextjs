@@ -9,58 +9,66 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
 export const CheckoutPreviewPage = () => {
-const [activatePaymentForm, setActivatePaymentForm] = useState(false)
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
-const [clientSecret, setClientSecret] = React.useState("");
-React.useEffect(() => {
-  // Create PaymentIntent as soon as the page loads
-  fetch("/api/create-payment-intent", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-  })
-    .then((res) => res.json())
-    .then((data) => setClientSecret(data.clientSecret));
-}, []);
+  const [activatePaymentForm, setActivatePaymentForm] = useState(false);
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+  );
+  console.log(stripePromise);
+  const [clientSecret, setClientSecret] = React.useState("");
+  const totalPrice = (cartArray: any) => {
+    let total = 0;
+    cartArray.forEach((element: any) => {
+      total = element.price + total;
+    });
 
-const appearance = {
-  theme: 'stripe',
-};
-const options = {
-  clientSecret,
-  appearance,
-};
+    total = Math.round(total * 100) / 100;
+    total = Math.floor(total);
 
-    const cart = useSelector((state: RootState) => {
-        return state.clothing.cart;
-      });
+    return total;
+  };
 
-    const totalPrice = (cartArray : any) => {
-        let total = 0;
-        cartArray.forEach((element : any) => {
-          total =  element.price + total;
-        });
+  React.useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("https://sneaker-mern-app.herokuapp.com/createPaymentIntent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ total: totalPrice(cart) * 100 }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, []);
 
-        total = Math.round(total * 100) / 100;
+  const options = {
+    clientSecret,
+  };
 
-        return total.toFixed(2)
-    }
+  const cart = useSelector((state: RootState) => {
+    return state.clothing.cart;
+  });
 
   return (
     <Container>
-        <h1>My Cart</h1>
-        <CheckoutPrice>{'$' + totalPrice(cart)}</CheckoutPrice>
-        <SectionWrapper>
+      <h1>My Cart</h1>
+      <CheckoutPrice>{"$" + totalPrice(cart)}</CheckoutPrice>
+      <SectionWrapper>
         <CheckoutItemsWrapper>
-            {!activatePaymentForm && cart.map((data : any, index: number) => {
-                return <CheckoutItems key={index} data={data} />
+          {!activatePaymentForm &&
+            cart.map((data: any, index: number) => {
+              return <CheckoutItems key={index} data={data} />;
             })}
-        {(activatePaymentForm && clientSecret) && <Elements options={options} stripe={stripePromise}>
-          <PaymentForm />
-        </Elements>}
+          {activatePaymentForm && clientSecret && (
+            <Elements options={options} stripe={stripePromise}>
+              <PaymentForm />
+            </Elements>
+          )}
         </CheckoutItemsWrapper>
-        <OrderSummary cart={cart} totalPrice={totalPrice} setActivatePaymentForm={setActivatePaymentForm}/>
-        </SectionWrapper>
+        <OrderSummary
+          cart={cart}
+          totalPrice={totalPrice}
+          setActivatePaymentForm={setActivatePaymentForm}
+          activatePaymentForm={activatePaymentForm}
+        />
+      </SectionWrapper>
     </Container>
   );
 };
@@ -86,7 +94,7 @@ const Container = styled.div`
     width: 70%;
   }
 
-  h1{
+  h1 {
     margin-top: 100px;
     font-weight: 900;
     font-size: 48px;
@@ -94,21 +102,20 @@ const Container = styled.div`
 `;
 
 const CheckoutItemsWrapper = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-width: 65%;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 65%;
+`;
 const CheckoutPrice = styled.p`
-        font-weight: 700;
-    font-size:18px;
-    line-height: 1.2;
-    margin: 0.5rem 0 32px 0;
-    letter-spacing: 1.1px ;
-`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0.5rem 0 32px 0;
+  letter-spacing: 1.1px;
+`;
 
 const SectionWrapper = styled.div`
-display: flex;
-flex-direction: row;
-
-`
+  display: flex;
+  flex-direction: row;
+`;
