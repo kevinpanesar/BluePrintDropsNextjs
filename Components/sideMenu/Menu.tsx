@@ -3,19 +3,22 @@ import styled from "styled-components";
 import { bool } from "prop-types";
 import Link from "next/link";
 
-interface MenuProps{
-  open: boolean,
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+interface MenuProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Menu = ({ open, setOpen } : MenuProps) => {
+const Menu = ({ open, setOpen }: MenuProps) => {
   return (
     <StyledMenu open={open}>
       <Link href={"/"}>
         <a>Home</a>
       </Link>
       <Link href={"/for-sale"}>
-        <a>Clothing</a>
+        <a>For Sale</a>
+      </Link>
+      <Link href={"/auth"}>
+        <a>Login</a>
       </Link>
       {/* <Link href={"/about"}>
         <a>About</a>
@@ -27,7 +30,7 @@ Menu.propTypes = {
   open: bool.isRequired,
 };
 
-const StyledMenu = styled.nav<{open: boolean}>`
+const StyledMenu = styled.nav<{ open: boolean }>`
   display: ${({ open }) => (open ? "flex" : "none")};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
 
@@ -82,8 +85,8 @@ const StyledMenu = styled.nav<{open: boolean}>`
     }
   }
 
-    @media (min-width: 768px) {
-      display: none;
+  @media (min-width: 768px) {
+    display: none;
   }
 
   @media (max-width: 768px) {

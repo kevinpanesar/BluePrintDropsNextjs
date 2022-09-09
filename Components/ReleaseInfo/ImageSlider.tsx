@@ -41,7 +41,7 @@ export const ImageSlider = ({ data }: ImageSliderProps) => {
 };
 
 const Container = styled.div`
-  width: 40%;
+  width: 90%;
   overflow: hidden;
   margin: 0 auto;
 `;

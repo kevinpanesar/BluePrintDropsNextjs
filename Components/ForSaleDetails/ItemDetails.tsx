@@ -11,7 +11,7 @@ import { useAppDispatch } from "../../store/store";
 
 export const ItemDetails = ({ data }: any) => {
   const [user, loading, error]: any = useAuthState(firebase.auth() as any);
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState(0.0);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -56,7 +56,7 @@ export const ItemDetails = ({ data }: any) => {
   };
 
   const handleAddToCart = () => {
-    if (selectedSize === "") {
+    if (selectedSize === 0) {
       toast("Please Select a Size", {
         position: "top-right",
         autoClose: 5000,
@@ -84,7 +84,7 @@ export const ItemDetails = ({ data }: any) => {
             price: price,
             skuNumber: skuNumber,
             size: selectedSize,
-            uniqueItemID: 'id' + (new Date()).getTime()
+            uniqueItemID: "id" + new Date().getTime(),
           },
         });
         openModal();
@@ -101,20 +101,37 @@ export const ItemDetails = ({ data }: any) => {
   }
 
   const sizeItems = Object.keys(availableSizeQty).map((size, index) => {
-    if (selectedSize === size) {
+    if (availableSizeQty[size] == 0) {
       return (
-        <SizeItem selected={false} onClick={() => setSelectedSize(size)}>
+        <SizeItem soldOut={true} selected={false} disabled={true}>
+          {size}
+        </SizeItem>
+      );
+    }
+    if (selectedSize === parseFloat(size)) {
+      return (
+        <SizeItem
+          soldOut={false}
+          selected={false}
+          onClick={() => setSelectedSize(parseFloat(size))}
+        >
           {size}
         </SizeItem>
       );
     } else {
       return (
-        <SizeItem selected={true} onClick={() => setSelectedSize(size)}>
+        <SizeItem
+          soldOut={false}
+          selected={true}
+          onClick={() => setSelectedSize(parseFloat(size))}
+        >
           {size}
         </SizeItem>
       );
     }
   });
+
+  const soldOut = qty < 1 ? true : false;
 
   const customStyles = {
     content: {
@@ -130,7 +147,7 @@ export const ItemDetails = ({ data }: any) => {
   const closeModal = () => {
     dispatch(fetchCart(user.uid));
     setIsOpen(false);
-    setSelectedSize("");
+    setSelectedSize(0);
   };
   const openModal = () => {
     setIsOpen(true);
@@ -151,7 +168,12 @@ export const ItemDetails = ({ data }: any) => {
         being upgraded for modern comfort.
       </ItemDescription>
       <ButtonWrapper>
-        <AddToCartButton onClick={handleAddToCart}>Add To Cart</AddToCartButton>
+        {!soldOut && (
+          <AddToCartButton onClick={handleAddToCart}>
+            Add To Cart
+          </AddToCartButton>
+        )}
+        {soldOut && <SoldOutButton disabled={true}>Sold Out</SoldOutButton>}
         <AddToCartButton onClick={handleCheckout}>Checkout</AddToCartButton>
       </ButtonWrapper>
 
@@ -213,7 +235,7 @@ const SizeContainer = styled.div`
   margin: 16px 0px;
 `;
 
-const SizeItem = styled.button<{ selected: boolean }>`
+const SizeItem = styled.button<{ selected: boolean; soldOut: boolean }>`
   width: 42px;
   height: 42px;
   background-color: ${(props) => (props.selected ? "#f5f5f5" : "#d4d4d4")};
@@ -222,13 +244,14 @@ const SizeItem = styled.button<{ selected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: ${(props) => (props.soldOut ? "0.9" : "1")};
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
   border: ${(props) => (!props.selected ? "black 1 px solid" : "none")};
   &:hover {
-    background-color: #b9b7b7;
-    border-bottom: solid black 2px;
+    background-color: ${(props) => (props.soldOut ? "null" : "#b9b7b7")};
+    border-bottom: ${(props) => (props.soldOut ? "null" : "solid black 2px")};
   }
 `;
 
@@ -243,6 +266,14 @@ const AddToCartButton = styled.button`
     background-color: #0e1111b6;
     border-color: #0e1111b6;
   }
+`;
+const SoldOutButton = styled.button`
+  color: #fff;
+  background-color: #0e1111;
+  border-color: #0e1111;
+  width: 45%;
+  margin-right: 10px;
+  padding: 8px 14px;
 `;
 
 const ItemDescription = styled.p`

@@ -29,16 +29,11 @@ export const DesktopForSaleDetails = ({data}: any) => {
 };
 
 const Container = styled.div<{ desktop: boolean }>`
-  background-color: #ececec;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
   width: 70%;
-  display: none;
-
-  @media (min-width: 768px) {
-    display: block;
-  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
