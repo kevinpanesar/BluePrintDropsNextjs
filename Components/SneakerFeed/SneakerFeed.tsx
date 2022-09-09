@@ -22,7 +22,7 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
                 {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
               </Month>}
               <CardContainer>
-                {element?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[]}) => {
+                {element?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[], qty: number}) => {
                       return (
                         <Link
                           passHref
@@ -66,7 +66,9 @@ const Container = styled.div<{ type: string }>`
   flex-direction: ${(props) => (props.type == 'for-sale' ? "row" : "column")};
   margin-bottom: 70px;
   background-color: #f5f5f5;
-  overflow: scroll;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
+  flex-wrap: wrap;
   height: 600px;
   height: 100%;
 

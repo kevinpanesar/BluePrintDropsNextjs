@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../store/store";
 import { useEffect } from "react";
 import { fetchClothingInfo } from "../store/ClothingReleaseInfo";
+import Modal from "react-modal";
 import SideNavBar from "../Components/sideMenu/SideNavBar";
 import Menu from "../Components/sideMenu/Menu";
 import { getDate } from "date-fns";
@@ -17,11 +18,22 @@ import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { RootState } from "../store/store";
 import { monthsObj } from "../util/monthSeperator";
+import {
+  removeItemsFromCart,
+  fetchCart,
+  updateInventory,
+} from "../store/ClothingReleaseInfo";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+Modal.setAppElement("#__next");
+
 export default function Clothing() {
   const [open, setOpen] = useState(false);
-
+  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
   const dispatch = useAppDispatch();
-
+  const cart = useSelector((state: RootState) => state.clothing.cart);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const callBackend = useSelector((state: RootState) => {
     if (state.clothing.allClothingInfo.length == 0) {
       return true;
@@ -30,22 +42,50 @@ export default function Clothing() {
     }
   });
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   useEffect(() => {
-    if (callBackend) {
-      dispatch(fetchClothingInfo())
-        // .then(() => dispatch({ type: "clothing/splitClothingInfo" }))
-        // .then(() => dispatch({ type: "clothing/filterMonths" }))
-        // .then(() => dispatch({ type: "clothing/copyMonthsArray" }));
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+    console.log(clientSecret)
+    if (clientSecret !== null) {
+      openModal();
     }
-  }, []);
+    if (user !== null && cart.length > 0) {
+      if (clientSecret !== null && user !== null && cart.length > 0) {
+        dispatch(updateInventory(cart))
+          .then(() =>
+            dispatch(
+              removeItemsFromCart({
+                uid: user.uid,
+                name: user.displayName,
+                email: user.email,
+                cartItem: "",
+              })
+            )
+          )
+          .then(() => dispatch(fetchCart(user.uid)));
+      }
+    }
+    if (callBackend) {
+      dispatch(fetchClothingInfo());
+    }
+  }, [user, cart]);
+
+  console.log(cart);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
   let info = useSelector((state: RootState) => {
-      return state.clothing.allClothingInfo.filter((element: any) => {
-          return element.title?.toLowerCase().includes(term.toLowerCase());
-        });
-    
+    return state.clothing.allClothingInfo.filter((element: any) => {
+      return element.title?.toLowerCase().includes(term.toLowerCase());
+    });
   });
 
   const filter = useSelector(
@@ -60,17 +100,16 @@ export default function Clothing() {
     filteredResults = info.filter((element: any) => element[filter] === true);
   }
 
-  console.log(filteredResults)
-
-  // filteredResults?.map((element: any) =>{
-  //   element.sort((firstEl: any, secondEl: any) => {
-  //     return (
-  //       getDate(new Date(firstEl.date.replace(/, /g, "/"))) -
-  //       getDate(new Date(secondEl.date.replace(/, /g, "/")))
-  //     );
-  //   })
-  // }
-  // );
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
 
   return (
     <Container>
@@ -101,10 +140,22 @@ export default function Clothing() {
             </div>
           </SearchNavContainer>
         </HeaderContainer>
-
-        {/* <PastPresent sneaker={false} clothing={true} /> */}
         <Options sneaker={false} clothing={true} />
         <SneakerFeed filteredResults={filteredResults} type="for-sale" />
+        <Modal
+          isOpen={modalIsOpen}
+          // onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          ariaHideApp={false}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <AddToCartModalWrapper>
+            <h2>Order Completed</h2>
+            <h3>Thank you for ordering with us!</h3>
+            <CloseButton onClick={closeModal}>close</CloseButton>
+          </AddToCartModalWrapper>
+        </Modal>
         <Footer />
       </DesktopContentContainer>
     </Container>
@@ -195,5 +246,25 @@ const DesktopContentContainer = styled.div`
 
   @media (min-width: 2500px) {
     width: 55%;
+  }
+`;
+
+const AddToCartModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CloseButton = styled.button`
+  color: #fff;
+  background-color: #0e1111;
+  border-color: #0e1111;
+  width: 45%;
+  margin-top: 15px;
+  padding: 8px 14px;
+  &:hover {
+    background-color: #0e1111b6;
+    border-color: #0e1111b6;
   }
 `;

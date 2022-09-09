@@ -12,33 +12,28 @@ import { ThumbnailSlider } from "../DesktopReleasePage/DesktopSlider";
 
 export const DesktopForSaleDetails = ({data}: any) => {
 
-  console.log(data)
 
   return (
     <Container desktop={true}>
       <ShoeDetailsWrapper>
       <ImageContainer>
         {/* <ImageSlider data={data[0]} /> */}
-        <ThumbnailSlider data={data[0]}/>
+        <ThumbnailSlider data={data}/>
       </ImageContainer>
-     <ItemDetails />
+     <ItemDetails data={data} />
       </ShoeDetailsWrapper>
+
       <Footer />
     </Container>
   );
 };
 
 const Container = styled.div<{ desktop: boolean }>`
-  background-color: #ececec;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
   width: 70%;
-  display: none;
-
-  @media (min-width: 768px) {
-    display: block;
-  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     width: 100%;
@@ -51,7 +46,7 @@ const Container = styled.div<{ desktop: boolean }>`
 `;
 
 const ShoeDetailsWrapper = styled.div`
- height: 800px; 
+ height: 650px; 
 display: flex ;
 flex-direction:row ;
 align-items: center ;

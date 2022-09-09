@@ -102,7 +102,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "Components/SplideSliderDesktop/Splide.js", "store/releaseInfo.js", "store/ClothingReleaseInfo.js"  ],
+, "Components/SplideSliderDesktop/Splide.js", "store/releaseInfo.js", "store/ClothingReleaseInfo.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -3,43 +3,55 @@ import styled from "styled-components";
 import Image from "next/image";
 import { getDate } from "date-fns";
 
-interface SneakerCardProps{
-  type: string,
-cardInfo: {
-  date: string,
-  image: string[],
-  images: string[],
-  price: number,
-  title: string
-}
+interface SneakerCardProps {
+  type: string;
+  cardInfo: {
+    date: string;
+    image: string[];
+    images: string[];
+    price: number;
+    title: string;
+    qty: number;
+  };
 }
 
-export const SneakerCard = ({ cardInfo, type}: SneakerCardProps) => {
+export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
   let releaseDay;
   let date;
 
-  if(type !== 'for-sale'){
-    releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/"))); 
+  console.log(cardInfo);
+
+  if (type !== "for-sale") {
+    releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
   }
-  if(type !== 'for-sale'){
-  date = cardInfo.date.replace(/, /g, "/");
+  if (type !== "for-sale") {
+    date = cardInfo.date.replace(/, /g, "/");
   }
   return (
     <Container>
       <ReleaseDateContainer>
-        {type === 'home-page' && <DateText>{releaseDay}</DateText>}  
+        {type === "home-page" && <DateText>{releaseDay}</DateText>}
       </ReleaseDateContainer>
       <ReleasePriceContainer>
         <ImgContainer>
-        <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
+          <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
         </ImgContainer>
-        <SubContainer>
-          <ReleaseText>Price</ReleaseText>
-          <ReleaseText>{cardInfo.price}</ReleaseText>
-        </SubContainer>
+        
+          {type === "for-sale" ?
+          (<SubContainer><ReleaseText>Price</ReleaseText>
+          <ReleaseText>{cardInfo.qty < 0 ? 'Sold Out' : cardInfo.price}</ReleaseText></SubContainer>) :
+          (<SubContainer>
+          <ReleaseText>{date}</ReleaseText></SubContainer>)}
+        
         <SubContainer2>
           <ReleaseText>{cardInfo.title}</ReleaseText>
-          {type === 'home-page' ? <SneakerCardDate>{date}</SneakerCardDate> : <SneakerCardDate>{'$' + (Math.round(cardInfo.price * 100) / 100).toFixed(2)}</SneakerCardDate>}
+          {type === "home-page" ? (
+            <SneakerCardDate>{date}</SneakerCardDate>
+          ) : (
+            <SneakerCardDate>
+              {cardInfo.qty < 1 ? "Sold Out" : ("$" + (Math.round(cardInfo.price * 100) / 100).toFixed(2))}
+            </SneakerCardDate>
+          )}
         </SubContainer2>
       </ReleasePriceContainer>
     </Container>
@@ -222,7 +234,7 @@ const DateText = styled.p`
     bottom: 4px;
   }
 
-  @media (min-width: 1900px){
+  @media (min-width: 1900px) {
     font-size: 105px;
     left: 0px;
     bottom: 4px;

@@ -24,7 +24,6 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const [user, loading, error] = useAuthState(firebase.auth() as any);
-  console.log("Loading:", loading, "|", "Current user:", user);
   const callBackend = useSelector((state: RootState) => {
     if (state.sneaker.allSneakerInfo.length == 0) {
       return true;

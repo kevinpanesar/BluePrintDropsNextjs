@@ -70,9 +70,10 @@ export const Options = ({ sneaker, clothing }: OptionsProps) => {
 };
 
 const Container = styled.div<{ clothing: boolean }>`
-  width: 80%;
+  width: 30%;
   height: 40px;
-  margin: ${(props) => (props.clothing ? "100px auto 30px auto" : "20px auto 10px auto")};
+  margin: ${(props) =>
+    props.clothing ? "100px auto 30px auto" : "20px auto 10px auto"};
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -87,21 +88,16 @@ const Container = styled.div<{ clothing: boolean }>`
     margin: 15px auto 0 auto;
   }
 
-  @media (min-width: 769px) {
-    /* margin: 20px auto 10px auto; */
-    height: 40px;
-    padding: 4px;
-    width: 40%;
+  @media (max-width: 769px) {
+    margin: ${(props) => (props.clothing ? "20px auto 30px auto" : null)};
+    width: 80%;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
   }
-
-  @media (min-width: 1024px) and (max-width: 1440px) {
-  }
 `;
 
-const Item = styled.button<{ onClick: any, selected: boolean}>`
+const Item = styled.button<{ onClick: any; selected: boolean }>`
   width: 23%;
   background-color: ${(props) => (props.selected ? "#21587f" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
