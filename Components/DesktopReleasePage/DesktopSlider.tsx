@@ -21,7 +21,6 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
     ));
   }
 
-
   items.shift();
 
   const primaryOptions = {
@@ -76,4 +75,7 @@ const Container = styled.div`
   margin: auto;
   overflow: hidden;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

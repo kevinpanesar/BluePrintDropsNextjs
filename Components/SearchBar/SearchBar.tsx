@@ -1,5 +1,6 @@
 import React, { FormEventHandler } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../../store/store";
 import styled from "styled-components";
 import Image from "next/image";
 import { RootState } from "../../store/store";
@@ -10,21 +11,22 @@ interface SearchBarProps {
 }
 
 export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
-  const dispatch = useDispatch();
   const term = useSelector((state: RootState) => state.sneaker.searchTerm);
+  const dispatch = useAppDispatch();
   // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
-  const handleChange = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (event: any) => {
     (event: any) => event.preventDefault();
-    if (clothing == true) {
+    if (clothing === true) {
+      console.log(event)
       dispatch({
         type: "clothing/setSearchTerm",
-        payload: event.currentTarget.value,
+        payload: event.target.value,
       });
-    } else if (sneaker == true) {
+    } else if (sneaker === true) {
       dispatch({
         type: "sneaker/setSearchTerm",
-        payload: event.currentTarget.value,
+        payload: event.target.value,
       });
     }
   };

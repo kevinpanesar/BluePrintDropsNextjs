@@ -50,6 +50,7 @@ const clothingSlice = createSlice({
   name: "clothing",
   initialState: {
     allClothingInfo: [],
+    filteredResults: [],
     cart: [],
     status: null,
     searchTerm: "",
@@ -59,11 +60,14 @@ const clothingSlice = createSlice({
     ClothingInfo: (state : RootState, action) => {
       state.currentClothingInfo = action.payload;
     },
+    copyFilteredArray: (state) => {
+      state.filteredResults = state.allClothingInfo;
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
     searchFeed: (state : RootState, action) => {
-      state.futureClothingInfo.filter((element : any) =>
+      state.filteredResults.filter((element : any) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },

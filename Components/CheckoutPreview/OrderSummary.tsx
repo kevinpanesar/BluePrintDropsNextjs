@@ -1,28 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 
-export const OrderSummary = ({ cart,totalPrice, setActivatePaymentForm, activatePaymentForm }: any) => {
-
-    let estimatedTotal = +totalPrice(cart) + +15.00
+export const OrderSummary = ({
+  cart,
+  totalPrice,
+  setActivatePaymentForm,
+  activatePaymentForm,
+}: any) => {
+  let estimatedTotal = +totalPrice(cart) + +15.0;
 
   return (
     <Container>
-        <h3>Order Summary</h3>
-        <ItemWrapper>
-            <ItemTitle>SUBTOTAL</ItemTitle>
-            <ItemValue>{'$' + totalPrice(cart)} </ItemValue>
-        </ItemWrapper>
-        <ItemValue>{cart.length + (cart.length === 1? ' Item' : ' Items')}</ItemValue>
-        <ItemWrapper>
-            <ItemTitle>SHIPPING</ItemTitle>
-            <ItemValue>{'$15.00'} </ItemValue>
-        </ItemWrapper>
-        <ItemWrapper>
-            <ItemTitle>ESTIMATED TOTAL</ItemTitle>
-            <ItemValue>{'$' + estimatedTotal.toFixed(2)} </ItemValue>
-        </ItemWrapper>
-        Taxes Calculated in Checkout
-        {!activatePaymentForm && <ContinueToCheckoutButton onClick={()=> setActivatePaymentForm(true)}>Continue To Checkout</ContinueToCheckoutButton>}
+      <h3>Order Summary</h3>
+      <ItemWrapper>
+        <ItemTitle>SUBTOTAL</ItemTitle>
+        <ItemValue>{"$" + totalPrice(cart)} </ItemValue>
+      </ItemWrapper>
+      <ItemValue>
+        {cart.length + (cart.length === 1 ? " Item" : " Items")}
+      </ItemValue>
+      <ItemWrapper>
+        <ItemTitle>SHIPPING</ItemTitle>
+        <ItemValue>{"$15.00"} </ItemValue>
+      </ItemWrapper>
+      <ItemWrapper>
+        <ItemTitle>ESTIMATED TOTAL</ItemTitle>
+        <ItemValue>{"$" + estimatedTotal.toFixed(2)} </ItemValue>
+      </ItemWrapper>
+      Taxes Calculated in Checkout
+      {!activatePaymentForm && (
+        <ContinueToCheckoutButton onClick={() => setActivatePaymentForm(true)}>
+          Continue To Checkout
+        </ContinueToCheckoutButton>
+      )}
     </Container>
   );
 };
@@ -36,20 +46,24 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  h3{
+  h3 {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 15px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content:space-between ;
+  justify-content: space-between;
   padding: 10px 0;
   width: 100%;
- border-top: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 `;
 
 const ItemTitle = styled.p`
@@ -61,7 +75,7 @@ const ItemTitle = styled.p`
 
 const ItemValue = styled.p`
   font-size: 14px;
-  padding-bottom:8px ;
+  padding-bottom: 8px;
 `;
 
 const ContinueToCheckoutButton = styled.button`
@@ -75,5 +89,8 @@ const ContinueToCheckoutButton = styled.button`
   &:hover {
     background-color: #0e1111b6;
     border-color: #0e1111b6;
+  }
+  @media (max-width: 768px) {
+    margin-top: 25px ;
   }
 `;

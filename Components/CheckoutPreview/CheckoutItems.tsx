@@ -1,39 +1,48 @@
 import React from "react";
 import styled from "styled-components";
-import { removeItemsFromCart, fetchCart } from "../../store/ClothingReleaseInfo";
+import {
+  removeItemsFromCart,
+  fetchCart,
+} from "../../store/ClothingReleaseInfo";
 import { useAppDispatch } from "../../store/store";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const CheckoutItems = ({ data }: any) => {
-    const dispatch = useAppDispatch();
-    const [user, loading, error]: any = useAuthState(firebase.auth() as any);
-    const {
-        images,
-        title,
-        colorway,
-        kidsFlag,
-        mensFlag,
-        womensFlag,
-        price,
-        skuNumber,
-        uniqueItemID,
-        size,
-      } = data;
+  const dispatch = useAppDispatch();
+  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+  const {
+    images,
+    title,
+    colorway,
+    kidsFlag,
+    mensFlag,
+    womensFlag,
+    price,
+    skuNumber,
+    uniqueItemID,
+    size,
+  } = data;
 
-    let mensWomensKids;
-    if (mensFlag) {
-        mensWomensKids = "Mens";
-      } else if (womensFlag) {
-        mensWomensKids = "Womens";
-      } else if (kidsFlag) {
-        mensWomensKids = "Kids";
-      }
+  let mensWomensKids;
+  if (mensFlag) {
+    mensWomensKids = "Mens";
+  } else if (womensFlag) {
+    mensWomensKids = "Womens";
+  } else if (kidsFlag) {
+    mensWomensKids = "Kids";
+  }
 
-      const handleRemoveItem = () => {
-        dispatch(removeItemsFromCart({uid:user.uid, name: user.displayName, email:  user.email, cartItem: data})).then(()=>  dispatch(fetchCart(user.uid)));
-       
-      }
+  const handleRemoveItem = () => {
+    dispatch(
+      removeItemsFromCart({
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        cartItem: data,
+      })
+    ).then(() => dispatch(fetchCart(user.uid)));
+  };
 
   return (
     <Container>
@@ -48,13 +57,15 @@ export const CheckoutItems = ({ data }: any) => {
         <ItemDescriptionContainer>
           <ItemWrapper>
             <ItemTitle> SIZE</ItemTitle>
-            <ItemValue>{size + ' ' + mensWomensKids}</ItemValue>
+            <ItemValue>{size + " " + mensWomensKids}</ItemValue>
           </ItemWrapper>
           <ItemWrapper>
             <ItemTitle>PRICE</ItemTitle>
-            <ItemValue>{'$' + price}</ItemValue>
+            <ItemValue>{"$" + price}</ItemValue>
           </ItemWrapper>
-          <RemoveFromCartButton onClick={handleRemoveItem}>Remove</RemoveFromCartButton>
+          <RemoveFromCartButton onClick={handleRemoveItem}>
+            Remove
+          </RemoveFromCartButton>
         </ItemDescriptionContainer>
       </ItemInfoContainer>
     </Container>
@@ -69,6 +80,9 @@ const Container = styled.div`
   margin-bottom: 16px;
   display: flex;
   flex-direction: row;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -82,6 +96,9 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 50% ;
+  }
 `;
 
 const ItemInfoContainer = styled.div`
@@ -90,6 +107,9 @@ const ItemInfoContainer = styled.div`
   h2 {
     font-size: 20px;
     font-weight: 700;
+  }
+  @media (max-width: 768px) {
+    width: 50%;
   }
 `;
 const TitleContainer = styled.div`
@@ -126,12 +146,10 @@ const ItemColorway = styled.p`
   margin-bottom: 0;
 `;
 
-
 const RemoveFromCartButton = styled.button`
   color: #fff;
   background-color: #0e1111;
   border-color: #0e1111;
-  width: 65%;
   margin-right: 10px;
   padding: 8px 12px;
   margin-top: 6px;

@@ -79,26 +79,19 @@ const Container = styled.div`
   padding-top: 20px;
   width: 96%;
   margin: 0 auto;
-  display: none;
-
-  @media (min-width: 768px) {
-    display: block;
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media (min-width: 2500px) {
-    padding-top: 20px;
-    width: 70%;
-  }
 
   h1 {
     margin-top: 100px;
     font-weight: 900;
     font-size: 48px;
   }
+
+  @media (max-width: 768px) {
+    h1{
+      margin-top: 0px;
+    }
+  }
+
 `;
 
 const CheckoutItemsWrapper = styled.div`
@@ -106,6 +99,10 @@ const CheckoutItemsWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 65%;
+
+  @media (max-width: 768px) {
+    width: 100% ;
+  }
 `;
 const CheckoutPrice = styled.p`
   font-weight: 700;
@@ -118,4 +115,7 @@ const CheckoutPrice = styled.p`
 const SectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;

@@ -53,7 +53,7 @@ export default function Clothing() {
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret"
     );
-    console.log(clientSecret)
+    console.log(clientSecret);
     if (clientSecret !== null) {
       openModal();
     }
@@ -74,7 +74,9 @@ export default function Clothing() {
       }
     }
     if (callBackend) {
-      dispatch(fetchClothingInfo());
+      dispatch(fetchClothingInfo()).then(() =>
+        dispatch({ type: "clothing/copyFilteredArray" })
+      );
     }
   }, [user, cart]);
 
@@ -83,10 +85,14 @@ export default function Clothing() {
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
   let info = useSelector((state: RootState) => {
-    return state.clothing.allClothingInfo.filter((element: any) => {
-      return element.title?.toLowerCase().includes(term.toLowerCase());
+    return state.clothing.filteredResults.filter((element: any) => {
+      if (element.title?.toLowerCase().includes(term?.toLowerCase())) {
+        return element;
+      }
     });
   });
+
+  console.log(info);
 
   const filter = useSelector(
     (state: RootState) => state.clothing.mensWomensKidsFilterValue
@@ -99,6 +105,8 @@ export default function Clothing() {
   } else {
     filteredResults = info.filter((element: any) => element[filter] === true);
   }
+
+  console.log(filteredResults);
 
   const customStyles = {
     content: {

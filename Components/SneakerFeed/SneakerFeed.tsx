@@ -12,6 +12,7 @@ interface SneakerFeed {
 }
 
 export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
+  console.log(filteredResults)
   return (
     <Container type={type}>
       {type !== 'for-sale'? filteredResults?.map((element: any, index: number) => {
@@ -42,11 +43,11 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
             </div>
           );
         }
-      }): filteredResults?.map((element: any, index: number) => {
-        if (element) {
-          return (<Link
+      }) : filteredResults?.map((element: any, index: number) => {
+        if (element.title) {
+          return (<Link 
       passHref
-      key={element.title + element.colorway}
+      key={index}
       href={"/ForSale/" + element.title + "KP" + element._id}>
       <Links>
         <SneakerCard cardInfo={element} type={type}/>
