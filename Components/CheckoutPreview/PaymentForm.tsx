@@ -17,7 +17,7 @@ export const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = React.useState("hello");
+  const [message, setMessage] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
   useEffect(() => {
@@ -29,10 +29,9 @@ export const PaymentForm = () => {
       "payment_intent_client_secret"
     );
 
-    console.log(clientSecret);
+
 
     if (!clientSecret) {
-      toast('hello')
       return;
     }
 
@@ -117,6 +116,9 @@ const Container = styled.div`
   flex-direction: row;
   padding: 15px;
   width: 95%;
+  @media (max-width: 768px) {
+    width: 100% ;
+  }
 
   button {
     color: #fff;

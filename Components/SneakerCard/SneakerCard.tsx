@@ -142,7 +142,7 @@ const ReleaseDateContainer = styled.div`
   width: 100%;
   height: 25%;
   background: #ffffff;
-  z-index: 10;
+  z-index: 1;
 `;
 const ReleaseText = styled.p`
   font-size: 10px;
@@ -152,7 +152,7 @@ const ReleaseText = styled.p`
   line-height: 1.3;
   font-style: normal;
   font-weight: 600;
-  z-index: 5;
+  /* z-index: 5; */
 
   @media (min-width: 375px) and (max-width: 426px) {
     font-size: 11px;
@@ -198,6 +198,7 @@ const DateText = styled.p`
   left: 8px;
   bottom: 16px;
   line-height: 1;
+  z-index:10 ;
 
   @media (max-width: 375px) {
     left: 3px;

@@ -22,7 +22,6 @@ export const AboutMePage = () => {
         <SliderTitle>Your One Stop For Drop</SliderTitle>
         <SliderText>We are the leading destination for locals in the metro vancouver area on getting their daily scoop on the latest sneaker drops and contemporary fashion.</SliderText>
         </SliderTextContainer>
-        <PurposeContainer>hello</PurposeContainer>
     </Container>
   );
 };

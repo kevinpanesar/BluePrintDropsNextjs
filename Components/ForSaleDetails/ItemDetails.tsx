@@ -206,6 +206,10 @@ const ItemDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
+
+  @media (max-width: 768px) {
+   width: 100% ;
+  }
 `;
 const ItemTitle = styled.h1`
   font-size: 36px;

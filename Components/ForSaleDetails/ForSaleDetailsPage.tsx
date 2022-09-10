@@ -17,8 +17,8 @@ export const DesktopForSaleDetails = ({data}: any) => {
     <Container desktop={true}>
       <ShoeDetailsWrapper>
       <ImageContainer>
-        {/* <ImageSlider data={data[0]} /> */}
         <ThumbnailSlider data={data}/>
+        <ImageSlider data={data}/>
       </ImageContainer>
      <ItemDetails data={data} />
       </ShoeDetailsWrapper>
@@ -43,6 +43,10 @@ const Container = styled.div<{ desktop: boolean }>`
     padding-top: 20px;
     width: 70%;
   }
+
+  @media (max-width: 768px) {
+    width: 100% ;
+  }
 `;
 
 const ShoeDetailsWrapper = styled.div`
@@ -50,6 +54,11 @@ const ShoeDetailsWrapper = styled.div`
 display: flex ;
 flex-direction:row ;
 align-items: center ;
+
+@media (max-width: 768px) {
+    flex-direction: column ;
+    height: auto ;
+  }
 `
 
 const ImageContainer = styled.div`
