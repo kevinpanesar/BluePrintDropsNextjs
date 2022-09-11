@@ -113,6 +113,12 @@ const Container = styled.div`
   @media (min-width: 450px) and (max-width: 768px) {
     width: 70%;
   }
+
+  @media (min-width: 768px) {
+    width: 400px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 50px;
+  }
 `;
 
 const Description = styled.div`

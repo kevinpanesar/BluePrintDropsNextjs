@@ -18,7 +18,7 @@ export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   const handleChange = (event: any) => {
     (event: any) => event.preventDefault();
     if (clothing === true) {
-      console.log(event)
+      console.log(event);
       dispatch({
         type: "clothing/setSearchTerm",
         payload: event.target.value,
@@ -63,7 +63,7 @@ const Form = styled.form`
       padding-right: 10px;
       display: block;
       background-color: white;
-
+      transition: max-height 0.3s ease-out;
       @media (min-width: 769px) {
         width: 100%;
         height: 90px;
@@ -81,16 +81,17 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  transition: max-height 0.3s ease-out;
   position: absolute;
   padding-left: 10px;
   top: 60px;
+  transition-delay: 1s;
   right: 0px;
   width: 0%;
   max-height: 0px;
   height: 0px;
+  border: 2px solid #f5f5f5;
   outline: 0;
-  border: 0;
+  /* border: 0; */
   font-size: 1em;
   overflow: none;
   background-color: #f5f5f5;

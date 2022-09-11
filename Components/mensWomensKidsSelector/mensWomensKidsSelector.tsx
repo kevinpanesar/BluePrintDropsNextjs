@@ -90,7 +90,7 @@ const Container = styled.div<{ clothing: boolean }>`
 
   @media (max-width: 769px) {
     margin: ${(props) => (props.clothing ? "20px auto 30px auto" : null)};
-    width: 80%;
+    width: 84%;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
