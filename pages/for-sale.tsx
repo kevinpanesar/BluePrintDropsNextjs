@@ -71,6 +71,7 @@ export default function Clothing() {
             )
           )
           .then(() => dispatch(fetchCart(user.uid)));
+        window.history.replaceState({}, document.title, "/" + "for-sale");
       }
     }
     if (callBackend) {

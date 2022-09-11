@@ -64,6 +64,7 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
 const SlideImage = styled.img`
   object-fit: contain;
   height: 100%;
+  height: 558px;
   width: 100%;
   max-height: 55vh;
   max-width: 100vh;
@@ -71,7 +72,7 @@ const SlideImage = styled.img`
 `;
 
 const Container = styled.div`
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   overflow: hidden;
   margin-bottom: 20px;

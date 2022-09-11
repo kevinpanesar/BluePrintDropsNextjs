@@ -179,7 +179,7 @@ const RightContainer = styled.div<{ desktop: boolean }>`
 
 const RaffleButton = styled.button`
   background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#21587f")};
-  padding: ${(props) => (props.disabled ? "6.72581px 17.9355px" : "0px 0px")};
+  padding: ${(props) => (props.disabled ? "6.72581px 17.9355px" : "5px 7px")};
   font-weight: 400;
   letter-spacing: 0.5px;
   font-size: 14.6935px;

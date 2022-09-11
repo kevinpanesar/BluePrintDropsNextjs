@@ -11,24 +11,23 @@ interface ImageSliderProps {
 }
 
 export const ImageSlider = ({ data }: ImageSliderProps) => {
-  let items : JSX.Element[] = [];
+  let items: JSX.Element[] = [];
 
   const handleDragStart = (e: React.DragEvent<HTMLImageElement>) =>
     e.preventDefault();
 
-    console.log(data)
-  
+  console.log(data);
+
   if (data.images !== undefined) {
-    console.log(data)
+    console.log(data);
     items = data.images.map((element, index) => (
       <SlideImage src={element} onDragStart={handleDragStart} key={index} />
     ));
-
   }
 
-  console.log(items)
+  console.log(items);
   items.shift();
-  console.log(items)
+  console.log(items);
   return (
     <Container>
       <AliceCarousel
@@ -44,6 +43,10 @@ const Container = styled.div`
   width: 90%;
   overflow: hidden;
   margin: 0 auto;
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const SlideImage = styled.img`

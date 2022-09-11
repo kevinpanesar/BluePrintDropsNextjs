@@ -4,16 +4,18 @@ import styled from "styled-components";
 import { fetchCart } from "../../store/ClothingReleaseInfo";
 import { useState } from "react";
 import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { Dropdown } from "semantic-ui-react";
 import { getAuth } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
 import { useAppDispatch } from "../../store/store";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+
 export const Cart = () => {
   const [user, loading, error]: any = useAuthState(firebase.auth() as any);
   const dispatch = useAppDispatch();
-
+  const router = useRouter();
   const cartNumber = useSelector((state: RootState) => {
     return state.clothing.cart.length;
   });
@@ -22,8 +24,12 @@ export const Cart = () => {
     dispatch(fetchCart(user.uid));
   }, []);
 
+  const handleCartClick = () => {
+    router.push("/checkout");
+  };
+
   return (
-    <Container>
+    <Container onClick={() => handleCartClick()}>
       <NumberOfItemsWrapper>{cartNumber}</NumberOfItemsWrapper>
       <img src="/Media/shopping-cart.png" />
     </Container>
@@ -33,6 +39,8 @@ export const Cart = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center ;
+  cursor: pointer;
   height: 100%;
   align-items: center;
   margin-bottom: 10px;

@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useAppDispatch } from "../../store/store";
 import { removeItemsFromCart } from "../../store/ClothingReleaseInfo";
@@ -29,13 +29,12 @@ export const PaymentForm = () => {
       "payment_intent_client_secret"
     );
 
-
-
     if (!clientSecret) {
       return;
     }
 
-    stripe.retrievePaymentIntent(clientSecret)
+    stripe
+      .retrievePaymentIntent(clientSecret)
       .then(({ paymentIntent }: any) => {
         switch (paymentIntent.status) {
           case "succeeded":
@@ -65,15 +64,14 @@ export const PaymentForm = () => {
 
     setIsLoading(true);
 
-    const { error }: any = await stripe
-      .confirmPayment({
-        elements,
-        confirmParams: {
-          // Make sure to change this to your payment completion page
-          return_url: "http://localhost:3001/for-sale",
-        },
-      })
-     
+    const { error }: any = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: "https://blueprintdrops.com/for-sale",
+      },
+    });
+
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -117,7 +115,7 @@ const Container = styled.div`
   padding: 15px;
   width: 95%;
   @media (max-width: 768px) {
-    width: 100% ;
+    width: 100%;
   }
 
   button {

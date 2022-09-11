@@ -8,42 +8,56 @@ export const fetchClothingInfo = createAsyncThunk(
     let data = await fetch(
       "https://sneaker-mern-app.herokuapp.com/for-sale-listings"
     );
-    let jsonData = await data.json();43
+    let jsonData = await data.json();
+    43;
     return jsonData;
   }
 );
 
-export const fetchCart = createAsyncThunk("clothing/fetchCart", async (uid : any) => {
-  let data = await fetch(
-    `https://sneaker-mern-app.herokuapp.com/cart?uid=${uid}`
-  );
-  let jsonData = await data.json();
-  return jsonData;
-});
+export const fetchCart = createAsyncThunk(
+  "clothing/fetchCart",
+  async (uid: any) => {
+    let data = await fetch(
+      `https://sneaker-mern-app.herokuapp.com/cart?uid=${uid}`
+    );
+    let jsonData = await data.json();
+    return jsonData;
+  }
+);
 
-export const removeItemsFromCart = createAsyncThunk("clothing/removeItemsFromCart", async (dataObj: any) => {
-  const config = {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(dataObj),
-  };
-  let data = await fetch(
-    `https://sneaker-mern-app.herokuapp.com/removeFromCart`, config
-  );
-  let jsonData = await data.json();
-  return jsonData;
-});
+export const removeItemsFromCart = createAsyncThunk(
+  "clothing/removeItemsFromCart",
+  async (dataObj: any) => {
+    const config = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataObj),
+    };
+    let data = await fetch(
+      `https://sneaker-mern-app.herokuapp.com/removeFromCart`,
+      config
+    );
+    let jsonData = await data.json();
+    return jsonData;
+  }
+);
 
-export const updateInventory = createAsyncThunk("clothing/updateInventory", async (dataObj: any) => {
-  const options = {
-    method: 'PUT',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(dataObj),
-  };
-  let data = await fetch('http://localhost:3000/updateInventory', options);
-  let jsonData = await data.json();
-  return jsonData;
-});
+export const updateInventory = createAsyncThunk(
+  "clothing/updateInventory",
+  async (dataObj: any) => {
+    const options = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataObj),
+    };
+    let data = await fetch(
+      "https://sneaker-mern-app.herokuapp.com/updateInventory",
+      options
+    );
+    let jsonData = await data.json();
+    return jsonData;
+  }
+);
 
 // Slice
 const clothingSlice = createSlice({
@@ -57,7 +71,7 @@ const clothingSlice = createSlice({
     mensWomensKidsFilterValue: "reset",
   },
   reducers: {
-    ClothingInfo: (state : RootState, action) => {
+    ClothingInfo: (state: RootState, action) => {
       state.currentClothingInfo = action.payload;
     },
     copyFilteredArray: (state) => {
@@ -66,8 +80,8 @@ const clothingSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
-    searchFeed: (state : RootState, action) => {
-      state.filteredResults.filter((element : any) =>
+    searchFeed: (state: RootState, action) => {
+      state.filteredResults.filter((element: any) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -84,44 +98,53 @@ const clothingSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchClothingInfo.pending.toString()]: (state : RootState) => {
+    [fetchClothingInfo.pending.toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [fetchClothingInfo.fulfilled.toString()]: (state : RootState, action : any) => {
+    [fetchClothingInfo.fulfilled.toString()]: (
+      state: RootState,
+      action: any
+    ) => {
       if (state.allClothingInfo.length === 0) {
         state.allClothingInfo = action.payload;
       }
     },
-    [fetchClothingInfo.rejected.toString()]: (state : RootState, action : any) => {
+    [fetchClothingInfo.rejected.toString()]: (
+      state: RootState,
+      action: any
+    ) => {
       console.log(action);
     },
     [fetchCart.pending.toString().toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [fetchCart.fulfilled.toString()]: (state : RootState, action : any) => {
+    [fetchCart.fulfilled.toString()]: (state: RootState, action: any) => {
       state.cart = action.payload;
     },
-    [fetchCart.rejected.toString()]: (action : any) => {
+    [fetchCart.rejected.toString()]: (action: any) => {
       console.log(action);
     },
     [removeItemsFromCart.pending.toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [removeItemsFromCart.fulfilled.toString()]: (state : RootState, action : any) => {
-      console.log(action)
+    [removeItemsFromCart.fulfilled.toString()]: (
+      state: RootState,
+      action: any
+    ) => {
+      console.log(action);
     },
-    [removeItemsFromCart.rejected.toString()]: (action : any) => {
+    [removeItemsFromCart.rejected.toString()]: (action: any) => {
       console.log(action);
     },
     [updateInventory.pending.toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [updateInventory.fulfilled.toString()]: (state : RootState, action : any) => {
-      console.log(action)
-    },
-    [updateInventory.rejected.toString()]: (action : any) => {
+    [updateInventory.fulfilled.toString()]: (state: RootState, action: any) => {
       console.log(action);
-    }
+    },
+    [updateInventory.rejected.toString()]: (action: any) => {
+      console.log(action);
+    },
   },
 });
 export default clothingSlice.reducer;
