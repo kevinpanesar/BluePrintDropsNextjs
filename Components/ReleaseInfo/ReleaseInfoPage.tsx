@@ -18,7 +18,7 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 
 interface ReleaseInfoPageProps {
   data: {
-    _id: string,
+    _id: string;
     title: string;
     date: string;
     colorway: string;
@@ -28,12 +28,16 @@ interface ReleaseInfoPageProps {
     kidsFlag: boolean;
     cities: any;
     images: string[];
-    OnlineLinks: {
-        CanadianLinks: any;
-        USALinks: any;
-        InternationalLinks: any;
-    };
   };
+}
+
+interface ElementProps {
+  img: string;
+  location: string;
+  type: string;
+  Description: string;
+  date: string;
+  Address: string;
 }
 
 export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
@@ -60,7 +64,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities)?.map((city : any, index : any) => {
+            ? Object.keys(data.cities)?.map((city: string, index: any) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
@@ -72,15 +76,20 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
                     </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
-                        ? data.cities[city]?.map((element : any, index: number) => (
-                            <LocationCard
-                            location={element}
-                            key={index}
-                            length={data.cities[city].length} desktop={false} data={{
-                              title: "",
-                              _id: "",
-                            }}/>
-                          ))
+                        ? data.cities[city]?.map(
+                            (element: ElementProps, index: number) => (
+                              <LocationCard
+                                location={element}
+                                key={index}
+                                length={data.cities[city].length}
+                                desktop={false}
+                                data={{
+                                  title: "",
+                                  _id: "",
+                                }}
+                              />
+                            )
+                          )
                         : null}
                     </AccordionBody>
                   </Accordion.Item>

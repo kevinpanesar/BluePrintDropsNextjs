@@ -3,14 +3,32 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import firebase from "../../firebase/clientApp";
 import { fetchCart } from "../../store/ClothingReleaseInfo";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 Modal.setAppElement("#__next");
 import { useAppDispatch } from "../../store/store";
+import { Auth } from "firebase/auth";
 
-export const ItemDetails = ({ data }: any) => {
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+interface PropTypes{
+  data:{
+    images: string[],
+    title: string,
+    colorway: string,
+    kidsFlag: boolean,
+    mensFlag: boolean,
+    womensFlag: boolean,
+    shoe: boolean,
+    clothing: boolean,
+    price: number,
+    qty: number,
+    availableSizeQty: any,
+    skuNumber: string
+  }
+  }
+
+export const ItemDetails = ({ data }: PropTypes) => {
+  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
   const [selectedSize, setSelectedSize] = useState(0.0);
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -34,7 +52,7 @@ export const ItemDetails = ({ data }: any) => {
 
   const router = useRouter();
 
-  const addToCart = async (data: any) => {
+  const addToCart = async (data: {}) => {
     const config = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -145,7 +163,7 @@ export const ItemDetails = ({ data }: any) => {
   };
 
   const closeModal = () => {
-    dispatch(fetchCart(user.uid));
+    dispatch(fetchCart(user!.uid));
     setIsOpen(false);
     setSelectedSize(0);
   };

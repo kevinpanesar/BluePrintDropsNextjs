@@ -8,7 +8,7 @@ export interface OnlineLinkCardsProps {
     img: string;
     title: string;
     type: string;
-    Description: string;
+    Description?: string;
     link: string;
   };
   length: number;

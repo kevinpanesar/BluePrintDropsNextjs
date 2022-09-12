@@ -13,7 +13,7 @@ export const AboutMePage = () => {
     <Container>
       <HeaderContainer>
         <Header type="desktop" />
-        <DesktopMenu aboutUsPage={true} type="desktop"/>
+        <DesktopMenu />
       </HeaderContainer>
       <SliderContainer>
         {/* <AboutUsSlider /> */}

@@ -34,7 +34,6 @@ export default function Checkout() {
           <Header type={""} />
           <DesktopMenu />
           <SearchNavContainer>
-            <SearchBar clothing={true} sneaker={false} />
             <div>
               <SideNavBar open={open} setOpen={setOpen} />
               <Menu open={open} setOpen={setOpen} />

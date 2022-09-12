@@ -2,12 +2,28 @@ import React, { useEffect, useRef } from "react";
 
 import styled from "styled-components";
 const { Splide, SplideSlide } = require("splide-nextjs/react-splide");
-import { DesktopReleasePageProps } from "../DesktopReleasePage/DesktopReleasePage";
 
-export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
+interface PropTypes{
+  data:{
+    images: string[],
+    title: string,
+    colorway: string,
+    kidsFlag: boolean,
+    mensFlag: boolean,
+    womensFlag: boolean,
+    shoe: boolean,
+    clothing: boolean,
+    price: number,
+    qty: number,
+    availableSizeQty: {},
+    skuNumber: string
+  }
+  }
+
+export const ThumbnailSlider = ({ data }: PropTypes) => {
   const primaryRef: any = useRef();
   const secondaryRef: any = useRef();
-  let items: any;
+  let items;
 
   useEffect(() => {
     primaryRef.current.sync(secondaryRef.current.splide);
@@ -21,7 +37,7 @@ export const ThumbnailSlider = ({ data }: DesktopReleasePageProps) => {
     ));
   }
 
-  items.shift();
+  items?.shift();
 
   const primaryOptions = {
     type: "loop",

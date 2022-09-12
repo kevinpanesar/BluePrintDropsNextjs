@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth, signOut } from "firebase/auth";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
+import { Auth, getAuth, signOut } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
 import { useRouter } from "next/router";
 import LoggedInDropDown from "../LoggedInDropDown/LoggedInDropDown";
 import { id } from "date-fns/locale";
 import { Cart } from "./Cart";
 
-export const DesktopMenu = ({ type }: any) => {
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+export const DesktopMenu = () => {
+  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
   const router = useRouter();
 
-  const addUser = async (data: any) => {
+  const addUser = async (data: object) => {
     const config = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,7 +31,7 @@ export const DesktopMenu = ({ type }: any) => {
     }
   };
 
-  const createCart = async (data: any) => {
+  const createCart = async (data: object) => {
     const config = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -78,14 +78,14 @@ export const DesktopMenu = ({ type }: any) => {
   return (
     <StyledMenu>
       <Link href={"/"}>
-        <NavPages type={type}>Sneaker Releases</NavPages>
+        <NavPages>Sneaker Releases</NavPages>
       </Link>
       <Link href={"/for-sale"}>
-        <NavPages type={type}>For Sale</NavPages>
+        <NavPages>For Sale</NavPages>
       </Link>
       {!loggedIn && (
         <Link href={"/auth"}>
-          <NavPages type={type}>Login</NavPages>
+          <NavPages>Login</NavPages>
         </Link>
       )}
       {/* <Link href={"/for-sale"}>
@@ -116,7 +116,7 @@ const StyledMenu = styled.nav`
 `;
 
 const NavPages = styled.a`
-  color: ${(props) => (props.type === "desktop" ? "white" : "black")};
+  color: black;
   text-decoration: none;
   font-size: 18px;
   font-style: normal;

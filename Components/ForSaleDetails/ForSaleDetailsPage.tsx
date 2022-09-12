@@ -10,7 +10,24 @@ import { Footer } from "../Footer/Footer";
 import { ItemDetails } from "./ItemDetails";
 import { ThumbnailSlider } from "../DesktopReleasePage/DesktopSlider";
 
-export const DesktopForSaleDetails = ({data}: any) => {
+interface PropTypes{
+data:{
+  images: string[],
+  title: string,
+  colorway: string,
+  kidsFlag: boolean,
+  mensFlag: boolean,
+  womensFlag: boolean,
+  shoe: boolean,
+  clothing: boolean,
+  price: number,
+  qty: number,
+  availableSizeQty: {},
+  skuNumber: string
+}
+}
+
+export const DesktopForSaleDetails = ({data}: PropTypes) => {
 
 
   return (

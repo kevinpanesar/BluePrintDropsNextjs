@@ -1,12 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
+interface OrderSummaryProps{
+cart: {}[],
+totalPrice(cart : {}[]): number,
+setActivatePaymentForm: React.Dispatch<React.SetStateAction<boolean>>,
+activatePaymentForm: boolean
+}
+
 export const OrderSummary = ({
   cart,
   totalPrice,
   setActivatePaymentForm,
   activatePaymentForm,
-}: any) => {
+}: OrderSummaryProps) => {
   let estimatedTotal = +totalPrice(cart) + +15.0;
 
   return (

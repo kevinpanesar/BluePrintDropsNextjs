@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CheckoutItems } from "./CheckoutItems";
+import { CheckoutItems, CheckoutItemsProps } from "./CheckoutItems";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { OrderSummary } from "./OrderSummary";
 import { PaymentForm } from "./PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+
+interface cartData{
+  images: string[];
+  title: string;
+  colorway: string;
+  kidsFlag: boolean;
+  mensFlag: boolean;
+  womensFlag: boolean;
+  price: number;
+  size: number;
+}
 
 export const CheckoutPreviewPage = () => {
   const [activatePaymentForm, setActivatePaymentForm] = useState(false);
@@ -15,9 +26,9 @@ export const CheckoutPreviewPage = () => {
   );
   console.log(stripePromise);
   const [clientSecret, setClientSecret] = React.useState("");
-  const totalPrice = (cartArray: any) => {
+  const totalPrice = (cartArray: { price: number }[]) => {
     let total = 0;
-    cartArray.forEach((element: any) => {
+    cartArray.forEach((element: { price: number }) => {
       total = element.price + total;
     });
 
@@ -53,7 +64,7 @@ export const CheckoutPreviewPage = () => {
       <SectionWrapper>
         <CheckoutItemsWrapper>
           {!activatePaymentForm &&
-            cart.map((data: any, index: number) => {
+            cart.map((data: cartData, index: number) => {
               return <CheckoutItems key={index} data={data} />;
             })}
           {activatePaymentForm && clientSecret && (
@@ -87,11 +98,10 @@ const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-    h1{
+    h1 {
       margin-top: 0px;
     }
   }
-
 `;
 
 const CheckoutItemsWrapper = styled.div`
@@ -101,7 +111,7 @@ const CheckoutItemsWrapper = styled.div`
   width: 65%;
 
   @media (max-width: 768px) {
-    width: 100% ;
+    width: 100%;
   }
 `;
 const CheckoutPrice = styled.p`

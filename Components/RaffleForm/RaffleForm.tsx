@@ -38,7 +38,7 @@ export const RaffleForm = ({ postData }: RaffleFormProps) => {
     return "";
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setFirstName(capitalizeFirstLetter(event.target[0].value));
     setLastname(capitalizeFirstLetter(event.target[1].value));

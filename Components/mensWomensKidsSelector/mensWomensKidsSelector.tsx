@@ -97,7 +97,7 @@ const Container = styled.div<{ clothing: boolean }>`
   }
 `;
 
-const Item = styled.button<{ onClick: any; selected: boolean }>`
+const Item = styled.button<{ onClick: any, selected: boolean }>`
   width: 23%;
   background-color: ${(props) => (props.selected ? "#21587f" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
