@@ -1,28 +1,31 @@
 import React, { useEffect, useRef } from "react";
-
+import { MutableRefObject } from "react";
 import styled from "styled-components";
 const { Splide, SplideSlide } = require("splide-nextjs/react-splide");
 
 interface PropTypes{
-  data:{
-    images: string[],
-    title: string,
-    colorway: string,
-    kidsFlag: boolean,
-    mensFlag: boolean,
-    womensFlag: boolean,
-    shoe: boolean,
-    clothing: boolean,
-    price: number,
-    qty: number,
-    availableSizeQty: {},
-    skuNumber: string
-  }
+  data: {
+    title: string;
+    date: string;
+    _id: string;
+    colorway: string;
+    price: number;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
+    images: string[];
+    OnlineLinks: {
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+    };
+  };
   }
 
 export const ThumbnailSlider = ({ data }: PropTypes) => {
-  const primaryRef: any = useRef();
-  const secondaryRef: any = useRef();
+  const primaryRef = useRef< typeof SplideSlide>();
+  const secondaryRef = useRef< typeof SplideSlide>();
   let items;
 
   useEffect(() => {

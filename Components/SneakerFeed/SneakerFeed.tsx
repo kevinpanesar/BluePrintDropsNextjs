@@ -7,7 +7,7 @@ import { format, getDate } from "date-fns";
 import Spinner from "react-bootstrap/Spinner";
 
 interface SneakerFeed {
-  filteredResults: string[],
+  filteredResults: any;
   type: string;
 }
 
@@ -43,7 +43,7 @@ export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
             </div>
           );
         }
-      }) : filteredResults?.map((element: any, index: number) => {
+      }) : filteredResults?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[], qty: number}, index: number) => {
         if (element.title) {
           return (<Link 
       passHref

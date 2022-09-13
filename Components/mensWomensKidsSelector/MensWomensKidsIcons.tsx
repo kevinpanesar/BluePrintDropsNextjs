@@ -6,6 +6,11 @@ interface MensWomensKidsIconsProps {
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
+    OnlineLinks: {
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+  };
   };
 }
 

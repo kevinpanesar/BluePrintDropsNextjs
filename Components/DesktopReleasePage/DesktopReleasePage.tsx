@@ -18,11 +18,11 @@ export interface DesktopReleasePageProps {
     date: string;
     _id: string;
     colorway: string;
-    price: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: {city: {location: string, type: string, Description: string, img: string}[]};
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     images: string[];
     OnlineLinks: {
       CanadianLinks: {title: string, type: string, img: string, link: string}[];

@@ -15,8 +15,8 @@ export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   const dispatch = useAppDispatch();
   // const element = <FontAwesomeIcon className="fa" icon={faSearch} />;
 
-  const handleChange = (event: any) => {
-    (event: any) => event.preventDefault();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     if (clothing === true) {
       console.log(event);
       dispatch({
@@ -32,7 +32,7 @@ export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   };
 
   return (
-    <Form id="searchBar" onChange={(event) => handleChange(event)}>
+    <Form id="searchBar" onChange={handleChange}>
       <Input type="search" placeholder="Search..." defaultValue={term} />
       <ImageDiv>
         <Image src="/Media/search.svg" width={30} height={30} />
@@ -41,7 +41,7 @@ export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   );
 };
 
-const Form = styled.form`
+const Form = styled.form<{ onChange: any }>`
   height: 30px;
   box-sizing: border-box;
   border-radius: 25px;

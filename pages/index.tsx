@@ -23,7 +23,6 @@ import firebase from "../firebase/clientApp";
 export default function Home() {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
-  const [user, loading, error] = useAuthState(firebase.auth() as any);
   const callBackend = useSelector((state: RootState) => {
     if (state.sneaker.allSneakerInfo.length == 0) {
       return true;
@@ -50,7 +49,7 @@ export default function Home() {
       return months?.map((element) => {
         return state.sneaker.futureSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
-        ].filter((element: any) => {
+        ].filter((element: {title : string}) => {
           return element.title?.toLowerCase().includes(term.toLowerCase());
         });
       });
@@ -59,7 +58,7 @@ export default function Home() {
       return months?.map((element) => {
         return state.sneaker.pastSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj
-        ].filter((element: any) => {
+        ].filter((element: {title: string}) => {
           return element?.title?.toLowerCase()?.includes(term?.toLowerCase());
         });
       });
@@ -75,8 +74,8 @@ export default function Home() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info?.map((element: any) => {
-      return element.filter((element: any) => element[filter] === true);
+    filteredResults = info?.map((element: RootState) => {
+      return element.filter((element: {[key : string] : {}}) => element[filter] === true);
     });
   }
 

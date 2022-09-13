@@ -24,13 +24,14 @@ import {
   updateInventory,
 } from "../store/ClothingReleaseInfo";
 import firebase from "../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
+import { Auth } from "firebase/auth";
 
 Modal.setAppElement("#__next");
 
 export default function Clothing() {
   const [open, setOpen] = useState(false);
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
   const dispatch = useAppDispatch();
   const cart = useSelector((state: RootState) => state.clothing.cart);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -63,14 +64,14 @@ export default function Clothing() {
           .then(() =>
             dispatch(
               removeItemsFromCart({
-                uid: user.uid,
-                name: user.displayName,
-                email: user.email,
+                uid: user!.uid,
+                name: user!.displayName,
+                email: user!.email,
                 cartItem: "",
               })
             )
           )
-          .then(() => dispatch(fetchCart(user.uid)));
+          .then(() => dispatch(fetchCart(user!.uid)));
         window.history.replaceState({}, document.title, "/" + "for-sale");
       }
     }
@@ -81,33 +82,28 @@ export default function Clothing() {
     }
   }, [user, cart]);
 
-  console.log(cart);
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
   let info = useSelector((state: RootState) => {
-    return state.clothing.filteredResults.filter((element: any) => {
+    return state.clothing.filteredResults.filter((element: {title: string}) => {
       if (element.title?.toLowerCase().includes(term?.toLowerCase())) {
         return element;
       }
     });
   });
 
-  console.log(info);
-
   const filter = useSelector(
     (state: RootState) => state.clothing.mensWomensKidsFilterValue
   );
 
-  let filteredResults: any;
+  let filteredResults;
 
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.filter((element: any) => element[filter] === true);
+    filteredResults = info.filter((element: {[key : string] : {}}) => element[filter] === true);
   }
-
-  console.log(filteredResults);
 
   const customStyles = {
     content: {

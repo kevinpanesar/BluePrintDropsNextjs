@@ -22,7 +22,7 @@ interface PropTypes{
     clothing: boolean,
     price: number,
     qty: number,
-    availableSizeQty: any,
+    availableSizeQty: Record<string, number>,
     skuNumber: string
   }
   }
@@ -118,7 +118,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
     mensWomensKids = "Kids";
   }
 
-  const sizeItems = Object.keys(availableSizeQty).map((size, index) => {
+  const sizeItems = Object.keys(availableSizeQty).map((size) => {
     if (availableSizeQty[size] == 0) {
       return (
         <SizeItem soldOut={true} selected={false} disabled={true}>

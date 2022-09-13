@@ -13,7 +13,24 @@ import { DesktopForSaleDetails } from "../../Components/ForSaleDetails/ForSaleDe
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ForSaleDetails({ postData }: any) {
+interface PropTypes{
+  postData: {
+    images: string[],
+  title: string,
+  colorway: string,
+  kidsFlag: boolean,
+  mensFlag: boolean,
+  womensFlag: boolean,
+  shoe: boolean,
+  clothing: boolean,
+  price: number,
+  qty: number,
+  availableSizeQty: {},
+  skuNumber: string
+  }[]
+}
+
+function ForSaleDetails({ postData }: PropTypes) {
   const [open, setOpen] = useState(false);
   return (
     <Container>

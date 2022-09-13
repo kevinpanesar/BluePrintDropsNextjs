@@ -22,12 +22,17 @@ interface ReleaseInfoPageProps {
     title: string;
     date: string;
     colorway: string;
-    price: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: any;
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     images: string[];
+    OnlineLinks: {
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+  };
   };
 }
 
@@ -43,8 +48,8 @@ interface ElementProps {
 export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
   let cities = Object.keys(data.cities);
 
-  let raffleOnOff = cities?.map((element: any) => {
-    return data.cities[element].some((element: any) => {
+  let raffleOnOff = cities?.map((element: string) => {
+    return data.cities[element].some((element: {type: string}) => {
       if (element.type === "Raffle") {
         return true;
       }
@@ -64,11 +69,11 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities)?.map((city: string, index: any) => {
+            ? Object.keys(data.cities)?.map((city: string, index: number) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
-                    eventKey={index}
+                    eventKey={index.toString()}
                     key={index}
                   >
                     <Accordion.Header id="accordion-header">
