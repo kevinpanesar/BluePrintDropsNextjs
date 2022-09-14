@@ -52,14 +52,14 @@ export const ItemDetails = ({ data }: PropTypes) => {
 
   const router = useRouter();
 
-  const addToCart = async (data: {}) => {
+  const addToCart = async (data: Record<string, unknown>) => {
     const config = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
 
-    let response = await fetch(
+    const response = await fetch(
       "https://sneaker-mern-app.herokuapp.com/addToCart",
       config
     );
@@ -118,10 +118,10 @@ export const ItemDetails = ({ data }: PropTypes) => {
     mensWomensKids = "Kids";
   }
 
-  const sizeItems = Object.keys(availableSizeQty).map((size) => {
+  const sizeItems = Object.keys(availableSizeQty).map((size, index) => {
     if (availableSizeQty[size] == 0) {
       return (
-        <SizeItem soldOut={true} selected={false} disabled={true}>
+        <SizeItem soldOut={true} selected={false} disabled={true} key={index}>
           {size}
         </SizeItem>
       );
@@ -129,6 +129,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
     if (selectedSize === parseFloat(size)) {
       return (
         <SizeItem
+        key={index}
           soldOut={false}
           selected={false}
           onClick={() => setSelectedSize(parseFloat(size))}
@@ -139,6 +140,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
     } else {
       return (
         <SizeItem
+        key={index}
           soldOut={false}
           selected={true}
           onClick={() => setSelectedSize(parseFloat(size))}

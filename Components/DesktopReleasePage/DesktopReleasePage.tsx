@@ -42,7 +42,7 @@ interface LocationProps {
 }
 
 export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
-  let cities = Object.keys(data.cities);
+  const cities = Object.keys(data.cities);
 
   // let raffleOnOff = cities?.map((element) => {
   //   return data.cities[element].some((element) => {

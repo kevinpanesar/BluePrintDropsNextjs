@@ -30,15 +30,15 @@ export const RaffleForm = ({ postData }: RaffleFormProps) => {
   };
 
   const formatPhoneNumber = (phoneNumberString: string): string => {
-    var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    const cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     if (match) {
       return "(" + match[1] + ") " + match[2] + "-" + match[3];
     }
     return "";
   };
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     setFirstName(capitalizeFirstLetter(event.target[0].value));
     setLastname(capitalizeFirstLetter(event.target[1].value));

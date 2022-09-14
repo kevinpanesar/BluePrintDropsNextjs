@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Footer } from "../Components/Footer/Footer";
 import { DesktopMenu } from "../Components/desktopMenu/DesktopMenu";
 import { CheckoutPreviewPage } from "../Components/CheckoutPreview/CheckoutPreview";
+import React from "react";
 
 export default function Checkout() {
   const [open, setOpen] = useState(false);

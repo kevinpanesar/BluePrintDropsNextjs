@@ -21,13 +21,13 @@ export const DesktopMenu = () => {
       body: JSON.stringify(data),
     };
 
-    let response = await fetch(
+    const response = await fetch(
       "https://sneaker-mern-app.herokuapp.com/user",
       config
     );
 
     if (response.ok) {
-      let json = await response.json();
+      const json = await response.json();
     }
   };
 
@@ -38,13 +38,13 @@ export const DesktopMenu = () => {
       body: JSON.stringify(data),
     };
 
-    let response = await fetch(
+    const response = await fetch(
       "https://sneaker-mern-app.herokuapp.com/createCart",
       config
     );
 
     if (response.ok) {
-      let json = await response.json();
+      const json = await response.json();
     }
   };
 

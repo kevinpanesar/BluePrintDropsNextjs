@@ -85,7 +85,7 @@ export default function Clothing() {
 
   const term = useSelector((state: RootState) => state.clothing.searchTerm);
 
-  let info = useSelector((state: RootState) => {
+  const info = useSelector((state: RootState) => {
     return state.clothing.filteredResults.filter((element: {title: string}) => {
       if (element.title?.toLowerCase().includes(term?.toLowerCase())) {
         return element;
@@ -102,7 +102,7 @@ export default function Clothing() {
   if (filter === "reset") {
     filteredResults = info;
   } else {
-    filteredResults = info.filter((element: {[key : string] : {}}) => element[filter] === true);
+    filteredResults = info.filter((element: {[key : string] : any}) => element[filter] === true);
   }
 
   const customStyles = {

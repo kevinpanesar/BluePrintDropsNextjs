@@ -42,7 +42,7 @@ export default function Home() {
 
   const term = useSelector((state: RootState) => state.sneaker.searchTerm);
 
-  let info = useSelector((state: RootState) => {
+  const info = useSelector((state: RootState) => {
     if (state.sneaker.currentSneakerFeedUpcoming === true) {
       const months = Object.keys(state.sneaker.futureMonths);
 
@@ -75,7 +75,7 @@ export default function Home() {
     filteredResults = info;
   } else {
     filteredResults = info?.map((element: RootState) => {
-      return element.filter((element: {[key : string] : {}}) => element[filter] === true);
+      return element.filter((element: any) => element[filter] === true);
     });
   }
 

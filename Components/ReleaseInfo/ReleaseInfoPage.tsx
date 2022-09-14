@@ -46,9 +46,9 @@ interface ElementProps {
 }
 
 export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
-  let cities = Object.keys(data.cities);
+  const cities = Object.keys(data.cities);
 
-  let raffleOnOff = cities?.map((element: string) => {
+  const raffleOnOff = cities?.map((element: string) => {
     return data.cities[element].some((element: {type: string}) => {
       if (element.type === "Raffle") {
         return true;
