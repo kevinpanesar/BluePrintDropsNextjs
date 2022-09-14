@@ -9,17 +9,16 @@ interface ReleaseCardProps{
     title : string,
     date: string,
     colorway: string,
-    price: string,
+    price: number,
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: any,
     images: string[],
     OnlineLinks: {
-      CanadianLinks: any,
-      USALinks: any,
-      InternationalLinks: any
-    }
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+  }
   },
   desktop: boolean
 }

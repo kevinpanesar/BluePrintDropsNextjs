@@ -10,7 +10,32 @@ import { Footer } from "../Footer/Footer";
 import { ItemDetails } from "./ItemDetails";
 import { ThumbnailSlider } from "../DesktopReleasePage/DesktopSlider";
 
-export const DesktopForSaleDetails = ({data}: any) => {
+interface PropTypes{
+  data: {
+    title: string;
+    date: string;
+    _id: string;
+    colorway: string;
+    price: number;
+    qty: number;
+    mensFlag: boolean;
+    availableSizeQty: Record<string, number>,
+    skuNumber: string;
+    womensFlag: boolean;
+    kidsFlag: boolean;
+    shoe: boolean,
+    clothing: boolean,
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
+    images: string[];
+    OnlineLinks: {
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+    };
+  };
+}
+
+export const DesktopForSaleDetails = ({data}: PropTypes) => {
 
 
   return (

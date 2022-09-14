@@ -1,19 +1,21 @@
 import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import { fetchCart } from "../../store/ClothingReleaseInfo";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Dropdown } from "semantic-ui-react";
-import { getAuth } from "firebase/auth";
+import { Auth, getAuth } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
 import { useAppDispatch } from "../../store/store";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 export const Cart = () => {
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+  const [user]: AuthStateHook = useAuthState(
+    firebase.auth() as unknown as Auth
+  );
   const dispatch = useAppDispatch();
   const router = useRouter();
   const cartNumber = useSelector((state: RootState) => {
@@ -21,7 +23,7 @@ export const Cart = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchCart(user.uid));
+    dispatch(fetchCart(user!.uid));
   }, []);
 
   const handleCartClick = () => {
@@ -39,7 +41,7 @@ export const Cart = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center ;
+  justify-content: center;
   cursor: pointer;
   height: 100%;
   align-items: center;

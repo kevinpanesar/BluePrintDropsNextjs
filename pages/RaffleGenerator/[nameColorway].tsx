@@ -88,7 +88,7 @@ export interface getStaticPropsTypes{
 }
 
 export async function getStaticProps({ params }: getStaticPropsTypes) {
-  let id = params.nameColorway.split("_")[1];
+  const id = params.nameColorway.split("_")[1];
   const postData = await getPostData(id);
   return {
     props: {

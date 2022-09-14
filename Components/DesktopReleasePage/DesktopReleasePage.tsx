@@ -16,18 +16,18 @@ export interface DesktopReleasePageProps {
   data: {
     title: string;
     date: string;
-    _id: string
+    _id: string;
     colorway: string;
-    price: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: any;
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     images: string[];
     OnlineLinks: {
-      CanadianLinks: any;
-      USALinks: any;
-      InternationalLinks: any;
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
     };
   };
 }
@@ -42,7 +42,7 @@ interface LocationProps {
 }
 
 export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
-  let cities = Object.keys(data.cities);
+  const cities = Object.keys(data.cities);
 
   // let raffleOnOff = cities?.map((element) => {
   //   return data.cities[element].some((element) => {
@@ -63,7 +63,7 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
         <LocationsContainer>
           <LocalTitle>Local Retailers</LocalTitle>
           {data.cities !== undefined
-            ? Object.keys(data.cities)?.map((city: any, index: number) => {
+            ? Object.keys(data.cities)?.map((city: string, index: number) => {
                 return (
                   <Body key={index}>
                     {data !== undefined

@@ -11,16 +11,16 @@ import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopR
 import {getStaticPropsTypes} from '../RaffleGenerator/[nameColorway]'
 interface ReleasePageProps{
   postData: {
-    cities: [[]];
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     OnlineLinks: {
-      CanadianLinks: string;
-      USALinks: string;
-      InternationalLinks: string;
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
   };
     _id: string;
     date: string;
     colorway: string;
-    price: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;title: string, images: string[]}[],
@@ -99,7 +99,7 @@ export async function getPostData(id: string) {
 }
 
 export async function getStaticProps({ params }: getStaticPropsTypes) {
-  let id = params.nameColorway.split("KP")[1];
+  const id = params.nameColorway.split("KP")[1];
   const postData = await getPostData(id);
   return {
     props: {

@@ -19,7 +19,7 @@ interface ShareIcon {
 export const ShareIcons = ({
   mobile,
   desktop,
-}: ShareIcon): ReactElement<any, any> => {
+}: ShareIcon) => {
   let url = "";
   let jsx = <></>;
 

@@ -18,29 +18,38 @@ const AccordionBody = dynamic(import("react-bootstrap/esm/AccordionBody"), {
 
 interface ReleaseInfoPageProps {
   data: {
-    _id: string,
+    _id: string;
     title: string;
     date: string;
     colorway: string;
-    price: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: any;
+    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     images: string[];
     OnlineLinks: {
-        CanadianLinks: any;
-        USALinks: any;
-        InternationalLinks: any;
-    };
+      CanadianLinks: {title: string, type: string, img: string, link: string}[];
+      USALinks: {title: string, type: string, img: string, link: string}[];
+      InternationalLinks: {title: string, type: string, img: string, link: string}[];
+  };
   };
 }
 
-export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
-  let cities = Object.keys(data.cities);
+interface ElementProps {
+  img: string;
+  location: string;
+  type: string;
+  Description: string;
+  date: string;
+  Address: string;
+}
 
-  let raffleOnOff = cities?.map((element: any) => {
-    return data.cities[element].some((element: any) => {
+export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
+  const cities = Object.keys(data.cities);
+
+  const raffleOnOff = cities?.map((element: string) => {
+    return data.cities[element].some((element: {type: string}) => {
       if (element.type === "Raffle") {
         return true;
       }
@@ -60,11 +69,11 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
       <LocationsContainer>
         <Accordion defaultActiveKey="0" flush>
           {data.cities !== undefined
-            ? Object.keys(data.cities)?.map((city : any, index : any) => {
+            ? Object.keys(data.cities)?.map((city: string, index: number) => {
                 return (
                   <Accordion.Item
                     id="accordion-item"
-                    eventKey={index}
+                    eventKey={index.toString()}
                     key={index}
                   >
                     <Accordion.Header id="accordion-header">
@@ -72,15 +81,20 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
                     </Accordion.Header>
                     <AccordionBody id="accordion-body">
                       {data !== undefined
-                        ? data.cities[city]?.map((element : any, index: number) => (
-                            <LocationCard
-                            location={element}
-                            key={index}
-                            length={data.cities[city].length} desktop={false} data={{
-                              title: "",
-                              _id: "",
-                            }}/>
-                          ))
+                        ? data.cities[city]?.map(
+                            (element: ElementProps, index: number) => (
+                              <LocationCard
+                                location={element}
+                                key={index}
+                                length={data.cities[city].length}
+                                desktop={false}
+                                data={{
+                                  title: "",
+                                  _id: "",
+                                }}
+                              />
+                            )
+                          )
                         : null}
                     </AccordionBody>
                   </Accordion.Item>

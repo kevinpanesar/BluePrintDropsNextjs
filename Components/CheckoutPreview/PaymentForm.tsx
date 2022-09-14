@@ -1,19 +1,13 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "../../store/store";
-import { removeItemsFromCart } from "../../store/ClothingReleaseInfo";
-import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
 import {
   PaymentElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { toast } from "react-toastify";
+import { StripeError } from "@stripe/stripe-js/types/stripe-js/stripe";
 
 export const PaymentForm = () => {
-  const dispatch = useAppDispatch();
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -35,8 +29,8 @@ export const PaymentForm = () => {
 
     stripe
       .retrievePaymentIntent(clientSecret)
-      .then(({ paymentIntent }: any) => {
-        switch (paymentIntent.status) {
+      .then(({ paymentIntent }) => {
+        switch (paymentIntent!.status) {
           case "succeeded":
             setMessage("Payment succeeded!");
             break;
@@ -53,7 +47,7 @@ export const PaymentForm = () => {
       });
   }, [stripe]);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -64,7 +58,7 @@ export const PaymentForm = () => {
 
     setIsLoading(true);
 
-    const { error }: any = await stripe.confirmPayment({
+    const { error } : {error: StripeError} = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
@@ -78,7 +72,7 @@ export const PaymentForm = () => {
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+      setMessage(error.message!);
     } else {
       setMessage("An unexpected error occurred.");
     }
@@ -114,6 +108,12 @@ const Container = styled.div`
   flex-direction: row;
   padding: 15px;
   width: 95%;
+
+  #payment-message{
+    margin-top: 10px ;
+    color: #d90000;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
   }

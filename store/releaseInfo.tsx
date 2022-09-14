@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { format } from "date-fns";
+import { RootState } from "./store";
 
 export const fetchSneakerInfo = createAsyncThunk(
   "sneaker/fetchSneaker",
@@ -25,7 +26,7 @@ const months = {
   December: [],
 };
 // Slice
-const sneakerSlice = createSlice({
+const sneakerSlice: any = createSlice({
   name: "sneaker",
   initialState: {
     allSneakerInfo: [],
@@ -43,12 +44,12 @@ const sneakerSlice = createSlice({
     pastSelected: false,
   },
   reducers: {
-    sneakerInfo: (state, action) => {
+    sneakerInfo: (state : RootState, action) => {
       state.currentSneakerInfo = action.payload;
     },
-    splitSneakerInfo: (state) => {
+    splitSneakerInfo: (state : RootState) => {
       if (state.futureSneakerInfo.length === 0) {
-        state.allSneakerInfo.forEach((element) => {
+        state.allSneakerInfo.forEach((element : {date: string}) => {
           const today = new Date();
           today.setDate(today.getDate() - 1);
 
@@ -65,14 +66,14 @@ const sneakerSlice = createSlice({
         });
       }
     },
-    filterMonths: (state) => {
+    filterMonths: (state : RootState) => {
       let arrayOfMonths = Object.keys(months);
       const emptyArrayObjects = arrayOfMonths.every(
         (element) => state.futureMonths[element].length === 0
       );
 
       if (emptyArrayObjects) {
-        state.futureSneakerInfo?.map((element) => {
+        state.futureSneakerInfo?.map((element : {date: string}) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -103,7 +104,7 @@ const sneakerSlice = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastSneakerInfo?.map((element) => {
+        state.pastSneakerInfo?.map((element : {date: string}) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -144,14 +145,14 @@ const sneakerSlice = createSlice({
     toggleSneakerFeed: (state) => {
       state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;
     },
-    setCurrentShoe: (state, action) => {
+    setCurrentShoe: (state : RootState, action) => {
       state.currentSneakerInfo = state.allSneakerInfo[0];
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
     searchFeed: (state, action) => {
-      state.futureSneakerInfo.filter((element) =>
+      state.futureSneakerInfo.filter((element : {title: string}) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -174,15 +175,15 @@ const sneakerSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchSneakerInfo.pending]: (state, action) => {
+    [fetchSneakerInfo.pending.toString()]: (state : RootState, action) => {
       state.status = "loading";
     },
-    [fetchSneakerInfo.fulfilled]: (state, action) => {
+    [fetchSneakerInfo.fulfilled.toString()]: (state, action) => {
       if (state.allSneakerInfo.length === 0) {
         state.allSneakerInfo = action.payload;
       }
     },
-    [fetchSneakerInfo.rejected]: (state, action) => {
+    [fetchSneakerInfo.rejected.toString()]: (state, action) => {
       console.log(action);
     },
   },

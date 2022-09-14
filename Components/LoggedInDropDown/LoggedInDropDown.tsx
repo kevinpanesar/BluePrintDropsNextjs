@@ -1,14 +1,14 @@
 import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import { useState } from "react";
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
-import { getAuth, signOut } from "firebase/auth";
+import { Auth, getAuth, signOut } from "firebase/auth";
 import { auth } from "../../firebase/clientApp";
 
 const LoggedInDropDown = () => {
-  const [user, loading, error] = useAuthState(firebase.auth() as any);
+  const [user] : AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
   const [showDropdown, setShowDropdown] = useState(false);
   const username =
     user && typeof user.displayName === "string"
@@ -19,7 +19,7 @@ const LoggedInDropDown = () => {
     signOut(auth);
   };
 
-  const userImage : any = user ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
+  const userImage : string | null = user ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
 
   return (
     <Container>
@@ -41,7 +41,7 @@ const Container = styled.div`
 
 `
 
-const ProfileImg = styled.img`
+const ProfileImg = styled.img<{ src: any }>`
   height: 35px;
   border-radius: 50%;
   margin-right: 8px ;

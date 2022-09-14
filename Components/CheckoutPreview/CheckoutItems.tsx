@@ -6,11 +6,26 @@ import {
 } from "../../store/ClothingReleaseInfo";
 import { useAppDispatch } from "../../store/store";
 import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, AuthStateHook } from "react-firebase-hooks/auth";
+import { Auth } from "firebase/auth";
 
-export const CheckoutItems = ({ data }: any) => {
+export interface CheckoutItemsProps {
+  data: {
+    images: string[];
+    title: string;
+    colorway: string;
+    kidsFlag: boolean;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    price: number;
+    size: number;
+  };
+}
+
+export const CheckoutItems = ({ data }: CheckoutItemsProps) => {
   const dispatch = useAppDispatch();
-  const [user, loading, error]: any = useAuthState(firebase.auth() as any);
+  console.log(typeof firebase.auth());
+  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
   const {
     images,
     title,
@@ -19,8 +34,6 @@ export const CheckoutItems = ({ data }: any) => {
     mensFlag,
     womensFlag,
     price,
-    skuNumber,
-    uniqueItemID,
     size,
   } = data;
 
@@ -36,12 +49,12 @@ export const CheckoutItems = ({ data }: any) => {
   const handleRemoveItem = () => {
     dispatch(
       removeItemsFromCart({
-        uid: user.uid,
-        name: user.displayName,
-        email: user.email,
+        uid: user!.uid,
+        name: user!.displayName,
+        email: user!.email,
         cartItem: data,
       })
-    ).then(() => dispatch(fetchCart(user.uid)));
+    ).then(() => dispatch(fetchCart(user!.uid)));
   };
 
   return (
@@ -97,7 +110,7 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 768px) {
-    width: 50% ;
+    width: 50%;
   }
 `;
 

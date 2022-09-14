@@ -10,10 +10,54 @@ import { DesktopMenu } from "../../Components/desktopMenu/DesktopMenu";
 import { DesktopReleasePage } from "../../Components/DesktopReleasePage/DesktopReleasePage";
 import { getStaticPropsTypes } from "../RaffleGenerator/[nameColorway]";
 import { DesktopForSaleDetails } from "../../Components/ForSaleDetails/ForSaleDetailsPage";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function ForSaleDetails({ postData }: any) {
+interface PropTypes {
+  postData: {
+    images: string[];
+    date: string;
+    title: string;
+    colorway: string;
+    _id: string;
+    kidsFlag: boolean;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    shoe: boolean;
+    OnlineLinks: {
+      CanadianLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+      USALinks: { title: string; type: string; img: string; link: string }[];
+      InternationalLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+    };
+    clothing: boolean;
+    price: number;
+    cities: {
+      [key: string]: {
+        location: string;
+        type: string;
+        Description: string;
+        img: string;
+        date: string;
+        Address: string;
+      }[];
+    };
+    qty: number;
+    availableSizeQty: Record<string, number>;
+    skuNumber: string;
+  }[];
+}
+
+function ForSaleDetails({ postData }: PropTypes) {
   const [open, setOpen] = useState(false);
   return (
     <Container>
@@ -47,11 +91,12 @@ function ForSaleDetails({ postData }: any) {
       </Container>
       <footer></footer>
       <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
     </Container>
   );
 }
@@ -94,7 +139,7 @@ export async function getPostData(id: string) {
 }
 
 export async function getStaticProps({ params }: getStaticPropsTypes) {
-  let id = params.nameColorway.split("KP")[1];
+  const id = params.nameColorway.split("KP")[1];
   const postData = await getPostData(id);
   return {
     props: {

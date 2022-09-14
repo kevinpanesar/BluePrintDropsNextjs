@@ -16,7 +16,7 @@ export const fetchClothingInfo = createAsyncThunk(
 
 export const fetchCart = createAsyncThunk(
   "clothing/fetchCart",
-  async (uid: any) => {
+  async (uid: string) => {
     let data = await fetch(
       `https://sneaker-mern-app.herokuapp.com/cart?uid=${uid}`
     );
@@ -27,7 +27,7 @@ export const fetchCart = createAsyncThunk(
 
 export const removeItemsFromCart = createAsyncThunk(
   "clothing/removeItemsFromCart",
-  async (dataObj: any) => {
+  async (dataObj: {}) => {
     const config = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ export const removeItemsFromCart = createAsyncThunk(
 
 export const updateInventory = createAsyncThunk(
   "clothing/updateInventory",
-  async (dataObj: any) => {
+  async (dataObj: {}) => {
     const options = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ export const updateInventory = createAsyncThunk(
 );
 
 // Slice
-const clothingSlice = createSlice({
+const clothingSlice : any = createSlice({
   name: "clothing",
   initialState: {
     allClothingInfo: [],
@@ -81,7 +81,7 @@ const clothingSlice = createSlice({
       state.searchTerm = action.payload;
     },
     searchFeed: (state: RootState, action) => {
-      state.filteredResults.filter((element: any) =>
+      state.filteredResults.filter((element: {title: string}) =>
         element.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
@@ -103,7 +103,7 @@ const clothingSlice = createSlice({
     },
     [fetchClothingInfo.fulfilled.toString()]: (
       state: RootState,
-      action: any
+      action: {payload: string}
     ) => {
       if (state.allClothingInfo.length === 0) {
         state.allClothingInfo = action.payload;
@@ -111,17 +111,17 @@ const clothingSlice = createSlice({
     },
     [fetchClothingInfo.rejected.toString()]: (
       state: RootState,
-      action: any
+      action: {payload: string}
     ) => {
       console.log(action);
     },
     [fetchCart.pending.toString().toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [fetchCart.fulfilled.toString()]: (state: RootState, action: any) => {
+    [fetchCart.fulfilled.toString()]: (state: RootState, action: {payload: string}) => {
       state.cart = action.payload;
     },
-    [fetchCart.rejected.toString()]: (action: any) => {
+    [fetchCart.rejected.toString()]: (action: {}) => {
       console.log(action);
     },
     [removeItemsFromCart.pending.toString()]: (state: RootState) => {
@@ -129,20 +129,20 @@ const clothingSlice = createSlice({
     },
     [removeItemsFromCart.fulfilled.toString()]: (
       state: RootState,
-      action: any
+      action: {}
     ) => {
       console.log(action);
     },
-    [removeItemsFromCart.rejected.toString()]: (action: any) => {
+    [removeItemsFromCart.rejected.toString()]: (action: {}) => {
       console.log(action);
     },
     [updateInventory.pending.toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [updateInventory.fulfilled.toString()]: (state: RootState, action: any) => {
+    [updateInventory.fulfilled.toString()]: (state: RootState, action: {}) => {
       console.log(action);
     },
-    [updateInventory.rejected.toString()]: (action: any) => {
+    [updateInventory.rejected.toString()]: (action: {}) => {
       console.log(action);
     },
   },
