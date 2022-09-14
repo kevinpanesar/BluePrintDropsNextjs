@@ -77,6 +77,7 @@ export const LocationCard = ({
   );
 };
 
+
 const Container = styled.div<{ length: number }>`
   width: 100%;
   display: flex;
