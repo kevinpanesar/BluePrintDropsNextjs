@@ -19,7 +19,7 @@ const LoggedInDropDown = () => {
     signOut(auth);
   };
 
-  const userImage : string | null = user ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
+  const userImage : string | null = user?.photoURL ? user.photoURL : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
 
   return (
     <Container>

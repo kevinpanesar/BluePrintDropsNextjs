@@ -23,6 +23,7 @@ export const StyledBurger = styled.button<{open: boolean}>`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  position: ${({open}) => (open? 'fixed' : 'relative')};
   background: transparent;
   border: none;
   cursor: pointer;

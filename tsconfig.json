@@ -106,7 +106,7 @@
     "Components/SplideSliderDesktop/Splide.js",
     "store/releaseInfo.tsx",
     "store/ClothingReleaseInfo.tsx"
-  ],
+, "__test__/_app.test.js"  ],
   "exclude": [
     "node_modules"
   ]
