@@ -12,7 +12,9 @@ const clientCredentials = {
 };
 
 if (!firebase.apps.length) {
-  firebase.initializeApp(clientCredentials);
+  firebase.initializeApp( {projectId: 'demo-test',
+  apiKey: '...',
+  authDomain: '...',});
 }
 
 export const auth = firebase.auth();

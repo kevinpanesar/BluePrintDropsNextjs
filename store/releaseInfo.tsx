@@ -11,7 +11,7 @@ export const fetchSneakerInfo = createAsyncThunk(
   }
 );
 
-const months = {
+export const months = {
   January: [],
   Febuary: [],
   March: [],

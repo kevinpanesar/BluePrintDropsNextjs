@@ -1,4 +1,4 @@
-// import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css'
 import "../styles/globals.css";
 import "../global/stylesheet.css";
 import { Provider } from "react-redux";
