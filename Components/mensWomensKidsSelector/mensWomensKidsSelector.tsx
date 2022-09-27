@@ -15,6 +15,9 @@ export const Options = ({ sneaker, clothing }: OptionsProps) => {
   const [womensSelected, setWomensSelected] = useState(false);
   const [kidsSelected, setKidsSelected] = useState(false);
 
+  
+
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (sneaker) {
       dispatch({
