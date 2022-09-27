@@ -134,9 +134,6 @@ const sneakerSlice: any = createSlice({
           }
         });
       }
-
-      console.log(current(state.futureMonths));
-      console.log(current(state.pastMonths));
     },
     copyMonthsArray: (state) => {
       state.futureSneakerInfoAgeOrGender = state.futureMonths;
@@ -144,9 +141,6 @@ const sneakerSlice: any = createSlice({
     },
     toggleSneakerFeed: (state) => {
       state.currentSneakerFeedUpcoming = !state.currentSneakerFeedUpcoming;
-    },
-    setCurrentShoe: (state : RootState, action) => {
-      state.currentSneakerInfo = state.allSneakerInfo[0];
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
@@ -192,7 +186,9 @@ export default sneakerSlice.reducer;
 
 export const {
   sneakerInfo,
+  copyMonthsArray,
   splitSneakerInfo,
+  filterMonths,
   toggleSneakerFeed,
   setSearchTerm,
   searchFeed,
