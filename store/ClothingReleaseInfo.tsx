@@ -60,7 +60,7 @@ export const updateInventory = createAsyncThunk(
 );
 
 // Slice
-const clothingSlice : any = createSlice({
+const clothingSlice: any = createSlice({
   name: "clothing",
   initialState: {
     allClothingInfo: [],
@@ -71,19 +71,11 @@ const clothingSlice : any = createSlice({
     mensWomensKidsFilterValue: "reset",
   },
   reducers: {
-    ClothingInfo: (state: RootState, action) => {
-      state.currentClothingInfo = action.payload;
-    },
     copyFilteredArray: (state) => {
       state.filteredResults = state.allClothingInfo;
     },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
-    },
-    searchFeed: (state: RootState, action) => {
-      state.filteredResults.filter((element: {title: string}) =>
-        element.title.toLowerCase().includes(action.payload.toLowerCase())
-      );
     },
     selectMensWomensKids: (state, action) => {
       if (action.payload === "reset") {
@@ -103,7 +95,7 @@ const clothingSlice : any = createSlice({
     },
     [fetchClothingInfo.fulfilled.toString()]: (
       state: RootState,
-      action: {payload: string}
+      action: { payload: string }
     ) => {
       if (state.allClothingInfo.length === 0) {
         state.allClothingInfo = action.payload;
@@ -111,14 +103,17 @@ const clothingSlice : any = createSlice({
     },
     [fetchClothingInfo.rejected.toString()]: (
       state: RootState,
-      action: {payload: string}
+      action: { payload: string }
     ) => {
       console.log(action);
     },
     [fetchCart.pending.toString().toString()]: (state: RootState) => {
       state.status = "loading";
     },
-    [fetchCart.fulfilled.toString()]: (state: RootState, action: {payload: string}) => {
+    [fetchCart.fulfilled.toString()]: (
+      state: RootState,
+      action: { payload: string }
+    ) => {
       state.cart = action.payload;
     },
     [fetchCart.rejected.toString()]: (action: {}) => {
@@ -149,5 +144,9 @@ const clothingSlice : any = createSlice({
 });
 export default clothingSlice.reducer;
 
-export const { ClothingInfo, setSearchTerm, searchFeed, selectMensWomensKids } =
-  clothingSlice.actions;
+export const {
+  setSearchTerm,
+  searchFeed,
+  selectMensWomensKids,
+  copyFilteredArray,
+} = clothingSlice.actions;

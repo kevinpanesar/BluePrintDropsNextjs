@@ -145,11 +145,6 @@ const sneakerSlice: any = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
     },
-    searchFeed: (state, action) => {
-      state.futureSneakerInfo.filter((element : {title: string}) =>
-        element.title.toLowerCase().includes(action.payload.toLowerCase())
-      );
-    },
     toggleUpcomingSelected: (state) => {
       state.upcomingSelected = !state.upcomingSelected;
     },
