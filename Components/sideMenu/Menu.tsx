@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { bool } from "prop-types";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface MenuProps {
   open: boolean;
@@ -9,6 +11,10 @@ interface MenuProps {
 }
 
 const Menu = ({ open, setOpen }: MenuProps) => {
+  const cartNumber = useSelector((state: RootState) => {
+    return state.clothing.cart.length;
+  });
+
   return (
     <StyledMenu open={open}>
       <Link href={"/"}>
@@ -17,12 +23,12 @@ const Menu = ({ open, setOpen }: MenuProps) => {
       <Link href={"/for-sale"}>
         <a>For Sale</a>
       </Link>
+      <Link href={"/checkout"}>
+        <a>{"Checkout (" + cartNumber + ")"}</a>
+      </Link>
       <Link href={"/auth"}>
         <a>Login</a>
       </Link>
-      {/* <Link href={"/about"}>
-        <a>About</a>
-      </Link> */}
     </StyledMenu>
   );
 };

@@ -89,7 +89,7 @@ const Container = styled.div`
   width: 97%;
   border: 1px solid #ddd;
   background-color: #f6f6f6f8;
-  height: 225px;
+  height: 245px;
   margin-bottom: 16px;
   display: flex;
   flex-direction: row;

@@ -39,7 +39,7 @@ export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
         
           {type === "for-sale" ?
           (<SubContainer><ReleaseText>Price</ReleaseText>
-          <ReleaseText>{cardInfo.qty < 0 ? 'Sold Out' : cardInfo.price}</ReleaseText></SubContainer>) :
+          <ReleaseText>{cardInfo.qty < 0 ? 'Sold Out' : ("$" + (Math.round(cardInfo.price * 100) / 100).toFixed(2))}</ReleaseText></SubContainer>) :
           (<SubContainer>
           <ReleaseText>{date}</ReleaseText></SubContainer>)}
         

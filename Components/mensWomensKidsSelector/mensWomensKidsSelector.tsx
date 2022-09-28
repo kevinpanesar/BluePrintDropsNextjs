@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { set } from "date-fns";
@@ -15,8 +15,16 @@ export const Options = ({ sneaker, clothing }: OptionsProps) => {
   const [womensSelected, setWomensSelected] = useState(false);
   const [kidsSelected, setKidsSelected] = useState(false);
 
-  
-
+  useEffect(() => {
+    dispatch({
+      type: "sneaker/selectMensWomensKids",
+      payload: "reset",
+    });
+    dispatch({
+      type: "clothing/selectMensWomensKids",
+      payload: "reset",
+    });
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (sneaker) {
@@ -100,8 +108,8 @@ const Container = styled.div<{ clothing: boolean }>`
   }
 `;
 
-const Item = styled.button<{ onClick: any, selected: boolean }>`
-  width: 23%;
+const Item = styled.button<{ onClick: any; selected: boolean }>`
+  width: 22%;
   background-color: ${(props) => (props.selected ? "#21587f" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
   border-radius: 10px;
