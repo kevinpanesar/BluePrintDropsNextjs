@@ -54,7 +54,7 @@ export default function Home() {
         });
       });
     } else {
-      const months = Object.keys(state.sneaker.futureMonths);
+      const months = Object.keys(state.sneaker.pastMonths);
       return months?.map((element) => {
         return state.sneaker.pastSneakerInfoAgeOrGender[
           element as keyof typeof monthsObj

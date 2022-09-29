@@ -12,7 +12,6 @@ interface SneakerFeed {
 }
 
 export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
-  console.log(filteredResults)
   return (
     <Container type={type}>
       {type !== 'for-sale'? filteredResults?.map((element: any, index: number) => {

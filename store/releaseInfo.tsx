@@ -25,17 +25,33 @@ export const months = {
   November: [],
   December: [],
 };
+
+export const pastMonths = {
+  December: [],
+  November: [],
+  October: [],
+  September: [],
+  August: [],
+  July: [],
+  June: [],
+  May: [],
+  April: [],
+  March: [],
+  Febuary: [],
+  January: [],
+};
+
 // Slice
 const sneakerSlice: any = createSlice({
   name: "sneaker",
   initialState: {
     allSneakerInfo: [],
     futureMonths: months,
-    pastMonths: months,
+    pastMonths: pastMonths,
     currentSneakerFeedUpcoming: true,
     futureSneakerInfo: [],
     pastSneakerInfo: [],
-    pastSneakerInfoAgeOrGender: months,
+    pastSneakerInfoAgeOrGender: pastMonths,
     futureSneakerInfoAgeOrGender: months,
     status: null,
     searchTerm: "",
@@ -44,12 +60,12 @@ const sneakerSlice: any = createSlice({
     pastSelected: false,
   },
   reducers: {
-    sneakerInfo: (state : RootState, action) => {
+    sneakerInfo: (state: RootState, action) => {
       state.currentSneakerInfo = action.payload;
     },
-    splitSneakerInfo: (state : RootState) => {
+    splitSneakerInfo: (state: RootState) => {
       if (state.futureSneakerInfo.length === 0) {
-        state.allSneakerInfo.forEach((element : {date: string}) => {
+        state.allSneakerInfo.forEach((element: { date: string }) => {
           const today = new Date();
           today.setDate(today.getDate() - 1);
 
@@ -66,14 +82,14 @@ const sneakerSlice: any = createSlice({
         });
       }
     },
-    filterMonths: (state : RootState) => {
+    filterMonths: (state: RootState) => {
       let arrayOfMonths = Object.keys(months);
       const emptyArrayObjects = arrayOfMonths.every(
         (element) => state.futureMonths[element].length === 0
       );
 
       if (emptyArrayObjects) {
-        state.futureSneakerInfo?.map((element : {date: string}) => {
+        state.futureSneakerInfo?.map((element: { date: string }) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -104,7 +120,7 @@ const sneakerSlice: any = createSlice({
         });
       }
       if (emptyArrayObjects) {
-        state.pastSneakerInfo?.map((element : {date: string}) => {
+        state.pastSneakerInfo?.map((element: { date: string }) => {
           const date = element.date.replace(/, /g, "/");
           const month = format(new Date(date), "LLLL");
           if (month == "January") {
@@ -164,7 +180,7 @@ const sneakerSlice: any = createSlice({
     },
   },
   extraReducers: {
-    [fetchSneakerInfo.pending.toString()]: (state : RootState, action) => {
+    [fetchSneakerInfo.pending.toString()]: (state: RootState, action) => {
       state.status = "loading";
     },
     [fetchSneakerInfo.fulfilled.toString()]: (state, action) => {

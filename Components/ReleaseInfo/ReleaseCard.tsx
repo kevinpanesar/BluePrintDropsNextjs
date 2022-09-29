@@ -38,7 +38,7 @@ export const ReleaseCard = ({ data, desktop } : ReleaseCardProps) => {
           <MensWomensKidsIcons data={data} />
         </Labels>
         <Values>
-          <p>{data.price}</p>
+          <p>{'$' +(Math.round(data.price * 100) / 100).toFixed(2)}</p>
           <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
           {/* <p>{data.styleCode}</p> */}
           <p>#12341234</p>
