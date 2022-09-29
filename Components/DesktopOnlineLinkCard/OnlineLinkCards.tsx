@@ -25,7 +25,11 @@ export const OnlineLinkCards = ({
       <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
-            <BrandImage referrerPolicy="no-referrer" src={link.img} width="110%" />
+            <BrandImage
+              referrerPolicy="no-referrer"
+              src={link.img}
+              width="110%"
+            />
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>{link.title}</StoreName>
@@ -60,9 +64,9 @@ const Container = styled.div<{ length: number }>`
     }
   }
 
-  &:first-child {
+  /* &:first-child {
     border-bottom: 2px solid #c0c0c0;
-  }
+  } */
 
   &:last-child {
     border-top: ${(props) => {
@@ -80,6 +84,7 @@ const Container = styled.div<{ length: number }>`
 const StoreName = styled.p<{ desktop: boolean }>`
   font-size: ${(props) => (props.desktop ? "15.5px" : "20px")};
   padding: 0px;
+  font-weight: 700;
   a {
     text-decoration: none;
     color: black;
