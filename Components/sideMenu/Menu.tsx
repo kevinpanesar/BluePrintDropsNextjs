@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { bool } from "prop-types";
 import Link from "next/link";
+import firebase from "../../firebase/clientApp";
+import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
+import { Auth, getAuth, signOut } from "firebase/auth";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
@@ -11,9 +14,22 @@ interface MenuProps {
 }
 
 const Menu = ({ open, setOpen }: MenuProps) => {
+  const [user]: AuthStateHook = useAuthState(
+    firebase.auth() as unknown as Auth
+  );
   const cartNumber = useSelector((state: RootState) => {
     return state.clothing.cart.length;
   });
+
+  const loggedInUserId = () => {
+    if (user && user.uid) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const loggedIn = loggedInUserId();
 
   return (
     <StyledMenu open={open}>
@@ -23,12 +39,16 @@ const Menu = ({ open, setOpen }: MenuProps) => {
       <Link href={"/for-sale"}>
         <a>For Sale</a>
       </Link>
-      <Link href={"/checkout"}>
-        <a>{"Checkout (" + cartNumber + ")"}</a>
-      </Link>
-      <Link href={"/auth"}>
-        <a>Login</a>
-      </Link>
+      {loggedIn && (
+        <Link href={"/checkout"}>
+          <a>{"Checkout (" + cartNumber + ")"}</a>
+        </Link>
+      )}
+      {!loggedIn && (
+        <Link href={"/auth"}>
+          <a>Login</a>
+        </Link>
+      )}
     </StyledMenu>
   );
 };

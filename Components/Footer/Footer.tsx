@@ -14,13 +14,7 @@ export const Footer = () => {
                     </Link>
                     <Link href={"/for-sale"}>
                         <NavPages>For Sale</NavPages>
-                    </Link>
-                    <Link href={"/for-sale"}>
-                        <NavPages>Tools</NavPages>
-                    </Link>
-                    <Link href={"/about"}>
-                        <NavPages>About Us</NavPages>
-                    </Link>
+                    </Link>  
                 </StyledMenu>
                 <SocialMediaContainer>
                     <FollowUsText>Follow Us</FollowUsText>
