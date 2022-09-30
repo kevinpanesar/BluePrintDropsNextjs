@@ -27,6 +27,19 @@ export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
   if (type !== "for-sale") {
     date = cardInfo.date.replace(/, /g, "/");
   }
+
+  const commafy = ( num : number ) => {
+    var str = num.toString().split('.');
+    if (str[0].length >= 4) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+}
+
+
   return (
     <Container>
       <ReleaseDateContainer>
@@ -36,20 +49,31 @@ export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
         <ImgContainer>
           <SneakerImg src={cardInfo.images[0]} height={450} width={625} />
         </ImgContainer>
-        
-          {type === "for-sale" ?
-          (<SubContainer><ReleaseText>Price</ReleaseText>
-          <ReleaseText>{cardInfo.qty < 0 ? 'Sold Out' : ("$" + (Math.round(cardInfo.price * 100) / 100).toFixed(2))}</ReleaseText></SubContainer>) :
-          (<SubContainer>
-          <ReleaseText>{date}</ReleaseText></SubContainer>)}
-        
+
+        {type === "for-sale" ? (
+          <SubContainer>
+            <ReleaseText>Price</ReleaseText>
+            <ReleaseText>
+              {cardInfo.qty < 0
+                ? "Sold Out"
+                : "$" + (commafy(Math.round(cardInfo.price * 100) / 100))}
+            </ReleaseText>
+          </SubContainer>
+        ) : (
+          <SubContainer>
+            <ReleaseText>{date}</ReleaseText>
+          </SubContainer>
+        )}
+
         <SubContainer2>
           <ReleaseText>{cardInfo.title}</ReleaseText>
           {type === "home-page" ? (
             <SneakerCardDate>{date}</SneakerCardDate>
           ) : (
             <SneakerCardDate>
-              {cardInfo.qty < 1 ? "Sold Out" : ("$" + (Math.round(cardInfo.price * 100) / 100).toFixed(2))}
+              {cardInfo.qty < 1
+                ? "Sold Out"
+                : "$" + (commafy(Math.round(cardInfo.price * 100) / 100))}
             </SneakerCardDate>
           )}
         </SubContainer2>
@@ -192,13 +216,12 @@ const DateText = styled.p`
   font-family: "Helvetica Now Bold";
   font-size: 90px;
   text-align: right;
-  color: #f5f5f5;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #d0d0d057;;
   position: relative;
   left: 8px;
   bottom: 16px;
   line-height: 1;
-  z-index:10 ;
+  z-index: 10;
 
   @media (max-width: 375px) {
     left: 3px;

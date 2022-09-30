@@ -119,12 +119,11 @@ const NavPages = styled.a`
   color: black;
   text-decoration: none;
   font-size: 18px;
-  font-style: normal;
+  font-family: 'Oswald', sans-serif;
   line-height: 19px;
   cursor: pointer;
   :hover {
-    color: #4c4b4b;
-    border-bottom: solid 2px #4c4b4b;
+    color: #7d00ff;;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {

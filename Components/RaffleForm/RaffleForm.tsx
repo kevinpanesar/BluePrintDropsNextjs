@@ -158,16 +158,16 @@ const Input = styled.input`
 `;
 
 const GenerateRafflesButton = styled.input`
-  background-color: #21587f;
+  background-color: #7d00ff;
   width: 100%;
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
   color: white;
-  border: 2px solid #21587f;
+  border: 2px solid #7d00ff;
   margin-bottom: 5px;
 
   :hover {
-    background-color: #305773;
+    background-color: #6c02dc;
   }
 `;

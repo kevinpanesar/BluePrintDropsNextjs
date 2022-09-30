@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-interface OrderSummaryProps{
-cart: Record<string, unknown>[],
-totalPrice(cart : Record<string, unknown>[]): number,
-setActivatePaymentForm: React.Dispatch<React.SetStateAction<boolean>>,
-activatePaymentForm: boolean
+interface OrderSummaryProps {
+  cart: Record<string, unknown>[];
+  totalPrice(cart: Record<string, unknown>[]): number;
+  setActivatePaymentForm: React.Dispatch<React.SetStateAction<boolean>>;
+  activatePaymentForm: boolean;
 }
 
 export const OrderSummary = ({
@@ -21,7 +21,7 @@ export const OrderSummary = ({
       <h3>Order Summary</h3>
       <ItemWrapper>
         <ItemTitle>SUBTOTAL</ItemTitle>
-        <ItemValue>{"$" + totalPrice(cart)} </ItemValue>
+        <ItemValue>{"$" + (Math.round(totalPrice(cart) * 100) / 100).toFixed(2)} </ItemValue>
       </ItemWrapper>
       <ItemValue>
         {cart.length + (cart.length === 1 ? " Item" : " Items")}
@@ -87,17 +87,19 @@ const ItemValue = styled.p`
 
 const ContinueToCheckoutButton = styled.button`
   color: #fff;
-  background-color: #0e1111;
-  border-color: #0e1111;
+  background-color: #7d00ff;
+  border-color: #7d00ff;
+  border: none;
+  border-radius: 4.4px;
   width: 100%;
   margin-top: 10px;
 
   padding: 8px 14px;
   &:hover {
-    background-color: #0e1111b6;
-    border-color: #0e1111b6;
+    background-color: #7d00ffb6;
+    border-color: #7d00ffb6;
   }
   @media (max-width: 768px) {
-    margin-top: 25px ;
+    margin-top: 25px;
   }
 `;

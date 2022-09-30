@@ -8,7 +8,7 @@ import { PaymentForm } from "./PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-interface cartData{
+interface cartData {
   images: string[];
   title: string;
   colorway: string;
@@ -60,7 +60,9 @@ export const CheckoutPreviewPage = () => {
   return (
     <Container>
       <h1>My Cart</h1>
-      <CheckoutPrice>{"$" + totalPrice(cart)}</CheckoutPrice>
+      <CheckoutPrice>
+        {"$" + (Math.round(totalPrice(cart) * 100) / 100).toFixed(2)}
+      </CheckoutPrice>
       <SectionWrapper>
         <CheckoutItemsWrapper>
           {!activatePaymentForm &&

@@ -144,7 +144,7 @@ const RightContainer = styled.div<{ desktop: boolean }>`
 `;
 
 const RaffleButton = styled.button`
-  background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#21587f")};
+  background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#7d00ff")};
   margin: 10px;
   padding: ${(props) =>
     props.disabled ? "6.72581px 17.9355px" : "0px 7.9355px"};
@@ -154,7 +154,7 @@ const RaffleButton = styled.button`
   border-radius: 4.4px;
   color: white;
   border: ${(props) =>
-    props.disabled ? "2px solid #C0C0C0" : "2px solid #21587f"};
+    props.disabled ? "2px solid #C0C0C0" : "2px solid #7d00ff"};
 
   :hover {
     background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#253f51")};

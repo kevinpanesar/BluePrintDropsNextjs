@@ -58,6 +58,7 @@ const StyledMenu = styled.nav<{ open: boolean }>`
     font-size: 35px;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
     padding: 2rem 0;
     text-decoration: none;
     transition: color 0.3s linear;
@@ -72,7 +73,7 @@ const StyledMenu = styled.nav<{ open: boolean }>`
   a:after {
     content: attr(data-hover);
     position: absolute;
-    color: #21587f;
+    color: #7d00ff;
     left: 0;
     margin: 0 auto;
     width: 0;

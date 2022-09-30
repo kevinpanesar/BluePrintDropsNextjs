@@ -1,29 +1,39 @@
-import React,{useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
 import { MensWomensKidsIcons } from "../mensWomensKidsSelector/MensWomensKidsIcons";
 
-interface ReleaseCardProps{
-  data:{
-    title : string,
-    date: string,
-    colorway: string,
-    price: number,
+interface ReleaseCardProps {
+  data: {
+    title: string;
+    date: string;
+    colorway: string;
+    price: number;
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    images: string[],
+    images: string[];
     OnlineLinks: {
-      CanadianLinks: {title: string, type: string, img: string, link: string}[];
-      USALinks: {title: string, type: string, img: string, link: string}[];
-      InternationalLinks: {title: string, type: string, img: string, link: string}[];
-  }
-  },
-  desktop: boolean
+      CanadianLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+      USALinks: { title: string; type: string; img: string; link: string }[];
+      InternationalLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+    };
+  };
+  desktop: boolean;
 }
 
-export const ReleaseCard = ({ data, desktop } : ReleaseCardProps) => {
+export const ReleaseCard = ({ data, desktop }: ReleaseCardProps) => {
   return (
     <Container desktop={desktop}>
       <TitleContainer>
@@ -38,7 +48,7 @@ export const ReleaseCard = ({ data, desktop } : ReleaseCardProps) => {
           <MensWomensKidsIcons data={data} />
         </Labels>
         <Values>
-          <p>{'$' +(Math.round(data.price * 100) / 100).toFixed(2)}</p>
+          <p>{"$" + (Math.round(data.price * 100) / 100).toFixed(2)}</p>
           <p>{format(new Date(data.date.replace(/, /g, "/")), "PPP")}</p>
           {/* <p>{data.styleCode}</p> */}
           <p>#12341234</p>
@@ -52,7 +62,7 @@ export const ReleaseCard = ({ data, desktop } : ReleaseCardProps) => {
 const Container = styled.div<{ desktop: boolean }>`
   width: 90%;
   margin: 0 auto;
-  background: #21587f;
+  background: #7d00ff;
   border-radius: ${(props) => {
     if (props.desktop) {
       return "5px";
@@ -64,7 +74,7 @@ const Container = styled.div<{ desktop: boolean }>`
   margin-top: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-weight: 700;
 `;
@@ -88,8 +98,9 @@ const PriceDateContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  padding-left: 2.5%;
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     width: 50%;
     margin-right: auto;
     margin-left: 20px;

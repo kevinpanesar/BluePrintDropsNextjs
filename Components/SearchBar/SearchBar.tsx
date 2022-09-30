@@ -71,7 +71,7 @@ const Form = styled.form<{ onChange: any }>`
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        border: 2px solid #f5f5f5;
+        border: 2px solid #f1f0f057;
       }
     }
     .fa {
@@ -89,12 +89,12 @@ const Input = styled.input`
   width: 0%;
   max-height: 0px;
   height: 0px;
-  border: 2px solid #f5f5f5;
+  border: 2px solid #f1f0f057;
   outline: 0;
   /* border: 0; */
   font-size: 1em;
   overflow: none;
-  background-color: #f5f5f5;
+  background-color: #f1f0f057;
 `;
 
 const ImageDiv = styled.div`

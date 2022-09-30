@@ -210,7 +210,7 @@ td {
 }
 
 .splide__arrow svg{
-  fill: gray;
+  fill: #7d00ff;
 }
 
 .splide__arrow svg:hover{
@@ -226,6 +226,9 @@ td {
 
 .splide__arrow svg {
   height: 20px;
+}
+.splide--nav>.splide__track>.splide__list>.splide__slide.is-active{
+  border-color: #7d00ff;
 }
 
 /* custom scrollbar */

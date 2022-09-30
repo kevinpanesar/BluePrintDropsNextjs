@@ -14,44 +14,86 @@ interface SneakerFeed {
 export const SneakerFeed = ({ filteredResults, type }: SneakerFeed) => {
   return (
     <Container type={type}>
-      {type !== 'for-sale'? filteredResults?.map((element: any, index: number) => {
-        if (element.length > 0) {
-          return (
-            <div key={index}>
-              {type !== 'for-sale' && <Month>
-                {format(new Date(element[0]?.date.replace(/, /g, "/")), "LLLL")}
-              </Month>}
-              <CardContainer>
-                {element?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[], qty: number}) => {
-                      return (
-                        <Link
-                          passHref
-                          key={element.title + element.colorway}
-                          href={
-                            "/ReleaseInfo/" + element.title + "KP" + element._id
-                          }
-                        >
-                          <Links>
-                            <SneakerCard cardInfo={element} type='home-page' />
-                          </Links>
-                        </Link>
-                      );
-                    })
-                  }
-              </CardContainer>
-            </div>
-          );
-        }
-      }) : filteredResults?.map((element: {title: string, colorway: string, _id: string, date: string, images: string[], price: number, image: string[], qty: number}, index: number) => {
-        if (element.title) {
-          return (<Link 
-      passHref
-      key={index}
-      href={"/ForSale/" + element.title + "KP" + element._id}>
-      <Links>
-        <SneakerCard cardInfo={element} type={type}/>
-      </Links>
-    </Link>)}})}
+      {type !== "for-sale"
+        ? filteredResults?.map((element: any, index: number) => {
+            if (element.length > 0) {
+              return (
+                <div key={index}>
+                  {type !== "for-sale" && (
+                    <Month>
+                      {format(
+                        new Date(element[0]?.date.replace(/, /g, "/")),
+                        "LLLL"
+                      )}
+                    </Month>
+                  )}
+                  <CardContainer>
+                    {element?.map(
+                      (element: {
+                        title: string;
+                        colorway: string;
+                        _id: string;
+                        date: string;
+                        images: string[];
+                        price: number;
+                        image: string[];
+                        qty: number;
+                      }) => {
+                        return (
+                          <Link
+                            passHref
+                            key={element.title + element.colorway}
+                            href={
+                              "/ReleaseInfo/" +
+                              element.title +
+                              "KP" +
+                              element._id
+                            }
+                          >
+                            <Links>
+                              <SneakerCard
+                                cardInfo={element}
+                                type="home-page"
+                              />
+                            </Links>
+                          </Link>
+                        );
+                      }
+                    )}
+                  </CardContainer>
+                </div>
+              );
+            }
+          })
+        : filteredResults?.map(
+            (
+              element: {
+                title: string;
+                colorway: string;
+                _id: string;
+                date: string;
+                images: string[];
+                price: number;
+                image: string[];
+                qty: number;
+              },
+              index: number
+            ) => {
+              if (element.title) {
+                return (
+                  <Link
+                    passHref
+                    key={index}
+                    href={"/ForSale/" + element.title + "KP" + element._id}
+                  >
+                    <Links>
+                      <SneakerCard cardInfo={element} type={type} />
+                    </Links>
+                  </Link>
+                );
+              }
+            }
+          )}
     </Container>
   );
 };
@@ -62,10 +104,11 @@ const Container = styled.div<{ type: string }>`
   margin-left: auto;
   margin-top: 20px;
   display: flex;
-  justify-content:  ${(props) => (props.type == 'for-sale' ? "flex-start" : "space-between")};
-  flex-direction: ${(props) => (props.type == 'for-sale' ? "row" : "column")};
+  justify-content: ${(props) =>
+    props.type == "for-sale" ? "flex-start" : "space-between"};
+  flex-direction: ${(props) => (props.type == "for-sale" ? "row" : "column")};
   margin-bottom: 70px;
-  background-color: #f5f5f5;
+  background-color: #f1f0f057;
   overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden;
   flex-wrap: wrap;

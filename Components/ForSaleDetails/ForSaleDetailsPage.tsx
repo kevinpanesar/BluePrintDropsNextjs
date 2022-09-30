@@ -27,6 +27,7 @@ interface PropTypes{
     clothing: boolean,
     cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
     images: string[];
+    description: string;
     OnlineLinks: {
       CanadianLinks: {title: string, type: string, img: string, link: string}[];
       USALinks: {title: string, type: string, img: string, link: string}[];

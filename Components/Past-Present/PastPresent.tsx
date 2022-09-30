@@ -139,15 +139,16 @@ const Text = styled.h2<{ selected: boolean | undefined }>`
 const UpcomingContainer = styled.div<{ selected: boolean | undefined }>`
   height: 100%;
   width: 50%;
-  background-color: ${(props) => (props.selected === true ? "#21587F" : null)};
+  background-color: ${(props) => (props.selected === true ? "#7d00ff" : null)};
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  box-shadow: ${(props) =>
+
+  /* box-shadow: ${(props) =>
     props.selected
       ? "inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)"
-      : null};
+      : null}; */
 `;
 
 const PastContainer = styled.div<{ selected: boolean | undefined }>`
@@ -157,9 +158,9 @@ const PastContainer = styled.div<{ selected: boolean | undefined }>`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: ${(props) => (props.selected === true ? "#21587F" : null)};
-  box-shadow: ${(props) =>
+  background-color: ${(props) => (props.selected === true ? "#7d00ff" : null)};
+  /* box-shadow: ${(props) =>
     props.selected
       ? "inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)"
-      : null};
+      : null}; */
 `;

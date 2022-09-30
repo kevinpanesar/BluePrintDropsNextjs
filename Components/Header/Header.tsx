@@ -15,6 +15,7 @@ export const Header = ({ type } : {type: string}) => {
 const HeaderContainer = styled.div<{ type: string }>`
   height: 40px;
   width: 75%;
+  color: #7d00ff; ;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -22,4 +23,9 @@ const HeaderContainer = styled.div<{ type: string }>`
   margin: 10px;
   cursor: pointer;
   color: ${(props) => (props.type === "desktop" ? "white" : "black")};
+
+  h1{
+    font-size: 24px;
+    color: #000000;
+  }
 `;

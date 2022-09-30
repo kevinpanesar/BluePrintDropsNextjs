@@ -28,13 +28,13 @@ export const NavBar = ({ data }: NavBarProps) => {
 const NavContainer = styled.div`
   width: 100%;
   height: 60px;
-  background-color: #f5f5f5;
+  background-color: #f1f0f057;
   box-shadow: 7px 7px 7px 4px rgba(0, 0, 0, 0.25);
   /* background-image: linear-gradient(
     rgba(245, 245, 245, 0),
     rgba(245, 245, 245, 0.3),
     rgba(245, 245, 245, 1),
-    #f5f5f5
+    #f1f0f057
   ); */
   position: fixed;
   bottom: 0;
@@ -53,14 +53,14 @@ const IconContainer = styled.button`
 `;
 
 const GenerateRafflesButton = styled.button`
-  background-color: #21587f;
+  background-color: #7d00ff;
   width: 90%;
   margin: 0 auto;
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
   color: white;
-  border: 2px solid #21587f;
+  border: 2px solid #7d00ff;
 
   :hover {
     background-color: #305773;

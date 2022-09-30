@@ -25,7 +25,9 @@ export interface CheckoutItemsProps {
 export const CheckoutItems = ({ data }: CheckoutItemsProps) => {
   const dispatch = useAppDispatch();
   console.log(typeof firebase.auth());
-  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
+  const [user]: AuthStateHook = useAuthState(
+    firebase.auth() as unknown as Auth
+  );
   const {
     images,
     title,
@@ -161,13 +163,15 @@ const ItemColorway = styled.p`
 
 const RemoveFromCartButton = styled.button`
   color: #fff;
-  background-color: #0e1111;
-  border-color: #0e1111;
+  background-color: #7d00ff;
+  border-color: #7d00ff;
+  border: none;
   margin-right: 10px;
   padding: 8px 12px;
+  border-radius: 4.4px;
   margin-top: 6px;
   &:hover {
-    background-color: #0e1111b6;
-    border-color: #0e1111b6;
+    background-color: #7d00ffb6;
+    border-color: #7d00ffb6;
   }
 `;

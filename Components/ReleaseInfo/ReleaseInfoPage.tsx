@@ -26,13 +26,32 @@ interface ReleaseInfoPageProps {
     mensFlag: boolean;
     womensFlag: boolean;
     kidsFlag: boolean;
-    cities: {[key: string]: {location: string, type: string, Description: string, img: string, date: string, Address: string}[]};
+    cities: {
+      [key: string]: {
+        location: string;
+        type: string;
+        Description: string;
+        img: string;
+        date: string;
+        Address: string;
+      }[];
+    };
     images: string[];
     OnlineLinks: {
-      CanadianLinks: {title: string, type: string, img: string, link: string}[];
-      USALinks: {title: string, type: string, img: string, link: string}[];
-      InternationalLinks: {title: string, type: string, img: string, link: string}[];
-  };
+      CanadianLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+      USALinks: { title: string; type: string; img: string; link: string }[];
+      InternationalLinks: {
+        title: string;
+        type: string;
+        img: string;
+        link: string;
+      }[];
+    };
   };
 }
 
@@ -49,7 +68,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
   const cities = Object.keys(data.cities);
 
   const raffleOnOff = cities?.map((element: string) => {
-    return data.cities[element].some((element: {type: string}) => {
+    return data.cities[element].some((element: { type: string }) => {
       if (element.type === "Raffle") {
         return true;
       }
@@ -110,7 +129,7 @@ export const ReleaseInfoPage = ({ data }: ReleaseInfoPageProps) => {
 
 const Container = styled.div`
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #f1f0f057;
   display: flex;
   flex-direction: column;
   padding-top: 20px;

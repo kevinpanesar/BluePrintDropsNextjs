@@ -11,8 +11,8 @@ interface LocationCardProps {
     type: string;
     Description: string;
     date: string;
-    Address: string
-  }
+    Address: string;
+  };
   length: number;
   desktop: boolean;
   data: {
@@ -47,7 +47,11 @@ export const LocationCard = ({
       <LeftContainer desktop={desktop}>
         <ImageTitleContainer>
           <ImageContainer desktop={desktop}>
-            <BrandImage referrerPolicy="no-referrer" src={location.img} width="110%" />
+            <BrandImage
+              referrerPolicy="no-referrer"
+              src={location.img}
+              width="110%"
+            />
           </ImageContainer>
           <TitleSubtitleContainer>
             <StoreName desktop={desktop}>
@@ -76,7 +80,6 @@ export const LocationCard = ({
     </Container>
   );
 };
-
 
 const Container = styled.div<{ length: number }>`
   width: 100%;
@@ -179,7 +182,7 @@ const RightContainer = styled.div<{ desktop: boolean }>`
 `;
 
 const RaffleButton = styled.button`
-  background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#21587f")};
+  background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#7d00ff")};
   padding: ${(props) => (props.disabled ? "6.72581px 17.9355px" : "5px 7px")};
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -187,7 +190,7 @@ const RaffleButton = styled.button`
   border-radius: 4.4px;
   color: white;
   border: ${(props) =>
-    props.disabled ? "2px solid #C0C0C0" : "2px solid #21587f"};
+    props.disabled ? "2px solid #C0C0C0" : "2px solid #7d00ff"};
 
   :hover {
     background-color: ${(props) => (props.disabled ? "#C0C0C0" : "#253f51")};

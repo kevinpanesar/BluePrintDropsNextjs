@@ -10,26 +10,29 @@ Modal.setAppElement("#__next");
 import { useAppDispatch } from "../../store/store";
 import { Auth } from "firebase/auth";
 
-interface PropTypes{
-  data:{
-    images: string[],
-    title: string,
-    colorway: string,
-    kidsFlag: boolean,
-    mensFlag: boolean,
-    womensFlag: boolean,
-    shoe: boolean,
-    clothing: boolean,
-    price: number,
-    qty: number,
-    availableSizeQty: Record<string, number>,
-    skuNumber: string
-  }
-  }
+interface PropTypes {
+  data: {
+    images: string[];
+    title: string;
+    colorway: string;
+    kidsFlag: boolean;
+    mensFlag: boolean;
+    womensFlag: boolean;
+    shoe: boolean;
+    clothing: boolean;
+    price: number;
+    qty: number;
+    availableSizeQty: Record<string, number>;
+    skuNumber: string;
+    description: string;
+  };
+}
 
 export const ItemDetails = ({ data }: PropTypes) => {
-  const [user]: AuthStateHook = useAuthState(firebase.auth() as unknown as Auth);
-  const [selectedSize, setSelectedSize] = useState(0.0);
+  const [user]: AuthStateHook = useAuthState(
+    firebase.auth() as unknown as Auth
+  );
+  const [selectedSize, setSelectedSize] = useState("");
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -46,6 +49,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
     qty,
     availableSizeQty,
     skuNumber,
+    description,
   } = data;
 
   let mensWomensKids;
@@ -74,7 +78,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
   };
 
   const handleAddToCart = () => {
-    if (selectedSize === 0) {
+    if (selectedSize === "") {
       toast("Please Select a Size", {
         position: "top-right",
         autoClose: 5000,
@@ -119,20 +123,21 @@ export const ItemDetails = ({ data }: PropTypes) => {
   }
 
   const sizeItems = Object.keys(availableSizeQty).map((size, index) => {
+    console.log(parseFloat(size));
+    console.log(selectedSize);
     if (availableSizeQty[size] == 0) {
       return (
         <SizeItem soldOut={true} selected={false} disabled={true} key={index}>
           {size}
         </SizeItem>
       );
-    }
-    if (selectedSize === parseFloat(size)) {
+    } else if (selectedSize === size) {
       return (
         <SizeItem
-        key={index}
+          key={index}
           soldOut={false}
-          selected={false}
-          onClick={() => setSelectedSize(parseFloat(size))}
+          selected={true}
+          onClick={() => setSelectedSize(size)}
         >
           {size}
         </SizeItem>
@@ -140,10 +145,10 @@ export const ItemDetails = ({ data }: PropTypes) => {
     } else {
       return (
         <SizeItem
-        key={index}
+          key={index}
           soldOut={false}
-          selected={true}
-          onClick={() => setSelectedSize(parseFloat(size))}
+          selected={false}
+          onClick={() => setSelectedSize(size)}
         >
           {size}
         </SizeItem>
@@ -167,7 +172,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
   const closeModal = () => {
     dispatch(fetchCart(user!.uid));
     setIsOpen(false);
-    setSelectedSize(0);
+    setSelectedSize("");
   };
   const openModal = () => {
     setIsOpen(true);
@@ -180,13 +185,7 @@ export const ItemDetails = ({ data }: PropTypes) => {
       <Colorway>{colorway}</Colorway>
       <Price>{"$" + (Math.round(price * 100) / 100).toFixed(2)}</Price>
       <SizeContainer>{sizeItems}</SizeContainer>
-      <ItemDescription>
-        Introducing the first-ever Max Air unit designed specifically for Nike
-        Sportswear, the Nike Air Max 270 delivers visible air and unbelievable
-        comfort under every step. It has callbacks to the original 1991 Air Max
-        180 on its exaggerated tongue top and heritage tongue logo while also
-        being upgraded for modern comfort.
-      </ItemDescription>
+      <ItemDescription>{description}</ItemDescription>
       <ButtonWrapper>
         {!soldOut && (
           <AddToCartButton onClick={handleAddToCart}>
@@ -228,7 +227,7 @@ const ItemDetailsContainer = styled.div`
   padding: 16px;
 
   @media (max-width: 768px) {
-   width: 100% ;
+    width: 100%;
   }
 `;
 const ItemTitle = styled.h1`
@@ -262,39 +261,44 @@ const SizeContainer = styled.div`
 const SizeItem = styled.button<{ selected: boolean; soldOut: boolean }>`
   width: 42px;
   height: 42px;
-  background-color: ${(props) => (props.selected ? "#f5f5f5" : "#d4d4d4")};
+  background-color: ${(props) => (props.selected ? "#ffffff" : "#ffffff")};
   margin-top: 8px;
   margin-right: 8px;
   display: flex;
   justify-content: center;
+  cursor: ${(props) => (props.soldOut ? "auto" : "pointer")};
   align-items: center;
-  opacity: ${(props) => (props.soldOut ? "0.9" : "1")};
+  opacity: ${(props) => (props.soldOut ? "0.6" : "1")};
   font-size: 14px;
+  border-radius: 4px;
   font-weight: 700;
   letter-spacing: 1px;
-  border: ${(props) => (!props.selected ? "black 1 px solid" : "none")};
+  border: ${(props) => (props.selected ? "solid #7d00ff 3px" : "none")};
   &:hover {
-    background-color: ${(props) => (props.soldOut ? "null" : "#b9b7b7")};
-    border-bottom: ${(props) => (props.soldOut ? "null" : "solid black 2px")};
+    background-color: ${(props) => (props.soldOut ? "null" : "#ffffff")};
+    border: ${(props) => (props.soldOut ? "null" : "solid #7d00ff 3px")};
   }
 `;
 
 const AddToCartButton = styled.button`
   color: #fff;
-  background-color: #0e1111;
-  border-color: #0e1111;
+  background-color: #7d00ff;
+  border-color: #7d00ff;
   width: 45%;
+  padding: 5px 7px;
+  border-radius: 4.4px;
   margin-right: 10px;
+  border: none;
   padding: 8px 14px;
   &:hover {
-    background-color: #0e1111b6;
-    border-color: #0e1111b6;
+    background-color: #7d00ffb6;
+    border-color: #7d00ffb6;
   }
 `;
 const SoldOutButton = styled.button`
   color: #fff;
-  background-color: #0e1111;
-  border-color: #0e1111;
+  background-color: #7d00ff;
+  border-color: #7d00ff;
   width: 45%;
   margin-right: 10px;
   padding: 8px 14px;

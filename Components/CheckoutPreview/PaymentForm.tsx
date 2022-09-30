@@ -27,27 +27,25 @@ export const PaymentForm = () => {
       return;
     }
 
-    stripe
-      .retrievePaymentIntent(clientSecret)
-      .then(({ paymentIntent }) => {
-        switch (paymentIntent!.status) {
-          case "succeeded":
-            setMessage("Payment succeeded!");
-            break;
-          case "processing":
-            setMessage("Your payment is processing.");
-            break;
-          case "requires_payment_method":
-            setMessage("Your payment was not successful, please try again.");
-            break;
-          default:
-            setMessage("Something went wrong.");
-            break;
-        }
-      });
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent!.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
   }, [stripe]);
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -58,7 +56,7 @@ export const PaymentForm = () => {
 
     setIsLoading(true);
 
-    const { error } : {error: StripeError} = await stripe.confirmPayment({
+    const { error }: { error: StripeError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
@@ -109,8 +107,8 @@ const Container = styled.div`
   padding: 15px;
   width: 95%;
 
-  #payment-message{
-    margin-top: 10px ;
+  #payment-message {
+    margin-top: 10px;
     color: #d90000;
   }
 
@@ -120,15 +118,17 @@ const Container = styled.div`
 
   button {
     color: #fff;
-    background-color: #0e1111;
-    border-color: #0e1111;
+    border: none;
+    border-radius: 4.4px;
+    background-color: #7d00ff;
+    border-color: #7d00ff;
     width: 35%;
     margin-top: 15px;
     margin-right: 10px;
     padding: 8px 12px;
     &:hover {
-      background-color: #0e1111b6;
-      border-color: #0e1111b6;
+      background-color: #7d00ffb6;
+      border-color: #7d00ffb6;
     }
   }
 `;

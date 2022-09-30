@@ -130,6 +130,10 @@ export default function Clothing() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
+          href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         />
@@ -163,7 +167,7 @@ export default function Clothing() {
           <AddToCartModalWrapper>
             <h2>Order Completed</h2>
             <h3>Thank you for ordering with us!</h3>
-            <CloseButton onClick={closeModal}>close</CloseButton>
+            <CloseButton onClick={closeModal}>Close</CloseButton>
           </AddToCartModalWrapper>
         </Modal>
         <Footer />
@@ -268,13 +272,15 @@ const AddToCartModalWrapper = styled.div`
 
 const CloseButton = styled.button`
   color: #fff;
-  background-color: #0e1111;
-  border-color: #0e1111;
+  border: none;
+  border-radius: 4.4px;
+  background-color: #7d00ff;
+  border-color: #7d00ff;
   width: 45%;
   margin-top: 15px;
   padding: 8px 14px;
   &:hover {
-    background-color: #0e1111b6;
-    border-color: #0e1111b6;
+    background-color: #7b00ff94;
+    border-color: #7b00ff87;
   }
 `;

@@ -21,6 +21,7 @@ interface PropTypes {
     colorway: string;
     _id: string;
     kidsFlag: boolean;
+    description: string;
     mensFlag: boolean;
     womensFlag: boolean;
     shoe: boolean;
@@ -71,6 +72,10 @@ function ForSaleDetails({ postData }: PropTypes) {
         <meta property="og:image" content={postData[0].images[0]} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+          rel="stylesheet"
+        ></link>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
           rel="stylesheet"

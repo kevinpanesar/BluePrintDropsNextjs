@@ -101,7 +101,7 @@ const Container = styled.div<{ clothing: boolean }>`
 
   @media (max-width: 769px) {
     margin: ${(props) => (props.clothing ? "20px auto 30px auto" : null)};
-    width: 84%;
+    width: 90%;
   }
 
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -110,12 +110,12 @@ const Container = styled.div<{ clothing: boolean }>`
 
 const Item = styled.button<{ onClick: any; selected: boolean }>`
   width: 22%;
-  background-color: ${(props) => (props.selected ? "#21587f" : "white")};
+  background-color: ${(props) => (props.selected ? "#7d00ff" : "white")};
   color: ${(props) => (props.selected ? "white" : "black")};
   border-radius: 10px;
   border: none;
-  box-shadow: ${(props) =>
+  /* box-shadow: ${(props) =>
     props.selected
       ? "inset 0.640128px 0.640128px 7.68154px 6.40128px rgba(0, 0, 0, 0.25)"
-      : null};
+      : null}; */
 `;
