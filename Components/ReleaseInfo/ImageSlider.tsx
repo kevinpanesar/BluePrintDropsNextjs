@@ -16,18 +16,14 @@ export const ImageSlider = ({ data }: ImageSliderProps) => {
   const handleDragStart = (e: React.DragEvent<HTMLImageElement>) =>
     e.preventDefault();
 
-  console.log(data);
 
   if (data.images !== undefined) {
-    console.log(data);
     items = data.images.map((element, index) => (
       <SlideImage src={element} onDragStart={handleDragStart} key={index} />
     ));
   }
 
-  console.log(items);
   items.shift();
-  console.log(items);
   return (
     <Container>
       <AliceCarousel

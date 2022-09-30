@@ -24,7 +24,6 @@ export const CheckoutPreviewPage = () => {
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
   );
-  console.log(stripePromise);
   const [clientSecret, setClientSecret] = React.useState("");
   const totalPrice = (cartArray: { price: number }[]) => {
     let total = 0;

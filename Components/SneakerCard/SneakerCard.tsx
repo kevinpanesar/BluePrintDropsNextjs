@@ -19,8 +19,6 @@ export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
   let releaseDay;
   let date;
 
-  console.log(cardInfo);
-
   if (type !== "for-sale") {
     releaseDay = getDate(new Date(cardInfo.date.replace(/, /g, "/")));
   }
@@ -29,7 +27,7 @@ export const SneakerCard = ({ cardInfo, type }: SneakerCardProps) => {
   }
 
   const commafy = ( num : number ) => {
-    var str = num.toString().split('.');
+    const str = num.toString().split('.');
     if (str[0].length >= 4) {
         str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
     }

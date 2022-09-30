@@ -52,7 +52,6 @@ export const DesktopReleasePage = ({ data }: DesktopReleasePageProps) => {
   //   });
   // });
 
-  console.log(data)
 
   return (
     <Container desktop={true}>

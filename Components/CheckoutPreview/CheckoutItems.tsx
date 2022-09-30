@@ -24,7 +24,6 @@ export interface CheckoutItemsProps {
 
 export const CheckoutItems = ({ data }: CheckoutItemsProps) => {
   const dispatch = useAppDispatch();
-  console.log(typeof firebase.auth());
   const [user]: AuthStateHook = useAuthState(
     firebase.auth() as unknown as Auth
   );

@@ -123,8 +123,6 @@ export const ItemDetails = ({ data }: PropTypes) => {
   }
 
   const sizeItems = Object.keys(availableSizeQty).map((size, index) => {
-    console.log(parseFloat(size));
-    console.log(selectedSize);
     if (availableSizeQty[size] == 0) {
       return (
         <SizeItem soldOut={true} selected={false} disabled={true} key={index}>

@@ -18,7 +18,6 @@ export const SearchBar = ({ clothing, sneaker }: SearchBarProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (clothing === true) {
-      console.log(event);
       dispatch({
         type: "clothing/setSearchTerm",
         payload: event.target.value,
