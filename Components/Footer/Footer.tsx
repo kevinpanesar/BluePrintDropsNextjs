@@ -28,7 +28,7 @@ export const Footer = () => {
             <LowerContainer>
                 <LowerTextContainer>
                     <Link href={"/for-sale"}>
-                        <LowerContainerText>© Copyright 2021 blueprintdrops.com</LowerContainerText>
+                        <LowerContainerText>Developed by Kevin Panesar</LowerContainerText>
                     </Link>
                     <Link href={"/for-sale"}>
                         <LowerContainerText>Terms & Conditions</LowerContainerText>
@@ -106,11 +106,16 @@ const SocialMediaContainer = styled.div`
 display: flex;
 flex-direction: column;
 width: 12%;
+@media (max-width: 768px) {
+    display: none;
+  }
+
 `
 const FollowUsText = styled.p`
 font-size: 14px;
 line-height: 12px;
 text-align: center;
+margin-bottom: 3px;
 `
 const SocialMediaIconsContainer = styled.div`
 width: 100%;
