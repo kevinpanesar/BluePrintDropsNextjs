@@ -68,13 +68,13 @@ export const LocationCard = ({
           </h6>
           <p>{location.Description}</p>
         </DropDescription>
-        {!desktop && (
+        {/* {!desktop && ( */}
           <a href={address}>
             <GoogleWrapper>
               <Image src="/Media/googlemaps.svg" width="30" height="30" />
             </GoogleWrapper>
           </a>
-        )}
+        {/* )} */}
       </LeftContainer>
       <RightContainer desktop={desktop}>{button}</RightContainer>
     </Container>
@@ -159,6 +159,11 @@ const GoogleWrapper = styled.div`
   @media (max-width: 375px) {
     margin: 0px;
   }
+
+  @media (min-width: 768px) {
+    margin-top: 15px;
+  }
+
 `;
 
 const DropDescription = styled.div`

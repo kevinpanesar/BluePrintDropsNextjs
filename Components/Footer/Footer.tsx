@@ -27,15 +27,7 @@ export const Footer = () => {
             </TopContainer>
             <LowerContainer>
                 <LowerTextContainer>
-                    <Link href={"/for-sale"}>
                         <LowerContainerText>Developed by Kevin Panesar</LowerContainerText>
-                    </Link>
-                    <Link href={"/for-sale"}>
-                        <LowerContainerText>Terms & Conditions</LowerContainerText>
-                    </Link>
-                    <Link href={"/for-sale"}>
-                        <LowerContainerText>Privacy Policy</LowerContainerText>
-                    </Link>
                 </LowerTextContainer>
             </LowerContainer>
         </Container>
