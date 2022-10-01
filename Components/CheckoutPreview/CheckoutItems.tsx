@@ -165,6 +165,7 @@ const RemoveFromCartButton = styled.button`
   background-color: #7d00ff;
   border-color: #7d00ff;
   border: none;
+  width: 120px;
   margin-right: 10px;
   padding: 8px 12px;
   border-radius: 4.4px;
